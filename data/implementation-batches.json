@@ -1,0 +1,2914 @@
+{
+  "checkedAt": "2026-10-30",
+  "batchSize": 5,
+  "batchCount": 83,
+  "addedCards": 415,
+  "remainingNotStarted": 127,
+  "batches": [
+    {
+      "batch": 1,
+      "cards": [
+        {
+          "slug": "buried_treasure",
+          "name": "Buried Treasure",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "alabaster_box",
+          "name": "Alabaster Box",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "bleeding_skull",
+          "name": "Bleeding Skull",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "bull_whip",
+          "name": "Bull Whip",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "cold_iron_rod",
+          "name": "Cold Iron Rod",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "cards": [
+        {
+          "slug": "hounds_of_ondaros",
+          "name": "Hounds of Ondaros",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "hunting_party",
+          "name": "Hunting Party",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "sir_bors_the_younger",
+          "name": "Sir Bors the Younger",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "sisters_of_silence",
+          "name": "Sisters of Silence",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "sister_stefania",
+          "name": "Sister Stefánia",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 3,
+      "cards": [
+        {
+          "slug": "questing_beast",
+          "name": "Questing Beast",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "root_spider",
+          "name": "Root Spider",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "gossamer_ghost",
+          "name": "Gossamer Ghost",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "returned_king",
+          "name": "Returned King",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "panorama_manticore",
+          "name": "Panorama Manticore",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 4,
+      "cards": [
+        {
+          "slug": "bitten",
+          "name": "Bitten",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "bonfire",
+          "name": "Bonfire",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "clairvoyant",
+          "name": "Clairvoyant",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "golgor",
+          "name": "Golgor",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "yokai_kappas",
+          "name": "Yokai Kappas",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 5,
+      "cards": [
+        {
+          "slug": "malakhim",
+          "name": "Malakhim",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "mayor_of_milborne",
+          "name": "Mayor of Milborne",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "overbearing_bailiff",
+          "name": "Overbearing Bailiff",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "vanguard_knights",
+          "name": "Vanguard Knights",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "order_of_the_pale_worm",
+          "name": "Order of the Pale Worm",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 6,
+      "cards": [
+        {
+          "slug": "camelot",
+          "name": "Camelot",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "hamlet",
+          "name": "Hamlet",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "major_city",
+          "name": "Major City",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "donnybrook_inn",
+          "name": "Donnybrook Inn",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "dragonlords_lair",
+          "name": "Dragonlord's Lair",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 7,
+      "cards": [
+        {
+          "slug": "algor_omphalos",
+          "name": "Algor Omphalos",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "char_omphalos",
+          "name": "Char Omphalos",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "dank_omphalos",
+          "name": "Dank Omphalos",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "torrid_omphalos",
+          "name": "Torrid Omphalos",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "archangel_gabriel",
+          "name": "Archangel Gabriel",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 8,
+      "cards": [
+        {
+          "slug": "bottomless_pit",
+          "name": "Bottomless Pit",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "briar_patch",
+          "name": "Briar Patch",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "boulevard_of_bones",
+          "name": "Boulevard of Bones",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "cursed_land",
+          "name": "Cursed Land",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "blade_of_thorns",
+          "name": "Blade of Thorns",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 9,
+      "cards": [
+        {
+          "slug": "drums_of_doom",
+          "name": "Drums of Doom",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "excalibur",
+          "name": "Excalibur",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "grim_guisarme",
+          "name": "Grim Guisarme",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "goswhit_helmet",
+          "name": "Goswhit Helmet",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "crown_of_the_victor",
+          "name": "Crown of the Victor",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 10,
+      "cards": [
+        {
+          "slug": "arjaro_exorcist",
+          "name": "Arjaro Exorcist",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "archangel_michael",
+          "name": "Archangel Michael",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "heretics_of_seth",
+          "name": "Heretics of Seth",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "frisky_red_squirrel",
+          "name": "Frisky Red Squirrel",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "dozmary_pool",
+          "name": "Dozmary Pool",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 11,
+      "cards": [
+        {
+          "slug": "defiler_spire",
+          "name": "Defiler Spire",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "hellmouth",
+          "name": "Hellmouth",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "dome_of_osiros",
+          "name": "Dome of Osiros",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "dread_thicket",
+          "name": "Dread Thicket",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "iceberg",
+          "name": "Iceberg",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 12,
+      "cards": [
+        {
+          "slug": "morgana_le_fay",
+          "name": "Morgana le Fay",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "master_tracker",
+          "name": "Master Tracker",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "lumbering_giant",
+          "name": "Lumbering Giant",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "monstrous_lion",
+          "name": "Monstrous Lion",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "mazuj_ifrit",
+          "name": "Màzuj Ifrit",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 13,
+      "cards": [
+        {
+          "slug": "meat_hook",
+          "name": "Meat Hook",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "pnakotic_manuscript",
+          "name": "Pnakotic Manuscript",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "midland_army",
+          "name": "Midland Army",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "men_of_leng",
+          "name": "Men of Leng",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "mesmer_demon",
+          "name": "Mesmer Demon",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 14,
+      "cards": [
+        {
+          "slug": "second_wind",
+          "name": "Second Wind",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "screamer",
+          "name": "Screamer",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "town",
+          "name": "Town",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "tournament_grounds",
+          "name": "Tournament Grounds",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "stone_gaze_gorgons",
+          "name": "Stone-gaze Gorgons",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 15,
+      "cards": [
+        {
+          "slug": "torshammar_trinket",
+          "name": "Torshammar Trinket",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "watchtower",
+          "name": "Watchtower",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "river_of_flame",
+          "name": "River of Flame",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "pendragon_banner",
+          "name": "Pendragon Banner",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "torch_and_pitchfork",
+          "name": "Torch and Pitchfork",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 16,
+      "cards": [
+        {
+          "slug": "avenging_angel",
+          "name": "Avenging Angel",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "moss_troll",
+          "name": "Moss Troll",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "varistus_the_evictor",
+          "name": "Varistus the Evictor",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "winter_nymph",
+          "name": "Winter Nymph",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "pebbled_paths",
+          "name": "Pebbled Paths",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 17,
+      "cards": [
+        {
+          "slug": "leap_attack",
+          "name": "Leap Attack",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "lure",
+          "name": "Lure",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "thundering_giant",
+          "name": "Thundering Giant",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "tadpole_pool",
+          "name": "Tadpole Pool",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "sjaelstrom",
+          "name": "Sjaelström",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 18,
+      "cards": [
+        {
+          "slug": "city_of_glass",
+          "name": "City of Glass",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "city_of_plenty",
+          "name": "City of Plenty",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "pristine_paradise",
+          "name": "Pristine Paradise",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "the_colour_out_of_space",
+          "name": "The Colour Out of Space",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "the_empyrean",
+          "name": "The Empyrean",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 19,
+      "cards": [
+        {
+          "slug": "thumb_screws",
+          "name": "Thumb Screws",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "mobbed_court",
+          "name": "Mobbed Court",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "merlins_staff",
+          "name": "Merlin's Staff",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "philosophers_stone",
+          "name": "Philosopher's Stone",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "nadir_seed",
+          "name": "Nadir Seed",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 20,
+      "cards": [
+        {
+          "slug": "abaddon_succubus",
+          "name": "Abaddon Succubus",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "coy_nixie",
+          "name": "Coy Nixie",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "gloam_toads",
+          "name": "Gloam Toads",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "unland_angler",
+          "name": "Unland Angler",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "ormund_harpooneers",
+          "name": "Ormund Harpooneers",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 21,
+      "cards": [
+        {
+          "slug": "garden_of_eden",
+          "name": "Garden of Eden",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "chains_of_prometheus",
+          "name": "Chains of Prometheus",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "queen_of_midland",
+          "name": "Queen of Midland",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "false_idol",
+          "name": "False Idol",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "13_treasures_of_britain",
+          "name": "13 Treasures of Britain",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 22,
+      "cards": [
+        {
+          "slug": "riddle_sphinx",
+          "name": "Riddle Sphinx",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "mother_nature",
+          "name": "Mother Nature",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "lilith",
+          "name": "Lilith",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "pigs_of_the_sounder",
+          "name": "Pigs of the Sounder",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "squeakers",
+          "name": "Squeakers",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 23,
+      "cards": [
+        {
+          "slug": "lady_iseult",
+          "name": "Lady Iseult",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "gilded_aegis",
+          "name": "Gilded Aegis",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "nosferatu",
+          "name": "Nosferatu",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "hollow_one",
+          "name": "Hollow One",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "purgatory",
+          "name": "Purgatory",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 24,
+      "cards": [
+        {
+          "slug": "landmass",
+          "name": "Landmass",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "overflow",
+          "name": "Overflow",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "waypoint_portal",
+          "name": "Waypoint Portal",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "knighthood",
+          "name": "Knighthood",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "scavenging_fiend",
+          "name": "Scavenging Fiend",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 25,
+      "cards": [
+        {
+          "slug": "ruler_of_thul",
+          "name": "Ruler of Thul",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "aino",
+          "name": "Aino",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "secret_tunnel",
+          "name": "Secret Tunnel",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "astral_alcazar",
+          "name": "Astral Alcazar",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "perilous_bridge",
+          "name": "Perilous Bridge",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 26,
+      "cards": [
+        {
+          "slug": "the_black_plague",
+          "name": "The Black Plague",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "the_great_famine",
+          "name": "The Great Famine",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "blizzard",
+          "name": "Blizzard",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "sandstorm",
+          "name": "Sandstorm",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "cursed_iron",
+          "name": "Cursed Iron",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 27,
+      "cards": [
+        {
+          "slug": "saintweald",
+          "name": "Saintweald",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "the_geistwood",
+          "name": "The Geistwood",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "battlefield",
+          "name": "Battlefield",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "crucifix",
+          "name": "Crucifix",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "scarecrow",
+          "name": "Scarecrow",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 28,
+      "cards": [
+        {
+          "slug": "plate_of_the_whale",
+          "name": "Plate of the Whale",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "golden_harp",
+          "name": "Golden Harp",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "panpipes_of_pnom",
+          "name": "Panpipes of Pnom",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "peacemaker_arbalest",
+          "name": "Peacemaker Arbalest",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "truesight_crossbow",
+          "name": "Truesight Crossbow",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 29,
+      "cards": [
+        {
+          "slug": "city_of_traitors",
+          "name": "City of Traitors",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "dwarven_forge",
+          "name": "Dwarven Forge",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "ominous_owl",
+          "name": "Ominous Owl",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "evil_presence",
+          "name": "Evil Presence",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "the_round_table",
+          "name": "The Round Table",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 30,
+      "cards": [
+        {
+          "slug": "infiltrate",
+          "name": "Infiltrate",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "puppet_master",
+          "name": "Puppet Master",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "love_potion",
+          "name": "Love Potion",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "lord_of_greed",
+          "name": "Lord of Greed",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "sir_kay",
+          "name": "Sir Kay",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 31,
+      "cards": [
+        {
+          "slug": "great_wall",
+          "name": "Great Wall",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "gnome_hollows",
+          "name": "Gnome Hollows",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "undesirables",
+          "name": "Undesirables",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "no_mans_land",
+          "name": "No Man's Land",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "bailey",
+          "name": "Bailey",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 32,
+      "cards": [
+        {
+          "slug": "fire_harpoons",
+          "name": "Fire Harpoons!",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "deathwish",
+          "name": "Deathwish",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "pact_with_the_devil",
+          "name": "Pact with the Devil",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "powerwish",
+          "name": "Powerwish",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "chorus_of_condemnation",
+          "name": "Chorus of Condemnation",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 33,
+      "cards": [
+        {
+          "slug": "earl_of_the_ivory_towers",
+          "name": "Earl of the Ivory Towers",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "fourberie_knot",
+          "name": "Fourberie Knot",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "wicker_manikin",
+          "name": "Wicker Manikin",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "phase_assassin",
+          "name": "Phase Assassin",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "screaming_skull",
+          "name": "Screaming Skull",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 34,
+      "cards": [
+        {
+          "slug": "dark_alley",
+          "name": "Dark Alley",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "wizards_den",
+          "name": "Wizard's Den",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "shrike_orchard",
+          "name": "Shrike Orchard",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "pond",
+          "name": "Pond",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "den_of_evil",
+          "name": "Den of Evil",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 35,
+      "cards": [
+        {
+          "slug": "one_shot_wizard",
+          "name": "One-shot Wizard",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "ice_shards",
+          "name": "Ice Shards",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "star_seeds_of_uhr",
+          "name": "Star-seeds of Uhr",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "shatter_strike",
+          "name": "Shatter Strike",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "abyssal_assault",
+          "name": "Abyssal Assault",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 36,
+      "cards": [
+        {
+          "slug": "pith_imp",
+          "name": "Pith Imp",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "redmane_hyena",
+          "name": "Redmane Hyena",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "xeraphine_konrul",
+          "name": "Xeraphine Konrul",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "those_who_linger",
+          "name": "Those Who Linger",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "sneak_thief",
+          "name": "Sneak Thief",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 37,
+      "cards": [
+        {
+          "slug": "battlemage",
+          "name": "Battlemage",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "templar",
+          "name": "Templar",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "seer",
+          "name": "Seer",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "divine_lance",
+          "name": "Divine Lance",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "stone_rain",
+          "name": "Stone Rain",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 38,
+      "cards": [
+        {
+          "slug": "lord_of_lies",
+          "name": "Lord of Lies",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "instigator_imp",
+          "name": "Instigator Imp",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "lord_of_the_void",
+          "name": "Lord of the Void",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "replication",
+          "name": "Replication",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "kissers_of_wounds",
+          "name": "Kissers of Wounds",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 39,
+      "cards": [
+        {
+          "slug": "seraphim",
+          "name": "Seraphim",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "sir_yvain",
+          "name": "Sir Yvain",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "pied_piper_of_hameln",
+          "name": "Pied Piper of Hameln",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "moonsong_talagelum",
+          "name": "Moonsong Talagelum",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "wedding_hall",
+          "name": "Wedding Hall",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 40,
+      "cards": [
+        {
+          "slug": "war_horse",
+          "name": "War Horse",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "fine_courser",
+          "name": "Fine Courser",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "phantom_steed",
+          "name": "Phantom Steed",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "haast_eagle",
+          "name": "Haast Eagle",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "zephyranne_airship",
+          "name": "Zephyranne Airship",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 41,
+      "cards": [
+        {
+          "slug": "beast_of_burden",
+          "name": "Beast of Burden",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "stagecoach",
+          "name": "Stagecoach",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "sir_tom_thumb",
+          "name": "Sir Tom Thumb",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "hyperparasite",
+          "name": "Hyperparasite",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "bodach_bogeyman",
+          "name": "Bodach Bogeyman",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 42,
+      "cards": [
+        {
+          "slug": "boudicca",
+          "name": "Boudicca",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "mordric_druids",
+          "name": "Mordric Druids",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "bridge_troll",
+          "name": "Bridge Troll",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "white_hart",
+          "name": "White Hart",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "candlemas_monks",
+          "name": "Candlemas Monks",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 43,
+      "cards": [
+        {
+          "slug": "sphinx_sarcophagus",
+          "name": "Sphinx Sarcophagus",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "fields_of_camlann",
+          "name": "Fields of Camlann",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "spore_spouts",
+          "name": "Spore Spouts",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "frontier_settlers",
+          "name": "Frontier Settlers",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "baba_yagas_hut",
+          "name": "Baba Yaga's Hut",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 44,
+      "cards": [
+        {
+          "slug": "wuthering_heights",
+          "name": "Wuthering Heights",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "avatar_of_air",
+          "name": "Avatar of Air",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "river_rapids",
+          "name": "River Rapids",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "fae_city",
+          "name": "Fae City",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "salmon_of_knowledge",
+          "name": "Salmon of Knowledge",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 45,
+      "cards": [
+        {
+          "slug": "army_of_the_dead",
+          "name": "Army of the Dead",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "adtonitum",
+          "name": "Adtonitum",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "hotwheel",
+          "name": "Hotwheel",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "bull_demons_of_adum",
+          "name": "Bull Demons of Adum",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "khamaseen_mummy",
+          "name": "Khamaseen Mummy",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 46,
+      "cards": [
+        {
+          "slug": "fenvale_muse",
+          "name": "Fenvale Muse",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "flame_of_the_first_ones",
+          "name": "Flame of the First Ones",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "thieving_magpie",
+          "name": "Thieving Magpie",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "seasoned_sellsword",
+          "name": "Seasoned Sellsword",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "swiven_scout",
+          "name": "Swiven Scout",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 47,
+      "cards": [
+        {
+          "slug": "temple_of_moloch",
+          "name": "Temple of Moloch",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "four_waters_of_paradise",
+          "name": "Four Waters of Paradise",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "wiccan_tools",
+          "name": "Wiccan Tools",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "blood_mana",
+          "name": "Blood Mana",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "aramos_mercenaries",
+          "name": "Aramos Mercenaries",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 48,
+      "cards": [
+        {
+          "slug": "bind_evil",
+          "name": "Bind Evil",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "shackled_demon",
+          "name": "Shackled Demon",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "gargantula",
+          "name": "Gargantula",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "thing_in_the_ice",
+          "name": "Thing in the Ice",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "sir_perceval",
+          "name": "Sir Perceval",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 49,
+      "cards": [
+        {
+          "slug": "atlas_wanderers",
+          "name": "Atlas Wanderers",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "de_vermis_mysteriis",
+          "name": "De Vermis Mysteriis",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "accusation",
+          "name": "Accusation",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "iron_maiden",
+          "name": "Iron Maiden",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "homecoming",
+          "name": "Homecoming",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 50,
+      "cards": [
+        {
+          "slug": "mix_aer",
+          "name": "Mix Aer",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "mix_aqua",
+          "name": "Mix Aqua",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "mix_ignis",
+          "name": "Mix Ignis",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "mix_terra",
+          "name": "Mix Terra",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "maddening_bells",
+          "name": "Maddening Bells",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 51,
+      "cards": [
+        {
+          "slug": "lacuna_entity",
+          "name": "Lacuna Entity",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "into_the_abyss",
+          "name": "Into the Abyss",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "mover_of_mountains",
+          "name": "Mover of Mountains",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "lugbog_cat",
+          "name": "Lugbog Cat",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "dormant_monstrosity",
+          "name": "Dormant Monstrosity",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 52,
+      "cards": [
+        {
+          "slug": "twist_of_fate",
+          "name": "Twist of Fate",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "unseelie_court",
+          "name": "Unseelie Court",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "warp_spasm",
+          "name": "Warp Spasm",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "kiss_of_judas",
+          "name": "Kiss of Judas",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "varmint_warrens",
+          "name": "Varmint Warrens",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 53,
+      "cards": [
+        {
+          "slug": "draco_corvus",
+          "name": "Draco Corvus",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "far_east_assassin",
+          "name": "Far East Assassin",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "draconian_bonekite",
+          "name": "Draconian Bonekite",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "balor_of_the_evil_eye",
+          "name": "Balor of the Evil Eye",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "caelestis",
+          "name": "Caelestis",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 54,
+      "cards": [
+        {
+          "slug": "pendulum_of_peril",
+          "name": "Pendulum of Peril",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "shrine_of_the_dragonlord",
+          "name": "Shrine of the Dragonlord",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "ring_of_morrigan",
+          "name": "Ring of Morrigan",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "spear_of_destiny",
+          "name": "Spear of Destiny",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "sylvan_splendor",
+          "name": "Sylvan Splendor",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 55,
+      "cards": [
+        {
+          "slug": "hillside_chapel",
+          "name": "Hillside Chapel",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "hemogoblet",
+          "name": "Hemogoblet",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "ignis_rex",
+          "name": "Ignis Rex",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "innsmouth_dock",
+          "name": "Innsmouth Dock",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "holy_water",
+          "name": "Holy Water",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 56,
+      "cards": [
+        {
+          "slug": "bitter_departed",
+          "name": "Bitter Departed",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "megalurker",
+          "name": "Megalurker",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "hyter_sprites",
+          "name": "Hyter Sprites",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "iron_shackles",
+          "name": "Iron Shackles",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "feast_for_crows",
+          "name": "Feast for Crows",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 57,
+      "cards": [
+        {
+          "slug": "imperial_road",
+          "name": "Imperial Road",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "golden_dawn",
+          "name": "Golden Dawn",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "howl_from_beyond",
+          "name": "Howl from Beyond",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "flanking_maneuver",
+          "name": "Flanking Maneuver",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "lord_of_fear",
+          "name": "Lord of Fear",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 58,
+      "cards": [
+        {
+          "slug": "displace",
+          "name": "Displace",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "scorched_earth",
+          "name": "Scorched Earth",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "symmetric_suffering",
+          "name": "Symmetric Suffering",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "nightmare",
+          "name": "Nightmare",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "pilgrims_shrine",
+          "name": "Pilgrim's Shrine",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 59,
+      "cards": [
+        {
+          "slug": "guardian_angel",
+          "name": "Guardian Angel",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "harpyon_urge",
+          "name": "Harpyon Urge",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "vesper_swarm",
+          "name": "Vesper Swarm",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "tactical_move",
+          "name": "Tactical Move",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "whirling_blades",
+          "name": "Whirling Blades",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 60,
+      "cards": [
+        {
+          "slug": "windblast",
+          "name": "Windblast",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "scatter",
+          "name": "Scatter",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "whirlwind",
+          "name": "Whirlwind",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "call_of_the_sea",
+          "name": "Call of the Sea",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "grasping_ground",
+          "name": "Grasping Ground",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 61,
+      "cards": [
+        {
+          "slug": "castles_ablaze",
+          "name": "Castle's Ablaze!",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "hamlets_ablaze",
+          "name": "Hamlet's Ablaze!",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "invasion",
+          "name": "Invasion",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "falling_star",
+          "name": "Falling Star",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "rest_in_peace",
+          "name": "Rest in Peace",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 62,
+      "cards": [
+        {
+          "slug": "apostles_of_thamariel",
+          "name": "Apostles of Thamariel",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "ghost_ship",
+          "name": "Ghost Ship",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "ultimate_horror",
+          "name": "Ultimate Horror",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "locusts_of_illyria",
+          "name": "Locusts of Illyria",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "the_lady_of_the_lake",
+          "name": "The Lady of the Lake",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 63,
+      "cards": [
+        {
+          "slug": "bone_spear",
+          "name": "Bone Spear",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "ball_lightning",
+          "name": "Ball Lightning",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "grapple_shot",
+          "name": "Grapple Shot",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "nelly_longarms",
+          "name": "Nelly Longarms",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "rhongomyniad",
+          "name": "Rhongomyniad",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 64,
+      "cards": [
+        {
+          "slug": "order_of_the_sacred_oak",
+          "name": "Order of the Sacred Oak",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "goat_for_azazel",
+          "name": "Goat for Azazel",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "enduring_faith",
+          "name": "Enduring Faith",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "makeshift_barricade",
+          "name": "Makeshift Barricade",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "flaming_sword",
+          "name": "Flaming Sword",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 65,
+      "cards": [
+        {
+          "slug": "azuridge_caravan",
+          "name": "Azuridge Caravan",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "kingdom_of_agartha",
+          "name": "Kingdom of Agartha",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "maze_minotaur",
+          "name": "Maze Minotaur",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "old_salt_anchorman",
+          "name": "Old Salt Anchorman",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "talamh_dreig",
+          "name": "Talamh Dreig",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 66,
+      "cards": [
+        {
+          "slug": "just_a_rock",
+          "name": "Just a Rock",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "battering_ram",
+          "name": "Battering Ram",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "magnetic_muzzle",
+          "name": "Magnetic Muzzle",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "regurgitator",
+          "name": "Regurgitator",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "sentinel_trap",
+          "name": "Sentinel Trap",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 67,
+      "cards": [
+        {
+          "slug": "mirage",
+          "name": "Mirage",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "mirror_realm",
+          "name": "Mirror Realm",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "heirloom_lost",
+          "name": "Heirloom Lost",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "armageddon",
+          "name": "Armageddon",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "roots_of_yggdrasil",
+          "name": "Roots of Yggdrasil",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 68,
+      "cards": [
+        {
+          "slug": "lord_of_destruction",
+          "name": "Lord of Destruction",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "onslaught",
+          "name": "Onslaught",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "unland_eel",
+          "name": "Unland Eel",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "siege_giant",
+          "name": "Siege Giant",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "the_manor_at_daperyll_hill",
+          "name": "The Manor at Daperyll Hill",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 69,
+      "cards": [
+        {
+          "slug": "acid_rain",
+          "name": "Acid Rain",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "blightstone",
+          "name": "Blightstone",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "fields_of_phyxis",
+          "name": "Fields of Phyxis",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "leadworks",
+          "name": "Leadworks",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "smokestacks_of_gnaak",
+          "name": "Smokestacks of Gnaak",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 70,
+      "cards": [
+        {
+          "slug": "sinterfee",
+          "name": "Sinterfee",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "overflowing_court",
+          "name": "Overflowing Court",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "atlantean_fate",
+          "name": "Atlantean Fate",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "bluecap_knockers",
+          "name": "Bluecap Knockers",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "bower_of_bliss",
+          "name": "Bower of Bliss",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 71,
+      "cards": [
+        {
+          "slug": "forlorn_keep",
+          "name": "Forlorn Keep",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "forsaken_crypt",
+          "name": "Forsaken Crypt",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "molten_maar",
+          "name": "Molten Maar",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "peculiar_port",
+          "name": "Peculiar Port",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "troubled_town",
+          "name": "Troubled Town",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 72,
+      "cards": [
+        {
+          "slug": "trade_encampment",
+          "name": "Trade Encampment",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "eriks_curiosa",
+          "name": "Erik's Curiosa",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "legion_of_gall",
+          "name": "Legion of Gall",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "young_master_damion",
+          "name": "Young Master Damion",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "ersatz_platz",
+          "name": "Ersatz Platz",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 73,
+      "cards": [
+        {
+          "slug": "great_old_one",
+          "name": "Great Old One",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "the_great_drowning_of_men",
+          "name": "The Great Drowning of Men",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "year_of_the_blaze",
+          "name": "Year of the Blaze",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "salt_the_earth",
+          "name": "Salt the Earth",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "sow_the_earth",
+          "name": "Sow the Earth",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 74,
+      "cards": [
+        {
+          "slug": "druid",
+          "name": "Druid",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "bruin",
+          "name": "Bruin",
+          "playable": false,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "interrogator",
+          "name": "Interrogator",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "witch",
+          "name": "Witch",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "harbinger",
+          "name": "Harbinger",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 75,
+      "cards": [
+        {
+          "slug": "consecrate",
+          "name": "Consecrate",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "desecrate",
+          "name": "Desecrate",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "elder_ruins",
+          "name": "Elder Ruins",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "gilman_house",
+          "name": "Gilman House",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "horns_of_behemoth",
+          "name": "Horns of Behemoth",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 76,
+      "cards": [
+        {
+          "slug": "old_mortimers_den",
+          "name": "Old Mortimer's Den",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "troll_bridge",
+          "name": "Troll Bridge",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "sold_out_cemetery",
+          "name": "Sold-out Cemetery",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "watery_grave",
+          "name": "Watery Grave",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "vaults_of_zul",
+          "name": "Vaults of Zul",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 77,
+      "cards": [
+        {
+          "slug": "toolbox",
+          "name": "Toolbox",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "silver_bullet",
+          "name": "Silver Bullet",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "merlin",
+          "name": "Merlin",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "cradle_of_etherrum",
+          "name": "Cradle of Etherrum",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "doomsday_cult",
+          "name": "Doomsday Cult",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 78,
+      "cards": [
+        {
+          "slug": "skeleton_mage",
+          "name": "Skeleton Mage",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "book_of_the_dead",
+          "name": "Book of the Dead",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "merlins_tower",
+          "name": "Merlin's Tower",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "a_midsummer_nights_dream",
+          "name": "A Midsummer Night's Dream",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "dream_quest",
+          "name": "Dream-Quest",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 79,
+      "cards": [
+        {
+          "slug": "shapeshift",
+          "name": "Shapeshift",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "monstermorphosis",
+          "name": "Monstermorphosis",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "sinister_pond",
+          "name": "Sinister Pond",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "sir_gareth",
+          "name": "Sir Gareth",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "slimy_mutants",
+          "name": "Slimy Mutants",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 80,
+      "cards": [
+        {
+          "slug": "selfsame_simulacrum",
+          "name": "Selfsame Simulacrum",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "evil_twin",
+          "name": "Evil Twin",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "assimilator_snail",
+          "name": "Assimilator Snail",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "vengeful_heir",
+          "name": "Vengeful Heir",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "moon_clan_werewolf",
+          "name": "Moon Clan Werewolf",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 81,
+      "cards": [
+        {
+          "slug": "mask_of_mayhem",
+          "name": "Mask of Mayhem",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "the_green_knight",
+          "name": "The Green Knight",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "tvinnax_berserker",
+          "name": "Tvinnax Berserker",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "sir_agravaine",
+          "name": "Sir Agravaine",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "wind_sylph",
+          "name": "Wind Sylph",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 82,
+      "cards": [
+        {
+          "slug": "wills_o_the_wisp",
+          "name": "Wills-o'-the-Wisp",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "witherwing_hero",
+          "name": "Witherwing Hero",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "bladedancer",
+          "name": "Bladedancer",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "sturmgeist",
+          "name": "Sturmgeist",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "peace_offering",
+          "name": "Peace Offering",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    },
+    {
+      "batch": 83,
+      "cards": [
+        {
+          "slug": "wall_of_air",
+          "name": "Wall of Air",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "wall_of_brambles",
+          "name": "Wall of Brambles",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "wall_of_fire",
+          "name": "Wall of Fire",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "wall_of_ice",
+          "name": "Wall of Ice",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "sphere_of_animosity",
+          "name": "Sphere of Animosity",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ]
+    }
+  ]
+}

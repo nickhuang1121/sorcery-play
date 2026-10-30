@@ -1,0 +1,54 @@
+{
+  "checkedAt": "2026-10-30",
+  "remainingUniqueCards": 0,
+  "decks": [
+    {
+      "id": "beta-air",
+      "name": "BETA 官方預組 · 風 Air · Sparkmage",
+      "source": "https://sorcerytcg.com/news/introducing-the-beta-elemental-preconstructed-decks",
+      "sourceImage": "https://cdn.sanity.io/images/vg9ve3gy/production/fb82d9ba27f6e621badcfa284e9b9264092392b2-1190x575.png",
+      "spells": 36,
+      "atlas": 16,
+      "avatar": "sparkmage",
+      "ready": true,
+      "missing": [],
+      "validationErrors": []
+    },
+    {
+      "id": "beta-earth",
+      "name": "BETA 官方預組 · 地 Earth · Geomancer",
+      "source": "https://sorcerytcg.com/news/introducing-the-beta-elemental-preconstructed-decks",
+      "sourceImage": "https://cdn.sanity.io/images/vg9ve3gy/production/c1b92216e4f5e9405b5cff386616dad52f230404-1190x493.png",
+      "spells": 36,
+      "atlas": 16,
+      "avatar": "geomancer",
+      "ready": true,
+      "missing": [],
+      "validationErrors": []
+    },
+    {
+      "id": "beta-fire",
+      "name": "BETA 官方預組 · 火 Fire · Flamecaller",
+      "source": "https://sorcerytcg.com/news/introducing-the-beta-elemental-preconstructed-decks",
+      "sourceImage": "https://cdn.sanity.io/images/vg9ve3gy/production/af807cf7fb37a391c344f0ae8d8cf896f1cda80c-1190x549.png",
+      "spells": 36,
+      "atlas": 16,
+      "avatar": "flamecaller",
+      "ready": true,
+      "missing": [],
+      "validationErrors": []
+    },
+    {
+      "id": "beta-water",
+      "name": "BETA 官方預組 · 水 Water · Waveshaper",
+      "source": "https://sorcerytcg.com/news/introducing-the-beta-elemental-preconstructed-decks",
+      "sourceImage": "https://cdn.sanity.io/images/vg9ve3gy/production/fd01db98724df8e117cf84720e10f2df008226a8-1190x549.png",
+      "spells": 36,
+      "atlas": 16,
+      "avatar": "waveshaper",
+      "ready": true,
+      "missing": [],
+      "validationErrors": []
+    }
+  ]
+}

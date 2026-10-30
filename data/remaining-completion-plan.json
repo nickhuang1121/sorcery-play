@@ -1,0 +1,1588 @@
+{
+  "baseline": {
+    "playable": 892,
+    "runtimeTokens": 6,
+    "notStarted": 202
+  },
+  "requested": "Implement all remaining entries in verified batches",
+  "entries": [
+    {
+      "slug": "acid_rain",
+      "name": "Acid Rain",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 69
+    },
+    {
+      "slug": "aethermoeba",
+      "name": "Aethermoeba",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "altar_of_malachai",
+      "name": "Altar of Malachai",
+      "category": "Site",
+      "status": "pending"
+    },
+    {
+      "slug": "a_midsummer_nights_dream",
+      "name": "A Midsummer Night's Dream",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 78
+    },
+    {
+      "slug": "animist",
+      "name": "Animist",
+      "category": "Avatar",
+      "status": "pending"
+    },
+    {
+      "slug": "arcade_of_bones",
+      "name": "Arcade of Bones",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "arcane_barrage",
+      "name": "Arcane Barrage",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "archimago",
+      "name": "Archimago",
+      "category": "Avatar",
+      "status": "pending"
+    },
+    {
+      "slug": "assimilator_snail",
+      "name": "Assimilator Snail",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 80
+    },
+    {
+      "slug": "assorted_animals",
+      "name": "Assorted Animals",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "atlantean_fate",
+      "name": "Atlantean Fate",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 70
+    },
+    {
+      "slug": "avatar_of_fire",
+      "name": "Avatar of Fire",
+      "category": "Avatar",
+      "status": "pending"
+    },
+    {
+      "slug": "avatar_of_water",
+      "name": "Avatar of Water",
+      "category": "Avatar",
+      "status": "pending"
+    },
+    {
+      "slug": "awakened_mummies",
+      "name": "Awakened Mummies",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "backstab",
+      "name": "Backstab",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "black_cat",
+      "name": "Black Cat",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "bladedancer",
+      "name": "Bladedancer",
+      "category": "Avatar",
+      "status": "effect-tested",
+      "implementationBatch": 82
+    },
+    {
+      "slug": "blasphemy",
+      "name": "Blasphemy",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "blasted_oak",
+      "name": "Blasted Oak",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "blaze_of_glory",
+      "name": "Blaze of Glory",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "blightstone",
+      "name": "Blightstone",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 69
+    },
+    {
+      "slug": "bluecap_knockers",
+      "name": "Bluecap Knockers",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 70
+    },
+    {
+      "slug": "book_of_blessings",
+      "name": "Book of Blessings",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "book_of_the_dead",
+      "name": "Book of the Dead",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 78
+    },
+    {
+      "slug": "bower_of_bliss",
+      "name": "Bower of Bliss",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 70
+    },
+    {
+      "slug": "bruin",
+      "name": "Bruin",
+      "category": "Token",
+      "status": "effect-tested",
+      "implementationBatch": 74
+    },
+    {
+      "slug": "bureau_of_occult_control",
+      "name": "Bureau of Occult Control",
+      "category": "Site",
+      "status": "pending"
+    },
+    {
+      "slug": "burning_hands",
+      "name": "Burning Hands",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "cage_of_sidrak",
+      "name": "Cage of Sidrak",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "captain_baldassare",
+      "name": "Captain Baldassare",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "cerberus_in_chains",
+      "name": "Cerberus in Chains",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "chaos_twister",
+      "name": "Chaos Twister",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "chaoswish",
+      "name": "Chaoswish",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "city_of_souls",
+      "name": "City of Souls",
+      "category": "Site",
+      "status": "pending"
+    },
+    {
+      "slug": "clay_golem",
+      "name": "Clay Golem",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "consecrate",
+      "name": "Consecrate",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 75
+    },
+    {
+      "slug": "corpse_catapult",
+      "name": "Corpse Catapult",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "corpse_explosion",
+      "name": "Corpse Explosion",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "corruptor",
+      "name": "Corruptor",
+      "category": "Avatar",
+      "status": "pending"
+    },
+    {
+      "slug": "courtesan_thais",
+      "name": "Courtesan Thaïs",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "cradle_of_etherrum",
+      "name": "Cradle of Etherrum",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 77
+    },
+    {
+      "slug": "crave_golem",
+      "name": "Crave Golem",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "dame_britomart",
+      "name": "Dame Britomart",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "darkest_dungeon",
+      "name": "Darkest Dungeon",
+      "category": "Site",
+      "status": "pending"
+    },
+    {
+      "slug": "day_of_judgment",
+      "name": "Day of Judgment",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "deathspeaker",
+      "name": "Deathspeaker",
+      "category": "Avatar",
+      "status": "pending"
+    },
+    {
+      "slug": "demonic_contract",
+      "name": "Demonic Contract",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "desecrate",
+      "name": "Desecrate",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 75
+    },
+    {
+      "slug": "dhol_chants",
+      "name": "Dhol Chants",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "dodge_roll",
+      "name": "Dodge Roll",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "doomsday_cult",
+      "name": "Doomsday Cult",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 77
+    },
+    {
+      "slug": "doomsday_device",
+      "name": "Doomsday Device",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "dragonlord",
+      "name": "Dragonlord",
+      "category": "Avatar",
+      "status": "pending"
+    },
+    {
+      "slug": "dream_quest",
+      "name": "Dream-Quest",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 78
+    },
+    {
+      "slug": "driftwood_marrows",
+      "name": "Driftwood Marrows",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "druid",
+      "name": "Druid",
+      "category": "Avatar",
+      "status": "effect-tested",
+      "implementationBatch": 74
+    },
+    {
+      "slug": "duplicator",
+      "name": "Duplicator",
+      "category": "Avatar",
+      "status": "pending"
+    },
+    {
+      "slug": "earthquake",
+      "name": "Earthquake",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "edge_of_the_world",
+      "name": "Edge of the World",
+      "category": "Site",
+      "status": "pending"
+    },
+    {
+      "slug": "elder_ruins",
+      "name": "Elder Ruins",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 75
+    },
+    {
+      "slug": "enchantress",
+      "name": "Enchantress",
+      "category": "Avatar",
+      "status": "pending"
+    },
+    {
+      "slug": "endless_fence",
+      "name": "Endless Fence",
+      "category": "Site",
+      "status": "pending"
+    },
+    {
+      "slug": "eriks_curiosa",
+      "name": "Erik's Curiosa",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 72
+    },
+    {
+      "slug": "ersatz_platz",
+      "name": "Ersatz Platz",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 72
+    },
+    {
+      "slug": "evil_twin",
+      "name": "Evil Twin",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 80
+    },
+    {
+      "slug": "felbog_frog_men",
+      "name": "Felbog Frog Men",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "fields_of_phyxis",
+      "name": "Fields of Phyxis",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 69
+    },
+    {
+      "slug": "firebreathing",
+      "name": "Firebreathing",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "flame_strike",
+      "name": "Flame Strike",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "flame_wave",
+      "name": "Flame Wave",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "forlorn_keep",
+      "name": "Forlorn Keep",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 71
+    },
+    {
+      "slug": "forsaken_crypt",
+      "name": "Forsaken Crypt",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 71
+    },
+    {
+      "slug": "free_city",
+      "name": "Free City",
+      "category": "Site",
+      "status": "pending"
+    },
+    {
+      "slug": "giant_shark",
+      "name": "Giant Shark",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "gilman_house",
+      "name": "Gilman House",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 75
+    },
+    {
+      "slug": "gnarled_wendigo",
+      "name": "Gnarled Wendigo",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "great_old_one",
+      "name": "Great Old One",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 73
+    },
+    {
+      "slug": "grigori_rasputin",
+      "name": "Grigori Rasputin",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "grim_reaper",
+      "name": "Grim Reaper",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "grosse_poltergeist",
+      "name": "Grösse Poltergeist",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "harbinger",
+      "name": "Harbinger",
+      "category": "Avatar",
+      "status": "effect-tested",
+      "implementationBatch": 74
+    },
+    {
+      "slug": "haystack",
+      "name": "Haystack",
+      "category": "Site",
+      "status": "pending"
+    },
+    {
+      "slug": "hellstar",
+      "name": "Hellstar",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "hemogolem",
+      "name": "Hemogolem",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "holy_nova",
+      "name": "Holy Nova",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "horns_of_behemoth",
+      "name": "Horns of Behemoth",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 75
+    },
+    {
+      "slug": "i_am_colossus",
+      "name": "I Am Colossus!",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "imposter",
+      "name": "Imposter",
+      "category": "Avatar",
+      "status": "pending"
+    },
+    {
+      "slug": "infusion_factory",
+      "name": "Infusion Factory",
+      "category": "Site",
+      "status": "pending"
+    },
+    {
+      "slug": "interrogator",
+      "name": "Interrogator",
+      "category": "Avatar",
+      "status": "effect-tested",
+      "implementationBatch": 74
+    },
+    {
+      "slug": "iron_man_talus",
+      "name": "Iron Man Talus",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "jack_the_ripper",
+      "name": "Jack the Ripper",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "joust",
+      "name": "Joust!",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "kairos_the_archivist",
+      "name": "Kairos the Archivist",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "karkemish_chimera",
+      "name": "Karkemish Chimera",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "key_to_the_city",
+      "name": "Key to the City",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "king_arthur",
+      "name": "King Arthur",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "koscheis_egg",
+      "name": "Koschei's Egg",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "kythera_mechanism",
+      "name": "Kythera Mechanism",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "land_deed",
+      "name": "Land Deed",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "lava_flow",
+      "name": "Lava Flow",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "leadworks",
+      "name": "Leadworks",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 69
+    },
+    {
+      "slug": "led_astray",
+      "name": "Led Astray",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "legion_of_gall",
+      "name": "Legion of Gall",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 72
+    },
+    {
+      "slug": "lucid_dreamers",
+      "name": "Lucid Dreamers",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "magellan_globe",
+      "name": "Magellan Globe",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "magician",
+      "name": "Magician",
+      "category": "Avatar",
+      "status": "pending"
+    },
+    {
+      "slug": "mask_of_mayhem",
+      "name": "Mask of Mayhem",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 81
+    },
+    {
+      "slug": "megamoeba",
+      "name": "Megamoeba",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "mephistopheles",
+      "name": "Mephistopheles",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "merlin",
+      "name": "Merlin",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 77
+    },
+    {
+      "slug": "merlins_tower",
+      "name": "Merlin's Tower",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 78
+    },
+    {
+      "slug": "mester_stoor_worm",
+      "name": "Mester Stoor Worm",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "meteor_shower",
+      "name": "Meteor Shower",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "mimic",
+      "name": "Mimic",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "mismanaged_mortuary",
+      "name": "Mismanaged Mortuary",
+      "category": "Site",
+      "status": "pending"
+    },
+    {
+      "slug": "molten_maar",
+      "name": "Molten Maar",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 71
+    },
+    {
+      "slug": "monastery_gargoyle",
+      "name": "Monastery Gargoyle",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "monks_of_kobalsa",
+      "name": "Monks of Kobalsa",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "monstermorphosis",
+      "name": "Monstermorphosis",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 79
+    },
+    {
+      "slug": "moon_clan_werewolf",
+      "name": "Moon Clan Werewolf",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 80
+    },
+    {
+      "slug": "mortal_soil",
+      "name": "Mortal Soil",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "mount_ussar_sanctuary",
+      "name": "Mount Ussar Sanctuary",
+      "category": "Site",
+      "status": "pending"
+    },
+    {
+      "slug": "mudslide",
+      "name": "Mudslide",
+      "category": "Site",
+      "status": "pending"
+    },
+    {
+      "slug": "old_mortimers_den",
+      "name": "Old Mortimer's Den",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 76
+    },
+    {
+      "slug": "orb_of_baal_berith",
+      "name": "Orb of Ba'al Berith",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "order_of_the_white_wing",
+      "name": "Order of the White Wing",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "orpheus_crossing",
+      "name": "Orpheus' Crossing",
+      "category": "Site",
+      "status": "pending"
+    },
+    {
+      "slug": "overflowing_court",
+      "name": "Overflowing Court",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 70
+    },
+    {
+      "slug": "pathfinder",
+      "name": "Pathfinder",
+      "category": "Avatar",
+      "status": "pending"
+    },
+    {
+      "slug": "peace_offering",
+      "name": "Peace Offering",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 82
+    },
+    {
+      "slug": "peculiar_port",
+      "name": "Peculiar Port",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 71
+    },
+    {
+      "slug": "persecutor",
+      "name": "Persecutor",
+      "category": "Avatar",
+      "status": "pending"
+    },
+    {
+      "slug": "purge_juggernaut",
+      "name": "Purge Juggernaut",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "putrid_presence",
+      "name": "Putrid Presence",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "rat_king",
+      "name": "Rat King",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "realm_eater",
+      "name": "Realm-Eater",
+      "category": "Avatar",
+      "status": "pending"
+    },
+    {
+      "slug": "red_rock_of_ravannis",
+      "name": "Red Rock of Ravannis",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "rift_valley",
+      "name": "Rift Valley",
+      "category": "Site",
+      "status": "pending"
+    },
+    {
+      "slug": "royal_bodyguard",
+      "name": "Royal Bodyguard",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "saint_of_redemption",
+      "name": "Saint of Redemption",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "salt_the_earth",
+      "name": "Salt the Earth",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 73
+    },
+    {
+      "slug": "sea_raider",
+      "name": "Sea Raider",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "selfsame_simulacrum",
+      "name": "Selfsame Simulacrum",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 80
+    },
+    {
+      "slug": "shapeshift",
+      "name": "Shapeshift",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 79
+    },
+    {
+      "slug": "silver_bullet",
+      "name": "Silver Bullet",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 77
+    },
+    {
+      "slug": "sinister_pond",
+      "name": "Sinister Pond",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 79
+    },
+    {
+      "slug": "sinterfee",
+      "name": "Sinterfee",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 70
+    },
+    {
+      "slug": "sir_agravaine",
+      "name": "Sir Agravaine",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 81
+    },
+    {
+      "slug": "sir_gareth",
+      "name": "Sir Gareth",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 79
+    },
+    {
+      "slug": "sir_gawain",
+      "name": "Sir Gawain",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "skeleton_mage",
+      "name": "Skeleton Mage",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 78
+    },
+    {
+      "slug": "slimy_mutants",
+      "name": "Slimy Mutants",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 79
+    },
+    {
+      "slug": "smokestacks_of_gnaak",
+      "name": "Smokestacks of Gnaak",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 69
+    },
+    {
+      "slug": "snowball",
+      "name": "Snowball",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "sold_out_cemetery",
+      "name": "Sold-out Cemetery",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 76
+    },
+    {
+      "slug": "sow_the_earth",
+      "name": "Sow the Earth",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 73
+    },
+    {
+      "slug": "sphere_of_animosity",
+      "name": "Sphere of Animosity",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 83
+    },
+    {
+      "slug": "stitched_abomination",
+      "name": "Stitched Abomination",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "sturmgeist",
+      "name": "Sturmgeist",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 82
+    },
+    {
+      "slug": "swap",
+      "name": "Swap",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "tabula_rasa",
+      "name": "Tabula Rasa",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "the_apex_of_babel",
+      "name": "The Apex of Babel",
+      "category": "Site",
+      "status": "pending"
+    },
+    {
+      "slug": "the_base_of_babel",
+      "name": "The Base of Babel",
+      "category": "Site",
+      "status": "pending"
+    },
+    {
+      "slug": "the_doom_of_dilmun",
+      "name": "The Doom of Dilmun",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "the_flood",
+      "name": "The Flood",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "the_great_drowning_of_men",
+      "name": "The Great Drowning of Men",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 73
+    },
+    {
+      "slug": "the_green_knight",
+      "name": "The Green Knight",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 81
+    },
+    {
+      "slug": "the_immortal_throne",
+      "name": "The Immortal Throne",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "the_inquisition",
+      "name": "The Inquisition",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "the_malleus_maleficarum",
+      "name": "The Malleus Maleficarum",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "the_pallid_bust",
+      "name": "The Pallid Bust",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "the_rack",
+      "name": "The Rack",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "the_void",
+      "name": "The Void",
+      "category": "Site",
+      "status": "pending"
+    },
+    {
+      "slug": "tombstone_wardens",
+      "name": "Tombstone Wardens",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "toolbox",
+      "name": "Toolbox",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 77
+    },
+    {
+      "slug": "trade_encampment",
+      "name": "Trade Encampment",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 72
+    },
+    {
+      "slug": "tringh_constrictor",
+      "name": "Tringh Constrictor",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "troll_bridge",
+      "name": "Troll Bridge",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 76
+    },
+    {
+      "slug": "troubled_town",
+      "name": "Troubled Town",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 71
+    },
+    {
+      "slug": "tvinnax_berserker",
+      "name": "Tvinnax Berserker",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 81
+    },
+    {
+      "slug": "undertaker_engine",
+      "name": "Undertaker Engine",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "valor",
+      "name": "Valor",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "vaults_of_zul",
+      "name": "Vaults of Zul",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 76
+    },
+    {
+      "slug": "vengeful_heir",
+      "name": "Vengeful Heir",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 80
+    },
+    {
+      "slug": "vindictive_nation",
+      "name": "Vindictive Nation",
+      "category": "Site",
+      "status": "pending"
+    },
+    {
+      "slug": "vivien_the_enchantress",
+      "name": "Vivien the Enchantress",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "wall_of_air",
+      "name": "Wall of Air",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 83
+    },
+    {
+      "slug": "wall_of_brambles",
+      "name": "Wall of Brambles",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 83
+    },
+    {
+      "slug": "wall_of_fire",
+      "name": "Wall of Fire",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 83
+    },
+    {
+      "slug": "wall_of_ice",
+      "name": "Wall of Ice",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 83
+    },
+    {
+      "slug": "watery_grave",
+      "name": "Watery Grave",
+      "category": "Site",
+      "status": "effect-tested",
+      "implementationBatch": 76
+    },
+    {
+      "slug": "wave_of_eviction",
+      "name": "Wave of Eviction",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "wills_o_the_wisp",
+      "name": "Wills-o'-the-Wisp",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 82
+    },
+    {
+      "slug": "wind_sylph",
+      "name": "Wind Sylph",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 81
+    },
+    {
+      "slug": "witch",
+      "name": "Witch",
+      "category": "Avatar",
+      "status": "effect-tested",
+      "implementationBatch": 74
+    },
+    {
+      "slug": "witherwing_hero",
+      "name": "Witherwing Hero",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 82
+    },
+    {
+      "slug": "wormelow_tump",
+      "name": "Wormelow Tump",
+      "category": "Site",
+      "status": "pending"
+    },
+    {
+      "slug": "wreathed_in_righteousness",
+      "name": "Wreathed in Righteousness",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "year_of_the_blaze",
+      "name": "Year of the Blaze",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 73
+    },
+    {
+      "slug": "yog_sothoth",
+      "name": "Yog-Sothoth",
+      "category": "Spell",
+      "status": "pending"
+    },
+    {
+      "slug": "young_master_damion",
+      "name": "Young Master Damion",
+      "category": "Spell",
+      "status": "effect-tested",
+      "implementationBatch": 72
+    }
+  ],
+  "checkedAt": "2026-10-30",
+  "verifiedEffectCases": 75,
+  "remaining": 127,
+  "fullyVerified": 0,
+  "status": "in-progress",
+  "note": "An effect-tested entry is partial support, not exhaustive official-rules certification.",
+  "pendingBatches": [
+    {
+      "plannedBatch": 84,
+      "status": "pending",
+      "slugs": [
+        "aethermoeba",
+        "altar_of_malachai",
+        "animist",
+        "arcade_of_bones",
+        "arcane_barrage"
+      ]
+    },
+    {
+      "plannedBatch": 85,
+      "status": "pending",
+      "slugs": [
+        "archimago",
+        "assorted_animals",
+        "avatar_of_fire",
+        "avatar_of_water",
+        "awakened_mummies"
+      ]
+    },
+    {
+      "plannedBatch": 86,
+      "status": "pending",
+      "slugs": [
+        "backstab",
+        "black_cat",
+        "blasphemy",
+        "blasted_oak",
+        "blaze_of_glory"
+      ]
+    },
+    {
+      "plannedBatch": 87,
+      "status": "pending",
+      "slugs": [
+        "book_of_blessings",
+        "bureau_of_occult_control",
+        "burning_hands",
+        "cage_of_sidrak",
+        "captain_baldassare"
+      ]
+    },
+    {
+      "plannedBatch": 88,
+      "status": "pending",
+      "slugs": [
+        "cerberus_in_chains",
+        "chaos_twister",
+        "chaoswish",
+        "city_of_souls",
+        "clay_golem"
+      ]
+    },
+    {
+      "plannedBatch": 89,
+      "status": "pending",
+      "slugs": [
+        "corpse_catapult",
+        "corpse_explosion",
+        "corruptor",
+        "courtesan_thais",
+        "crave_golem"
+      ]
+    },
+    {
+      "plannedBatch": 90,
+      "status": "pending",
+      "slugs": [
+        "dame_britomart",
+        "darkest_dungeon",
+        "day_of_judgment",
+        "deathspeaker",
+        "demonic_contract"
+      ]
+    },
+    {
+      "plannedBatch": 91,
+      "status": "pending",
+      "slugs": [
+        "dhol_chants",
+        "dodge_roll",
+        "doomsday_device",
+        "dragonlord",
+        "driftwood_marrows"
+      ]
+    },
+    {
+      "plannedBatch": 92,
+      "status": "pending",
+      "slugs": [
+        "duplicator",
+        "earthquake",
+        "edge_of_the_world",
+        "enchantress",
+        "endless_fence"
+      ]
+    },
+    {
+      "plannedBatch": 93,
+      "status": "pending",
+      "slugs": [
+        "felbog_frog_men",
+        "firebreathing",
+        "flame_strike",
+        "flame_wave",
+        "free_city"
+      ]
+    },
+    {
+      "plannedBatch": 94,
+      "status": "pending",
+      "slugs": [
+        "giant_shark",
+        "gnarled_wendigo",
+        "grigori_rasputin",
+        "grim_reaper",
+        "grosse_poltergeist"
+      ]
+    },
+    {
+      "plannedBatch": 95,
+      "status": "pending",
+      "slugs": [
+        "haystack",
+        "hellstar",
+        "hemogolem",
+        "holy_nova",
+        "i_am_colossus"
+      ]
+    },
+    {
+      "plannedBatch": 96,
+      "status": "pending",
+      "slugs": [
+        "imposter",
+        "infusion_factory",
+        "iron_man_talus",
+        "jack_the_ripper",
+        "joust"
+      ]
+    },
+    {
+      "plannedBatch": 97,
+      "status": "pending",
+      "slugs": [
+        "kairos_the_archivist",
+        "karkemish_chimera",
+        "key_to_the_city",
+        "king_arthur",
+        "koscheis_egg"
+      ]
+    },
+    {
+      "plannedBatch": 98,
+      "status": "pending",
+      "slugs": [
+        "kythera_mechanism",
+        "land_deed",
+        "lava_flow",
+        "led_astray",
+        "lucid_dreamers"
+      ]
+    },
+    {
+      "plannedBatch": 99,
+      "status": "pending",
+      "slugs": [
+        "magellan_globe",
+        "magician",
+        "megamoeba",
+        "mephistopheles",
+        "mester_stoor_worm"
+      ]
+    },
+    {
+      "plannedBatch": 100,
+      "status": "pending",
+      "slugs": [
+        "meteor_shower",
+        "mimic",
+        "mismanaged_mortuary",
+        "monastery_gargoyle",
+        "monks_of_kobalsa"
+      ]
+    },
+    {
+      "plannedBatch": 101,
+      "status": "pending",
+      "slugs": [
+        "mortal_soil",
+        "mount_ussar_sanctuary",
+        "mudslide",
+        "orb_of_baal_berith",
+        "order_of_the_white_wing"
+      ]
+    },
+    {
+      "plannedBatch": 102,
+      "status": "pending",
+      "slugs": [
+        "orpheus_crossing",
+        "pathfinder",
+        "persecutor",
+        "purge_juggernaut",
+        "putrid_presence"
+      ]
+    },
+    {
+      "plannedBatch": 103,
+      "status": "pending",
+      "slugs": [
+        "rat_king",
+        "realm_eater",
+        "red_rock_of_ravannis",
+        "rift_valley",
+        "royal_bodyguard"
+      ]
+    },
+    {
+      "plannedBatch": 104,
+      "status": "pending",
+      "slugs": [
+        "saint_of_redemption",
+        "sea_raider",
+        "sir_gawain",
+        "snowball",
+        "stitched_abomination"
+      ]
+    },
+    {
+      "plannedBatch": 105,
+      "status": "pending",
+      "slugs": [
+        "swap",
+        "tabula_rasa",
+        "the_apex_of_babel",
+        "the_base_of_babel",
+        "the_doom_of_dilmun"
+      ]
+    },
+    {
+      "plannedBatch": 106,
+      "status": "pending",
+      "slugs": [
+        "the_flood",
+        "the_immortal_throne",
+        "the_inquisition",
+        "the_malleus_maleficarum",
+        "the_pallid_bust"
+      ]
+    },
+    {
+      "plannedBatch": 107,
+      "status": "pending",
+      "slugs": [
+        "the_rack",
+        "the_void",
+        "tombstone_wardens",
+        "tringh_constrictor",
+        "undertaker_engine"
+      ]
+    },
+    {
+      "plannedBatch": 108,
+      "status": "pending",
+      "slugs": [
+        "valor",
+        "vindictive_nation",
+        "vivien_the_enchantress",
+        "wave_of_eviction",
+        "wormelow_tump"
+      ]
+    },
+    {
+      "plannedBatch": 109,
+      "status": "pending",
+      "slugs": [
+        "wreathed_in_righteousness",
+        "yog_sothoth"
+      ]
+    }
+  ]
+}
