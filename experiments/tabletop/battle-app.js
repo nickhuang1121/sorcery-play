@@ -575,7 +575,7 @@ function bindBattle(){
     if(matchMedia('(hover: hover) and (pointer: fine)').matches){
       b.addEventListener('pointerenter',()=>{
         if(pointer||innerWidth<=900)return;
-        
+
         const siblings=[...b.parentElement.querySelectorAll('.card')];
         const idx=siblings.indexOf(b);
         siblings.forEach((c,j)=>{
@@ -589,7 +589,7 @@ function bindBattle(){
         const siblings=[...b.parentElement.querySelectorAll('.card')];
         siblings.forEach((c,j)=>{c.style.setProperty('--fan-spread','0px');c.style.zIndex=c.style.getPropertyValue('--fan-z')||String(10+j);});
         if(selected?.kind==='hand'&&selected.id===b.dataset.hand)return;
-        
+
       });
     }
   });
@@ -938,13 +938,3 @@ try{
   view='home';render();
   }
 }catch(e){app.innerHTML=`<div class="notice"><h2>無法啟動遊戲</h2><p>${esc(e.message)}</p><p>請在 VS Code 對 index.html 使用 Open with Live Server。遊戲需要以 HTTP 載入本機 ES Modules 與 JSON。</p></div>`;console.error(e);}
-
-
-
-
-
-
-
-
-
-

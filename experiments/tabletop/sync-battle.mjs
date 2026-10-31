@@ -9,7 +9,8 @@ export function scopePresentation(source){
  return source.replace(/(from\s*|import\s*)'(\.\/[^']+)'/g,(_,prefix,path)=>`${prefix}'../../src/${path.slice(2)}'`)
   .replace(/'sorcery\.(match|decks|effects|aiDifficulty|aiOmniscient)'/g,"'sorcery.tabletop.$1'")
   .replace(/store\.(get|set)\(TUTORIAL_KEY/g,"store.$1('sorcery.tabletop.tutorial.v1'")
-  .replaceAll("location.href='./index.html'","location.href='./battle.html'");
+  .replaceAll("location.href='./index.html'","location.href='./battle.html'")
+  .replace(/^[ \t]+$/gm,'').replace(/\n+$/,'\n');
 }
 export function battleHTML(source,{lobby=false}={}){
  let s=source.replaceAll('href="./index.html"','href="./battle.html"')
