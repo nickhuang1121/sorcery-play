@@ -1,0 +1,915 @@
+{
+  "capturedAt": "2026-10-30T12:09:40.646Z",
+  "count": 101,
+  "cards": [
+    {
+      "slug": "aethermoeba",
+      "name": "Aethermoeba",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Voidwalk\r\n\r\nMoves by expanding from any part of itself. It occupies all locations it has ever occupied, and has +1 power for each one that is void.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "altar_of_malachai",
+      "name": "Altar of Malachai",
+      "type": "Site",
+      "category": "Site",
+      "rules": "Once per game, if you would die, you may sacrifice a minion atop this Altar instead.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "animist",
+      "name": "Animist",
+      "type": "Avatar",
+      "category": "Avatar",
+      "rules": "Tap → Play or draw a site.\r\n\r\nYou may cast magics in your hand as Spirits with power equal to their cost.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "archimago",
+      "name": "Archimago",
+      "type": "Avatar",
+      "category": "Avatar",
+      "rules": "Tap → Play or draw a site.\r\n\r\nBanish three magic spells in your cemetery → Cast a copy of one of them.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "avatar_of_fire",
+      "name": "Avatar of Fire",
+      "type": "Avatar",
+      "category": "Avatar",
+      "rules": "Tap → Play or draw a site.\r\n\r\nTap → This turn, fire sites in your hand are also Fireballs.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "avatar_of_water",
+      "name": "Avatar of Water",
+      "type": "Avatar",
+      "category": "Avatar",
+      "rules": "Tap → Play or draw a site.\r\n\r\nTap → Flood a site adjacent to your body of water until you do so again. You may teleport there.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "blasted_oak",
+      "name": "Blasted Oak",
+      "type": "Artifact",
+      "category": "Spell",
+      "rules": "If a spell or non-basic ability can target—in order of precedence—Blasted Oak, its site or location, or anything else at its site or location, it must.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "book_of_blessings",
+      "name": "Book of Blessings",
+      "type": "Artifact",
+      "category": "Spell",
+      "rules": "Whenever bearer casts magic that chooses a single allied minion, Ward that ally.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "bureau_of_occult_control",
+      "name": "Bureau of Occult Control",
+      "type": "Site",
+      "category": "Site",
+      "rules": "Players must pay (2) to access a collection or cemetery.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "burning_hands",
+      "name": "Burning Hands",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "May be cast by an allied Mortal. Choose two different cardinal directions and deal damage to each unit at locations in the area of effect:",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "cage_of_sidrak",
+      "name": "Cage of Sidrak",
+      "type": "Artifact",
+      "category": "Spell",
+      "rules": "Genesis → Lock all minions with 2 or less power in this cage, tapped and disabled.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "captain_baldassare",
+      "name": "Captain Baldassare",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Whenever Captain Baldassare attacks a unit or site, the defending player discards their topmost three spells. You may cast each of those spells once this turn, ignoring threshold requirements.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "cerberus_in_chains",
+      "name": "Cerberus in Chains",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Must be summoned to your location.\r\n\r\nCerberus in Chains automatically follows you and can't move itself away.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "chaos_twister",
+      "name": "Chaos Twister",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "Place target minion on the back of your hand, then blow it off from a height of at least one foot. Deal damage equal to its power to each unit atop the site it lands on, including itself.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "chaoswish",
+      "name": "Chaoswish",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "Cast a copy of a random spell for free, ignoring threshold, then the next player may copy Chaoswish.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "city_of_souls",
+      "name": "City of Souls",
+      "type": "Site",
+      "category": "Site",
+      "rules": "(E) — Provides (2) instead but enemies can redirect damage dealt to this site to any unit.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "corpse_catapult",
+      "name": "Corpse Catapult",
+      "type": "Artifact",
+      "category": "Spell",
+      "rules": "Tap bearer and another ally here, Banish a dead minion → Deal damage equal to the banished minion's power to each unit at target location up to three steps away.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "corpse_explosion",
+      "name": "Corpse Explosion",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "Deal a dead minion to each site in a two-by-two area. Deal damage equal to each corpse's power to units there, then banish the corpses.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "corruptor",
+      "name": "Corruptor",
+      "type": "Avatar",
+      "category": "Avatar",
+      "rules": "Tap → Play or draw a site.\r\n\r\nYour Beasts are Monsters, your Mortals are Undead, and your Angels are Demons.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "courtesan_thais",
+      "name": "Courtesan Thaïs",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Genesis → During their next turn, each player is controlled by the previous one.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "crave_golem",
+      "name": "Crave Golem",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "At the start of each player's turn, Crave Golem attacks a random minion within its range of motion, or takes a step toward the closest minion if it can't.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "dame_britomart",
+      "name": "Dame Britomart",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Lance\r\n\r\nIf Dame Britomart would successfully attack an enemy site, she may summon a Mortal from your cemetery to her location instead.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "darkest_dungeon",
+      "name": "Darkest Dungeon",
+      "type": "Site",
+      "category": "Site",
+      "rules": "Genesis → The next time an ally strikes an Avatar this turn, drag both here if able.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "day_of_judgment",
+      "name": "Day of Judgment",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "Place the cross anywhere in the realm. Banish Evil and damage units occupying affected squares.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "deathspeaker",
+      "name": "Deathspeaker",
+      "type": "Avatar",
+      "category": "Avatar",
+      "rules": "Tap → Play or draw a site.\r\n\r\nYou may banish a dead minion each turn to cast a copy of it, and for (0) if you’re on Death’s Door. The copy enters the realm, uses its Genesis, then is banished.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "demonic_contract",
+      "name": "Demonic Contract",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "Search your spellbook for any card, reveal it, put it into your hand, then shuffle afterward.\r\nYou may only search for a spell that has rarity lower or equal to a Demon minion that you control. As an additional cost to cast Demonic Contract you must pay 4 life, or reach another accord with said demon by sacrificing a coin, egg, frog, gem, goat, rune, treasure, or Mortal soul.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "dhol_chants",
+      "name": "Dhol Chants",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "Tap any number of nearby allies. Reveal that many spells from the top of your spellbook and cast one for free. Put the rest at the bottom of your spellbook.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "dodge_roll",
+      "name": "Dodge Roll",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "May be cast when an ally is attacked.\r\n\r\nAn attacked ally may move to another adjacent location to evade the attack.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "doomsday_device",
+      "name": "Doomsday Device",
+      "type": "Artifact",
+      "category": "Spell",
+      "rules": "Doomsday Device enters the realm with 6 counters. At the end of each player’s turn, remove a counter. When the last is removed, it detonates!\r\n\r\nDeals damage to each unit at affected locations:",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "dragonlord",
+      "name": "Dragonlord",
+      "type": "Avatar",
+      "category": "Avatar",
+      "rules": "Tap → Play or draw a site.\r\n\r\nBefore setup, set aside a Unique Dragon. Once on your turn, if you meet its threshold, you may pay (3) to gain its abilities this turn.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "earthquake",
+      "name": "Earthquake",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "You may rearrange sites within a two-by-two area, carrying along everything of normal size. Then burrow all minions and artifacts on those sites.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "edge_of_the_world",
+      "name": "Edge of the World",
+      "type": "Site",
+      "category": "Site",
+      "rules": "Must always be adjacent to the void.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "enchantress",
+      "name": "Enchantress",
+      "type": "Avatar",
+      "category": "Avatar",
+      "rules": "Tap → Play or draw a site.\r\n\r\nWhenever you cast a spell, you may animate target aura until your next turn. It’s an aura minion with power equal to its cost.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "felbog_frog_men",
+      "name": "Felbog Frog Men",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Can leap entirely over adjacent sites in one step.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "firebreathing",
+      "name": "Firebreathing",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "May be cast by an allied Beast or Dragon. Choose a cardinal direction and deal damage to each unit at a location in the area of effect:",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "flame_strike",
+      "name": "Flame Strike",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "Choose a cardinal direction from the caster. Deal damage to each unit at affected locations:",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "flame_wave",
+      "name": "Flame Wave",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "Flame Wave flows horizontally, from one edge of the realm to the other. Deal damage to each unit atop sites in the area of effect:",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "free_city",
+      "name": "Free City",
+      "type": "Site",
+      "category": "Site",
+      "rules": "Once per turn, may attack or defend against enemy units here.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "giant_shark",
+      "name": "Giant Shark",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Submerge, Waterbound\r\n\r\nWhenever another unit enters or moves between sites in this body of water, Giant Shark moves to that unit to fight it.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "gnarled_wendigo",
+      "name": "Gnarled Wendigo",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "This costs (2) less to cast for each minion you sacrifice at its summoning location.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "grigori_rasputin",
+      "name": "Grigori Rasputin",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Spellcaster\r\n\r\nBanish an Evil ally → Cast Rasputin from your cemetery to there. He adds their power and abilities to his own until he dies again.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "grosse_poltergeist",
+      "name": "Grösse Poltergeist",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Tap → Until Grosse Poltergeist leaves the realm, gain control of a nearby artifact and animate it. It's an Automaton with power equal to its cost, and has its own bearer abilities.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "hellstar",
+      "name": "Hellstar",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Airborne, can't attack or defend. At the start of your turn, each other unit at affected locations takes damage:",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "holy_nova",
+      "name": "Holy Nova",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "Deal damage to each enemy at affected locations. You may break an allied Ward to center this spell on that location instead of the caster's.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "i_am_colossus",
+      "name": "I Am Colossus!",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "You may banish minions under your control, or from your hand or cemetery, to help cast the Colossus. It costs (1) less to cast for each.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "imposter",
+      "name": "Imposter",
+      "type": "Avatar",
+      "category": "Avatar",
+      "rules": "Tap → Play or draw a site.\r\n\r\n(3) → Banish an Avatar from your collection to mask yourself. Gain their abilities until damaged or until you put on a new mask.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "infusion_factory",
+      "name": "Infusion Factory",
+      "type": "Site",
+      "category": "Site",
+      "rules": "Adjacent artifacts are Automatons with 2 power and their own bearer abilities.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "jack_the_ripper",
+      "name": "Jack the Ripper",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Stealth\r\n\r\nMay be cast to any Mortal, silencing then killing them, without breaking Stealth.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "joust",
+      "name": "Joust!",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "An ally targets an enemy they’re adjacent to, then they both take a step to swap places. If they pass each other, they fight.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "kairos_the_archivist",
+      "name": "Kairos the Archivist",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Genesis → Archive the state of the realm.\r\nDeathrite → Return all archived cards to their recorded state. Then banish Kairos.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "karkemish_chimera",
+      "name": "Karkemish Chimera",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Can simultaneously attack up to three units at the same location.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "key_to_the_city",
+      "name": "Key to the City",
+      "type": "Artifact",
+      "category": "Spell",
+      "rules": "Provides (1).\r\n\r\nBearer ignores site abilities.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "koscheis_egg",
+      "name": "Koschei's Egg",
+      "type": "Artifact",
+      "category": "Spell",
+      "rules": "Genesis → Avatar bearer hides its soul in Koschei's Egg, becoming immune to death blows. After three of your turns, or if the Egg leaves the realm, you lose.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "lava_flow",
+      "name": "Lava Flow",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "Lava flows from the caster's site in a cardinal direction. Deal damage to each other unit occupying a site in the area of effect:",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "led_astray",
+      "name": "Led Astray",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "Choose any number of enemies at target location. They take a step together to another location they're adjacent to.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "magellan_globe",
+      "name": "Magellan Globe",
+      "type": "Artifact",
+      "category": "Spell",
+      "rules": "Opposite edges of the realm are connected.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "magician",
+      "name": "Magician",
+      "type": "Avatar",
+      "category": "Avatar",
+      "rules": "You have no atlas, but your spellbook may contain sites, and you start with seven cards.\r\n\r\nTap → Play a site.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "megamoeba",
+      "name": "Megamoeba",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Megamoeba moves by extending a single pseudopod from any part of itself. It occupies all locations it has ever occupied, and has +1 power for each.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "mephistopheles",
+      "name": "Mephistopheles",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Must be cast to your Avatar's location, taking their life and replacing them as your Avatar.\r\n\r\nOnce on your turn, you may summon an Evil minion from your hand to an adjacent site.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "mester_stoor_worm",
+      "name": "Mester Stoor Worm",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Submerge, Waterbound\r\n\r\nTap → Choose a direction from Mester Stoor Worm. Deal Lethal damage to each unit at a location in the area of effect:",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "meteor_shower",
+      "name": "Meteor Shower",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "Target three sites that share no borders. Deal damage to each unit atop sites in each area of effect:",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "mimic",
+      "name": "Mimic",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "As you summon this Mimic, you may transform a carriable artifact into it, under your control.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "mismanaged_mortuary",
+      "name": "Mismanaged Mortuary",
+      "type": "Site",
+      "category": "Site",
+      "rules": "Flooded. Treat your opponent's cemetery as yours, and vice versa.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "monastery_gargoyle",
+      "name": "Monastery Gargoyle",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "At the start and end of your turn, choose whether Monastery Gargoyle has Airborne or is a Monument.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "mortal_soil",
+      "name": "Mortal Soil",
+      "type": "Aura",
+      "category": "Spell",
+      "rules": "Whenever an affected site takes damage, banish a minion from your cemetery to prevent it. If you can't, dispel this.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "mount_ussar_sanctuary",
+      "name": "Mount Ussar Sanctuary",
+      "type": "Site",
+      "category": "Site",
+      "rules": "(E)(E)(E)(E) — When your Avatar arrives at Death's Door, they flee here and gain Ward.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "mudslide",
+      "name": "Mudslide",
+      "type": "Site",
+      "category": "Site",
+      "rules": "Genesis → Slide all units at land sites in this column one step left or right.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "orb_of_baal_berith",
+      "name": "Orb of Ba'al Berith",
+      "type": "Artifact",
+      "category": "Spell",
+      "rules": "The first time each turn a Magic spell is cast nearby, Orb of Ba'al Berith creates a copy. The spell's controller may choose new targets.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "order_of_the_white_wing",
+      "name": "Order of the White Wing",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Ward\r\n\r\nIf a minion would be summoned nearby and it wasn't cast from hand, banish it.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "orpheus_crossing",
+      "name": "Orpheus' Crossing",
+      "type": "Site",
+      "category": "Site",
+      "rules": "Genesis → You're on Death's Door until your next turn. Summon a dead minion here.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "pathfinder",
+      "name": "Pathfinder",
+      "type": "Avatar",
+      "category": "Avatar",
+      "rules": "Your atlas can’t contain duplicates. Draw no sites during setup.\r\n\r\nTap → If able, play the topmost site of your atlas to an adjacent location and move there.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "persecutor",
+      "name": "Persecutor",
+      "type": "Avatar",
+      "category": "Avatar",
+      "rules": "Tap → Play or draw a site.\r\n\r\nOnce on your turn, Persecutor may step toward the closest Evil, or brand an enemy so your cards treat them as Evil this turn.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "putrid_presence",
+      "name": "Putrid Presence",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Submerge, Burrowing\r\n\r\nThe subsurface of nearby sites can be attacked.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "realm_eater",
+      "name": "Realm-Eater",
+      "type": "Avatar",
+      "category": "Avatar",
+      "rules": "Tap → Play, draw, or digest a site.\r\n\r\nDestroys sites it successfully attacks, then becomes immobile until it digests.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "red_rock_of_ravannis",
+      "name": "Red Rock of Ravannis",
+      "type": "Artifact",
+      "category": "Spell",
+      "rules": "Artifacts can't be carried here.\r\n\r\nAt the end of each turn, pull each artifact one step towards this site, along with its bearer.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "rift_valley",
+      "name": "Rift Valley",
+      "type": "Site",
+      "category": "Site",
+      "rules": "You may pull apart a partial row or column to make a void in which to play this.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "royal_bodyguard",
+      "name": "Royal Bodyguard",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "If a nearby Avatar or royalty (King, Queen, Prince, or Princess) would take damage, Royal Bodyguard may take that damage instead.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "saint_of_redemption",
+      "name": "Saint of Redemption",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Ward\r\n\r\nNo minion is Evil, but all enter the realm tapped.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "sea_raider",
+      "name": "Sea Raider",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Whenever Sea Raider attacks and kills an enemy, its controller discards their topmost spell. You may cast that spell once this turn, ignoring threshold.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "sir_gawain",
+      "name": "Sir Gawain",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Sir Gawain takes damage for other adjacent allies. If he dies from damage taken this way, draw a card.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "snowball",
+      "name": "Snowball",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "Shoot a piercing projectile. It picks up all other units along its path and carries them with it. When it stops, units there take damage equal to the number of units in the snowball.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "stitched_abomination",
+      "name": "Stitched Abomination",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Genesis → Banish up to three minions from one cemetery to stitch together. This Abomination has their combined power, but each part may be damaged and destroyed separately.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "tabula_rasa",
+      "name": "Tabula Rasa",
+      "type": "Artifact",
+      "category": "Spell",
+      "rules": "May be cast to any minion.\r\n\r\nBearer is silenced, can't be modified otherwise, and can't drop Tabula Rasa.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "the_apex_of_babel",
+      "name": "The Apex of Babel",
+      "type": "Site",
+      "category": "Site",
+      "rules": "When the Tower of Babel is built, draw a spell, then you may cast a spell for free.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "the_base_of_babel",
+      "name": "The Base of Babel",
+      "type": "Site",
+      "category": "Site",
+      "rules": "You may build The Tower of Babel by playing The Apex of Babel atop this.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "the_flood",
+      "name": "The Flood",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "Permanently flood the entire realm, including voids. Submerge everything except one minion of each type.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "the_immortal_throne",
+      "name": "The Immortal Throne",
+      "type": "Artifact",
+      "category": "Spell",
+      "rules": "Whenever anyone plays a card with cost equal to the number of level counters on The Immortal Throne, they draw a card and add a level counter.\r\n\r\nAt level 8 or more, an Avatar here alone wins the game.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "the_inquisition",
+      "name": "The Inquisition",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "When an opponent can see this card in your hand or spellbook, you may summon it.\r\n\r\nGenesis → Target opponent reveals their hand. You may banish a card from it.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "the_malleus_maleficarum",
+      "name": "The Malleus Maleficarum",
+      "type": "Artifact",
+      "category": "Spell",
+      "rules": "Once on your turn, bearer may cast a magic from your collection that targets an enemy Spellcaster, or their location or site.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "the_pallid_bust",
+      "name": "The Pallid Bust",
+      "type": "Artifact",
+      "category": "Spell",
+      "rules": "Genesis → Banish a dead minion.\r\n\r\nMinion bearer has the banished minion's printed types and abilities.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "the_rack",
+      "name": "The Rack",
+      "type": "Artifact",
+      "category": "Spell",
+      "rules": "Whenever the bearer strikes an Avatar, stretch them so that they also occupy another adjacent location. Then they lose 1 life for each location they occupy.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "the_void",
+      "name": "The Void",
+      "type": "Site",
+      "category": "Site",
+      "rules": "This site is also void.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "tombstone_wardens",
+      "name": "Tombstone Wardens",
+      "type": "Artifact",
+      "category": "Spell",
+      "rules": "During your opponent's turn, this is a 5 power Angel Automaton with Airborne.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "tringh_constrictor",
+      "name": "Tringh Constrictor",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Tap → Tringh Constrictor may take a step, then it constricts target minion here and carries it disabled. The next time Tringh Constrictor would untap, it instead kills that minion if it's still constricted.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "valor",
+      "name": "Valor",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "May be cast when an ally defends a site or another unit. The ally gains +4 power this turn.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "vindictive_nation",
+      "name": "Vindictive Nation",
+      "type": "Site",
+      "category": "Site",
+      "rules": "Opponent loses 1, 3, or 7 life respectively if they modify, move, or destroy a nearby allied site.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "vivien_the_enchantress",
+      "name": "Vivien the Enchantress",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Vivien has the other printed abilities of all Avatars and Spellcasters in the realm, wherever she is.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "wave_of_eviction",
+      "name": "Wave of Eviction",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "An allied water site overflows in a cardinal direction, flooding sites there this turn and carrying away enemies one step at a time.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "wormelow_tump",
+      "name": "Wormelow Tump",
+      "type": "Site",
+      "category": "Site",
+      "rules": "(E)(E)(E) – Opponents can't affect cards in your cemetery.",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "wreathed_in_righteousness",
+      "name": "Wreathed in Righteousness",
+      "type": "Magic",
+      "category": "Spell",
+      "rules": "Ward all minions at target location. Then deal damage to minions at affected locations:",
+      "status": "未開始",
+      "playable": false
+    },
+    {
+      "slug": "yog_sothoth",
+      "name": "Yog-Sothoth",
+      "type": "Minion",
+      "category": "Spell",
+      "rules": "Occupies all locations safely.\r\n\r\nIs banished without five voids.\r\n\r\nIgnores the abilities of sites.",
+      "status": "未開始",
+      "playable": false
+    }
+  ]
+}

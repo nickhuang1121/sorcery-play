@@ -1,0 +1,33 @@
+import {getGoogleAuth,googleAuthMessage} from './net/firebase-auth.js';
+import {resetFirebaseOnline} from './net/firebase-online.js';
+import {onlineRoomKey} from './net/online-client.js';
+import {loadCards,officialBetaDecks,validateDeck} from './cards.js';
+import {parseJsonDeck} from './deck-import.js';
+import {ENGINE_BUILD} from './net/protocol.js';
+import {onlineRequest,savedOnlineRoom,saveOnlineRoom} from './net/online-client.js';
+import {showNotice} from './popup.js';
+import {getUILanguage} from './ui-language.js';
+const $=s=>document.querySelector(s),text=(zh,en)=>getUILanguage()==='en'?en:zh;
+let room=null,current=null,timer,busy=false,lobbyEpoch=0,auth=null,loggedInUid=null;
+const status=m=>$('#status').textContent=m;
+async function run(fn){if(busy)return;busy=true;try{await fn();}catch(e){status(e.message);showNotice(e.message);}finally{busy=false;}}
+function paint(snapshot){current=snapshot;$('#room-code').textContent=snapshot.id;$('#seat-label').textContent=snapshot.seat===0?text('房主','Host'):text('玩家二','Player 2');$('#peer-label').textContent=snapshot.players[1-snapshot.seat].online?text('在線','Online'):text('等待／離線','Waiting / offline');$('#deck-panel').hidden=false;$('#match-panel').hidden=false;$('#btn-copy-room').disabled=false;const own=snapshot.players[snapshot.seat],opponent=snapshot.players[1-snapshot.seat];$('#btn-ready').disabled=!own.deck||own.ready;$('#btn-unready').disabled=!own.ready;$('#deck-summary').textContent=own.deck?own.deck.name+' · '+(own.ready?text('已準備','Ready'):text('尚未準備','Not ready')):text('請先上傳牌組','Select a deck first');$('#opp-summary').textContent=opponent.deck?text('對手已選擇牌組','Opponent selected a deck')+' · '+(opponent.ready?text('已準備','Ready'):text('尚未準備','Not ready')):text('等待對手選擇牌組','Waiting for opponent’s deck');$('#btn-start').hidden=snapshot.seat!==0;$('#btn-start').disabled=!snapshot.players.every(p=>p.ready&&p.present&&p.online);if(snapshot.status!=='lobby'){clearTimeout(timer);location.href='./online-play.html?room='+snapshot.id;}}
+async function poll(){if(!room)return;if(busy){timer=setTimeout(poll,500);return;}const expected=room,epoch=lobbyEpoch;try{const snapshot=await onlineRequest('/rooms/'+expected.id,{token:expected.token});if(room!==expected||epoch!==lobbyEpoch)return;paint(snapshot);}catch(e){if(room!==expected||epoch!==lobbyEpoch)return;status(e.message);if([403,404].includes(e.status)){room=null;return;}}finally{if(room===expected)timer=setTimeout(poll,1500);}}
+function enter(snapshot){room=saveOnlineRoom(snapshot);paint(snapshot);clearTimeout(timer);timer=setTimeout(poll,1000);status(text('已取得專屬席位，請選擇牌組。','Your seat is reserved. Choose a deck.'));}
+async function list(){const rooms=await onlineRequest('/rooms');const list=$('#room-list');list.replaceChildren();if(!rooms.length)list.textContent=text('目前沒有房間','No rooms yet');for(const r of rooms){const b=document.createElement('button');b.textContent=r.id+' · '+r.seats+'/2 · '+r.status;b.onclick=()=>$('#join-code').value=r.id;list.append(b);}}
+async function connect(){const user=auth?.currentUser();if(!user)return;await list();if(auth.currentUser()?.uid!==user.uid)return;$('#room-panel').hidden=false;$('#connect-label').textContent=text('已登入 Google','Signed in with Google');}
+function paintAuth(user){const changed=loggedInUid!==(user?.uid||null);loggedInUid=user?.uid||null;$('#btn-connect').hidden=!!user;$('#btn-connect').disabled=!auth;$('#btn-signout').hidden=!user;$('#google-profile').hidden=!user;$('#google-name').textContent=user?.displayName||text('Google 玩家','Google player');$('#google-email').textContent=user?.email||'';$('#connect-label').textContent=user?text('已登入 Google','Signed in with Google'):text('請先使用 Google 登入','Sign in with Google to continue');if(changed){clearTimeout(timer);room=null;current=null;for(const id of ['room-panel','deck-panel','match-panel'])$('#'+id).hidden=true;resetFirebaseOnline().then(()=>{if(user&&auth.currentUser()?.uid===user.uid)connect().catch(e=>status(e.message));});}}
+const update=body=>{lobbyEpoch++;return onlineRequest('/rooms/'+room.id,{method:'POST',token:room.token,body});};
+$('#build-badge').textContent=ENGINE_BUILD;
+$('#btn-connect').onclick=()=>run(async()=>{try{await auth.signIn();}catch(e){const message=googleAuthMessage(e,getUILanguage());status(message);if(e.code!=='auth/popup-closed-by-user')showNotice(message);}});
+$('#btn-signout').onclick=()=>run(async()=>{clearTimeout(timer);await resetFirebaseOnline();await auth.signOut();localStorage.removeItem(onlineRoomKey);status(text('已登出','Signed out'));});
+$('#btn-refresh-rooms').onclick=()=>run(list);
+$('#btn-create').onclick=()=>run(async()=>{enter(await onlineRequest('/rooms',{method:'POST',body:{}}));await list();});
+$('#btn-join').onclick=()=>run(async()=>{const id=$('#join-code').value.trim().toUpperCase();if(savedOnlineRoom()?.id===id){const saved=savedOnlineRoom();enter({...await onlineRequest('/rooms/'+id,{token:saved.token}),token:saved.token});}else enter(await onlineRequest('/rooms/'+id+'/join',{method:'POST',body:{}}));});
+$('#btn-reclaim').onclick=()=>run(async()=>{const saved=savedOnlineRoom();if(!saved)throw Error(text('這個裝置沒有已保留的席位','This device has no reserved seat'));enter({...await onlineRequest('/rooms/'+saved.id,{token:saved.token}),token:saved.token});});
+$('#btn-copy-room').onclick=()=>run(()=>navigator.clipboard.writeText(room.id));
+$('#btn-publish').onclick=()=>run(async()=>{const raw=JSON.parse($('#deck-json').value),deck=Array.isArray(raw.atlas)&&Array.isArray(raw.spells)?raw:parseJsonDeck(raw),errors=validateDeck(deck);if(errors.length)throw Error(errors.join('；'));paint(await update({type:'deck',deck}));});
+$('#btn-ready').onclick=()=>run(async()=>paint(await update({type:'ready',ready:true})));
+$('#btn-unready').onclick=()=>run(async()=>paint(await update({type:'ready',ready:false})));
+$('#btn-start').onclick=()=>run(async()=>paint(await update({type:'start'})));
+try{await loadCards();let custom=[];try{custom=JSON.parse(localStorage.getItem('sorcery.decks')||'[]');}catch{}const decks=[...officialBetaDecks(),...custom.filter(d=>!validateDeck(d).length)];const select=$('#deck-pick');select.replaceChildren();decks.forEach((d,i)=>{const option=document.createElement('option');option.value=i;option.textContent=d.name;select.append(option);});select.disabled=false;select.onchange=()=>{$('#deck-json').value=JSON.stringify(decks[+select.value],null,2);};select.onchange();$('#decks-loading').textContent=text('官方 BETA 與本機牌組','Official BETA and local decks');auth=await getGoogleAuth();await auth.ready;paintAuth(auth.currentUser());auth.subscribe(paintAuth);}catch(e){status(e.message);}

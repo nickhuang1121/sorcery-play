@@ -1,0 +1,44 @@
+/* One modal system for card information, choices, menus, setup and notices. */
+:root{--popup-surface:radial-gradient(ellipse at top,#394234,#101916 65%);--popup-border:#b59a61;--popup-space:18px;--popup-radius:18px}
+dialog.popup{box-sizing:border-box;position:fixed;inset:0;width:min(var(--popup-width,480px),calc(100vw - 24px - env(safe-area-inset-left) - env(safe-area-inset-right)));max-width:calc(100vw - 24px - env(safe-area-inset-left) - env(safe-area-inset-right));height:fit-content;max-height:calc(100dvh - 32px - env(safe-area-inset-top) - env(safe-area-inset-bottom));margin:auto;padding:0;overflow:hidden;border:1px solid var(--popup-border);border-radius:var(--popup-radius);color:var(--text,#eee8d8);background:var(--popup-surface);box-shadow:0 24px 90px #000d;text-align:left;transform:none;container-type:inline-size}
+dialog.popup[open]{display:flex;flex-direction:column}
+dialog.popup::backdrop{background:#020706b8;backdrop-filter:blur(3px)}
+dialog.popup::before{display:none}
+dialog.popup.realm-sheet,dialog.popup.card-popup,dialog.popup.setup-sheet{--popup-width:740px}
+.popup .popup-body{min-height:0;overflow:auto;overscroll-behavior:contain;padding:26px var(--popup-space) 16px;scrollbar-width:thin;touch-action:pan-y}
+.popup .close{position:absolute;top:8px;right:8px;z-index:5;display:grid;place-items:center;min-width:44px;width:44px;min-height:44px;height:44px;padding:0;border:1px solid #8b774866;border-radius:10px;background:#101916ed;color:#f6e7bc;font:24px/1 system-ui;touch-action:manipulation}
+.popup h2,.popup h2.popup-title{margin:0 42px 16px 0;padding:0;color:#f6e7bc;font:600 23px/1.35 Georgia,'Microsoft JhengHei',serif;letter-spacing:0;text-shadow:none;overflow-wrap:anywhere;touch-action:pan-y;user-select:text}
+.popup h2::after{display:none}
+.popup h3{margin:18px 0 8px;color:var(--gold,#e4c27a);font:600 16px/1.4 system-ui;letter-spacing:0}
+.popup p,.popup .effect-rules{margin:10px 0;font:15px/1.7 system-ui;color:var(--text,#eee8d8);text-align:left;white-space:pre-line;overflow-wrap:anywhere}
+.popup .muted,.popup .notice,.popup .card-info-meta{color:var(--muted,#b6b6a6)}
+.popup .eyebrow{margin:0 44px 8px 0;color:var(--gold,#e4c27a);font:12px/1.4 system-ui;letter-spacing:.12em;touch-action:pan-y;user-select:text}
+.popup .modal-actions,.popup .secondary-actions{display:flex;flex-direction:column;align-items:stretch;gap:10px;margin:16px 0 0;padding:0;max-height:none;overflow:visible}
+.popup .modal-actions button,.popup .secondary-actions button,.popup-footer button,.popup .action-button{box-sizing:border-box;width:100%;min-height:48px;margin:0;padding:11px 14px;border:1px solid #6d745e;border-radius:10px;background:linear-gradient(#2b3930,#1b2822);color:#efe6d4;font:15px/1.5 system-ui;letter-spacing:0;text-align:center;white-space:normal;overflow-wrap:anywhere;touch-action:manipulation}
+.popup button:hover{border-color:#e4c27a}
+.popup button:focus-visible,.popup input:focus-visible,.popup textarea:focus-visible,.popup select:focus-visible{outline:2px solid #f6e7bc;outline-offset:2px}
+.popup button.primary,.popup .modal-actions button.primary,.popup .modal-actions button.confirm-yes,.popup-footer button.primary{background:linear-gradient(#f4ddb0,#b89045);color:#1c1610;border-color:#f6e7bc}
+.popup button:disabled{opacity:.45}
+.popup [hidden]{display:none!important}
+.popup-footer{flex-shrink:0;display:flex;gap:10px;padding:12px var(--popup-space) max(14px,env(safe-area-inset-bottom));margin:0;border-top:1px solid #b59a6133;background:#111b17}
+.popup-footer button{flex:1;min-width:0}
+.popup .popup-menu{display:flex;position:static;width:auto;max-width:none}
+.popup .popup-log{height:auto;max-height:none;overflow:visible;padding:0;font:14px/1.6 system-ui}
+.popup .info-facts{display:grid;grid-template-columns:100px minmax(0,1fr);gap:10px;margin:0;font:14px/1.6 system-ui}
+.popup .info-facts dt{color:var(--muted,#b6b6a6)}
+.popup .info-facts dd{margin:0;overflow-wrap:anywhere}
+.popup .carry-picks{display:grid;gap:8px}
+.popup .carry-picks label{display:flex;align-items:center;min-height:48px;padding:8px 12px;border:1px solid #6d745e;border-radius:10px;background:#17231d;font:15px/1.5 system-ui}
+.popup .carry-picks label span{display:flex;align-items:center;gap:10px}
+.popup input[type='checkbox']{width:20px;height:20px;accent-color:#e4c27a}
+.popup input:not([type='checkbox']),.popup textarea,.popup select{box-sizing:border-box;max-width:100%;min-height:44px;font:16px/1.5 system-ui}
+.popup .inspect-sheet{justify-items:stretch;text-align:left}
+.popup .inspect-sheet>.card{justify-self:center}
+.popup .inspect-sheet h2{margin-bottom:0}
+.popup .library-grid{grid-template-columns:repeat(auto-fit,minmax(110px,1fr))}
+.popup .library-grid .card{max-width:100%}
+.popup .victory-actions{display:flex;flex-direction:column;gap:10px;width:100%;margin-top:10px}
+.popup.result-popup .action-button{margin-top:16px}
+@media(max-height:500px){dialog.popup{max-height:calc(100dvh - 16px)}.popup .popup-body{padding-top:16px}.popup-footer{padding-top:8px;padding-bottom:8px}}
+@media(prefers-reduced-motion:no-preference){dialog.popup[open]{animation:popupEnter .16s ease-out}@keyframes popupEnter{from{opacity:0;scale:.97}to{opacity:1;scale:1}}}
+.popup .popup-hint{margin-top:16px;color:var(--muted,#b6b6a6);font:12px/1.6 system-ui}

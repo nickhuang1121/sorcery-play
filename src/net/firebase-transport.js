@@ -1,4 +1,5 @@
 import { FIREBASE_SDK_VERSION } from './firebase-config.js';
+import {isGooglePlayer} from './firebase-auth.js';
 
 /**
  * Realtime Database transport — same surface as memory: get / set / update / subscribe.
@@ -16,7 +17,7 @@ export async function createFirebaseTransport(config) {
     import(`https://www.gstatic.com/firebasejs/${v}/firebase-app.js`),
     import(`https://www.gstatic.com/firebasejs/${v}/firebase-database.js`),
   ]);
-  const { getDatabase, ref, get, set, update, onValue, onDisconnect, runTransaction } = dbMod;
+  const { getDatabase, ref, get, set, update, onValue, onDisconnect, runTransaction,serverTimestamp } = dbMod;
 
   const appName = config.appName || 'sorcery-codex';
   const app = getApps().some((a) => a.name === appName)
@@ -25,22 +26,22 @@ export async function createFirebaseTransport(config) {
   const db = getDatabase(app);
 
   let authUser = null;
+  let clockOffset=0,connected=false;
+  onValue(ref(db,'.info/serverTimeOffset'),snap=>{clockOffset=Number(snap.val())||0;});
+  onValue(ref(db,'.info/connected'),snap=>{connected=snap.val()===true;});
+  async function transact(path,updater){const result=await runTransaction(ref(db,path),current=>updater(current??null),{applyLocally:false});return {committed:result.committed,value:result.snapshot.exists()?result.snapshot.val():null};}
 
   async function ensureAuth() {
     if (config.skipAuth) return null;
     try {
       const v = config.sdkVersion || FIREBASE_SDK_VERSION;
-      const { getAuth, signInAnonymously } = await import(`https://www.gstatic.com/firebasejs/${v}/firebase-auth.js`);
+      const { getAuth } = await import(`https://www.gstatic.com/firebasejs/${v}/firebase-auth.js`);
       const auth = getAuth(app);
-      if (auth.currentUser) {
-        authUser = auth.currentUser;
-        return authUser;
-      }
-      const cred = await signInAnonymously(auth);
-      authUser = cred.user;
+      await auth.authStateReady();
+      authUser = isGooglePlayer(auth.currentUser)?auth.currentUser:null;
       return authUser;
     } catch (err) {
-      console.warn('Firebase anonymous Auth 不可用（可在 Console 啟用 Anonymous）', err?.message || err);
+      console.warn('Firebase Google Auth unavailable', err?.code||'unknown');
       return null;
     }
   }
@@ -51,6 +52,11 @@ export async function createFirebaseTransport(config) {
     db,
     ensureAuth,
     currentUser: () => authUser,
+    serverNow:()=>Date.now()+clockOffset,
+    serverTimestamp,
+    isConnected:()=>connected,
+    transact,
+    async registerDisconnect(path,value){const handle=onDisconnect(ref(db,path));await handle.set(value);return ()=>handle.cancel();},
     async get(path) {
       const snap = await get(ref(db, path));
       return snap.exists() ? snap.val() : null;
@@ -91,11 +97,7 @@ export async function createFirebaseTransport(config) {
       await set(ref(db, path), null);
     },
     async transaction(path, updater) {
-      const result = await runTransaction(ref(db, path), (current) => {
-        const next = updater(current === undefined ? null : current);
-        return next === undefined ? current : next;
-      });
-      return result.snapshot.exists() ? result.snapshot.val() : null;
+      return (await transact(path,updater)).value;
     },
   };
 }
@@ -106,7 +108,7 @@ export function firebasePlayerIdFromUser(user) {
   return user.uid;
 }
 
-/** Sign in anonymously and return a stable player id, or null if Auth unavailable. */
+/** Legacy name: returns an existing Google player's UID; never signs in anonymously. */
 export async function ensureAnonymousPlayerId(transport) {
   if (!transport?.ensureAuth) return null;
   const user = await transport.ensureAuth();

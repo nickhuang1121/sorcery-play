@@ -1,4 +1,11 @@
+import {registerPermanentRealmFlood} from './final-flood.js';
+import {catalogAuraActive} from './aura-source-state.js';
+import {resolveCatalogAuraSubmerge} from './catalog-aura-submerge.js';
+import {catalogAuraHere,catalogAuraPhysicalShape} from './catalog-auras.js';
+import {unitPassiveLayerViews,siteEffectAllowed,pallidPrintedTypes,abilityMinionTypes} from './final-ability-layers.js';
+import {sendBuiltSite} from './final-built-sites.js';
 // Remaining-card work is explicitly bound and enabled only with an effect case.
+import {geometryPlaceSiteAllowed} from './final-geometry.js';
 export const completionBatches=[
  ['acid_rain','blightstone','fields_of_phyxis','leadworks','smokestacks_of_gnaak'],
  ['sinterfee','overflowing_court','atlantean_fate','bluecap_knockers','bower_of_bliss'],
@@ -24,14 +31,14 @@ export const completionDefinitions={
  monstermorphosis:{cast:[{op:'morphMonster',select:{kind:'unit',minion:true,nearby:true}}]},
  sinister_pond:{activated:[{label:'將此處 Mortal 變身為手牌 Evil，支付費用差額',anyPlayer:true,steps:[{op:'morphPond',select:{kind:'unit',minion:true,types:['Mortal'],here:true,siteBothLayers:true}}]}]},
  skeleton_mage:{genesis:[{op:'collectionPermit',zone:'cemetery',anyGrave:true,filter:{type:'Magic',rarity:'Ordinary'},graveBanish:true,title:'Skeleton Mage'}]},
- book_of_the_dead:{activated:[{label:'Spellcaster 持有者施放墓地僕從',bearerSource:true,once:true,requiresSpellcaster:true,steps:[{op:'collectionPermit',zone:'cemetery',filter:{type:'Minion'},bookDead:true,title:'Book of the Dead'}]}]},
+ book_of_the_dead:{activated:[{bearerGranted:true,label:'Spellcaster 持有者施放墓地僕從',bearerSource:true,once:true,requiresSpellcaster:true,steps:[{op:'collectionPermit',zone:'cemetery',filter:{type:'Minion'},bookDead:true,title:'Book of the Dead'}]}]},
  merlins_tower:{genesis:[{op:'completionTowerMagic'}]},
  dream_quest:{cast:[{op:'dreamSleep',select:{kind:'dreamCaster'}}]},
- toolbox:{activated:[{label:'犧牲：持有者施放收藏區 Ordinary 法術',bearerSource:true,sacrificeAtActivation:true,steps:[{op:'collectionPermit',filter:{rarity:'Ordinary'},title:'Toolbox'}]}]},
- silver_bullet:{activated:[{label:'橫置並犧牲：施放收藏區 Exceptional 法術',bearerSource:true,bearerTap:true,sacrificeAtActivation:true,steps:[{op:'collectionPermit',filter:{rarity:'Exceptional'},title:'Silver Bullet'}]}]},
+ toolbox:{activated:[{label:'犧牲：持有者施放收藏區 Ordinary 法術',bearerSource:true,sacrificeAtActivation:true,steps:[{op:'collectionPermit',filter:{rarity:'Ordinary'},independentCasterPermission:true,title:'Toolbox'}]}]},
+ silver_bullet:{activated:[{bearerGranted:true,label:'橫置並犧牲：施放收藏區 Exceptional 法術',bearerSource:true,bearerTap:true,sacrificeAtActivation:true,steps:[{op:'collectionPermit',filter:{rarity:'Exceptional'},independentCasterPermission:true,title:'Silver Bullet'}]}]},
  consecrate:{cast:[{op:'collectionBless',select:{kind:'unit',ally:true}}]},
  desecrate:{cast:[{op:'collectionDesecrate',select:{kind:'unit',ally:true,evil:true}}]},
- elder_ruins:{activated:[{label:'犧牲此處友軍，施放收藏區 Shoggoth',steps:[{op:'collectionElder',select:{kind:'unit',minion:true,ally:true,here:true}}]}]},
+ elder_ruins:{activated:[{label:'犧牲此處友軍，施放收藏區 Shoggoth',declare:true,sacrificeSelected:true,steps:[{op:'collectionElder',select:{kind:'unit',minion:true,ally:true,here:true,siteBothLayers:true,untargeted:true,protectionReadOnly:true}}]}]},
  gilman_house:{activated:[{label:'將此處僕從變為收藏區 Horrible Hybrids',threshold:{water:4},steps:[{op:'collectionHybrid',select:{kind:'unit',minion:true,here:true}}]}]},
  horns_of_behemoth:{activated:[{label:'變為 Demon',threshold:{fire:6},steps:[{op:'completionHorns'}]}]},
  druid:{activated:[{label:'橫置：召喚 Bruin 並翻面',tap:true,onceEver:'druidFlipped',steps:[{op:'completionDruidFlip'}]}]},
@@ -67,12 +74,12 @@ Object.assign(completionAuras,{wall_of_air:{border:true},wall_of_brambles:{borde
 export const completionOperations=['completionLeadworks','completionSinterfee','completionCourts','completionFateSubmerge','completionFloodRealm','completionDrowning','completionYearBlaze','completionSalt','completionSow','completionDruidFlip','completionDruidTawny','completionCurse','completionCursePick','completionInterrogate','completionHorns'];
 completionOperations.push('completionMortimer','completionMortimerReturn','completionTroll','completionSoldOut','completionVaults');
 completionOperations.push('completionTowerMagic');
-export function siteMultiplier(s,at){return s.board[at]?.completionProtected?1:2**(s.auras||[]).filter(a=>a.at===at&&!a.silenced&&!a.disabled&&a.completionSow).length;}
+export function siteMultiplier(s,at){return s.board[at]?.completionProtected?1:2**(s.auras||[]).filter(a=>a.at===at&&catalogAuraActive(a)&&a.completionSow).length;}
 
 export function refreshCompletionTerrain(s,A){
  const {card,runtimeCard,passives,sitePassives,inside,nearby,disabled,occupied}=A;
  const all=[...s.board.filter(Boolean),...s.artifacts];
- if(!all.some(o=>o.completionFlags||o.dreamAsleep||['blightstone','fields_of_phyxis','smokestacks_of_gnaak','bower_of_bliss','leadworks','overflowing_court'].includes(card(o.card).slug))&&!s.auras.some(a=>completionAuras[card(a.card).slug])&&!s.units.some(u=>['bluecap_knockers','sinterfee'].includes(card(u.card).slug))&&!(s.ongoingEffects||[]).some(e=>e.completionTerrain))return;
+ if(!all.some(o=>o.completionFlags||o.dreamAsleep||['blightstone','fields_of_phyxis','smokestacks_of_gnaak','bower_of_bliss','leadworks','overflowing_court'].includes(card(o.card).slug))&&!s.auras.some(a=>completionAuras[card(a.card).slug])&&!s.units.some(u=>['bluecap_knockers','sinterfee'].includes(card(u.card).slug)||unitPassiveLayerViews(s,u,A,'completionProtectSite').some(l=>l.value))&&!(s.ongoingEffects||[]).some(e=>e.completionTerrain))return;
  const courtEffects=(s.ongoingEffects||[]).filter(e=>e.op==='completionCourts');
  const courts=o=>courtEffects.some(e=>o.uid!==e.exclude&&/\bCourt\b/.test(card(o.baseCard||o.card).name));
  const restore=o=>{const c=card(o.card);if(c.runtimeMask)o.card=o.baseCard||c.runtimeBase;else o.baseCard=o.card;
@@ -83,12 +90,12 @@ export function refreshCompletionTerrain(s,A){
  for(const site of s.board)if(site){if(!site.uid)site.uid='s'+s.next++;restore(site);}
  for(const o of s.artifacts){const bearer=s.units.find(u=>u.uid===o.bearer);if(bearer){o.at=bearer.at;o.layer=bearer.layer||'surface';}restore(o);if(courts(o))o.disabled=true;}
  for(const u of s.units){u.completionDisabled=courts(u);u.completionBower=false;}
- const protectedSite=at=>passives[card(s.board[at].card).slug]?.immutableSite||s.units.some(u=>!u.dying&&!u.silenced&&!disabled(u)&&passives[card(u.card).slug]?.completionProtectSite&&occupied(u).includes(at));
+ const protectedSite=at=>passives[card(s.board[at].card).slug]?.immutableSite||s.units.some(u=>!u.dying&&!disabled(u)&&unitPassiveLayerViews(s,u,A,'completionProtectSite').some(l=>l.value)&&occupied(u).includes(at));
  const silence=at=>{const site=s.board[at];if(site&&!protectedSite(at))site.silenced=true;};
  for(const [at,site] of s.board.entries())if(site&&courts(site)&&!protectedSite(at))site.disabled=true;
  const effects=[];
  for(const [at,site] of s.board.entries())if(site){const rule=sitePassives[card(site.card).slug];if(rule?.completionSilenceFront||rule?.completionSilenceNearby)effects.push({stamp:site.stamp||site.born||0,site,at,rule});}
- for(const aura of s.auras)if(!aura.disabled&&!aura.silenced&&completionAuras[card(aura.card).slug])effects.push({stamp:aura.stamp||0,aura});
+ for(const aura of s.auras)if(catalogAuraActive(aura,A.disabled)&&completionAuras[card(aura.card).slug])effects.push({stamp:aura.stamp||0,aura});
  for(const e of s.ongoingEffects||[])if(e.completionTerrain)effects.push({stamp:e.stamp||0,e});
  effects.sort((a,b)=>a.stamp-b.stamp);
  for(const effect of effects){
@@ -104,7 +111,7 @@ export function refreshCompletionTerrain(s,A){
  }
  for(const o of s.artifacts)if(!o.silenced&&!o.disabled&&passives[card(o.card).slug]?.completionBlight&&s.board[o.at]&&!protectedSite(o.at))s.board[o.at].disabled=true;
  const bower=s.board.some(site=>site&&!site.silenced&&!site.disabled&&sitePassives[card(site.card).slug]?.completionBower);
- if(bower)for(const u of s.units)if(((u.mods||[]).slice().reverse().find(m=>m.replaceTypes)?.replaceTypes||card(u.card).subtypes).includes('Mortal'))u.completionBower=true;
+ if(bower)for(const u of s.units)if(s.board.some(site=>site&&!site.silenced&&!site.disabled&&sitePassives[card(site.card).slug]?.completionBower&&siteEffectAllowed(s,u,'modify',{card},site.card))&&!A.unmodifiable(u)&&[...((u.mods||[]).slice().reverse().find(m=>m.replaceTypes)?.replaceTypes||card(u.card).subtypes),...pallidPrintedTypes(s,u,A),...abilityMinionTypes(s,u,A)].includes('Mortal'))u.completionBower=true;
  for(const o of s.artifacts){o.completionFlags={silenced:!!o.silenced,disabled:!!o.disabled};if(o.silenced||o.disabled)o.card=runtimeCard(o.baseCard,'silenced_artifact',{runtimeMask:true,rules:''});}
  for(const [at,site] of s.board.entries())if(site){site.completionProtected=!!protectedSite(at);site.completionFlags={silenced:!!site.silenced,disabled:!!site.disabled};let kind=null,fields={};
   if(site.disabled){kind='disabled_site';fields={air:0,earth:0,fire:0,water:0};}
@@ -120,7 +127,7 @@ export function resolveCompletion(s,frame,A){
  if(!completionOperations.includes(step.op))return false;
  if(step.op==='completionTowerMagic'){const site=s.board[source.at];if(site&&A.resources(s,p).air>=3){site.towerMagicTurn=s.turn;site.towerMagicUsed=false;}return true;}
  if(step.op==='completionMortimer'){const u=unit(s,step.uid);if(u&&!u.dying)A.kill(s,u);queueEffects(s,[{op:'completionMortimerReturn'}],source,p);return true;}
- if(step.op==='completionMortimerReturn'){const site=s.board[source.at];if(site?.uid===source.uid){const id=site.originalCard||site.baseCard||site.card;s.players[site.owner].hand.push({uid:'h'+s.next++,card:id});s.board[source.at]={uid:'s'+s.next++,card:card('rubble').id,owner:null,controller:null};}return true;}
+ if(step.op==='completionMortimerReturn'){const site=s.board[source.at];if(site?.uid===source.uid&&geometryPlaceSiteAllowed(s,card('rubble'),source.at,card)){sendBuiltSite(s,site,'hand',A);s.board[source.at]={uid:'s'+s.next++,card:card('rubble').id,owner:null,controller:null};}return true;}
  if(step.op==='completionTroll'){
   const u=unit(s,step.uid);if(!u||u.dying)return true;
   if(selected===undefined){s.choice={player:u.controller,title:'Troll Bridge',options:[{label:'Take the strike',value:null},...s.players[u.controller].hand.map(h=>({label:'Discard '+card(h.card).name,value:h.uid}))],frame};return true;}
@@ -129,7 +136,7 @@ export function resolveCompletion(s,frame,A){
  }
  if(step.op==='completionSoldOut'){const u=unit(s,selected?.uid);if(u)queueEffects(s,[{op:'fiftyPushChoose',target:{entity:'unit',uid:u.uid},remaining:[]}],source,p);return true;}
  if(step.op==='completionVaults'){const u=unit(s,step.uid);if(u){for(let i=0;i<3;i++)A.draw(s,u.controller,'spells');s.players[u.controller].skipTurns=(s.players[u.controller].skipTurns||0)+1;}return true;}
- if(step.op==='completionHorns'){const site=s.board[source.at];if(!site||site.completionProtected)return true;const u=A.makeUnit(s,A.runtimeCard(site.baseCard||site.card,'behemoth_demon',{type:'Minion',subtypes:['Demon'],umbrellas:['Evil'],rules:''}),site.owner,source.at);u.uid=site.uid||u.uid;u.controller=site.controller;u.originalCard=site.originalCard||site.baseCard||site.card;u.born=site.born||0;u.ward=!!site.ward;u.justEntered=false;s.board[source.at]={uid:'s'+s.next++,card:card('rubble').id,owner:null,controller:null};return true;}
+ if(step.op==='completionHorns'){const site=s.board[source.at];if(!site||site.completionProtected||!geometryPlaceSiteAllowed(s,card('rubble'),source.at,card))return true;const u=A.makeUnit(s,A.runtimeCard(site.baseCard||site.card,'behemoth_demon',{type:'Minion',subtypes:['Demon'],umbrellas:['Evil'],rules:''}),site.owner,source.at);u.uid=site.uid||u.uid;u.controller=site.controller;u.originalCard=site.originalCard||site.baseCard||site.card;if(site.babelParts)u.babelParts=structuredClone(site.babelParts);u.born=site.born||0;u.ward=!!site.ward;u.justEntered=false;s.board[source.at]={uid:'s'+s.next++,card:card('rubble').id,owner:null,controller:null};return true;}
  if(step.op==='completionDruidTawny'||step.op==='completionDruidFlip'){
   const u=unit(s,source.uid);if(!u||u.silenced||A.disabled(u))return true;
   const slug=step.op==='completionDruidFlip'?'bruin':'tawny';
@@ -149,23 +156,20 @@ export function resolveCompletion(s,frame,A){
   if(selected==='power')target.mods.push({power:-3,until:p});
   if(selected==='tax')(s.ongoingEffects||(s.ongoingEffects=[])).push({op:'witchTax',player:target.controller,startAfter:s.turn});return true;
  }
- if(step.op==='completionFloodRealm'){(s.ongoingEffects||(s.ongoingEffects=[])).push({op:'realmFlood',stamp:s.next++});return true;}
+ if(step.op==='completionFloodRealm'){registerPermanentRealmFlood(s,source,p);return true;}
  if(step.op==='completionSalt'){A.destroySite(s,source.at);return true;}
- if(step.op==='completionSow'){const aura=s.auras.find(a=>a.uid===source.uid);if(aura)aura.completionSow=true;if(!s.board[source.at]&&s.players[p].atlas.length)A.enterSite(s,p,s.players[p].atlas.shift(),source.at);return true;}
+ if(step.op==='completionSow'){const aura=s.auras.find(a=>a.uid===source.uid);if(aura)aura.completionSow=true;if(!s.board[source.at]&&s.players[p].atlas.length&&geometryPlaceSiteAllowed(s,card(s.players[p].atlas[0]),source.at,card))A.enterSite(s,p,s.players[p].atlas.shift(),source.at);return true;}
  if(step.op==='completionDrowning'||step.op==='completionYearBlaze'){
   const aura=s.auras.find(a=>a.uid===source.uid);if(!aura||aura.disabled||aura.silenced)return true;
   for(let at=0;at<20;at++)if(inside(aura,at)){A.destroySite(s,at);if(step.op==='completionDrowning'&&s.board[at]&&card(s.board[at].card).slug==='rubble'&&!s.board[at].completionProtected)(s.board[at].effects||(s.board[at].effects=[])).push({flood:true,stamp:s.next++});}
-  if(step.op==='completionDrowning'){queueEffects(s,[{op:'completionFateSubmerge'}],aura,p);A.removeObject(s,aura,'cemetery');}
-  else {for(const u of [...s.units])if(occupied(u).some(at=>inside(aura,at)))A.kill(s,u);for(const o of [...s.artifacts])if(inside(aura,o.at))A.removeObject(s,o,'cemetery');for(const o of [...s.auras])if(o.uid===aura.uid||Array.from({length:20},(_,at)=>at).some(at=>inside(aura,at)&&inside(o,at)))A.removeObject(s,o,'cemetery');}
+  if(step.op==='completionDrowning'){queueEffects(s,[{op:'completionFateSubmerge',includeAuras:true}],aura,p);A.removeObject(s,aura,'cemetery');}
+  else {for(const u of [...s.units])if(catalogAuraHere(aura,u,inside))A.kill(s,u);for(const o of [...s.artifacts])if(catalogAuraHere(aura,o,inside))A.removeObject(s,o,'cemetery');for(const o of [...s.auras])if(o.uid===aura.uid||catalogAuraHere(aura,catalogAuraPhysicalShape(o,inside),inside))A.removeObject(s,o,'cemetery');}
   return true;
  }
  if(step.op==='completionLeadworks'){const site=s.board[source.at];(s.ongoingEffects||(s.ongoingEffects=[])).push({op:step.op,completionTerrain:true,at:source.at,siteUid:site?.uid,until:p,stamp:s.next++});return true;}
  if(step.op==='completionCourts'){(s.ongoingEffects||(s.ongoingEffects=[])).push({op:step.op,completionTerrain:true,exclude:s.board[source.at]?.uid,until:p,stamp:s.next++});return true;}
  if(step.op==='completionSinterfee'){const site=s.board[selected.at];if(site)(s.ongoingEffects||(s.ongoingEffects=[])).push({op:step.op,completionTerrain:true,siteUid:site.uid,source:source.uid,stamp:s.next++});return true;}
- if(step.op==='completionFateSubmerge'){
-  for(const u of s.units)if(!u.dying&&card(u.card).type==='Minion'&&(u.layer||'surface')==='surface'&&occupied(u).some(at=>inside(source,at))&&fiftyForceAllowed(s,u,p,A)&&occupied(u).every(at=>canEnterOnGround(s,u,{at,layer:'surface'},{at,layer:'below'},card,keywords))){u.layer='below';u.notRest=true;u.burrowedSafely=false;}
-  for(const o of s.artifacts)if(!o.bearer&&(o.layer||'surface')==='surface'&&inside(source,o.at))o.layer='below';return true;
- }
+ if(step.op==='completionFateSubmerge')return resolveCatalogAuraSubmerge(s,frame,A);
  return false;
 }
 

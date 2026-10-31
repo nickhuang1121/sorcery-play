@@ -1,0 +1,26 @@
+{
+  "change": "Only official Beta preconstructed decks are offered as system presets",
+  "officialDecks": [
+    "Air / Sparkmage",
+    "Earth / Geomancer",
+    "Fire / Flamecaller",
+    "Water / Waveshaper"
+  ],
+  "browserChecks": {
+    "setupPlayerOptions": 4,
+    "setupOpponentOptions": 4,
+    "editorPresetOptions": 4,
+    "viewportReset": true,
+    "matchStartedOrOverwritten": false
+  },
+  "validation": {
+    "command": "node --test tests/match-setup.test.js tests/played-mobile-match.test.js tests/remaining-rules.test.js",
+    "passed": 71,
+    "failed": 0
+  },
+  "archivedReplayDecks": "tests/fixtures/played-mobile-decks.json",
+  "sourceHashes": {
+    "src/app.js": "ba12a9ec7342015b0022620a5269dc2a9208d30404f505197b93ed929d92164d",
+    "src/cards.js": "5aa1d0bced0ab44faa7a7761a2c7d9b237e20ee4a65d991073bebdd20b455837"
+  }
+}

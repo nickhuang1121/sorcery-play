@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {install} from '../src/cards.js';
+import {dispatch,restoreGame} from '../src/engine.js';
+import {checksumState} from '../src/net/state-checksum.js';
+install(JSON.parse(fs.readFileSync(new URL('../data/official-cards.json',import.meta.url))));
+const record=JSON.parse(fs.readFileSync(new URL('../data/online-dual-browser-played-match.json',import.meta.url)));
+test('actual independent-browser match: all 119 UI commands replay to exact turn 19 natural victory',()=>{assert.equal(record.actionCount,119);assert.ok(record.serverRestartedMidMatch&&record.bothBrowsersReloadedMidMatch);assert.ok(!record.history.some(a=>a.type==='concede'));let state=restoreGame(record.initialState);for(const a of record.history)state=dispatch(state,a);assert.deepEqual(JSON.parse(JSON.stringify(state)),record.state);assert.equal(state.turn,19);assert.equal(state.winner,0);assert.deepEqual(state.players.map(p=>p.life),[14,0]);assert.equal(checksumState(state),checksumState(record.state));});
+test('actual independent-browser match exercises drag destination, layers, ranged, artifacts, activated sites and cross-seat defense',()=>{const types=new Set(record.history.map(a=>a.type));for(const type of ['mulligan','draw','site','cast','choose','move','ranged','pushBoulder','pickup','activate','activateSite','attack','defend','pass'])assert.ok(types.has(type),type);assert.ok(record.history.some(a=>a.type==='site'&&a.hand===record.draggedSite.hand&&a.at===record.draggedSite.at));const defenders=record.history.filter(a=>a.type==='defend');assert.equal(defenders.length,2);assert.ok(defenders.every(a=>a.actor===1&&a.player===1));assert.ok(record.history.filter(a=>a.type==='attack').every(a=>a.actor===a.player));const raw=JSON.stringify(record);for(const field of ['tokenHash','receipts','members','Authorization'])assert.ok(!raw.includes('"'+field+'"'),field);});

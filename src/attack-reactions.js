@@ -1,20 +1,27 @@
+import {combatViews,combatHas,combatSteps,combatTriggers} from './final-borrowed-combat.js';
+import {orbTargetStillPresent} from './final-orb.js';
+import {queueDodgeReaction} from './final-reactions.js';
+import {geometryLocationRecords,occupiesGeometryLocation} from './final-geometry.js';
 // Batch 82: declare reactions, after-attack continuations, and casting reactions.
 const layer=u=>u.layer||'surface';
 const pos=at=>String.fromCharCode(65+at%5)+(4-Math.floor(at/5));
-const here=(s,a,b,A)=>A.region(s,a)===A.region(s,b)&&A.occupied(a).some(at=>A.occupied(b).includes(at));
+const here=(s,a,b,A)=>geometryLocationRecords(a).some(loc=>occupiesGeometryLocation(b,loc.at,loc.layer));
 const live=(s,uid,A)=>{const u=A.unit(s,uid);return u&&!u.dying?u:null;};
 export const attackReactionOperations=['reactionWisp','reactionHero','reactionOpenAttack','reactionBladeStep','reactionBladeAttack','reactionSturm','reactionSturmStrike','reactionMagicResolve','reactionPeace'];
 export function queueAttackReactions(s,u,pending,judas,A){
  A.queueEffects(s,[{op:'reactionOpenAttack',pending,judas}],u,u.controller);
- const target=live(s,pending.target,A);if(!target)return;
+ queueDodgeReaction(s,u,pending,A);
  const reactions=[];
- if(!target.silenced&&!A.disabled(target)&&A.passives[A.card(target.card).slug]?.evadeTeleport)reactions.push({u:target,step:{op:'reactionWisp'}});
- for(const hero of s.units)if(!hero.dying&&!hero.silenced&&!A.disabled(hero)&&hero.controller===target.controller&&A.passives[A.card(hero.card).slug]?.rescueWeakerAttacked&&A.power(target)<A.power(hero)&&here(s,hero,target,A))reactions.push({u:hero,step:{op:'reactionHero',target:target.uid,optional:true}});
+ for(const uid of pending.targets||[pending.target]){
+  const target=live(s,uid,A);if(!target)continue;
+  for(const layer of combatViews(s,target,A,'evadeTeleport'))reactions.push({u:layer.source,step:combatSteps(layer,[{op:'reactionWisp'}])[0]});
+  for(const hero of s.units)if(A.card(target.card).type==='Minion'&&!hero.dying&&hero.controller===target.controller&&Math.floor((A.power(target)+A.power(target,true))/2)<Math.floor((A.power(hero)+A.power(hero,true))/2)&&here(s,hero,target,A))for(const layer of combatViews(s,hero,A,'rescueWeakerAttacked'))reactions.push({u:layer.source,step:combatSteps(layer,[{op:'reactionHero',target:target.uid,optional:true}])[0]});
+ }
  for(const r of reactions.reverse())A.queueEffects(s,[r.step],r.u,r.u.controller,r.u.card);
 }
 export function queueSturmReactions(s,caster,A){
  if(!['Avatar','Minion'].includes(A.card(caster.card).type))return;
- for(const u of [...s.units].reverse())if(!u.dying&&!u.silenced&&!A.disabled(u)&&u.controller!==caster.controller&&A.passives[A.card(u.card).slug]?.chaseMagicCaster)A.queueEffects(s,[{op:'reactionSturm',target:caster.uid}],u,u.controller,u.card);
+ for(const u of [...s.units].reverse())if(!u.dying&&u.controller!==caster.controller)for(const trigger of combatTriggers(s,u,'chaseMagicCaster',A,()=>[{op:'reactionSturm',target:caster.uid}]))A.queueEffects(s,trigger.steps,trigger.source,u.controller,u.card);
 }
 export function peaceAllowsAttack(s,p,q){return !(s.ongoingEffects||[]).some(e=>e.op==='peaceTruce'&&e.player===p&&e.protected===q&&e.usedTurn===s.turn);}
 export function advanceTruces(s){s.ongoingEffects=(s.ongoingEffects||[]).filter(e=>!(e.op==='peaceTruce'&&e.usedTurn!==undefined&&e.usedTurn<s.turn));for(const e of s.ongoingEffects)if(e.op==='peaceTruce'&&e.player===s.active&&e.after<s.turn&&e.usedTurn===undefined)e.usedTurn=s.turn;}
@@ -35,7 +42,7 @@ export function resolveAttackReaction(s,frame,A){
  const choice=(options,title)=>{s.choice={player:p,title,options:[...options,{label:'略過',value:null}],frame};};
  if(step.op==='reactionWisp'){
   const u=live(s,source.uid,A);if(!u)return true;
-  const keys=A.keywords(u),options=A.selectEffects(s,{source:u,controller:p},{kind:'location',nearby:true,other:true}).filter(o=>o.value.layer==='surface'?s.board[o.value.at]||keys.includes('Voidwalk'):keys.includes(A.waterSite(s,o.value.at,A.card)?'Submerge':'Burrowing')).filter(o=>A.occupied({...u,at:o.value.at}).every((at,i)=>A.canEnterOnGround(s,u,{at:A.occupied(u)[i],layer:layer(u)},{at,layer:o.value.layer},A.card,A.keywords,true)));
+  const keys=A.keywords(u),options=A.selectEffects(s,{source:{...u,abilityOrigin:source.abilityOrigin},controller:p,effectCard:frame.effectCard},{kind:'location',nearby:true,other:true}).filter(o=>o.value.layer==='surface'?s.board[o.value.at]||keys.includes('Voidwalk'):keys.includes(A.waterSite(s,o.value.at,A.card)?'Submerge':'Burrowing')).filter(o=>A.occupied({...u,at:o.value.at}).every((at,i)=>A.canEnterOnGround(s,u,{at:A.occupied(u)[i],layer:layer(u)},{at,layer:o.value.layer},A.card,A.keywords,true)));
   if(selected===undefined){choice(options,'Wills-o’-the-Wisp · 傳送閃避');return true;}
   if(options.some(o=>o.value.at===selected?.at&&o.value.layer===selected.layer)){u.carryTeleport=true;u.notRest=true;u.at=selected.at;u.layer=selected.layer;u.burrowedSafely=false;}return true;
  }
@@ -58,8 +65,9 @@ export function resolveAttackReaction(s,frame,A){
   const to=options.find(v=>v.to.at===selected?.at&&v.to.layer===selected.layer)?.to;if(to){u.at=to.at;u.layer=to.layer;u.gateVoidwalk=to.gateVoidwalk;u.notRest=true;}
   queue([{op:'reactionSturmStrike',target:step.target}],u,p,u.card);return true;
  }
- if(step.op==='reactionSturmStrike'){const u=live(s,source.uid,A),target=live(s,step.target,A);if(u&&target&&!A.disabled(u)&&A.region(s,u)===A.region(s,target)&&A.occupied(u).some(at=>A.occupied(target).some(cell=>A.distance(at,cell)<=1)))A.strike(s,u,target);return true;}
+ if(step.op==='reactionSturmStrike'){const u=live(s,source.uid,A),target=live(s,step.target,A);if(u&&target&&!A.disabled(u)&&A.regionsOverlap(s,u,target)&&A.occupied(u).some(at=>A.occupied(target).some(cell=>A.distance(at,cell)<=1)))A.strike(s,u,target);return true;}
  if(step.op==='reactionMagicResolve'){
+  if(!orbTargetStillPresent(s,step.declared))return true;
   const caster=A.unit(s,source.uid)||s.artifacts.find(o=>o.uid===source.uid),site=source.uid?.startsWith('site:')?(step.siteUid?s.board.find(o=>o?.uid===step.siteUid):s.board[source.at]):null;
   if(!caster&&!site||caster?.dying){A.log(s,A.card(frame.effectCard).name+'：施法者已離開領域，法術不結算。');return true;}
   queue(step.effects);if(step.effects.length&&step.declared!==undefined)s.storyline[s.storyline.length-1].selected=step.declared;return true;

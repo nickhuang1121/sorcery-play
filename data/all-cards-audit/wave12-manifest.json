@@ -1,0 +1,77 @@
+{
+  "checkedAt": "2026-10-30T22:33:19.693610+00:00",
+  "newlyReviewed": 19,
+  "batches": [
+    {
+      "categoryFile": "data/all-cards-audit/minions.json",
+      "slugs": [
+        "haast_eagle",
+        "harassing_ruffians",
+        "hauntless_head",
+        "headless_haunt",
+        "hearkening_kraken",
+        "hellhounds"
+      ],
+      "test": "tests/catalog-minions-wave12.test.js",
+      "doc": "docs/AUDIT_MINIONS_WAVE12.md"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/magics.json",
+      "slugs": [
+        "grasping_ground",
+        "grievous_insult",
+        "guards",
+        "harpyon_urge",
+        "harvest_festival",
+        "heat_ray"
+      ],
+      "test": "tests/catalog-magics-wave9.test.js",
+      "doc": "docs/AUDIT_MAGICS_WAVE9.md"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/artifacts.json",
+      "slugs": [
+        "the_rack",
+        "the_round_table",
+        "thumb_screws",
+        "tombstone_wardens",
+        "toolbox",
+        "torch_and_pitchfork"
+      ],
+      "test": "tests/catalog-artifacts-wave12.test.js",
+      "doc": "docs/AUDIT_ARTIFACTS_WAVE12.md"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/sites.json",
+      "slugs": [
+        "dwarven_forge",
+        "edge_of_the_world",
+        "elder_ruins",
+        "endless_fence",
+        "ersatz_platz",
+        "fae_city"
+      ],
+      "test": "tests/catalog-sites-native-wave3.test.js",
+      "doc": "docs/AUDIT_SITES_NATIVE_WAVE3.md"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/magics.json",
+      "slugs": [
+        "release_the_hounds"
+      ],
+      "test": "tests/catalog-minions-wave12.test.js",
+      "doc": "docs/AUDIT_MINIONS_WAVE12.md"
+    }
+  ],
+  "fullValidation": {
+    "checkedAt": "2026-10-30T22:28:35.810Z",
+    "command": "node --test --test-reporter=tap tests/*.test.js",
+    "exitCode": 0,
+    "tests": 2627,
+    "passed": 2627,
+    "failed": 0,
+    "skipped": 0,
+    "resultFile": "data/all-cards-audit/logs/wave12-full-2627.tap"
+  },
+  "scope": "24 card batch plus actual ReleaseHounds provenance audit.19 previously unreviewed; six Sites were existing code review. Representative native cases, not full-card approvals."
+}

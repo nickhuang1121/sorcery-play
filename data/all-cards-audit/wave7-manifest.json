@@ -1,0 +1,58 @@
+{
+  "checkedAt": "2026-10-30T20:51:35.604280+00:00",
+  "newlyReviewed": 24,
+  "batches": [
+    {
+      "categoryFile": "data/all-cards-audit/minions.json",
+      "slugs": [
+        "frog",
+        "frontier_settlers",
+        "frozen_horror",
+        "gargantula",
+        "ghost_ship",
+        "ghoul"
+      ],
+      "test": "tests/catalog-minions-wave7.test.js",
+      "doc": "docs/AUDIT_MINIONS_WAVE7.md"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/minions.json",
+      "slugs": [
+        "wraetannis_titan",
+        "wyvern",
+        "xeraphine_konrul",
+        "yellow_knight",
+        "yog_sothoth",
+        "yokai_kappas"
+      ],
+      "test": "tests/catalog-minions-tail2.test.js",
+      "doc": "docs/AUDIT_MINIONS_TAIL2.md"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/magics.json",
+      "slugs": [
+        "duel",
+        "earthquake",
+        "enduring_faith",
+        "exhume",
+        "exorcism",
+        "extinguish"
+      ],
+      "test": "tests/catalog-magics-wave4.test.js",
+      "doc": "docs/AUDIT_MAGICS_WAVE4.md"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/artifacts.json",
+      "slugs": [
+        "payload_trebuchet",
+        "peacemaker_arbalest",
+        "pendragon_banner",
+        "pendulum_of_peril",
+        "philosophers_stone",
+        "pile_of_skulls"
+      ],
+      "test": "tests/catalog-artifacts-wave7.test.js",
+      "doc": "docs/AUDIT_ARTIFACTS_WAVE7.md"
+    }
+  ]
+}

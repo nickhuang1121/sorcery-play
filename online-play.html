@@ -1,83 +1,9 @@
 <!doctype html>
-<html lang="zh-Hant">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Sorcery · 線上 lockstep</title>
-  <link rel="stylesheet" href="./styles/game.css">
-  <style>
-    .op{max-width:960px;margin:24px auto;padding:0 16px 48px}
-    .op pre{white-space:pre-wrap;background:#0e1416;border:1px solid #2a3336;border-radius:8px;padding:12px;font:12px/1.45 ui-monospace,monospace}
-    .op #actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-    .op #actions button{text-align:left;max-width:100%}
-    .op .hint{color:var(--muted);font:13px/1.5 sans-serif}
-    .op .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
-    .op .board{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:12px 0}
-    .op .cell{min-height:72px;background:#0a1012;border:1px solid #2a3336;border-radius:8px;padding:6px;font:11px/1.35 sans-serif}
-    .op .cell .at{color:#8a8070;font-size:10px}
-    .op .cell .site{color:#c6b48a}
-    .op .u0{color:#8dcf8a}.op .u1{color:#e0a090}
-    .op .banner{padding:12px 14px;border-radius:10px;margin:12px 0;font:13px/1.5 sans-serif}
-    .op .banner.err{background:#4a1c1c;border:1px solid #a05050;color:#f0c0c0}
-    .op .banner.ok{background:#1c2a1c;border:1px solid #3a5a3a;color:#c8e0c8}
-    .op .hands{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .op .panel{background:#0e1416;border:1px solid #2a3336;border-radius:10px;padding:12px}
-    .op input[type=text]{background:#070b0c;color:#e8e4d9;border:1px solid #3a4448;border-radius:8px;padding:10px 12px;min-height:42px}
-    @media(max-width:640px){.op .hands{grid-template-columns:1fr}}
-  </style>
-</head>
-<body>
-<header class="masthead">
-  <a class="brand" href="./index.html"><span class="brand-mark">S</span><span>SORCERY<small>LOCKSTEP</small></span></a>
-  <nav>
-    <a href="./lobby.html" style="color:inherit;text-decoration:none;padding:8px 10px">← 大廳</a>
-  </nav>
-  <div class="header-end"><span class="offline" id="build-badge">build …</span></div>
-</header>
-<main class="op">
-  <div id="boot-error" class="banner err" hidden></div>
-  <div id="resume-panel" class="panel" hidden>
-    <h2 style="margin-top:0">重連／進入對局</h2>
-    <p class="hint">沒有大廳交接時，可輸入房號與席位，從 Firebase 重放 action log。</p>
-    <div class="row">
-      <input type="text" id="resume-room" placeholder="房號" maxlength="8" aria-label="房號">
-      <select id="resume-seat" aria-label="席位">
-        <option value="0">席 0 房主</option>
-        <option value="1">席 1 客</option>
-      </select>
-      <button type="button" id="btn-resume" class="primary">重連並重放</button>
-    </div>
-  </div>
-
-  <div class="eyebrow">ONLINE LOCKSTEP</div>
-  <h1>房間 <span id="room">—</span> · 席 <span id="seat">—</span></h1>
-  <div class="row">
-    <button type="button" id="btn-copy-room">複製房號</button>
-    <button type="button" id="btn-copy-link">複製進房連結</button>
-    <span class="hint" id="peer-hint">對手：—</span>
-  </div>
-  <p class="hint" id="turn-hint">啟動中…</p>
-  <div id="sync-banner" class="banner ok" hidden>sync ok</div>
-
-  <div class="hands">
-    <div class="panel">
-      <strong>狀態</strong>
-      <pre id="meta" style="margin:8px 0 0">載入中…</pre>
-    </div>
-    <div class="panel">
-      <strong>手牌（僅自己可見詳情）</strong>
-      <pre id="hands" style="margin:8px 0 0">—</pre>
-    </div>
-  </div>
-
-  <h2>戰場 5×4</h2>
-  <div class="board" id="board" aria-label="戰場"></div>
-
-  <h2>合法動作</h2>
-  <div id="actions"></div>
-  <h2>紀錄</h2>
-  <pre id="log"></pre>
-</main>
-<script type="module" src="./src/online-play.js"></script>
-</body>
-</html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#070b0c"><title>Sorcery · Contested Realm</title><link rel="stylesheet" href="./styles/animate.min.css"><link rel="stylesheet" href="./styles/game.css?v=20261031-mobile-conduit"><link rel="stylesheet" href="./styles/popup.css?v=20261031-unified"></head>
+<body class="in-battle">
+<header class="masthead"><a class="brand" href="./index.html"><span class="brand-mark">S</span><span>SORCERY<small>CONTESTED REALM</small></span></a><nav aria-label="主要導覽"><button data-view="play" class="active">對戰領域</button><button data-view="library">卡牌圖書館</button><button data-view="decks">我的牌組</button></nav><div class="header-end"><span class="offline">● 線上對戰</span><button type="button" data-ui-settings-open aria-haspopup="dialog">選單</button><button id="help" aria-label="操作說明">?</button></div></header>
+<main id="app"><p class="loading">正在展開領域，讀取本機卡牌資料…</p></main>
+<dialog id="modal" class="popup"><button id="close-modal" class="close" aria-label="關閉">×</button><div id="modal-body" class="popup-body"></div><div class="popup-footer"><button type="button" id="popup-close">關閉</button></div></dialog>
+<div id="toast" role="status" aria-live="polite"></div><div id="drag-ghost" aria-hidden="true"></div>
+<footer class="site-footer"><span>非官方社群開發專案 · Sorcery © Erik’s Curiosa Limited</span><span><a href="./tests/index.html" target="_blank" rel="noopener">規則測試 ↗</a> <a href="./docs/PROJECT_PROGRESS.md" target="_blank" rel="noopener">實作進度 ↗</a></span></footer>
+<script type="module" src="./src/app.js"></script><script type="module" src="./src/ui-language-bootstrap.js"></script></body></html>

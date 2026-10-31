@@ -1,0 +1,12 @@
+{
+  "updatedAt": "2026-10-30T23:08:56.358436+00:00",
+  "authorization": "User explicitly replaced physical blow with uniform random one of all20 squares.",
+  "firstFullResult": "2678 tests,2677pass,1fail,0skip; stable source. One remaining legacy manual-choice expectation, not damage mismatch.",
+  "preservedOriginals": [
+    "data/all-cards-audit/logs/final-effects-before-user-digital-twister.test.js",
+    "data/all-cards-audit/logs/catalog-magics-wave3-before-user-digital-twister.test.js"
+  ],
+  "update": "Updated ten obsolete physical input expectations to authorized digital inputs, no cases removed or skipped. Wave3 preserves exact split power 3/2 => damage2, surface2/below0, victim death, spent4; adds complete0..19 result set, coldJSON and savedlanding13.",
+  "targetedResult": "Wave3 81/81 passed,0skip,exit0.",
+  "rawFull": "data/all-cards-audit/logs/seven-digital-first-full-2678-one-obsolete-expectation.tap"
+}

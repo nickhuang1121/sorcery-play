@@ -1,0 +1,45 @@
+{
+  "fullRegression": {
+    "startedAt": "2026-10-31T08:08:17.107Z",
+    "checkedAt": "2026-10-31T08:11:06.625Z",
+    "command": "node --test --test-reporter=tap tests/*.test.js",
+    "exitCode": 0,
+    "signal": null,
+    "tests": 2793,
+    "passed": 2793,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "sourceBefore": "c181da0220c0c75d9206264feb4f71666f599afa9dd7a111f2fdf4e23cf93bc3",
+    "sourceAfter": "c181da0220c0c75d9206264feb4f71666f599afa9dd7a111f2fdf4e23cf93bc3",
+    "sourceUnchanged": true,
+    "resultFile": "/tmp/sorcery-full-regression-IAT2gZ/results.tap",
+    "stderrFile": "/tmp/sorcery-full-regression-IAT2gZ/stderr.log"
+  },
+  "actualMatch": {
+    "record": "data/online-dual-browser-played-match.json",
+    "browsers": [
+      "ChatGPT in-app browser (390 × 844)",
+      "Google Chrome (independent storage)"
+    ],
+    "actions": 119,
+    "turn": 19,
+    "winner": 0,
+    "life": [
+      14,
+      0
+    ],
+    "serverRestarted": true,
+    "bothBrowsersReloaded": true,
+    "actualPhoneDragDestination": "B2"
+  },
+  "finalBuild": "authority-20261031-online-v1",
+  "additionalBrowserChecks": [
+    "public revision choice tokens: two consecutive choices accepted",
+    "personal concession while waiting for opponent",
+    "119-action authenticated replay exported",
+    "English phone UI: no visible button leakage or horizontal overflow; revision unchanged at 120",
+    "Live Server 5500 connected to authority 8787"
+  ],
+  "externalDeployment": false
+}

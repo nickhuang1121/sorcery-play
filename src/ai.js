@@ -1,5 +1,5 @@
 ﻿import { card, elements } from './cards.js';
-import { distance, nearby, region, avatar, power, unit, resources, spellcaster, castingCard, effectOptions, dispatch, legalActions, keywords } from './engine.js';
+import { distance, nearby, region, avatar, power, unit, resources, spellcaster, castingCard, effectOptions, dispatch, legalActions, keywords, unitTypes } from './engine.js';
 import { definitions } from './definitions.js';
 
 export const AI_DIFFICULTIES = ['easy', 'medium', 'strong'];
@@ -390,7 +390,7 @@ function heuristicScore(view, a, p) {
   }
   if (a.type === 'cast') {
     const c = castingCard(view, a);
-    const caster = spellcaster(view, a.caster, a.casterLayer);
+    const caster = spellcaster(view,a.caster,a.casterLayer,a.casterLocation);
     const steps = definitions[c.slug]?.cast;
     if (c.type === 'Magic' && steps?.length) {
       if (c.slug === 'chain_lightning') {
@@ -410,11 +410,11 @@ function heuristicScore(view, a, p) {
     if (['flight', 'invigorate', 'necropotence'].includes(c.handler)) return t && !t.tapped ? 45 : -20;
     if (c.handler === 'vanishment') return view.units.some(u => u.controller === p && card(u.card).type === 'Minion' && !u.stealth) ? 55 : -10;
     if (c.handler === 'lifewish') return view.players[p].life < view.players[1 - p].life - 5 && view.players[p].doorTurn === null ? 55 : -30;
-    if (c.handler === 'mortality' || c.handler === 'exorcism') return 20 + view.units.filter(u => u.at === a.target && card(u.card).subtypes.some(t => (c.handler === 'mortality' ? ['Mortal'] : ['Demon', 'Undead']).includes(t))).reduce((n, u) => n + (u.controller === p ? -25 : 25), 0);
+    if (c.handler === 'mortality' || c.handler === 'exorcism') return 20 + view.units.filter(u => u.at === a.target && unitTypes(u,view).some(t => (c.handler === 'mortality' ? ['Mortal'] : ['Demon', 'Undead']).includes(t))).reduce((n, u) => n + (u.controller === p ? -25 : 25), 0);
     if (c.handler === 'lightning' || c.handler === 'explosion') return 20 + view.units.filter(u => u.at === a.target).reduce((n, u) => n + (u.controller === p ? -25 : 25), 0);
     if (['power2', 'power6', 'wolf', 'serpent', 'charge'].includes(c.handler)) return t && !t.tapped && distance(t.at, opponent.at) <= 2 ? 48 : -40;
     if (c.handler === 'teleport') return 25 + distance(unit(view, a.target.unit).at, opponent.at) * 2 - distance(a.target.at, opponent.at) * 4;
-    if (c.handler === 'mortals') return view.units.reduce((n, u) => n + (card(u.card).subtypes.includes('Mortal') ? (u.controller === p ? -12 : 12) : 0), 10);
+    if (c.handler === 'mortals') return view.units.reduce((n, u) => n + (unitTypes(u,view).includes('Mortal') ? (u.controller === p ? -12 : 12) : 0), 10);
     if (c.handler === 'rain') return view.units.reduce((n, u) => n + (card(u.card).type === 'Minion' ? (u.controller === p ? -4 : 4) : 0), 10);
     return 35;
   }
@@ -597,7 +597,7 @@ function search(root, view, actions, p, { width, budgetMs, oppPlies }) {
  * Without root, falls back to heuristic (preserves existing tests / Codex card FN work).
  */
 export function chooseAction(view, actions, p, opts = {}) {
-  if (!actions.length) return null;
+  if (!actions.length || view.choice?.manual) return null;
   const difficulty = normalizeDifficulty(opts.difficulty ?? view.aiDifficulty);
   const mull = actions.find(a => a.type === 'mulligan');
   const pool = mull && view.phase === 'mulligan'

@@ -1,0 +1,4246 @@
+{
+  "category": "Aura",
+  "sourceVersion": "Official Rulebook October 2026 (38 pages, modified 2026-10-12T20:32:30Z); per-card Codex/FAQ IDs and actual-text review recorded below",
+  "cards": [
+    {
+      "id": "cmt85wzur0000nwcyylmcamal",
+      "slug": "abundance",
+      "name": "Abundance",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt85wzur0000nwcyylmcamal",
+          "slug": "abundance",
+          "rules": "Each affected site provides one additional mana.",
+          "cost": 5,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 0,
+            "water": 2
+          },
+          "url": "https://sorcerytcg.com/cards/abundance"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/objects.js",
+            "src/engine.js"
+          ],
+          "assessment": "resources / mana:1; immediate mana for both controllers, Sow multiplier; inactive source needs boundary",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "official-faq",
+          "id": "eXfZjLHocReFQIApZdI8SK",
+          "updatedAt": "2025-02-20T23:04:25Z",
+          "url": "https://sorcerytcg.com/cards/abundance",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "ygoDG8fb7HS97qCW69hZIE",
+          "updatedAt": "2026-10-12T17:44:16Z",
+          "url": "https://sorcerytcg.com/cards/abundance",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "ygoDG8fb7HS97qCW69oYBU",
+          "updatedAt": "2025-02-20T23:04:25Z",
+          "url": "https://sorcerytcg.com/cards/abundance",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] abundance: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "cross-module-regression",
+          "command": "node --test tests/catalog-auras.test.js tests/final-animation.test.js tests/cannot-disable-boundaries.test.js tests/final-malleus.test.js tests/final-passives.test.js tests/cemetery-access.test.js tests/final-geometry.test.js tests/final-waves.test.js tests/final-flood.test.js",
+          "log": "/tmp/catalog-auras-affected-cross.log",
+          "result": "340 passed, 0 failed",
+          "scope": "Shared Aura hook regressions; not a claim that every other card effect was audited."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "status": "fixed-dispatch-regression-passed",
+          "description": "resources currently applies mana without source silenced/disabled check; needs real inactive-source regression.",
+          "fix": "src/catalog-auras.js and shared engine active/here/affectedSite hooks",
+          "log": "/tmp/catalog-auras-fixed-shadow.log"
+        }
+      ],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt867yom05g7nwcydadju0tl",
+      "slug": "acid_rain",
+      "name": "Acid Rain",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt867yom05g7nwcydadju0tl",
+          "slug": "acid_rain",
+          "rules": "Silence affected sites and artifacts there.",
+          "cost": 3,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 0,
+            "water": 1
+          },
+          "url": "https://sorcerytcg.com/cards/acid_rain"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/completion-cards.js"
+          ],
+          "assessment": "refreshCompletion chronology silences covered Sites and artifacts; runtime base-card restore; source suppression and below Artifact boundary",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] acid_rain: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "faq-review",
+          "matchingCount": 0,
+          "source": "official public SSR FAQ cache",
+          "assessment": "No matching card FAQ in this snapshot; not a claim that no other ruling can exist."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt8672io05apnwcy6gaods36",
+      "slug": "a_midsummer_nights_dream",
+      "name": "A Midsummer Night's Dream",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt8672io05apnwcy6gaods36",
+          "slug": "a_midsummer_nights_dream",
+          "rules": "Mortals here are disabled and each give +1 power to all Faeries here. Dispel if there are no Faeries here.",
+          "cost": 3,
+          "threshold": {
+            "air": 2,
+            "earth": 0,
+            "fire": 0,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/a_midsummer_nights_dream"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/completion-cards.js",
+            "src/engine.js"
+          ],
+          "assessment": "completionMidsummer disables Mortals and counts Faeries; here must match actual Aura locations, not subsurface; no-Faerie dispel",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] a_midsummer_nights_dream: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "cross-module-regression",
+          "command": "node --test tests/catalog-auras.test.js tests/final-animation.test.js tests/cannot-disable-boundaries.test.js tests/final-malleus.test.js tests/final-passives.test.js tests/cemetery-access.test.js tests/final-geometry.test.js tests/final-waves.test.js tests/final-flood.test.js",
+          "log": "/tmp/catalog-auras-affected-cross.log",
+          "result": "340 passed, 0 failed",
+          "scope": "Shared Aura hook regressions; not a claim that every other card effect was audited."
+        },
+        {
+          "kind": "faq-review",
+          "matchingCount": 0,
+          "source": "official public SSR FAQ cache",
+          "assessment": "No matching card FAQ in this snapshot; not a claim that no other ruling can exist."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "status": "fixed-dispatch-regression-passed",
+          "description": "Here predicates use occupied cell membership without source/target layer overlap; below Mortals/Faeries may incorrectly count.",
+          "fix": "src/catalog-auras.js and shared engine active/here/affectedSite hooks",
+          "log": "/tmp/catalog-auras-fixed-shadow.log"
+        }
+      ],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt860pj5022jnwcyw1gn0m1e",
+      "slug": "atlantean_fate",
+      "name": "Atlantean Fate",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt860pj5022jnwcyw1gn0m1e",
+          "slug": "atlantean_fate",
+          "rules": "Affected non-Ordinary sites are flooded. They are water sites, only provide Water threshold, and lose all other abilities.\r\n\r\nGenesis → Submerge all minions and artifacts atop affected sites.",
+          "cost": 5,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 0,
+            "water": 2
+          },
+          "url": "https://sorcerytcg.com/cards/atlantean_fate"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/completion-cards.js",
+            "src/geography.js"
+          ],
+          "assessment": "completionFate rarity-filtered water/silence/threshold; Genesis includes Ordinary Sites; force-Submerge and Vindictive single modification",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "official-faq",
+          "id": "ygoDG8fb7HS97qCW69rpTR",
+          "updatedAt": "2026-07-12T19:26:51Z",
+          "url": "https://sorcerytcg.com/cards/atlantean_fate",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "FWsVZ4rxgHCtjTP73mTuaK",
+          "updatedAt": "2025-02-20T23:04:25Z",
+          "url": "https://sorcerytcg.com/cards/atlantean_fate",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "771cae50-07a1-4ac9-abd4-b0efeb048d4b",
+          "updatedAt": "2026-10-12T17:44:23Z",
+          "url": "https://sorcerytcg.com/cards/atlantean_fate",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] atlantean_fate: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "status": "fixed-named-native-regression-passed",
+          "description": "Ordinary land Minion is incorrectly moved Below by Genesis; Submerge needs water, not only generic below-entry legality.",
+          "log": "/tmp/catalog-auras-third-confirmed.log",
+          "tests": "/tmp/catalog-auras-shadow.test.mjs",
+          "candidatePatch": "/tmp/catalog-auras-completion.patch",
+          "acceptedLog": "data/all-cards-audit/logs/auras-production-169.log"
+        }
+      ],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt85ydbk00rinwcy4cm1oruo",
+      "slug": "blizzard",
+      "name": "Blizzard",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt85ydbk00rinwcy4cm1oruo",
+          "slug": "blizzard",
+          "rules": "Affected sites and units atop them can't be attacked or intercepted.\r\n\r\nAt the start of your turn, dispel Blizzard.",
+          "cost": 1,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 0,
+            "water": 1
+          },
+          "url": "https://sorcerytcg.com/cards/blizzard"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/card-batches.js",
+            "src/engine.js"
+          ],
+          "assessment": "noAttacks Site/unit and intercept; own-start dispel; active source and layer boundaries need validation",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "official-faq",
+          "id": "ygoDG8fb7HS97qCW69kZ5V",
+          "updatedAt": "2026-06-07T22:16:16Z",
+          "url": "https://sorcerytcg.com/cards/blizzard",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] blizzard: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "status": "fixed-named-native-regression-passed",
+          "description": "Site/unit attack and interception protection reads noAttacks without active-source guard; inactive source may still protect.",
+          "acceptedLog": "data/all-cards-audit/logs/auras-production-169.log"
+        }
+      ],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt8652em046dnwcyj0ld1fc2",
+      "slug": "castles_ablaze",
+      "name": "Castle's Ablaze!",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt8652em046dnwcyj0ld1fc2",
+          "slug": "castles_ablaze",
+          "rules": "Conjure atop an Elite or Unique site.\r\n\r\nAt the start of your turn, destroy this site, minions atop it, and Castle's Ablaze.",
+          "cost": 3,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 2,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/castles_ablaze"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/fifty-cards.js",
+            "src/engine.js"
+          ],
+          "assessment": "singleSite Elite/Unique placement and start fiftyAblaze; surface Minions only; source Ward and cancellation boundaries",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] castles_ablaze: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "faq-review",
+          "matchingCount": 0,
+          "source": "official public SSR FAQ cache",
+          "assessment": "No matching card FAQ in this snapshot; not a claim that no other ruling can exist."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt860nz6021onwcyy9k1f5na",
+      "slug": "crusade",
+      "name": "Crusade",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt860nz6021onwcyy9k1f5na",
+          "slug": "crusade",
+          "rules": "You may summon earth minions to affected sites.\r\n\r\nAllied earth minions occupying affected sites have +1 power.",
+          "cost": 2,
+          "threshold": {
+            "air": 0,
+            "earth": 2,
+            "fire": 0,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/crusade"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/objects.js",
+            "src/engine.js"
+          ],
+          "assessment": "earth summon permission plus allied Earth +1 power at affected Sites; normal cost/threshold still required",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "official-faq",
+          "id": "FWsVZ4rxgHCtjTP73mWqmC",
+          "updatedAt": "2025-07-06T06:59:05Z",
+          "url": "https://sorcerytcg.com/cards/crusade",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] crusade: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "cross-module-regression",
+          "command": "node --test tests/catalog-auras.test.js tests/final-animation.test.js tests/cannot-disable-boundaries.test.js tests/final-malleus.test.js tests/final-passives.test.js tests/cemetery-access.test.js tests/final-geometry.test.js tests/final-waves.test.js tests/final-flood.test.js",
+          "log": "/tmp/catalog-auras-affected-cross.log",
+          "result": "340 passed, 0 failed",
+          "scope": "Shared Aura hook regressions; not a claim that every other card effect was audited."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "status": "fixed-dispatch-regression-passed",
+          "description": "summon permission checks Aura record/inside but not source silenced/disabled; own gained-source/animation boundary untested.",
+          "fix": "src/catalog-auras.js and shared engine active/here/affectedSite hooks",
+          "log": "/tmp/catalog-auras-fixed-shadow.log"
+        }
+      ],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt8686a005kgnwcywd3w3odv",
+      "slug": "cursed_iron",
+      "name": "Cursed Iron",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt8686a005kgnwcywd3w3odv",
+          "slug": "cursed_iron",
+          "rules": "Artifacts here can't be dropped and each deals 1 damage to its bearer at the end of each turn.",
+          "cost": 2,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 1,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/cursed_iron"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/card-batches.js",
+            "src/engine.js"
+          ],
+          "assessment": "cannotDrop and everyEnd per-artifact damage; here should use source actual locations; inactive-source and Ward grouping review",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] cursed_iron: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "cross-module-regression",
+          "command": "node --test tests/catalog-auras.test.js tests/final-animation.test.js tests/cannot-disable-boundaries.test.js tests/final-malleus.test.js tests/final-passives.test.js tests/cemetery-access.test.js tests/final-geometry.test.js tests/final-waves.test.js tests/final-flood.test.js",
+          "log": "/tmp/catalog-auras-affected-cross.log",
+          "result": "340 passed, 0 failed",
+          "scope": "Shared Aura hook regressions; not a claim that every other card effect was audited."
+        },
+        {
+          "kind": "faq-review",
+          "matchingCount": 0,
+          "source": "official public SSR FAQ cache",
+          "assessment": "No matching card FAQ in this snapshot; not a claim that no other ruling can exist."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "status": "fixed-dispatch-regression-passed",
+          "description": "canDropArtifact and cursedIronEnd use inside(cell) without layer/activity checks; inactive or off-region Aura may continue restriction/damage.",
+          "fix": "src/catalog-auras.js and shared engine active/here/affectedSite hooks",
+          "log": "/tmp/catalog-auras-fixed-shadow.log"
+        }
+      ],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt85xapb0063nwcyv1b9sri8",
+      "slug": "drought",
+      "name": "Drought",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt85xapb0063nwcyv1b9sri8",
+          "slug": "drought",
+          "rules": "Affected sites aren't water sites, and provide no water threshold.",
+          "cost": 4,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 2,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/drought"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/objects.js",
+            "src/geography.js"
+          ],
+          "assessment": "terrain chronology removes Water affinity and water status; later Flood and source Silence restore",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "official-faq",
+          "id": "eXfZjLHocReFQIApZdIDhU",
+          "updatedAt": "2025-07-10T03:48:07Z",
+          "url": "https://sorcerytcg.com/cards/drought",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "eXfZjLHocReFQIApZdIDsm",
+          "updatedAt": "2025-07-10T03:48:17Z",
+          "url": "https://sorcerytcg.com/cards/drought",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] drought: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt86apdk06yjnwcy5xxgja23",
+      "slug": "eclipse",
+      "name": "Eclipse",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt86apdk06yjnwcy5xxgja23",
+          "slug": "eclipse",
+          "rules": "You may cast Evil minions to affected sites.\r\n\r\nEvil allies occupying affected sites have +1 power.",
+          "cost": 2,
+          "threshold": {
+            "air": 2,
+            "earth": 0,
+            "fire": 0,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/eclipse"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/objects.js",
+            "src/engine.js"
+          ],
+          "assessment": "Evil summon permission and Evil allied +1; Saint removes Evil; source suppression and contextual card characteristics",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] eclipse: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "cross-module-regression",
+          "command": "node --test tests/catalog-auras.test.js tests/final-animation.test.js tests/cannot-disable-boundaries.test.js tests/final-malleus.test.js tests/final-passives.test.js tests/cemetery-access.test.js tests/final-geometry.test.js tests/final-waves.test.js tests/final-flood.test.js",
+          "log": "/tmp/catalog-auras-affected-cross.log",
+          "result": "340 passed, 0 failed",
+          "scope": "Shared Aura hook regressions; not a claim that every other card effect was audited."
+        },
+        {
+          "kind": "faq-review",
+          "matchingCount": 0,
+          "source": "official public SSR FAQ cache",
+          "assessment": "No matching card FAQ in this snapshot; not a claim that no other ruling can exist."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "status": "fixed-dispatch-regression-passed",
+          "description": "summon permission checks Aura record/inside but not source silenced/disabled; own gained-source/animation boundary untested.",
+          "fix": "src/catalog-auras.js and shared engine active/here/affectedSite hooks",
+          "log": "/tmp/catalog-auras-fixed-shadow.log"
+        }
+      ],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt85y76z00o5nwcy2cih4hrd",
+      "slug": "entangle_terrain",
+      "name": "Entangle Terrain",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt85y76z00o5nwcy2cih4hrd",
+          "slug": "entangle_terrain",
+          "rules": "Minions occupying affected sites lose Airborne and are Immobile. Lasts 3 of your turns.",
+          "cost": 4,
+          "threshold": {
+            "air": 0,
+            "earth": 2,
+            "fire": 0,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/entangle_terrain"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/objects.js",
+            "src/engine.js"
+          ],
+          "assessment": "three-own-turn expiry; affected-Site Minions both layers lose Airborne and gain Immobile, excluding Void per FAQ",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "official-faq",
+          "id": "ygoDG8fb7HS97qCW69i9gM",
+          "updatedAt": "2025-02-20T23:04:25Z",
+          "url": "https://sorcerytcg.com/cards/entangle_terrain",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] entangle_terrain: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "cross-module-regression",
+          "command": "node --test tests/catalog-auras.test.js tests/final-animation.test.js tests/cannot-disable-boundaries.test.js tests/final-malleus.test.js tests/final-passives.test.js tests/cemetery-access.test.js tests/final-geometry.test.js tests/final-waves.test.js tests/final-flood.test.js",
+          "log": "/tmp/catalog-auras-affected-cross.log",
+          "result": "340 passed, 0 failed",
+          "scope": "Shared Aura hook regressions; not a claim that every other card effect was audited."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "status": "fixed-dispatch-regression-passed",
+          "description": "continuous Aura keyword loop does not require affected square to contain a Site; Voidwalk Minions in Void may be incorrectly made Immobile.",
+          "fix": "src/catalog-auras.js and shared engine active/here/affectedSite hooks",
+          "log": "/tmp/catalog-auras-fixed-shadow.log"
+        }
+      ],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt860cd701v4nwcygbyjy6ei",
+      "slug": "evil_presence",
+      "name": "Evil Presence",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt860cd701v4nwcygbyjy6ei",
+          "slug": "evil_presence",
+          "rules": "You may summon Spirits to affected sites. When you summon a Spirit here, give it Charge, and return Evil Presence to its owner's hand.",
+          "cost": 2,
+          "threshold": {
+            "air": 1,
+            "earth": 0,
+            "fire": 0,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/evil_presence"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/card-batches.js",
+            "src/engine.js"
+          ],
+          "assessment": "Spirit summon permission; summonedGenesis grants Charge and returns source to owner hand; real summon rather than cast only",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "official-faq",
+          "id": "ygoDG8fb7HS97qCW69mW58",
+          "updatedAt": "2025-07-06T07:02:05Z",
+          "url": "https://sorcerytcg.com/cards/evil_presence",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] evil_presence: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "cross-module-regression",
+          "command": "node --test tests/catalog-auras.test.js tests/final-animation.test.js tests/cannot-disable-boundaries.test.js tests/final-malleus.test.js tests/final-passives.test.js tests/cemetery-access.test.js tests/final-geometry.test.js tests/final-waves.test.js tests/final-flood.test.js",
+          "log": "/tmp/catalog-auras-affected-cross.log",
+          "result": "340 passed, 0 failed",
+          "scope": "Shared Aura hook regressions; not a claim that every other card effect was audited."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "status": "fixed-dispatch-regression-passed",
+          "description": "summon permission checks Aura record/inside but not source silenced/disabled; own gained-source/animation boundary untested.",
+          "fix": "src/catalog-auras.js and shared engine active/here/affectedSite hooks",
+          "log": "/tmp/catalog-auras-fixed-shadow.log"
+        }
+      ],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt86a5r406npnwcyk9r3x8n0",
+      "slug": "falling_star",
+      "name": "Falling Star",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt86a5r406npnwcyk9r3x8n0",
+          "slug": "falling_star",
+          "rules": "Lasts 3 of your turns. When the star falls, you may summon a minion from your hand atop an affected site. It strikes each other unit where it lands.",
+          "cost": 4,
+          "threshold": {
+            "air": 1,
+            "earth": 0,
+            "fire": 0,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/falling_star"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/fifty-cards.js"
+          ],
+          "assessment": "third own-end counter, optional hand summon, affected landing location, Genesis before simultaneous strikeMany; save/cancel/oversized placement",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "official-faq",
+          "id": "aba231fd-3609-4a0f-b645-04d56f16221a",
+          "updatedAt": "2026-02-09T18:45:56Z",
+          "url": "https://sorcerytcg.com/cards/falling_star",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "2e944bfa-745a-4ad2-a97c-1f3d86851eb9",
+          "updatedAt": "2025-12-06T06:29:40Z",
+          "url": "https://sorcerytcg.com/cards/falling_star",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "7b0c7448-3266-44ab-a129-6d3ba11244b4",
+          "updatedAt": "2025-12-06T06:23:35Z",
+          "url": "https://sorcerytcg.com/cards/falling_star",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "a58efdf8-2d91-456b-b960-94c435d69cad",
+          "updatedAt": "2025-12-06T06:21:08Z",
+          "url": "https://sorcerytcg.com/cards/falling_star",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] falling_star: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt85xcgf0072nwcy3ehjvwi4",
+      "slug": "flood",
+      "name": "Flood",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt85xcgf0072nwcy3ehjvwi4",
+          "slug": "flood",
+          "rules": "Affected sites are flooded. They're water sites.",
+          "cost": 4,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 0,
+            "water": 2
+          },
+          "url": "https://sorcerytcg.com/cards/flood"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/objects.js",
+            "src/geography.js"
+          ],
+          "assessment": "flood true and chronological terrain overrides; native Silence removes Aura effect, external Flooded persists on silenced Site",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "official-faq",
+          "id": "eXfZjLHocReFQIApZdIDsm",
+          "updatedAt": "2025-07-10T03:48:17Z",
+          "url": "https://sorcerytcg.com/cards/flood",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] flood: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt865yf504o9nwcy6xepy2mn",
+      "slug": "hamlets_ablaze",
+      "name": "Hamlet's Ablaze!",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt865yf504o9nwcy6xepy2mn",
+          "slug": "hamlets_ablaze",
+          "rules": "Conjure atop an Ordinary or Exceptional site.\r\n\r\nAt the start of your turn, destroy this site, and minions atop it, and Hamlet's Ablaze.",
+          "cost": 3,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 2,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/hamlets_ablaze"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/fifty-cards.js",
+            "src/engine.js"
+          ],
+          "assessment": "singleSite Ordinary/Exceptional placement and start fiftyAblaze; surface Minions only; destroy source and site",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] hamlets_ablaze: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "faq-review",
+          "matchingCount": 0,
+          "source": "official public SSR FAQ cache",
+          "assessment": "No matching card FAQ in this snapshot; not a claim that no other ruling can exist."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt868exx05p6nwcy3qa5b2mt",
+      "slug": "homecoming",
+      "name": "Homecoming",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt868exx05p6nwcy3qa5b2mt",
+          "slug": "homecoming",
+          "rules": "Minions here have \"Tap → Gain (1).\"",
+          "cost": 3,
+          "threshold": {
+            "air": 0,
+            "earth": 2,
+            "fire": 0,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/homecoming"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/card-batches.js",
+            "src/engine.js"
+          ],
+          "assessment": "grants Minions tap gain1 action; summoning sickness/tap cost; here must exclude below and source suppression",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] homecoming: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "cross-module-regression",
+          "command": "node --test tests/catalog-auras.test.js tests/final-animation.test.js tests/cannot-disable-boundaries.test.js tests/final-malleus.test.js tests/final-passives.test.js tests/cemetery-access.test.js tests/final-geometry.test.js tests/final-waves.test.js tests/final-flood.test.js",
+          "log": "/tmp/catalog-auras-affected-cross.log",
+          "result": "340 passed, 0 failed",
+          "scope": "Shared Aura hook regressions; not a claim that every other card effect was audited."
+        },
+        {
+          "kind": "faq-review",
+          "matchingCount": 0,
+          "source": "official public SSR FAQ cache",
+          "assessment": "No matching card FAQ in this snapshot; not a claim that no other ruling can exist."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "status": "fixed-dispatch-regression-passed",
+          "description": "homecomingMana legality checks cell but not here locations; underground Minions may receive action.",
+          "fix": "src/catalog-auras.js and shared engine active/here/affectedSite hooks",
+          "log": "/tmp/catalog-auras-fixed-shadow.log"
+        }
+      ],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt8662uc04qpnwcykglgiiso",
+      "slug": "invasion",
+      "name": "Invasion",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt8662uc04qpnwcykglgiiso",
+          "slug": "invasion",
+          "rules": "At the end of your turn, summon a\r\nFoot Soldier token to each affected enemy site with no units. Lasts 3 of your turns.",
+          "cost": 6,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 2,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/invasion"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/fifty-cards.js",
+            "src/engine.js"
+          ],
+          "assessment": "own-end Foot Soldier at every enemy Site with no units; third-own-turn expiry and proper token/cell checks",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] invasion: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "faq-review",
+          "matchingCount": 0,
+          "source": "official public SSR FAQ cache",
+          "assessment": "No matching card FAQ in this snapshot; not a claim that no other ruling can exist."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt860rg6023nnwcy06ojv01q",
+      "slug": "jihad",
+      "name": "Jihad",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt860rg6023nnwcy06ojv01q",
+          "slug": "jihad",
+          "rules": "You may summon fire minions to affected sites.\r\n\r\nAllied fire minions occupying affected sites have +1 power.",
+          "cost": 2,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 2,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/jihad"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/objects.js",
+            "src/engine.js"
+          ],
+          "assessment": "Fire summon permission plus allied Fire +1 power at affected Sites; normal cost/threshold required",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "official-faq",
+          "id": "eXfZjLHocReFQIApZdKaMi",
+          "updatedAt": "2025-07-06T07:00:36Z",
+          "url": "https://sorcerytcg.com/cards/jihad",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] jihad: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "cross-module-regression",
+          "command": "node --test tests/catalog-auras.test.js tests/final-animation.test.js tests/cannot-disable-boundaries.test.js tests/final-malleus.test.js tests/final-passives.test.js tests/cemetery-access.test.js tests/final-geometry.test.js tests/final-waves.test.js tests/final-flood.test.js",
+          "log": "/tmp/catalog-auras-affected-cross.log",
+          "result": "340 passed, 0 failed",
+          "scope": "Shared Aura hook regressions; not a claim that every other card effect was audited."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "status": "fixed-dispatch-regression-passed",
+          "description": "summon permission checks Aura record/inside but not source silenced/disabled; own gained-source/animation boundary untested.",
+          "fix": "src/catalog-auras.js and shared engine active/here/affectedSite hooks",
+          "log": "/tmp/catalog-auras-fixed-shadow.log"
+        }
+      ],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt85zdvf01bunwcywr3xvs5h",
+      "slug": "mariners_curse",
+      "name": "Mariner's Curse",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt85zdvf01bunwcywr3xvs5h",
+          "slug": "mariners_curse",
+          "rules": "Whenever a minion enters an affected water site, submerge it and return Mariner's Curse to its owner's hand.",
+          "cost": 3,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 0,
+            "water": 2
+          },
+          "url": "https://sorcerytcg.com/cards/mariners_curse"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/objects.js",
+            "src/engine.js"
+          ],
+          "assessment": "entry tracking uses newly occupied water Sites; curseEnter submerges then returns Aura; force legality and interrupted path/current location",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "official-faq",
+          "id": "eXfZjLHocReFQIApZdOnpM",
+          "updatedAt": "2025-02-20T23:04:25Z",
+          "url": "https://sorcerytcg.com/cards/mariners_curse",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "ygoDG8fb7HS97qCW69iGGC",
+          "updatedAt": "2025-02-20T23:04:25Z",
+          "url": "https://sorcerytcg.com/cards/mariners_curse",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "ygoDG8fb7HS97qCW69tL2I",
+          "updatedAt": "2025-07-06T08:22:47Z",
+          "url": "https://sorcerytcg.com/cards/mariners_curse",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] mariners_curse: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/mariner-bound-214.log",
+          "fullValidationAt": "2026-10-30T18:47:12.920Z",
+          "result": "214/214 cross and 1820/1820 full suite",
+          "sourceDetails": "docs/CATALOG_MARINER_BOUND_SPIRIT.md",
+          "actualBrowserUI": "unreviewed"
+        }
+      ],
+      "findings": [
+        {
+          "status": "fixed-formal-regression-passed",
+          "description": "entry trigger lacks explicit active-source and full-body forced-Submerge preflight; needs current-region/oversized tests.",
+          "acceptedLog": "data/all-cards-audit/logs/mariner-bound-214.log"
+        }
+      ],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt86az3x073unwcy1ah38sex",
+      "slug": "mortal_soil",
+      "name": "Mortal Soil",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt86az3x073unwcy1ah38sex",
+          "slug": "mortal_soil",
+          "rules": "Whenever an affected site takes damage, banish a minion from your cemetery to prevent it. If you can't, dispel this.",
+          "cost": 5,
+          "threshold": {
+            "air": 0,
+            "earth": 2,
+            "fire": 0,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/mortal_soil"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/final-site-damage.js"
+          ],
+          "assessment": "site-damage replacement transaction; contextual cemetery and Bureau/Worm/Mortuary; exact prevention/Ward choice/source failure",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] mortal_soil: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "faq-review",
+          "matchingCount": 0,
+          "source": "official public SSR FAQ cache",
+          "assessment": "No matching card FAQ in this snapshot; not a claim that no other ruling can exist."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt85zflv01ctnwcyf71gn6ga",
+      "slug": "rest_in_peace",
+      "name": "Rest in Peace",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt85zflv01ctnwcyf71gn6ga",
+          "slug": "rest_in_peace",
+          "rules": "Whenever a Spirit or Undead minion occupies affected land sites, burrow it.",
+          "cost": 5,
+          "threshold": {
+            "air": 0,
+            "earth": 2,
+            "fire": 0,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/rest_in_peace"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/fifty-cards.js",
+            "src/engine.js"
+          ],
+          "assessment": "Spirit/Undead force-burrow at affected land Sites; source active, oversized every occupied Site and no native Burrowing immunity",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] rest_in_peace: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "faq-review",
+          "matchingCount": 0,
+          "source": "official public SSR FAQ cache",
+          "assessment": "No matching card FAQ in this snapshot; not a claim that no other ruling can exist."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "status": "fixed-named-native-regression-passed",
+          "description": "auto-burrow checks anchor land/inside and source flag without full-body/source-active checks; oversized mixed Water/Land candidates risk.",
+          "acceptedLog": "data/all-cards-audit/logs/auras-production-169.log"
+        }
+      ],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt86cjoz07qznwcyejek9y7y",
+      "slug": "salt_the_earth",
+      "name": "Salt the Earth",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt86cjoz07qznwcyejek9y7y",
+          "slug": "salt_the_earth",
+          "rules": "Conjure Salt the Earth to a single site, destroying it.\r\n\r\nSites can't be played here.",
+          "cost": 4,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 3,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/salt_the_earth"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/completion-cards.js",
+            "src/engine.js"
+          ],
+          "assessment": "singleSite Genesis destruction and forbidSitePlay; Ward/immutable Sites, no reusing killedSite UID; source silence lifts restriction",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] salt_the_earth: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "faq-review",
+          "matchingCount": 0,
+          "source": "official public SSR FAQ cache",
+          "assessment": "No matching card FAQ in this snapshot; not a claim that no other ruling can exist."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt85ys7h00zunwcypjd3egcg",
+      "slug": "sandstorm",
+      "name": "Sandstorm",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt85ys7h00zunwcypjd3egcg",
+          "slug": "sandstorm",
+          "rules": "Affected sites and units atop them can't be attacked or intercepted.\r\n\r\nAt the start of your turn, dispel Sandstorm.",
+          "cost": 1,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 1,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/sandstorm"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/card-batches.js",
+            "src/engine.js"
+          ],
+          "assessment": "same noAttacks/protected intercept mechanism as Blizzard, own-start dispel; inactive source and surface checks",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] sandstorm: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "faq-review",
+          "matchingCount": 0,
+          "source": "official public SSR FAQ cache",
+          "assessment": "No matching card FAQ in this snapshot; not a claim that no other ruling can exist."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "status": "fixed-named-native-regression-passed",
+          "description": "Site/unit attack and interception protection reads noAttacks without active-source guard; inactive source may still protect.",
+          "acceptedLog": "data/all-cards-audit/logs/auras-production-169.log"
+        }
+      ],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt86066901ronwcyqwfyd2wp",
+      "slug": "silence",
+      "name": "Silence",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt86066901ronwcyqwfyd2wp",
+          "slug": "silence",
+          "rules": "Minions occupying affected sites are silenced.",
+          "cost": 3,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 0,
+            "water": 2
+          },
+          "url": "https://sorcerytcg.com/cards/silence"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/objects.js",
+            "src/engine.js"
+          ],
+          "assessment": "affected-Site Minions lose printed abilities but keep size/gained abilities/Ward; animated source self-Silence and Void boundary",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "official-faq",
+          "id": "FWsVZ4rxgHCtjTP73mU7Mm",
+          "updatedAt": "2025-07-06T07:11:37Z",
+          "url": "https://sorcerytcg.com/cards/silence",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "ygoDG8fb7HS97qCW69iVRh",
+          "updatedAt": "2025-02-20T23:04:25Z",
+          "url": "https://sorcerytcg.com/cards/silence",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] silence: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        },
+        {
+          "kind": "native-effect-regression",
+          "test": "tests/catalog-monks-silence.test.js",
+          "coverageDocument": "docs/AUDIT_MONKS_SILENCE.md",
+          "result": "8/8 including Monks; 214/214 related Aura/Flood",
+          "scope": "Silence active source/Site membership, below Site survival loss, animated self-Silence sustained across JSON and Freeze removes effect",
+          "currentOfficialPageChecked": true,
+          "url": "https://sorcerytcg.com/cards/silence"
+        }
+      ],
+      "findings": [
+        {
+          "status": "fixed-formal-regression-passed",
+          "description": "Confirmed Void/inactive source defects reproduced and fixed; animated self-Silence and real Freeze regression passed. Full formal regression currently running. Full 1899/1899 passed at 2026-10-30T20:08:10.897Z"
+        }
+      ],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt86cwxe07sfnwcyvqcnu7ij",
+      "slug": "sow_the_earth",
+      "name": "Sow the Earth",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt86cwxe07sfnwcyvqcnu7ij",
+          "slug": "sow_the_earth",
+          "rules": "Conjure Sow the Earth to a single void square, playing your top site there.\r\n\r\nThis site provides double mana and threshold.",
+          "cost": 4,
+          "threshold": {
+            "air": 0,
+            "earth": 3,
+            "fire": 0,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/sow_the_earth"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/completion-cards.js",
+            "src/engine.js"
+          ],
+          "assessment": "single void placement; top Atlas Site play and doubled site mana/threshold including Genesis/Abundance; actual play trigger",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "official-faq",
+          "id": "dd2474be-25d6-4893-a8ed-c68efa7c8f10",
+          "updatedAt": "2026-01-29T19:48:34Z",
+          "url": "https://sorcerytcg.com/cards/sow_the_earth",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] sow_the_earth: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt869208061vnwcyyt7ak3g9",
+      "slug": "sphere_of_animosity",
+      "name": "Sphere of Animosity",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt869208061vnwcyyt7ak3g9",
+          "slug": "sphere_of_animosity",
+          "rules": "Avatars here can't leave, heal, or be defended.",
+          "cost": 3,
+          "threshold": {
+            "air": 2,
+            "earth": 0,
+            "fire": 0,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/sphere_of_animosity"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/borders.js",
+            "src/engine.js"
+          ],
+          "assessment": "Surface Avatar cannot leave/force-leave, heal or be defended; moving Site is not entering; source activity",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "official-faq",
+          "id": "57d7d49d-81e9-4c16-8361-765ad16e6a7b",
+          "updatedAt": "2026-02-09T18:39:04Z",
+          "url": "https://sorcerytcg.com/cards/sphere_of_animosity",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] sphere_of_animosity: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt85xuvq00h9nwcyxjxs0qid",
+      "slug": "summoning_sphere",
+      "name": "Summoning Sphere",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt85xuvq00h9nwcyxjxs0qid",
+          "slug": "summoning_sphere",
+          "rules": "You may summon minions to affected sites.",
+          "cost": 1,
+          "threshold": {
+            "air": 1,
+            "earth": 0,
+            "fire": 0,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/summoning_sphere"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/objects.js",
+            "src/engine.js"
+          ],
+          "assessment": "extra affected-Site summon permission, no free summon and no unauthorized below placement",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "official-faq",
+          "id": "FWsVZ4rxgHCtjTP73mWCFi",
+          "updatedAt": "2025-02-20T23:04:25Z",
+          "url": "https://sorcerytcg.com/cards/summoning_sphere",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "ygoDG8fb7HS97qCW69mTqI",
+          "updatedAt": "2025-07-06T07:01:37Z",
+          "url": "https://sorcerytcg.com/cards/summoning_sphere",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] summoning_sphere: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "cross-module-regression",
+          "command": "node --test tests/catalog-auras.test.js tests/final-animation.test.js tests/cannot-disable-boundaries.test.js tests/final-malleus.test.js tests/final-passives.test.js tests/cemetery-access.test.js tests/final-geometry.test.js tests/final-waves.test.js tests/final-flood.test.js",
+          "log": "/tmp/catalog-auras-affected-cross.log",
+          "result": "340 passed, 0 failed",
+          "scope": "Shared Aura hook regressions; not a claim that every other card effect was audited."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "status": "fixed-dispatch-regression-passed",
+          "description": "summon permission checks Aura record/inside but not source silenced/disabled; own gained-source/animation boundary untested.",
+          "fix": "src/catalog-auras.js and shared engine active/here/affectedSite hooks",
+          "log": "/tmp/catalog-auras-fixed-shadow.log"
+        }
+      ],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt865jwr04g1nwcy79pbphum",
+      "slug": "sylvan_splendor",
+      "name": "Sylvan Splendor",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt865jwr04g1nwcy79pbphum",
+          "slug": "sylvan_splendor",
+          "rules": "Whenever you cast a Beast or Faerie to an affected site, draw a spell. Dispel if an affected site is successfully attacked.",
+          "cost": 4,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 0,
+            "water": 2
+          },
+          "url": "https://sorcerytcg.com/cards/sylvan_splendor"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/card-batches.js",
+            "src/engine.js"
+          ],
+          "assessment": "Beast/Faerie cast-trigger draw exactly once; successful Site attack dispel not failed/blocked attack; source active",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] sylvan_splendor: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "faq-review",
+          "matchingCount": 0,
+          "source": "official public SSR FAQ cache",
+          "assessment": "No matching card FAQ in this snapshot; not a claim that no other ruling can exist."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt865se604ksnwcybvqco72b",
+      "slug": "the_black_plague",
+      "name": "The Black Plague",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt865se604ksnwcybvqco72b",
+          "slug": "the_black_plague",
+          "rules": "At the end of your turn, the weakest minion occupying affected sites dies. If tied, choose one. Dispel if none die.",
+          "cost": 4,
+          "threshold": {
+            "air": 2,
+            "earth": 0,
+            "fire": 0,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/the_black_plague"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/card-batches.js",
+            "src/engine.js"
+          ],
+          "assessment": "own-end weakest affected-Site Minion, tie chooser, Ward prevents actual death then dispels; both layers and save",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] the_black_plague: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "faq-review",
+          "matchingCount": 0,
+          "source": "official public SSR FAQ cache",
+          "assessment": "No matching card FAQ in this snapshot; not a claim that no other ruling can exist."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt866x6o057pnwcy8ge6p2ld",
+      "slug": "the_great_drowning_of_men",
+      "name": "The Great Drowning of Men",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt866x6o057pnwcy8ge6p2ld",
+          "slug": "the_great_drowning_of_men",
+          "rules": "At the start of your turn, destroy affected sites and flood the resulting Rubble. Submerge everything atop them and dispel The Great Drowning of Men.",
+          "cost": 7,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 0,
+            "water": 4
+          },
+          "url": "https://sorcerytcg.com/cards/the_great_drowning_of_men"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/completion-cards.js"
+          ],
+          "assessment": "own-start destroy covered Sites, flood new Rubble, submerge surface contents and source dispel; artifacts/bearers/oversized/void boundaries",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] the_great_drowning_of_men: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "faq-review",
+          "matchingCount": 0,
+          "source": "official public SSR FAQ cache",
+          "assessment": "No matching card FAQ in this snapshot; not a claim that no other ruling can exist."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "status": "fixed-named-native-regression-passed",
+          "description": "everything-atop submerge omits a non-Unit Aura wholly occupying the newly flooded Sites.",
+          "log": "/tmp/catalog-auras-third-confirmed.log",
+          "tests": "/tmp/catalog-auras-shadow.test.mjs",
+          "candidatePatch": "/tmp/catalog-auras-completion.patch",
+          "acceptedLog": "data/all-cards-audit/logs/auras-production-169.log"
+        }
+      ],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt8664l804ronwcyky2863po",
+      "slug": "the_great_famine",
+      "name": "The Great Famine",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt8664l804ronwcyky2863po",
+          "slug": "the_great_famine",
+          "rules": "At the end of your turn, the strongest minion occupying affected sites dies. If tied, choose one. Dispel if none die.",
+          "cost": 4,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 2,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/the_great_famine"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/card-batches.js",
+            "src/engine.js"
+          ],
+          "assessment": "own-end strongest affected-Site Minion, tie chooser, no-death dispel; Ward/replacement/source silence",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] the_great_famine: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "faq-review",
+          "matchingCount": 0,
+          "source": "official public SSR FAQ cache",
+          "assessment": "No matching card FAQ in this snapshot; not a claim that no other ruling can exist."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt86095v01t9nwcyt75p6ipt",
+      "slug": "thunderstorm",
+      "name": "Thunderstorm",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt86095v01t9nwcyt75p6ipt",
+          "slug": "thunderstorm",
+          "rules": "At the end of your turn, deal 3 damage to a random unit atop affected sites, then you may move Thunderstorm one step.\r\n\r\nLasts 3 of your turns.",
+          "cost": 4,
+          "threshold": {
+            "air": 2,
+            "earth": 0,
+            "fire": 0,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/thunderstorm"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/objects.js",
+            "src/engine.js"
+          ],
+          "assessment": "own-end random surface Unit hit3 then optional 1step Aura move; three-own-turn expiry; proper random authority and saved movement",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "official-faq",
+          "id": "FWsVZ4rxgHCtjTP73mWBxO",
+          "updatedAt": "2025-02-20T23:04:25Z",
+          "url": "https://sorcerytcg.com/cards/thunderstorm",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] thunderstorm: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt8604fa01qonwcymter4sa5",
+      "slug": "wall_of_air",
+      "name": "Wall of Air",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt8604fa01qonwcymter4sa5",
+          "slug": "wall_of_air",
+          "rules": "Conjure atop the border of a site you control.\r\n\r\nMinions with Airborne or 2 or less power can't traverse Wall of Air.",
+          "cost": 2,
+          "threshold": {
+            "air": 1,
+            "earth": 0,
+            "fire": 0,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/wall_of_air"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/borders.js",
+            "src/completion-cards.js"
+          ],
+          "assessment": "controlled-Site border declaration; Airborne or power<=2 Minions cannot cross surface shared edge; no corners/subsurface, animated self barrier",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "official-faq",
+          "id": "FWsVZ4rxgHCtjTP73mTo2w",
+          "updatedAt": "2025-02-20T23:04:25Z",
+          "url": "https://sorcerytcg.com/cards/wall_of_air",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "FWsVZ4rxgHCtjTP73mTobI",
+          "updatedAt": "2025-02-20T23:04:25Z",
+          "url": "https://sorcerytcg.com/cards/wall_of_air",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "FWsVZ4rxgHCtjTP73mTp9e",
+          "updatedAt": "2025-02-20T23:04:25Z",
+          "url": "https://sorcerytcg.com/cards/wall_of_air",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "eXfZjLHocReFQIApZdHyBY",
+          "updatedAt": "2025-02-20T23:04:25Z",
+          "url": "https://sorcerytcg.com/cards/wall_of_air",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] wall_of_air: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt8669ud04uknwcy4qmcnoqi",
+      "slug": "wall_of_brambles",
+      "name": "Wall of Brambles",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt8669ud04uknwcy4qmcnoqi",
+          "slug": "wall_of_brambles",
+          "rules": "Conjure atop the border of an allied site.\r\n\r\nWhenever an enemy traverses this wall\r\non the ground, it takes 2 damage.",
+          "cost": 2,
+          "threshold": {
+            "air": 0,
+            "earth": 1,
+            "fire": 0,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/wall_of_brambles"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/borders.js",
+            "src/completion-cards.js"
+          ],
+          "assessment": "allied Site border; enemy ground crossing2 damage, no teleport/diagonal, force movement still crossing",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] wall_of_brambles: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "faq-review",
+          "matchingCount": 0,
+          "source": "official public SSR FAQ cache",
+          "assessment": "No matching card FAQ in this snapshot; not a claim that no other ruling can exist."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt86066801rnnwcybobgggia",
+      "slug": "wall_of_fire",
+      "name": "Wall of Fire",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "representative-actual-app-ui-tested; full-card-UI-boundaries-pending"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt86066801rnnwcybobgggia",
+          "slug": "wall_of_fire",
+          "rules": "Conjure atop the border of a site you control.\r\n\r\nWhenever a unit passes through Wall of Fire, it takes 3 damage.",
+          "cost": 2,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 1,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/wall_of_fire"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/borders.js",
+            "src/completion-cards.js"
+          ],
+          "assessment": "controlled-Site border; willing/forced surface border crossing3 including Airborne; not diagonal/teleport/subsurface or wall own movement",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "official-faq",
+          "id": "FWsVZ4rxgHCtjTP73mTop2",
+          "updatedAt": "2025-02-20T23:04:25Z",
+          "url": "https://sorcerytcg.com/cards/wall_of_fire",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "FWsVZ4rxgHCtjTP73mTovu",
+          "updatedAt": "2025-07-08T03:44:30Z",
+          "url": "https://sorcerytcg.com/cards/wall_of_fire",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "FWsVZ4rxgHCtjTP73mTp2m",
+          "updatedAt": "2025-02-20T23:04:25Z",
+          "url": "https://sorcerytcg.com/cards/wall_of_fire",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "FWsVZ4rxgHCtjTP73mTp9e",
+          "updatedAt": "2025-02-20T23:04:25Z",
+          "url": "https://sorcerytcg.com/cards/wall_of_fire",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "eXfZjLHocReFQIApZdHynw",
+          "updatedAt": "2026-06-29T19:11:22Z",
+          "url": "https://sorcerytcg.com/cards/wall_of_fire",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "ygoDG8fb7HS97qCW69hfjO",
+          "updatedAt": "2025-02-20T23:04:25Z",
+          "url": "https://sorcerytcg.com/cards/wall_of_fire",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] wall_of_fire: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        },
+        {
+          "kind": "browser-ui-representative",
+          "checkedAt": "2026-10-30T20:36:01.082362+00:00",
+          "service": "http://127.0.0.1:5500/",
+          "record": "data/ui-5500-validation.json",
+          "scope": {
+            "card": "Megamoeba / Wall of Fire / Amethyst Core",
+            "result": "representative-ui-pass",
+            "steps": [
+              "select actual unit",
+              "keyboard Enter on already occupied D2 destination opens pseudopod choice",
+              "browser reload restores pending choice",
+              "choose C2 origin takes3, artifactAt13, body retained",
+              "reset fixture and choose D2 origin takes0, artifactAt13"
+            ],
+            "saves": [
+              "data/ui-5500-moeba-cross-save.json",
+              "data/ui-5500-moeba-stay-save.json"
+            ],
+            "screenshots": [
+              "data/ui-5500-moeba-wall-crossing.jpg",
+              "data/ui-5500-moeba-stationary-origin.jpg"
+            ],
+            "limitation": "Clicking the own unit reopens its menu; keyboard destination activation was used. This is an actual supported app UI path, not injected dispatch."
+          }
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt8607xe01sonwcy6dzlienj",
+      "slug": "wall_of_ice",
+      "name": "Wall of Ice",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt8607xe01sonwcy6dzlienj",
+          "slug": "wall_of_ice",
+          "rules": "Conjure atop the border of a site you control.\r\n\r\nUnits can't traverse Wall of Ice on the ground.",
+          "cost": 2,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 0,
+            "water": 1
+          },
+          "url": "https://sorcerytcg.com/cards/wall_of_ice"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/borders.js",
+            "src/completion-cards.js"
+          ],
+          "assessment": "controlled-Site border; forbids ground crossing shared edge, including animated wall self-crossing; Airborne/teleport exceptions",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "official-faq",
+          "id": "FWsVZ4rxgHCtjTP73mTpi0",
+          "updatedAt": "2025-02-20T23:04:25Z",
+          "url": "https://sorcerytcg.com/cards/wall_of_ice",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "official-faq",
+          "id": "ygoDG8fb7HS97qCW69hja1",
+          "updatedAt": "2025-02-20T23:04:25Z",
+          "url": "https://sorcerytcg.com/cards/wall_of_ice",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] wall_of_ice: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt860llk020anwcy0q28eucm",
+      "slug": "wildfire",
+      "name": "Wildfire",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt860llk020anwcy0q28eucm",
+          "slug": "wildfire",
+          "rules": "Conjure Wildfire atop a single site nearby.\r\n\r\nAt the end of each turn, each unit here takes 3 damage, then move Wildfire to an adjacent location it hasn't visited before. If none remain, dispel Wildfire.",
+          "cost": 4,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 1,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/wildfire"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/objects.js",
+            "src/engine.js"
+          ],
+          "assessment": "single nearby Site cast; both-end damage3 and mandatory unvisited adjacent location move; separate source visit histories and no-route dispel",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "official-faq",
+          "id": "eXfZjLHocReFQIApZdIESu",
+          "updatedAt": "2025-02-20T23:04:25Z",
+          "url": "https://sorcerytcg.com/cards/wildfire",
+          "reviewedFrom": "official SSR FAQ cache; question/answer text inspected, not ID-only"
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] wildfire: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    },
+    {
+      "id": "cmt8671lu05a4nwcy8pmms3pp",
+      "slug": "year_of_the_blaze",
+      "name": "Year of the Blaze",
+      "printedType": "Aura",
+      "category": "Spell",
+      "reviewStatus": "partially-tested",
+      "dimensions": {
+        "cardText": "code-reviewed-awaiting-tests",
+        "legalActionsAndTargets": "tested-awaiting-ui",
+        "costsAndThresholds": "native-cast-costs-and-insufficient-mana-and-threshold-rejections-tested",
+        "choicesAndCancellation": "code-reviewed-awaiting-tests",
+        "timingAndTriggers": "code-reviewed-awaiting-tests",
+        "damageAndDeath": "code-reviewed-awaiting-tests",
+        "regionsAndContinuousEffects": "code-reviewed-awaiting-tests",
+        "representativeInteractions": "code-reviewed-awaiting-tests",
+        "saveAndRestore": "tested-awaiting-ui",
+        "actualBrowserUI": "unreviewed"
+      },
+      "evidence": [
+        {
+          "kind": "printed-card-source",
+          "path": "data/official-cards.json",
+          "id": "cmt8671lu05a4nwcy8pmms3pp",
+          "slug": "year_of_the_blaze",
+          "rules": "At the start of your turn, destroy affected sites and everything here, including Year of the Blaze.",
+          "cost": 7,
+          "threshold": {
+            "air": 0,
+            "earth": 0,
+            "fire": 4,
+            "water": 0
+          },
+          "url": "https://sorcerytcg.com/cards/year_of_the_blaze"
+        },
+        {
+          "kind": "rulebook",
+          "version": "October 2026",
+          "pages": 38,
+          "modifiedAt": "2026-10-12T20:32:30Z",
+          "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+          "relevantPages": [
+            19,
+            27,
+            29,
+            31,
+            35
+          ]
+        },
+        {
+          "kind": "codex",
+          "id": "1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "updatedAt": "2026-03-25T19:18:50Z",
+          "url": "https://sorcerytcg.com/codex/1c5c02a4-586e-4bfd-99ce-11e9230ed140",
+          "assessment": "Auras normally occupy four Surface/Void locations; non-minion Aura movement ignores Surface/Void boundary, not subsurface."
+        },
+        {
+          "kind": "code-review",
+          "paths": [
+            "src/completion-cards.js"
+          ],
+          "assessment": "own-start destroys affected Sites and all overlapping contents including source; Ward, Avatar and layered/animated entities boundaries",
+          "commonEntries": [
+            "src/engine.js legalActions Aura branch, beginCast/commitSpell, resolveCommittedSpell Aura creation, restoreGame"
+          ]
+        },
+        {
+          "kind": "dispatch-test",
+          "path": "tests/catalog-auras.test.js",
+          "testName": "[Aura catalogue] year_of_the_blaze: production cast, exact payment and JSON state",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "/tmp/catalog-auras-fixed-shadow.log",
+          "result": "pass",
+          "scope": "Actual hand cast, exact spell mana paid, card leaves hand, JSON restoration of resulting Aura/zone. Does not by itself verify every printed effect."
+        },
+        {
+          "kind": "faq-review",
+          "matchingCount": 0,
+          "source": "official public SSR FAQ cache",
+          "assessment": "No matching card FAQ in this snapshot; not a claim that no other ruling can exist."
+        },
+        {
+          "kind": "native-dispatch-tests",
+          "path": "tests/catalog-auras.test.js",
+          "command": "node --test tests/catalog-auras.test.js",
+          "log": "data/all-cards-audit/logs/auras-production-169.log",
+          "result": "169/169 passed",
+          "scope": "all 38 printed cast and mana/threshold boundaries; per-card effects only as explicitly named in test file",
+          "doesNotProve": [
+            "complete per-card timing and interaction audit",
+            "actual browser UI"
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "status": "fixed-named-native-regression-passed",
+          "description": "here currently ignores source/target layer and destroys a Burrowing Minion in subsurface.",
+          "log": "/tmp/catalog-auras-third-confirmed.log",
+          "tests": "/tmp/catalog-auras-shadow.test.mjs",
+          "candidatePatch": "/tmp/catalog-auras-completion.patch",
+          "acceptedLog": "data/all-cards-audit/logs/auras-production-169.log"
+        }
+      ],
+      "limitations": [
+        "Actual browser UI unreviewed because CUA is unavailable.",
+        "Production casting/payment and JSON state tested; remaining printed-effect and interaction coverage is still being expanded. No full-card correctness claim from generic casting alone."
+      ]
+    }
+  ]
+}

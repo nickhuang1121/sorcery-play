@@ -1,0 +1,35 @@
+import {createFirebaseTransport} from './firebase-transport.js';
+import {firebaseConfig} from './firebase-config.js';
+import {ENGINE_BUILD,PRESENCE_BEAT_MS} from './protocol.js';
+import {FIREBASE_ROOMS,FIREBASE_DIRECTORY,firebaseSeat,firebaseRoomExpired,makeFirebaseRoom,claimFirebaseGuest,reduceFirebaseRoom,firebaseRoomSnapshot} from './firebase-match-model.js';
+import {requireThat} from './online-view.js';
+let shared;
+const roomPath=id=>FIREBASE_ROOMS+'/'+id,indexPath=id=>FIREBASE_DIRECTORY+'/'+id;
+const randomSeed=()=>crypto.getRandomValues(new Uint32Array(1))[0];
+function roomCode(){const alphabet='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';return [...crypto.getRandomValues(new Uint8Array(6))].map(n=>alphabet[n%alphabet.length]).join('');}
+function friendlyError(error){if(/permission.denied/i.test(error?.code||error?.message||'')){const e=Error('Firebase 拒絕房間存取，請確認登入身分與房間權限。');e.status=403;return e;}return error;}
+export async function createFirebaseOnline({transport,uid,seed=randomSeed,code=roomCode}={}){
+ const t=transport||await createFirebaseTransport(firebaseConfig);if(!uid){const user=await t.ensureAuth();requireThat(user?.uid,'請先使用 Google 登入。',401);uid=user.uid;}
+ const clock=()=>t.serverNow?.()??Date.now(),stamp=()=>t.serverTimestamp?.()??clock();let active=null;
+ const connected=()=>t.isConnected?.()!==false;
+ async function waitOnline(signal){if(connected())return;await new Promise((resolve,reject)=>{const start=Date.now(),timer=setInterval(()=>{if(signal?.aborted||Date.now()-start>8000){clearInterval(timer);reject(Error('Firebase 重新連線中，請稍候。'));}else if(connected()){clearInterval(timer);resolve();}},80);});}
+ async function deactivate(){const old=active;if(!old)return;active=null;clearInterval(old.timer);old.unsub?.();old.connectionUnsub?.();try{await t.set(roomPath(old.id)+'/meta/presence/'+old.seat,{online:false,beat:stamp()});await old.cancel?.();}catch{}}
+ async function activate(id,initial){if(active?.id===id){if(initial)active.value=initial;return active;}await deactivate();const seat=firebaseSeat(initial.meta,uid);requireThat(seat!==null,'此裝置沒有這個房間的席位權限',403);const entry={id,seat,value:initial};active=entry;
+  entry.unsub=t.subscribe(roomPath(id),value=>{if(active===entry)entry.value=value;});
+  const beat=async()=>{if(active!==entry||!connected())return;await t.set(roomPath(id)+'/meta/presence/'+seat,{online:true,beat:stamp()});};
+  const reconnect=async()=>{if(active!==entry||!connected())return;entry.cancel=t.registerDisconnect?await t.registerDisconnect(roomPath(id)+'/meta/presence/'+seat,{online:false,beat:stamp()}):t.onDisconnect?.(roomPath(id)+'/meta/presence/'+seat,{online:false,beat:stamp()});await beat();};
+  await reconnect();entry.timer=setInterval(()=>beat().catch(()=>{}),PRESENCE_BEAT_MS);entry.connectionUnsub=t.subscribe('.info/connected',value=>{if(value===true)reconnect().catch(()=>{});});return entry;
+ }
+ async function read(id){const value=active?.id===id?active.value:await t.get(roomPath(id));requireThat(value?.meta&&value.meta.status!=='deleting','房間不存在或已過期',404);await activate(id,value);return firebaseRoomSnapshot(active.value||value,uid,clock());}
+ async function sweep(){const entries=await t.get(FIREBASE_DIRECTORY)||{},removed=[];for(const id of Object.keys(entries)){if(active?.id===id)continue;const meta=await t.get(roomPath(id)+'/meta');if(!meta){try{await t.remove(indexPath(id));}catch{}continue;}if(!firebaseRoomExpired(meta,clock()))continue;
+   try{const claimed=await t.transact(roomPath(id)+'/meta',current=>{if(!firebaseRoomExpired(current,clock()))return undefined;return {...current,status:'deleting'};});if(!claimed.committed||claimed.value?.status!=='deleting')continue;await t.remove(roomPath(id));await t.remove(indexPath(id));removed.push(id);}catch(e){if(!/permission.denied/i.test(e?.code||e?.message||''))throw e;}
+  }return removed;}
+ async function list(){await sweep();const keys=await t.get(FIREBASE_DIRECTORY)||{},rooms=[];for(const id of Object.keys(keys)){const m=await t.get(roomPath(id)+'/meta');if(!m||m.status==='deleting')continue;rooms.push({id,status:m.status,seats:m.guest?2:1,online:[0,1].map(p=>!!m.presence?.[p]?.online&&clock()-(m.presence[p].beat||0)<=12000),updatedAt:m.updatedAt});}return rooms;}
+ async function create(){await sweep();for(let tries=0;tries<5;tries++){const id=code();if(await t.get(indexPath(id)))continue;const value=makeFirebaseRoom(id,uid,clock());value.meta.createdAt=stamp();value.meta.updatedAt=stamp();value.meta.presence[0].beat=stamp();let result;try{result=await t.transact(roomPath(id),current=>current?undefined:value);}catch(e){if(tries<4&&/permission.denied/i.test(e?.code||e?.message||''))continue;throw e;}if(!result.committed)continue;await t.set(indexPath(id),{createdAt:result.value.meta.createdAt});await activate(id,result.value);return read(id);}throw Error('暫時無法建立房間，請再試一次。');}
+ async function join(id){const meta=await t.get(roomPath(id)+'/meta');requireThat(meta&&meta.status!=='deleting','房間不存在或已過期',404);if(firebaseSeat(meta,uid)===null){const result=await t.transact(roomPath(id)+'/meta',current=>{if(!current)return current;const next=claimFirebaseGuest(current,uid,clock());next.updatedAt=stamp();return next;});requireThat(result.committed,'房間已滿或加入已取消',409);}return read(id);}
+ async function update(id,body){if(body.type==='offline'){if(active?.id===id)await deactivate();return {ok:true};}await read(id);const selectedSeed=seed(),result=await t.transact(roomPath(id),current=>{if(!current)return current;const next=reduceFirebaseRoom(current,uid,body,clock(),selectedSeed);next.meta.updatedAt=stamp();return next;});requireThat(result.committed&&result.value,'對局已更新，請重新選擇',409);if(active?.id===id)active.value=result.value;return firebaseRoomSnapshot(result.value,uid,clock());}
+ async function replay(id){await read(id);const r=JSON.parse(active.value.payload);requireThat(r.status==='ended','對局結束後才能匯出完整重播',409);return {build:ENGINE_BUILD,decks:r.decks,seed:r.state.seed,history:r.state.history,state:r.state};}
+ return {uid,sweep,close:deactivate,async request(route,{method='GET',body,signal}={}){try{if(t.ensureAuth){const user=await t.ensureAuth();requireThat(user?.uid===uid,'登入身分已變更，請重新使用 Google 登入。',401);}await waitOnline(signal);if(route==='/rooms')return method==='POST'?await create():await list();const match=/^\/rooms\/([A-Z0-9]{6})(\/(?:join|replay))?$/.exec(route);requireThat(match,'房號格式錯誤');const [,id,operation]=match;if(operation==='/join'&&method==='POST')return await join(id);if(operation==='/replay'&&method==='GET')return await replay(id);return method==='POST'?await update(id,{...body,build:ENGINE_BUILD}):await read(id);}catch(e){throw friendlyError(e);}}};
+}
+export function getFirebaseOnline(){return shared??=createFirebaseOnline().catch(e=>{shared=null;throw e;});}
+export async function resetFirebaseOnline(){const previous=shared;shared=null;if(previous)try{await(await previous).close();}catch{}}

@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-30",
+  "action": "create ordinary browser tab at existing service",
+  "target": "http://127.0.0.1:8767/?audit=20261030T1815",
+  "result": "net::ERR_CONNECTION_REFUSED",
+  "outcome": "navigation failed; latest served version unverified",
+  "deniedActionNotRetried": {
+    "command": "python3 -m http.server 8768 --bind 127.0.0.1",
+    "cwd": "/Users/yuyuannike/Documents/webapp/sorcery-play-main",
+    "reason": "sandbox PermissionError [Errno 1] Operation not permitted at socket.bind",
+    "listenerCreated": false
+  },
+  "additionalAuthorizationNeeded": "permit this loopback-only bind to serve current workspace for UI validation; no external deployment",
+  "approvalRequested": false,
+  "supersededAt": "2026-10-30T20:39:05.665457+00:00",
+  "currentStatus": "Existing5500 authorized and usable; explicit representative UI proof in ui-5500-validation.json. Old8767 refusal/denied binds remain historical and are not retried."
+}

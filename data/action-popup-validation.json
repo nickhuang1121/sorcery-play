@@ -1,0 +1,36 @@
+{
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "desktopVerified": true,
+  "mobileVerified": true,
+  "checks": [
+    "Card detail → select action opens centered modal",
+    "Long ability label wraps without clipping",
+    "Move / attack closes popup and retains 3 legal cells",
+    "Backdrop click closes and retains 3 legal cells",
+    "Close X closes and retains 3 legal cells",
+    "Escape closes and retains 3 legal cells",
+    "Sparkmage activation → D2 surface → returns to main phase with Avatar tapped",
+    "Original browser match restored"
+  ],
+  "screenshot": "output/ui/action-popup-mobile.png",
+  "regression": {
+    "startedAt": "2026-10-31T03:18:19.020Z",
+    "checkedAt": "2026-10-31T03:20:01.493Z",
+    "command": "node --test --test-reporter=tap tests/*.test.js",
+    "exitCode": 0,
+    "signal": null,
+    "tests": 2745,
+    "passed": 2745,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "sourceBefore": "5f5afc001207e7a54139ffa36a8868e88b027c647d91e425978710e61edd0cfd",
+    "sourceAfter": "5f5afc001207e7a54139ffa36a8868e88b027c647d91e425978710e61edd0cfd",
+    "sourceUnchanged": true,
+    "resultFile": "/tmp/sorcery-full-regression-vyj3hy/results.tap",
+    "stderrFile": "/tmp/sorcery-full-regression-vyj3hy/stderr.log"
+  }
+}

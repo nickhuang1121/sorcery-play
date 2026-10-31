@@ -1,0 +1,24 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {install,card,starter} from '../src/cards.js';
+import * as E from '../src/engine.js';
+import {bookBlessingCandidate} from '../src/magic-context.js';
+install(JSON.parse(fs.readFileSync(new URL('../data/official-cards.json',import.meta.url))));
+function game(){const s=E.newGame([starter(),starter()],42,'local');Object.assign(s,{phase:'main',active:0,turn:4,pending:null,choice:null,storyline:[],artifacts:[],auras:[]});s.units.forEach(u=>{u.at=u.controller===0?12:2;u.born=0;u.tapped=false;u.justEntered=false;});s.board=s.board.map((_,at)=>({uid:'s'+s.next++,card:card('valley').id,owner:at<10?1:0,controller:at<10?1:0}));for(const p of s.players){p.hand=[];p.bonusMana=60;p.bonusAffinity={air:10,earth:10,fire:10,water:10};}return s;}
+function unit(s,slug,at=12,p=0){const u={uid:'u'+s.next++,card:card(slug).id,at,owner:p,controller:p,tapped:false,born:0,damage:0,ward:false,mods:[]};s.units.push(u);return u;}
+function book(s,bearer,owner=0){s.artifacts.push({uid:'book'+s.next++,card:card('book_of_blessings').id,at:bearer.at,layer:bearer.layer||'surface',owner,controller:owner,bearer:bearer.uid});}
+function choose(s,predicate){assert.ok(s.choice);const option=s.choice.options.findIndex(o=>predicate(o.value));assert.notEqual(option,-1,'Missing choice '+s.choice.title);return E.dispatch(s,{type:'choose',player:s.choice.player,option});}
+function cast(s,slug,predicate=()=>true){const h={uid:'h'+s.next++,card:card(slug).id};s.players[0].hand.push(h);const action=E.legalActions(s,0).find(a=>a.type==='cast'&&a.hand===h.uid&&predicate(a));assert.ok(action,'No cast '+slug);return E.dispatch(s,action);}
+function settle(s){let n=0;while(s.choice){assert.ok(n++<100);s=E.dispatch(s,{type:'choose',player:s.choice.player,option:0});}return s;}
+function chooseAfterDraw(s,id){while(s.choice&&s.choice.frame.step.op!=='modify')s=E.dispatch(s,{type:'choose',player:s.choice.player,option:0});return choose(s,v=>v?.uid===id);}
+
+
+function realBook(s,bearer=s.units.find(u=>u.controller===0)){const before=s.players[0].spent;s=cast(s,'book_of_blessings',a=>a.at===bearer.at&&a.bearer===bearer.uid);s=settle(s);assert.equal(s.players[0].spent-before,3);assert.ok(s.artifacts.some(a=>a.card===card('book_of_blessings').id&&a.bearer===bearer.uid));return s;}
+
+import {createMemoryBus} from '../src/net/memory-transport.js';
+import {createMatchSync,checksumState,ENGINE_BUILD} from '../src/net/match-sync.js';
+import {dispatchFinalControlledEntry} from '../src/final-control.js';
+import {choiceAction,choiceToken} from '../src/choice-context.js';
+import {magicSelectorProfiles} from '../src/selector-semantics.js';
+test('Book actual cast/Duel enemy declaration: cold JSON and late memory peer apply one tokenized choice with identical ally-only policy, damage prevention and checksum',async()=>{let initial=game();const ally=unit(initial,'brown_bears'),enemy=unit(initial,'wild_boars',13,1);initial=realBook(initial);initial=cast(initial,'duel');initial=choose(initial,v=>v?.uid===ally.uid);assert.ok(initial.choice.options.some(o=>o.value?.uid===enemy.uid));assert.equal(E.unit(initial,ally.uid).damage,0);const cold=E.restoreGame(JSON.parse(JSON.stringify(initial))),token=choiceToken(initial);assert.equal(choiceToken(cold),token);const action=choiceAction(cold,cold.choice.options.findIndex(o=>o.value?.uid===enemy.uid));assert.equal(ENGINE_BUILD,'firebase-friends-20261031-v1');assert.equal(magicSelectorProfiles.duel.enemy.source,'magic');assert.equal(magicSelectorProfiles.duel.enemy.role,'target');const bus=createMemoryBus();function peer(seat){const p={state:E.restoreGame(JSON.parse(JSON.stringify(cold))),seen:[],errors:[]};p.sync=createMatchSync({transport:bus.transport('seat'+seat),roomId:'BOOK',seat,playerId:'p'+seat});p.sync.on('action',entry=>{p.seen.push(entry.seq);try{p.state=dispatchFinalControlledEntry(p.state,entry,E.dispatch);}catch(e){p.errors.push(e.message);}});p.sync.start();return p;}const first=peer(0);await first.sync.publish(action);await first.sync.flush();const late=peer(1);for(let n=0;n<3;n++)await Promise.all([first.sync.flush(),late.sync.flush()]);for(const p of[first,late]){assert.deepEqual(p.errors,[]);assert.deepEqual(p.seen,[1]);assert.equal(E.unit(p.state,ally.uid).damage,0,'Ward must have existed before fighting');assert.equal(E.unit(p.state,ally.uid).ward,false,'fight consumes Ward and close must not regrant');assert.equal(E.unit(p.state,enemy.uid),undefined);const contexts=p.state.magicChoiceContexts.filter(c=>c.slug==='duel');assert.equal(contexts.length,1);const c=contexts[0];assert.equal(c.warded,ally.uid);assert.equal(c.countingPolicy,'allied-minions');assert.equal(c.closed,true);assert.deepEqual(c.minions.map(v=>v.uid).sort(),[ally.uid,enemy.uid].sort());assert.equal(c.books.length,1);p.sync.close();}assert.equal(checksumState(first.state),checksumState(late.state));});

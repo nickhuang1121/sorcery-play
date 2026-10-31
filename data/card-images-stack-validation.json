@@ -1,0 +1,17 @@
+{
+  "startedAt": "2026-10-31T00:32:26.199Z",
+  "checkedAt": "2026-10-31T00:34:11.923Z",
+  "command": "node --test --test-reporter=tap tests/*.test.js",
+  "exitCode": 0,
+  "signal": null,
+  "tests": 2726,
+  "passed": 2726,
+  "failed": 0,
+  "skipped": 0,
+  "cancelled": 0,
+  "sourceBefore": "6f13a4997771746c543d7054fd4ff3a7c447d7824c1d40af5380bb640caef2ef",
+  "sourceAfter": "6f13a4997771746c543d7054fd4ff3a7c447d7824c1d40af5380bb640caef2ef",
+  "sourceUnchanged": true,
+  "resultFile": "/tmp/sorcery-full-regression-fLISi2/results.tap",
+  "stderrFile": "/tmp/sorcery-full-regression-fLISi2/stderr.log"
+}

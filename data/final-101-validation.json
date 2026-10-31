@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-31T00:16:12.588Z",
+  "command": "node --test --test-reporter=tap tests/*.test.js",
+  "exitCode": 0,
+  "tests": 2721,
+  "passed": 2721,
+  "failed": 0,
+  "skipped": 0,
+  "resultFile": "data/all-cards-audit/logs/full-sorcery-full-regression-7eQoDV.tap",
+  "sourceBefore": "8c638d59df190974bdb42b35b63dc48a94a53935aa26ca4d2d4c37a4bf198516",
+  "sourceAfter": "8c638d59df190974bdb42b35b63dc48a94a53935aa26ca4d2d4c37a4bf198516",
+  "sourceUnchanged": true,
+  "isolatedResult": "/tmp/sorcery-full-regression-7eQoDV/validation.json"
+}

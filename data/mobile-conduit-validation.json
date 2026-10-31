@@ -1,0 +1,59 @@
+{
+  "startedAt": "2026-10-31T01:37:19.555Z",
+  "checkedAt": "2026-10-31T01:39:24.274Z",
+  "command": "node --test --test-reporter=tap tests/*.test.js",
+  "exitCode": 0,
+  "signal": null,
+  "tests": 2733,
+  "passed": 2733,
+  "failed": 0,
+  "skipped": 0,
+  "cancelled": 0,
+  "sourceBefore": "7ea0bddc87f0df0df7233f6c57dea471ac8814db4904901bdba61407d51de9ed",
+  "sourceAfter": "7ea0bddc87f0df0df7233f6c57dea471ac8814db4904901bdba61407d51de9ed",
+  "sourceUnchanged": true,
+  "resultFile": "/tmp/sorcery-full-regression-u6DUl5/results.tap",
+  "stderrFile": "/tmp/sorcery-full-regression-u6DUl5/stderr.log",
+  "browserEffects": {
+    "required": [
+      "cast",
+      "hit",
+      "summon",
+      "shield",
+      "heal",
+      "depart"
+    ],
+    "counts": {
+      "cast": 5,
+      "summon": 1,
+      "shield": 1,
+      "lightning": 1,
+      "hit": 2,
+      "heal": 1,
+      "depart": 1
+    },
+    "allSixObserved": true
+  },
+  "browserChecks": {
+    "portrait": "390x844",
+    "landscape": "844x390",
+    "fitBoard": true,
+    "dragDrop": true,
+    "belowSiteStack": true,
+    "standaloneArtifactVisible": true,
+    "libraryFilters": true,
+    "deckTabs": true,
+    "effectsOffAndOn": true,
+    "originalMatchRestored": true,
+    "consoleErrors": []
+  },
+  "screenshots": [
+    "output/ui/mobile-battle-upgraded.png",
+    "output/ui/mobile-water-stack-upgraded.png",
+    "output/ui/mobile-library-upgraded.png",
+    "output/ui/mobile-lobby.png",
+    "output/ui/conduit-six-effects.png",
+    "output/ui/conduit-live-effect.png"
+  ],
+  "persistentResultFile": "output/ui/mobile-conduit-regression.tap"
+}

@@ -1,0 +1,58 @@
+{
+  "feature": "Persistent public battle action notices with fade in/out",
+  "timing": {
+    "fadeInMs": 240,
+    "readMs": 3400,
+    "fadeOutMs": 350,
+    "maxConcurrentCards": 2,
+    "maxLinesPerCard": 3
+  },
+  "checks": [
+    "Native Red Desert site play displays 灰燼賢者 · AI 放置 赤紅沙漠。 with selected-language card name",
+    "Native Red Desert target choice yields a source line, Longbowmen damage, Foot Soldier death and Land Surveyor death; all four messages shown across two cards",
+    "Each page carries the effect source so later pages retain context",
+    "Native optional Simple Village payment creates an otherwise unlogged Foot Soldier; notice includes effect source and exact C2 entry",
+    "Death labels are based on actual new deathHistory records; hand return and ordinary banishment are distinct departures",
+    "Surviving unit damage and player life changes are surfaced from committed public state",
+    "Draw notices disclose the deck, never the card drawn",
+    "Click through the notice opened the underlying Flamecaller details",
+    "Opening a popup hides and pauses notices; IDs 1 and 2 remained after more than six seconds of native replay tests",
+    "Closing the popup resumed the same notices; toggling game tools re-rendered app without replacing or resetting notice IDs",
+    "Observed noticeOut animation duration 0.35s and intermediate opacity 0.965336, followed by removal of all notice nodes",
+    "Phone width390×844 produced notice width366 within viewport; desktop1200×900 produced width560",
+    "Browser console error log empty",
+    "Original match and viewport override restored"
+  ],
+  "fixtures": "data/action-notice-fixtures.json",
+  "fixtureScope": "Native prefixes of the previously played official match, switched to local control for manual UI testing; supplementary UI evidence, not another complete played game.",
+  "screenshots": [
+    "output/ui/action-notice-site.jpg",
+    "output/ui/action-notice-deaths.jpg",
+    "output/ui/action-notice-summon.jpg",
+    "output/ui/action-notice-desktop.jpg"
+  ],
+  "sourceHashes": {
+    "src/battle-notices.js": "b8d77450222f654979041eaae5ee53c01467a19a1fea02214064a9d9a5bc12dd",
+    "src/app.js": "17cece92acd24b5f97c4491635fe20627903c941272558a803f5c94e8facd681",
+    "styles/game.css": "524e53dca7c208c78e9789ff1bf663aaec788f5faf445d39201875fc4d35cc94",
+    "tests/battle-notices.test.js": "600530cafc915222febb1a00ad0da9c1cfc9f932aea3b82ef02dba57f2cc53e6"
+  },
+  "regression": {
+    "startedAt": "2026-10-31T05:37:15.188Z",
+    "checkedAt": "2026-10-31T05:38:58.281Z",
+    "command": "node --test --test-reporter=tap tests/*.test.js",
+    "exitCode": 0,
+    "signal": null,
+    "tests": 2766,
+    "passed": 2766,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "sourceBefore": "2644d9c371f7d6016c63fae0dccd2057bed52ba76d5bf718f4b6f20c5d3e29fc",
+    "sourceAfter": "2644d9c371f7d6016c63fae0dccd2057bed52ba76d5bf718f4b6f20c5d3e29fc",
+    "sourceUnchanged": true,
+    "resultFile": "/tmp/sorcery-full-regression-tkSgXj/results.tap",
+    "stderrFile": "/tmp/sorcery-full-regression-tkSgXj/stderr.log"
+  },
+  "regressionArtifact": "output/ui/action-notice-regression.tap"
+}

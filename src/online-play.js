@@ -1,5 +1,10 @@
+// Historical Firebase lockstep prototype, retained for regression fixtures only.
+// Production online-play.html runs app.js + net/online-client.js and /api authority.
+import {showNotice} from './popup.js';
+import {finalDecisionController,dispatchFinalControlledEntry,finalControlledPlayer} from './final-control.js';
+import {choiceAction,choiceToken} from './choice-context.js';
 import { loadCards, card } from './cards.js';
-import { newGame, dispatch, legalActions } from './engine.js';
+import { newGame, dispatch, legalActions, observation } from './engine.js';
 import {
   firebaseConfig,
   createFirebaseTransport,
@@ -64,10 +69,12 @@ function queryHandoff() {
   return { roomId, seat, fromQuery: true };
 }
 
+let rawLog='';
 function logLine(msg) {
   const el = $('#log');
   if (!el) return;
-  el.textContent = `${msg}\n` + el.textContent;
+  rawLog = `${msg}\n` + rawLog;
+  el.textContent = rawLog;
 }
 
 function showBootError(msg) {
@@ -120,7 +127,8 @@ function renderBoard(state) {
 }
 
 function renderHands(state, seat) {
-  const mine = state.players[seat];
+  const v=observation(state,seat),controlled=finalControlledPlayer(state,seat);
+  const mine = v.players[seat];
   const opp = state.players[1 - seat];
   const myCards = (mine.hand || []).map((h) => {
     try { return card(h.card).name; } catch { return '?'; }
@@ -131,6 +139,7 @@ function renderHands(state, seat) {
     '',
     `對手（席${1 - seat}）${opp.life} 命 · 手牌 ${opp.hand?.length ?? 0} 張（內容隱藏）`,
     `墓地 你 ${mine.cemetery?.length ?? 0} / 對手 ${opp.cemetery?.length ?? 0}`,
+    ...(controlled===null?[]:['Thaïs · 被控玩家所有牌（唯讀）','hand: '+v.players[controlled].hand.map(h=>card(h.card).name).join('、'),...['atlas','spells','collection'].map(zone=>zone+': '+v.players[controlled][zone].map(id=>card(id).name).join('、'))]),
   ].join('\n');
 }
 
@@ -147,19 +156,20 @@ function render(state, seat, desync, peerOnline) {
   setSyncBanner(desync);
   $('#peer-hint').textContent = peerOnline == null ? '對手：—' : (peerOnline ? '對手：在線' : '對手：離線');
 
-  const me = acting(state) === seat && !desync;
+  const me = finalDecisionController(state,acting(state)) === seat && !desync;
   $('#turn-hint').textContent = state.winner !== null
     ? `對局結束 · 勝者席 ${state.winner}`
     : (me ? '輪到你：選擇合法動作' : `等待席 ${acting(state)}…`);
   const box = $('#actions');
   box.innerHTML = '';
   if (!me || state.winner !== null) return;
-  const list = legalActions(state, seat).filter((a) => a.type !== 'concede');
+  const list = legalActions(state, acting(state)).filter((a) => a.type !== 'concede');
   for (const [i, a] of list.entries()) {
     const b = document.createElement('button');
     b.type = 'button';
     b.textContent = summarize(a, state);
-    b.onclick = () => window.__submitAction?.(a);
+    const submission=a.type==='choose'?{...a,...choiceAction(state,a.option)}:a;
+    b.onclick = () => window.__submitAction?.(submission);
     box.append(b);
   }
 }
@@ -318,7 +328,7 @@ async function boot(handoff) {
   let replayCount = 0;
   sync.on('action', async (entry) => {
     try {
-      state = dispatch(state, entry.action);
+      state = dispatchFinalControlledEntry(state,entry,dispatch);
       const sum = checksumState(state);
       replayCount++;
       logLine(`#${entry.seq} seat${entry.seat} ${entry.action.type} → ${sum}`);
@@ -345,10 +355,17 @@ async function boot(handoff) {
   logLine(replayCount ? `已重放 ${replayCount} 筆 action` : '尚無 action（對局剛開始）');
   render(state, handoff.seat, desync, peerOnline);
 
+  let submissionInFlight=false;
+  let lastChoiceSubmissionAt=-Infinity;
   window.__submitAction = async (action) => {
-    if (desync) return alert('已不同步，請雙方硬重整或回大廳');
-    if (acting(state) !== handoff.seat) return alert('尚未輪到你');
-    await sync.publish({ ...action, player: handoff.seat });
+    if (desync) return showNotice('已不同步，請雙方重新整理或回大廳。',{title:'連線狀態'});
+    if (submissionInFlight) return;
+    if (finalDecisionController(state,acting(state)) !== handoff.seat) return showNotice('尚未輪到你。',{title:'行動提示'});
+    if(action.type==='choose'&&(action.player!==acting(state)||action.choiceToken!==choiceToken(state)))return;
+    if(action.type==='choose'&&performance.now()-lastChoiceSubmissionAt<400)return;
+    if(action.type==='choose')lastChoiceSubmissionAt=performance.now();
+    submissionInFlight=true;
+    try{await sync.publish({ ...action, player:action.player??acting(state),actor:handoff.seat });await sync.flush();}finally{submissionInFlight=false;}
   };
 
   $('#btn-copy-room').onclick = async () => {

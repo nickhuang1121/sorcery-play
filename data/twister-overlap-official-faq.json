@@ -1,0 +1,46 @@
+{
+  "checkedAt": "2026-10-30T23:04:22.941157+00:00",
+  "source": "https://sorcerytcg.com/cards/chaos_twister",
+  "snapshot": "Previously retrieved official FAQ dataset, not live refresh in this step",
+  "faq": {
+    "_createdAt": "2025-02-20T22:57:45Z",
+    "_id": "FWsVZ4rxgHCtjTP73mU2mm",
+    "_rev": "TErrISLPjz1kwp8pzhN4KF",
+    "_type": "faq",
+    "_updatedAt": "2025-02-20T23:04:25Z",
+    "answer": [
+      {
+        "_key": "hQrlaX2o5b19R2HHwIehS",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "ESZO3gCr33-0-bWRiW3A4",
+            "_type": "span",
+            "text": "It lands on only a single site, which is the one that it most fully overlaps."
+          }
+        ],
+        "style": "normal"
+      }
+    ],
+    "cards": [
+      "chaos_twister"
+    ],
+    "codexification": true,
+    "orderRank": "0|1000mw:",
+    "question": [
+      {
+        "_key": "w8OCknQTlMrUxu3DnoofY",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "KCgsvjBzYhV4DfzQ_V8Gf",
+            "_type": "span",
+            "text": "What if the minion lands atop two or more sites?"
+          }
+        ],
+        "style": "normal"
+      }
+    ]
+  },
+  "interpretation": "Only one site: most fully overlaps. Exact equal overlap tie not specified by this FAQ. User digital rule remains one random square."
+}

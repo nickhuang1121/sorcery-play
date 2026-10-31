@@ -1,0 +1,20 @@
+{
+  "checks": [
+    "Official opening immediately shows mulligan popup without clicking the hand-review button",
+    "Closing then toggling game tools does not force it open again",
+    "Manual reopen preserves the selected Lone Tower redraw draft",
+    "After first local player confirms, second local player popup opens automatically",
+    "Both local mulligans complete into main phase",
+    "Production AI-first game seed999999 automatically shows human mulligan after AI confirmation",
+    "Reloading an unfinished opening automatically shows the human popup",
+    "First boot without saved match shows lobby with zero dialogs; formal start seed42 opens mulligan automatically",
+    "Original match and viewport restored; browser errors empty"
+  ],
+  "engineTests": {
+    "command": "node --test tests/match-setup.test.js",
+    "passed": 2,
+    "failed": 0
+  },
+  "screenshot": "output/ui/automatic-opening-mobile.jpg",
+  "sourceHash": "9ca6e38adab195d889a3179c44649e543206d600418482b3ac7f21191bc8ff1c"
+}

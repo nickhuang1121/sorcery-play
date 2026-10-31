@@ -1,0 +1,172 @@
+{
+  "startedAt": "2026-10-31T01:56:03.197Z",
+  "checkedAt": "2026-10-31T01:57:45.211Z",
+  "command": "node --test --test-reporter=tap tests/*.test.js",
+  "exitCode": 0,
+  "signal": null,
+  "tests": 2740,
+  "passed": 2740,
+  "failed": 0,
+  "skipped": 0,
+  "cancelled": 0,
+  "sourceBefore": "8e2bde83ba2969a5c3d44daea22aea065b0fb3c6e72184f6c253b48aea3cfa78",
+  "sourceAfter": "8e2bde83ba2969a5c3d44daea22aea065b0fb3c6e72184f6c253b48aea3cfa78",
+  "sourceUnchanged": true,
+  "resultFile": "/tmp/sorcery-full-regression-UOFj3z/results.tap",
+  "stderrFile": "/tmp/sorcery-full-regression-UOFj3z/stderr.log",
+  "browserEffects": {
+    "required": [
+      "cast",
+      "hit",
+      "summon",
+      "shield",
+      "heal",
+      "depart"
+    ],
+    "counts": {
+      "cast": 5,
+      "lightning": 1,
+      "hit": 2,
+      "summon": 1,
+      "shield": 1,
+      "heal": 1,
+      "depart": 1
+    },
+    "allSixObserved": true
+  },
+  "dragSnapshots": [
+    {
+      "legal": [
+        2,
+        12,
+        17
+      ],
+      "validPreview": [],
+      "invalidPreview": [
+        17
+      ]
+    },
+    {
+      "legal": [
+        2,
+        12,
+        17
+      ],
+      "validPreview": [
+        17
+      ],
+      "invalidPreview": []
+    },
+    {
+      "legal": [
+        2,
+        12,
+        17
+      ],
+      "validPreview": [],
+      "invalidPreview": []
+    },
+    {
+      "legal": [
+        2,
+        12,
+        17
+      ],
+      "validPreview": [],
+      "invalidPreview": [
+        11
+      ]
+    },
+    {
+      "legal": [
+        2,
+        12,
+        17
+      ],
+      "validPreview": [],
+      "invalidPreview": [
+        6
+      ]
+    },
+    {
+      "legal": [
+        2,
+        12,
+        17
+      ],
+      "validPreview": [
+        17
+      ],
+      "invalidPreview": []
+    },
+    {
+      "legal": [
+        2,
+        12,
+        17
+      ],
+      "validPreview": [],
+      "invalidPreview": [
+        17
+      ]
+    },
+    {
+      "legal": [
+        2,
+        12,
+        17
+      ],
+      "validPreview": [],
+      "invalidPreview": [
+        12
+      ]
+    },
+    {
+      "legal": [
+        2,
+        12,
+        17
+      ],
+      "validPreview": [
+        12
+      ],
+      "invalidPreview": []
+    }
+  ],
+  "clickReferenceLegalCells": [
+    2,
+    12,
+    17
+  ],
+  "dragMatchesClick": true,
+  "browserChecks": {
+    "viewports": [
+      "375x667",
+      "390x844",
+      "844x390"
+    ],
+    "invalidDropRejected": true,
+    "validDropCausedDamage": true,
+    "stackOrderChangedOnlyWithinBelowLayer": true,
+    "surfaceCountAfterReorder": 0,
+    "belowCountAfterReorder": 2,
+    "sheetSwipeDismissed": true,
+    "artifactChoice": {
+      "spell": "Telekinesis",
+      "target": "Ruby Core",
+      "highlightCell": 12,
+      "carriedAtAfter": 17
+    },
+    "originalMatchRestored": true,
+    "viewportReset": true,
+    "consoleErrors": []
+  },
+  "cssSha256": "b9a370f4860eb972dd9102c87eb89bb397a08234de3005f77cf3b9c9a0527201",
+  "persistentResultFile": "output/ui/mobile-rescan-regression.tap",
+  "screenshots": [
+    "output/ui/mobile-rescan-battle.png",
+    "output/ui/mobile-rescan-stack.png",
+    "output/ui/mobile-rescan-landscape.png",
+    "output/ui/mobile-rescan-six.png"
+  ]
+}

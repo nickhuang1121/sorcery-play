@@ -1,0 +1,998 @@
+{
+  "scope": "Combat migration audit, not complete card certification",
+  "keys": [
+    {
+      "key": "attackManaGift",
+      "cards": [
+        "bridge_troll"
+      ],
+      "consumer": [
+        "src/engine.js:1055"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Bridge Troll drains the attackers remaining mana exactly once and schedules it for the bearer controller"
+        ]
+      }
+    },
+    {
+      "key": "avatarStrikeBurrow",
+      "cards": [
+        "sir_balin"
+      ],
+      "consumer": [
+        "src/engine.js:589"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Balin destroys the struck Avatars site and burrows other minions without moving the bearer"
+        ]
+      }
+    },
+    {
+      "key": "avatarStrikeDiscard",
+      "cards": [
+        "men_of_leng"
+      ],
+      "consumer": [
+        "src/engine.js:587"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Men of Leng makes the struck Avatar discard once per independent source"
+        ]
+      }
+    },
+    {
+      "key": "cannotAttack",
+      "cards": [
+        "hellstar"
+      ],
+      "consumer": [
+        "src/engine.js:1917"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Borrowed attack/defend prohibitions survive silence instead of reading the native card"
+        ]
+      }
+    },
+    {
+      "key": "cannotAttackSites",
+      "cards": [
+        "monstrous_lion"
+      ],
+      "consumer": [
+        "src/engine.js:1921"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "A gained Lion restriction forbids site attacks while still allowing unit attacks"
+        ]
+      }
+    },
+    {
+      "key": "cannotDefend",
+      "cards": [
+        "hellstar",
+        "lumbering_giant",
+        "recurring_specter",
+        "tawny"
+      ],
+      "consumer": [
+        "src/engine.js:1829"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Borrowed attack/defend prohibitions survive silence instead of reading the native card"
+        ]
+      }
+    },
+    {
+      "key": "damageGuard",
+      "cards": [
+        "royal_bodyguard",
+        "sir_gawain"
+      ],
+      "consumer": [
+        "src/final-damage.js:63",
+        "src/final-damage.js:65"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Borrowed Gawain redirects damage and draws from its captured ability origin only when that damage kills it"
+        ]
+      }
+    },
+    {
+      "key": "damageToController",
+      "cards": [
+        "hemogolem"
+      ],
+      "consumer": [
+        "src/final-borrowed-combat.js:12"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Borrowed Hemogolem and duplicate Flagellant use actual received damage and preserve separate healing triggers"
+        ]
+      }
+    },
+    {
+      "key": "denyLoneDefense",
+      "cards": [
+        "lord_of_fear"
+      ],
+      "consumer": [
+        "src/engine.js:1997"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Lord of Fear disallows a lone defender and allows two defenders to fight together"
+        ]
+      }
+    },
+    {
+      "key": "destroyWhenStruck",
+      "cards": [
+        "phantasmal_shade"
+      ],
+      "consumer": [
+        "src/engine.js:588"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Borrowed Shade destroy-when-struck triggers even when Ward prevented the striking damage"
+        ]
+      }
+    },
+    {
+      "key": "doubleNonStrikeNearby",
+      "cards": [
+        "doomsday_prophet"
+      ],
+      "consumer": [
+        "src/final-damage.js:59"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Duplicate gained Doomsday Prophet instances each double damage and do not merge source IDs",
+          "Silence removes native damage doubling but keeps a gained Prophet ability"
+        ]
+      }
+    },
+    {
+      "key": "drawStrongestKill",
+      "cards": [
+        "sir_pellinore"
+      ],
+      "consumer": [
+        "src/final-borrowed-combat.js:30"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Pellinore draws for killing the strongest enemy but not a weaker enemy"
+        ]
+      }
+    },
+    {
+      "key": "evadeTeleport",
+      "cards": [
+        "wills_o_the_wisp"
+      ],
+      "consumer": [
+        "src/attack-reactions.js:17"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Borrowed Wisp reaction really teleports an attacked silenced bearer before defense"
+        ]
+      }
+    },
+    {
+      "key": "fiftyDestroyStruck",
+      "cards": [
+        "lord_of_destruction"
+      ],
+      "consumer": [
+        "src/engine.js:1708"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Lord of Destruction destroys the struck site and other minions there while preserving the bearer"
+        ]
+      }
+    },
+    {
+      "key": "fiftyRedirectAll",
+      "cards": [
+        "goat_for_azazel"
+      ],
+      "consumer": [
+        "src/final-damage.js:62"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "A silenced bearer with gained Goat redirects onto the real physical unit"
+        ]
+      }
+    },
+    {
+      "key": "fiftyRedirectAvatar",
+      "cards": [
+        "bruin"
+      ],
+      "consumer": [
+        "src/final-damage.js:62"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Borrowed Bruin redirects nearby Avatar damage but leaves ordinary allied minion damage alone"
+        ]
+      }
+    },
+    {
+      "key": "firstFightUntap",
+      "cards": [
+        "sir_lancelot"
+      ],
+      "consumer": [
+        "src/engine.js:2000"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Borrowed first-while-attacking and first-fight untap use separate timing and reset only once per turn"
+        ]
+      }
+    },
+    {
+      "key": "firstWhileAttacking",
+      "cards": [
+        "albespine_pikemen"
+      ],
+      "consumer": [
+        "src/engine.js:603"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Borrowed first-while-attacking and first-fight untap use separate timing and reset only once per turn"
+        ]
+      }
+    },
+    {
+      "key": "giantsBanishKills",
+      "cards": [
+        "blunderbore"
+      ],
+      "consumer": [
+        "src/engine.js:313"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Blunderbore makes an actual allied Giant banish its victim and permanently gain power"
+        ]
+      }
+    },
+    {
+      "key": "healNonlethal",
+      "cards": [
+        "seirawan_hydra"
+      ],
+      "consumer": [
+        "src/engine.js:276"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Hydra heals nonlethal damage immediately but does not save lethal damage"
+        ]
+      }
+    },
+    {
+      "key": "healSurvivingAllies",
+      "cards": [
+        "sawbones"
+      ],
+      "consumer": [
+        "src/final-borrowed-combat.js:18"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Sawbones fully heals a surviving ally without confusing unit healing with player life"
+        ]
+      }
+    },
+    {
+      "key": "healWhenHurt",
+      "cards": [
+        "flagellant"
+      ],
+      "consumer": [
+        "src/final-borrowed-combat.js:13"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Borrowed Hemogolem and duplicate Flagellant use actual received damage and preserve separate healing triggers"
+        ]
+      }
+    },
+    {
+      "key": "killSkeleton",
+      "cards": [
+        "stygian_archers"
+      ],
+      "consumer": [
+        "src/engine.js:1262",
+        "src/final-borrowed-combat.js:28"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Kill-credit snapshot retains gained Stygian Archers after its bearer dies in the same fight"
+        ]
+      }
+    },
+    {
+      "key": "lethalTo",
+      "cards": [
+        "intrepid_hero"
+      ],
+      "consumer": [
+        "src/engine.js:592"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained lethal-to-Evil uses the physical bearer and its source-aware condition under silence"
+        ]
+      }
+    },
+    {
+      "key": "mandatoryAttackMe",
+      "cards": [
+        "the_green_knight"
+      ],
+      "consumer": [
+        "src/battle-obligations.js:8"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Green Knight forces an enemy to attack its bearer rather than another available target"
+        ]
+      }
+    },
+    {
+      "key": "mandatoryUnitAttack",
+      "cards": [
+        "tvinnax_berserker"
+      ],
+      "consumer": [
+        "src/battle-obligations.js:12"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Berserker obligation forces a unit attack and its kill trigger untaps the actual silenced bearer"
+        ]
+      }
+    },
+    {
+      "key": "nineLives",
+      "cards": [
+        "black_cat"
+      ],
+      "consumer": [
+        "src/engine.js:295",
+        "src/engine.js:365"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained nine-lives ability saves a silenced bearer eight times and leaves its physical identity unchanged"
+        ]
+      }
+    },
+    {
+      "key": "noDefend",
+      "cards": [
+        "harassing_ruffians"
+      ],
+      "consumer": [
+        "src/engine.js:1056",
+        "src/engine.js:1057",
+        "src/engine.js:1060",
+        "src/engine.js:1828"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Harassing Ruffians prevents defense against the bearer even when an otherwise legal defender is ready"
+        ]
+      }
+    },
+    {
+      "key": "noDefensiveStrike",
+      "cards": [
+        "escyllion_cyclops"
+      ],
+      "consumer": [
+        "src/engine.js:1304"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Borrowed Cyclops suppresses only defensive strikes while retaining the bearers real combat power"
+        ]
+      }
+    },
+    {
+      "key": "noMoveDefend",
+      "cards": [
+        "zombie_horde"
+      ],
+      "consumer": [
+        "src/engine.js:1830"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Zombie Horde prohibits moving to defend but allows the same physical bearer to defend in place"
+        ]
+      }
+    },
+    {
+      "key": "otherSiteAttackPower",
+      "cards": [
+        "boudicca"
+      ],
+      "consumer": [
+        "src/engine.js:2004"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Two gained Boudicca sources add their site-attack bonus without raising normal card power"
+        ]
+      }
+    },
+    {
+      "key": "preventFirstDamage",
+      "cards": [
+        "tufted_turtles"
+      ],
+      "consumer": [
+        "src/engine.js:270"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained first-damage prevention survives silence and resets by turn, not by damaging the source clone"
+        ]
+      }
+    },
+    {
+      "key": "protectNearbyAttacks",
+      "cards": [
+        "white_hart"
+      ],
+      "consumer": [
+        "src/engine.js:1816"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained White Hart protects other nearby units and sites, while its own bearer remains attackable"
+        ]
+      }
+    },
+    {
+      "key": "rangedImmune",
+      "cards": [
+        "yourke_crossbowmen"
+      ],
+      "consumer": [
+        "src/engine.js:591"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained ranged immunity prevents a real ranged strike and gained Kite Archer still offers its immediate step"
+        ]
+      }
+    },
+    {
+      "key": "reapKills",
+      "cards": [
+        "grim_reaper"
+      ],
+      "consumer": [
+        "src/engine.js:301"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Reaper banishes the victim and exact copies across opposing private zones without touching a different card"
+        ]
+      }
+    },
+    {
+      "key": "reflectUndefendedLoss",
+      "cards": [
+        "mordric_druids"
+      ],
+      "consumer": [
+        "src/engine.js:2004"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Mordric Druids reflects only nearby life lost to an undefended site attack"
+        ]
+      }
+    },
+    {
+      "key": "replaceFireDamagePower",
+      "cards": [
+        "askelon_phoenix"
+      ],
+      "consumer": [
+        "src/final-damage.js:60"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Borrowed Phoenix replacement changes the real bearer rather than damaging a layer clone"
+        ]
+      }
+    },
+    {
+      "key": "rescueWeakerAttacked",
+      "cards": [
+        "witherwing_hero"
+      ],
+      "consumer": [
+        "src/attack-reactions.js:18"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Witherwing Hero returns a weaker attacked controlled minion to its physical owners hand before combat"
+        ]
+      }
+    },
+    {
+      "key": "returnDyingAllies",
+      "cards": [
+        "lady_iseult"
+      ],
+      "consumer": [
+        "src/final-borrowed-combat.js:22"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Borrowed Lady Iseult returns a dying ally to its owners hand while the silenced source stays in realm"
+        ]
+      }
+    },
+    {
+      "key": "revengeOnDeath",
+      "cards": [
+        "accursed_albatross"
+      ],
+      "consumer": [
+        "src/engine.js:308"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Albatross revenge uses the killer snapshot to destroy its nearby other allies while sparing the killer and distant allies"
+        ]
+      }
+    },
+    {
+      "key": "skeletonOnMoveHurt",
+      "cards": [
+        "army_of_the_dead"
+      ],
+      "consumer": [
+        "src/final-borrowed-combat.js:11"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Two gained hurt-trigger instances summon two Skeletons at the physical bearer location"
+        ]
+      }
+    },
+    {
+      "key": "stepAfterRanged",
+      "cards": [
+        "kite_archer"
+      ],
+      "consumer": [
+        "src/engine.js:600"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained ranged immunity prevents a real ranged strike and gained Kite Archer still offers its immediate step"
+        ]
+      }
+    },
+    {
+      "key": "strikeAfterAllyAttack",
+      "cards": [
+        "sir_agravaine"
+      ],
+      "consumer": [
+        "src/battle-obligations.js:23"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Each gained Agravaine instance strikes after the allied attack even when the original attacker dies"
+        ]
+      }
+    },
+    {
+      "key": "strikeHeal",
+      "cards": [
+        "blood_ravens",
+        "daperyll_vampire",
+        "hemogolem",
+        "renatus_trueblood",
+        "sir_galahad",
+        "vampire_bats"
+      ],
+      "consumer": [
+        "src/engine.js:598"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Two physical Bust strike-heal abilities both heal using the bearers actual power while silenced"
+        ]
+      }
+    },
+    {
+      "key": "untapAfterStriking",
+      "cards": [
+        "rowdy_boys"
+      ],
+      "consumer": [
+        "src/engine.js:590"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Rowdy Boys untaps after striking Undead while a gained Kay untaps only when targeting a weaker minion"
+        ]
+      }
+    },
+    {
+      "key": "untapAttackKill",
+      "cards": [
+        "tvinnax_berserker"
+      ],
+      "consumer": [
+        "src/engine.js:311",
+        "src/final-borrowed-combat.js:27"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Berserker obligation forces a unit attack and its kill trigger untaps the actual silenced bearer"
+        ]
+      }
+    },
+    {
+      "key": "untapOnWeakerTarget",
+      "cards": [
+        "sir_kay"
+      ],
+      "consumer": [
+        "src/engine.js:188"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Rowdy Boys untaps after striking Undead while a gained Kay untaps only when targeting a weaker minion"
+        ]
+      }
+    },
+    {
+      "key": "unkillable",
+      "cards": [
+        "the_doom_of_dilmun"
+      ],
+      "consumer": [
+        "src/engine.js:293",
+        "src/engine.js:294",
+        "src/final-units.js:216",
+        "src/final-units.js:301",
+        "src/final-units.js:304"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Doom prevents destruction and banishment of its physical bearer"
+        ]
+      }
+    },
+    {
+      "key": "chaseMagicCaster",
+      "cards": [
+        "sturmgeist"
+      ],
+      "consumer": [
+        "src/attack-reactions.js:24"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Sturmgeist steps toward the actual enemy Magic caster and strikes before that Magic resolves"
+        ]
+      }
+    },
+    {
+      "key": "gainNearbyDeadPower",
+      "cards": [
+        "squirming_mass"
+      ],
+      "consumer": [
+        "src/engine.js:307"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Squirming Mass instances each gain the dying neighbors real power, surviving silence"
+        ]
+      }
+    },
+    {
+      "key": "damageOnStop",
+      "cards": [
+        "adtonitum"
+      ],
+      "consumer": [
+        "src/engine.js:367"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Adtonitum stop damage triggers once after an actual step and uses the borrowed ability origin"
+        ]
+      }
+    },
+    {
+      "key": "pushAfterMagic",
+      "cards": [
+        "wind_sylph"
+      ],
+      "consumer": [
+        "src/engine.js:2191"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Gained Wind Sylph grants the bearer a legal Air spell cast and its own push continuation"
+        ]
+      }
+    },
+    {
+      "key": "finalCaptain",
+      "cards": [
+        "captain_baldassare"
+      ],
+      "consumer": [
+        "src/final-units.js:284"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Two gained Captain sources each plunder three actual top spells and preserve the physical bearer source"
+        ]
+      }
+    },
+    {
+      "key": "finalSeaRaider",
+      "cards": [
+        "sea_raider"
+      ],
+      "consumer": [
+        "src/final-units.js:290"
+      ],
+      "migration": "source-instance views; physical bearer retained",
+      "verification": {
+        "dispatch_suite": "tests/final-borrowed-combat.test.js",
+        "per_key_dispatch_certified": true,
+        "note": "Exact named true-dispatch cases for this consumer; not a certification of every card carrying the key",
+        "test_cases": [
+          "Two gained Sea Raider kill triggers retain both source instances after a simultaneous mutual kill"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,338 @@
+{
+  "checkedAt": "2026-10-30",
+  "rulebook": {
+    "version": "2026-10-12",
+    "url": "https://drive.google.com/file/d/1sgQo0xf0N2teIR0zlyl91g9j6LVncZnr/view",
+    "sha256": "eb5e1eb2eafa81a5f61754d6cb0739d9b18906481caf9c2c1ea097944352f316"
+  },
+  "codexUrl": "https://sorcerytcg.com/codex",
+  "fetchedCodexAndFaqRecords": 969,
+  "officialApiMetadataComparison": "25 張 engine 欄位與即時官方 API 相同；未改寫原始快照。",
+  "cards": [
+    {
+      "slug": "iron_man_talus",
+      "name": "Iron Man Talus",
+      "url": "https://sorcerytcg.com/cards/iron_man_talus",
+      "rulingSummary": "不可失能與強制移動；Swap 任一方無法傳送時雙方都不動。",
+      "faqs": []
+    },
+    {
+      "slug": "driftwood_marrows",
+      "name": "Driftwood Marrows",
+      "url": "https://sorcerytcg.com/cards/driftwood_marrows",
+      "rulingSummary": "附近友軍免於強制下潛；仍可自行使用 Submerge。",
+      "faqs": [
+        {
+          "id": "132e8a2d-097c-40ca-b8b1-db146606fa06",
+          "updatedAt": "2026-02-09T18:40:11Z"
+        }
+      ]
+    },
+    {
+      "slug": "hemogolem",
+      "name": "Hemogolem",
+      "url": "https://sorcerytcg.com/cards/hemogolem",
+      "rulingSummary": "以實際 Strike 傷害治療；受到的傷害另對自己的 Avatar 造成傷害。",
+      "faqs": []
+    },
+    {
+      "slug": "purge_juggernaut",
+      "name": "Purge Juggernaut",
+      "url": "https://sorcerytcg.com/cards/purge_juggernaut",
+      "rulingSummary": "回合開始橫置、選相鄰合法位置移動，再殺死該處其他僕從。",
+      "faqs": []
+    },
+    {
+      "slug": "clay_golem",
+      "name": "Clay Golem",
+      "url": "https://sorcerytcg.com/cards/clay_golem",
+      "rulingSummary": "Deathrite 將 Atlas 頂牌放到相鄰虛空或 Rubble。",
+      "faqs": [
+        {
+          "id": "d533e46b-e765-4bf4-8d0c-baeb5a2db2cf",
+          "updatedAt": "2025-12-06T06:18:48Z"
+        }
+      ]
+    },
+    {
+      "slug": "arcade_of_bones",
+      "name": "Arcade of Bones",
+      "url": "https://sorcerytcg.com/cards/arcade_of_bones",
+      "rulingSummary": "同橫列 Undead 自由移動，且不受 Magic 指定與傷害。",
+      "faqs": [
+        {
+          "id": "a518e001-9551-49b9-b86c-e169597be758",
+          "updatedAt": "2026-03-25T19:18:05Z"
+        }
+      ]
+    },
+    {
+      "slug": "land_deed",
+      "name": "Land Deed",
+      "url": "https://sorcerytcg.com/cards/land_deed",
+      "rulingSummary": "僅取得神器所在那一格的地點；即時重算魔力；放下後還原。",
+      "faqs": [
+        {
+          "id": "FWsVZ4rxgHCtjTP73mWyZS",
+          "updatedAt": "2025-12-05T17:31:08Z"
+        },
+        {
+          "id": "ygoDG8fb7HS97qCW69sdrJ",
+          "updatedAt": "2026-10-12T17:44:10Z"
+        },
+        {
+          "id": "ygoDG8fb7HS97qCW69tDCM",
+          "updatedAt": "2025-07-06T08:18:16Z"
+        }
+      ]
+    },
+    {
+      "slug": "king_arthur",
+      "name": "King Arthur",
+      "url": "https://sorcerytcg.com/cards/king_arthur",
+      "rulingSummary": "禁止控制別人擁有的牌；神器控制者與持有者分開處理。",
+      "faqs": [
+        {
+          "id": "be452d85-9a36-4c12-8ccf-43ee489bab87",
+          "updatedAt": "2026-05-19T18:39:18Z"
+        },
+        {
+          "id": "eXfZjLHocReFQIApZdNN4S",
+          "updatedAt": "2026-05-19T18:39:14Z"
+        }
+      ]
+    },
+    {
+      "slug": "endless_fence",
+      "name": "Endless Fence",
+      "url": "https://sorcerytcg.com/cards/endless_fence",
+      "rulingSummary": "阻止僕從從虛空進入圍欄所在的連續陸地。",
+      "faqs": []
+    },
+    {
+      "slug": "duplicator",
+      "name": "Duplicator",
+      "url": "https://sorcerytcg.com/cards/duplicator",
+      "rulingSummary": "Atlas／Spellbook 僅成對 Unique；起手各兩張；收藏區另依 FAQ。",
+      "faqs": [
+        {
+          "id": "f4882dd8-c0de-4b10-b148-06372c5b5b64",
+          "updatedAt": "2025-12-06T06:17:44Z"
+        }
+      ]
+    },
+    {
+      "slug": "swap",
+      "name": "Swap",
+      "url": "https://sorcerytcg.com/cards/swap",
+      "rulingSummary": "兩目標同區域、確認前可取消、同時傳送，攜帶物互換持有者。",
+      "faqs": [
+        {
+          "id": "410cf479-7c37-489c-b940-6b8967fc6e53",
+          "updatedAt": "2026-10-11T18:13:46Z"
+        },
+        {
+          "id": "70c4ce0a-c575-4e82-985b-b0f3ea49a827",
+          "updatedAt": "2026-02-09T06:43:01Z"
+        },
+        {
+          "id": "691c08e3-f0fd-486d-876c-d365ea48d72c",
+          "updatedAt": "2026-03-27T23:52:23Z"
+        },
+        {
+          "id": "77da803f-0f8d-41bb-abf3-30830ee2bc91",
+          "updatedAt": "2026-02-09T06:43:06Z"
+        },
+        {
+          "id": "5267e8de-620b-4691-969e-994d2afc0bae",
+          "updatedAt": "2025-11-21T23:03:34Z"
+        }
+      ]
+    },
+    {
+      "slug": "backstab",
+      "name": "Backstab",
+      "url": "https://sorcerytcg.com/cards/backstab",
+      "rulingSummary": "可指定敵我僕從，第二目標須橫置；最多走一步，只由第一目標 Strike。",
+      "faqs": [
+        {
+          "id": "ygoDG8fb7HS97qCW69tM12",
+          "updatedAt": "2025-02-20T23:04:25Z"
+        },
+        {
+          "id": "ygoDG8fb7HS97qCW69tYp1",
+          "updatedAt": "2025-07-10T16:25:25Z"
+        }
+      ]
+    },
+    {
+      "slug": "blasphemy",
+      "name": "Blasphemy",
+      "url": "https://sorcerytcg.com/cards/blasphemy",
+      "rulingSummary": "先同時傷害地點，依雙方順序選不同神器，最後摧毀並橫置／跳過重置。",
+      "faqs": [
+        {
+          "id": "03bf0f34-15a8-4bad-889a-39005031725b",
+          "updatedAt": "2025-12-06T06:31:49Z"
+        }
+      ]
+    },
+    {
+      "slug": "awakened_mummies",
+      "name": "Awakened Mummies",
+      "url": "https://sorcerytcg.com/cards/awakened_mummies",
+      "rulingSummary": "必須 burrowed safely 進場；敵方移入上方後無須橫置即可出土戰鬥。",
+      "faqs": [
+        {
+          "id": "ygoDG8fb7HS97qCW69i0Vz",
+          "updatedAt": "2025-07-10T02:23:00Z"
+        },
+        {
+          "id": "FWsVZ4rxgHCtjTP73mUAcK",
+          "updatedAt": "2025-07-10T02:22:39Z"
+        }
+      ]
+    },
+    {
+      "slug": "haystack",
+      "name": "Haystack",
+      "url": "https://sorcerytcg.com/cards/haystack",
+      "rulingSummary": "限制對手搜尋任何牌庫的範圍，不限制 Browse 等查看效果。",
+      "faqs": [
+        {
+          "id": "4264b011-0d62-4e0e-95c5-326ff5460db1",
+          "updatedAt": "2026-02-09T18:43:04Z"
+        },
+        {
+          "id": "31cc3d49-02b5-43f3-87dd-ab21e3de34ba",
+          "updatedAt": "2025-11-21T23:17:48Z"
+        }
+      ]
+    },
+    {
+      "slug": "black_cat",
+      "name": "Black Cat",
+      "url": "https://sorcerytcg.com/cards/black_cat",
+      "rulingSummary": "前八次死亡替代為完全治療，第九次死亡；犧牲略過預防；選對手隨機結果。",
+      "faqs": [
+        {
+          "id": "7399472c-4ee2-4cd2-8192-55c3a1266ec3",
+          "updatedAt": "2026-03-25T19:16:48Z"
+        }
+      ]
+    },
+    {
+      "slug": "kythera_mechanism",
+      "name": "Kythera Mechanism",
+      "url": "https://sorcerytcg.com/cards/kythera_mechanism",
+      "rulingSummary": "持有者的操控者選隨機結果，以進場時間排序；不揭露隱藏手牌卡名。",
+      "faqs": [
+        {
+          "id": "eXfZjLHocReFQIApZdIrVY",
+          "updatedAt": "2025-02-20T23:04:25Z"
+        },
+        {
+          "id": "ygoDG8fb7HS97qCW69oVAv",
+          "updatedAt": "2025-07-06T08:17:29Z"
+        },
+        {
+          "id": "ygoDG8fb7HS97qCW69oVNw",
+          "updatedAt": "2025-02-20T23:04:25Z"
+        }
+      ]
+    },
+    {
+      "slug": "rat_king",
+      "name": "Rat King",
+      "url": "https://sorcerytcg.com/cards/rat_king",
+      "rulingSummary": "Genesis／Deathrite 搜尋頂六張，每個其他相鄰地點可召喚一隻 Ordinary rat。",
+      "faqs": []
+    },
+    {
+      "slug": "undertaker_engine",
+      "name": "Undertaker Engine",
+      "url": "https://sorcerytcg.com/cards/undertaker_engine",
+      "rulingSummary": "回合結束分別選擇要上浮或下埋的神器／僕從，確認後一起處理。",
+      "faqs": [
+        {
+          "id": "FWsVZ4rxgHCtjTP73mTwHg",
+          "updatedAt": "2025-02-20T23:04:25Z"
+        }
+      ]
+    },
+    {
+      "slug": "grim_reaper",
+      "name": "Grim Reaper",
+      "url": "https://sorcerytcg.com/cards/grim_reaper",
+      "rulingSummary": "擊殺替代為放逐，放逐場上複本及受害者擁有者私人區域中的複本。",
+      "faqs": [
+        {
+          "id": "FWsVZ4rxgHCtjTP73mTyJe",
+          "updatedAt": "2026-08-06T17:11:20Z"
+        }
+      ]
+    },
+    {
+      "slug": "arcane_barrage",
+      "name": "Arcane Barrage",
+      "url": "https://sorcerytcg.com/cards/arcane_barrage",
+      "rulingSummary": "施放前選 X 與方向，支付 X，依序結算 X 個獨立投射物；X=0 不發射。",
+      "faqs": []
+    },
+    {
+      "slug": "assorted_animals",
+      "name": "Assorted Animals",
+      "url": "https://sorcerytcg.com/cards/assorted_animals",
+      "rulingSummary": "支付 X，逐次挑選不同 Beast，費用合計不超過 X；Haystack 範圍固定。",
+      "faqs": [
+        {
+          "id": "ygoDG8fb7HS97qCW69nGl3",
+          "updatedAt": "2025-02-20T23:04:25Z"
+        }
+      ]
+    },
+    {
+      "slug": "blaze_of_glory",
+      "name": "Blaze of Glory",
+      "url": "https://sorcerytcg.com/cards/blaze_of_glory",
+      "rulingSummary": "逐場選擇敵人，完整處理先攻及 Deathrite，再選下一場；全部結束後才死亡。",
+      "faqs": [
+        {
+          "id": "222bd1f0-56d3-4874-b544-dc0bb03cf440",
+          "updatedAt": "2026-02-09T18:46:09Z"
+        },
+        {
+          "id": "9890d212-c0d8-4694-a48b-a11e70fe52bc",
+          "updatedAt": "2026-03-25T19:15:50Z"
+        },
+        {
+          "id": "bf1e5b42-14e1-4166-8e57-a2726b1d0d84",
+          "updatedAt": "2026-03-25T19:17:11Z"
+        },
+        {
+          "id": "9b466dae-7d09-4e44-a0fd-354c36baae76",
+          "updatedAt": "2026-03-25T19:17:13Z"
+        }
+      ]
+    },
+    {
+      "slug": "monks_of_kobalsa",
+      "name": "Monks of Kobalsa",
+      "url": "https://sorcerytcg.com/cards/monks_of_kobalsa",
+      "rulingSummary": "阻擋能力、力量、沉默、失能、變形等修改；Ward 為例外。",
+      "faqs": []
+    },
+    {
+      "slug": "the_doom_of_dilmun",
+      "name": "The Doom of Dilmun",
+      "url": "https://sorcerytcg.com/cards/the_doom_of_dilmun",
+      "rulingSummary": "不可修改、摧毀或放逐，犧牲仍有效。",
+      "faqs": [
+        {
+          "id": "b28b3f0e-e032-4063-be39-48d91dbff063",
+          "updatedAt": "2025-12-21T07:01:00Z"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "checkedAt": "2026-10-30T21:47:42.499807+00:00",
+  "newlyReviewed": 18,
+  "batches": [
+    {
+      "categoryFile": "data/all-cards-audit/minions.json",
+      "slugs": [
+        "grandmaster_wizard",
+        "gravedigger",
+        "great_old_one",
+        "greater_blood_demon",
+        "grey_wolves",
+        "grief_larvae"
+      ],
+      "test": "tests/catalog-minions-wave10.test.js",
+      "doc": "docs/AUDIT_MINIONS_WAVE10.md",
+      "result": "25/25 stable native candidates; includes Floodplain/TheFlood/Mortuary source controls"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/magics.json",
+      "slugs": [
+        "four_fat_frogs",
+        "freeze",
+        "frost_nova",
+        "geyser",
+        "ghostfire",
+        "gift_of_the_frog"
+      ],
+      "test": "tests/catalog-magics-wave7.test.js",
+      "doc": "docs/AUDIT_MAGICS_WAVE7.md",
+      "result": "22/22 stable native effects; four true engine defects fixed"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/artifacts.json",
+      "slugs": [
+        "sentinel_trap",
+        "seven_league_boots",
+        "shrine_of_the_dragonlord",
+        "siege_ballista",
+        "silver_bullet",
+        "spear_of_destiny"
+      ],
+      "test": "tests/catalog-artifacts-wave10.test.js",
+      "doc": "docs/AUDIT_ARTIFACTS_WAVE10.md",
+      "result": "21/21 stable native candidates; noncaster and actual-part-layer defects fixed"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/sites.json",
+      "slugs": [
+        "broceliande",
+        "bureau_of_occult_control",
+        "consecrated_ground",
+        "dark_tower",
+        "defiler_spire",
+        "den_of_evil"
+      ],
+      "test": "tests/catalog-sites-native-wave1.test.js",
+      "doc": "docs/AUDIT_SITES_NATIVE_WAVE1.md",
+      "result": "16/16 stable native effects; DarkTower printedGenesis suppression fixed"
+    }
+  ],
+  "scope": "24 additional representative per-card audits, not complete-card approvals.18 previously unreviewed; six Sites improve existing code review. First full2450 was2449/1 incorrect old externalFlood expectation, preserved and corrected from explicit Codex; latest full36138 currently pending.",
+  "fullValidation": {
+    "checkedAt": "2026-10-30T21:48:22.719Z",
+    "command": "node --test --test-reporter=tap tests/*.test.js",
+    "exitCode": 0,
+    "tests": 2450,
+    "passed": 2450,
+    "failed": 0,
+    "skipped": 0,
+    "resultFile": "data/all-cards-audit/logs/wave10-full-2450.tap"
+  }
+}

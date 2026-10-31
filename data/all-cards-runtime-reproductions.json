@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Empty deck draw",
+    "status": "fixed-formal-regression-passed",
+    "description": "已接入正式流程並通過1806項完整回歸；具體案例見tests/catalog-draw.test.js或tests/catalog-auras.test.js，未宣稱全卡UI完成。",
+    "evidence": [
+      "tools/pending-audit/build-catalog-empty-draw-patch.py",
+      "src/engine.js draw",
+      "data/all-cards-audit/avatars.json",
+      "data/final-101-validation.json"
+    ]
+  },
+  {
+    "name": "Wall of Ice below",
+    "status": "fixed-formal-regression-passed",
+    "description": "已接入正式流程並通過1806項完整回歸；具體案例見tests/catalog-draw.test.js或tests/catalog-auras.test.js，未宣稱全卡UI完成。",
+    "evidence": [
+      "tools/pending-audit/catalog-auras-walls.log",
+      "data/final-101-validation.json"
+    ]
+  },
+  {
+    "name": "Mariners Curse below entry",
+    "status": "fixed-formal-regression-passed",
+    "description": "正式1820/1820已涵蓋此修復與來源／存檔／獨立disabled邊界，實際UI仍未驗。",
+    "evidence": [
+      "tools/pending-audit/catalog-aura-mariner-boundaries.log",
+      "docs/CATALOG_MARINER_BOUND_SPIRIT.md",
+      "data/all-cards-audit/logs/mariner-bound-214.log"
+    ]
+  },
+  {
+    "name": "Mariners Curse mixed oversized body",
+    "status": "fixed-formal-regression-passed",
+    "description": "正式1820/1820已涵蓋此修復與來源／存檔／獨立disabled邊界，實際UI仍未驗。",
+    "evidence": [
+      "tools/pending-audit/catalog-aura-mariner-boundaries.log",
+      "docs/CATALOG_MARINER_BOUND_SPIRIT.md",
+      "data/all-cards-audit/logs/mariner-bound-214.log"
+    ]
+  },
+  {
+    "name": "Bound Spirit / Eerie Coral",
+    "status": "fixed-formal-regression-passed",
+    "description": "正式1820/1820已涵蓋此修復與來源／存檔／獨立disabled邊界，實際UI仍未驗。",
+    "evidence": [
+      "src/engine.js refreshContinuous needsSpellcaster",
+      "docs/FINAL_101_HANDOFF.md",
+      "docs/CATALOG_MARINER_BOUND_SPIRIT.md",
+      "data/all-cards-audit/logs/mariner-bound-214.log"
+    ]
+  },
+  {
+    "name": "Sparkmage served UI",
+    "status": "fixed-native-ui-regression-verified",
+    "description": "Existing5500 service used. Actual hit-test reproduced landscape selector overriding the old fix; specific landscape :has rule+popover2 reload now opens native activation, cancellation untaps and confirmation taps Avatar at C1 without moving.",
+    "evidence": [
+      "data/ui-5500-validation.json",
+      "docs/UI_5500_AUDIT.md"
+    ]
+  },
+  {
+    "name": "Preconstructed matches session 52118",
+    "status": "historical-incomplete-superseded",
+    "description": "舊12/16不沿用；主對話確認停止後授權的新run已16/16、2313actions、exit0、來源不變。Wave2後修改須另驗。",
+    "evidence": [
+      "data/final-101-current-games-validation.json",
+      "data/smoke-game-progress.json",
+      "data/smoke-game-results.json"
+    ]
+  }
+]

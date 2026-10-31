@@ -1,7 +1,7 @@
 /** Wire format for online lobby / deck exchange / lockstep actions. No engine imports. */
 export const PROTOCOL_VERSION = 1;
 /** Bump when local rules/engine behavior changes; mismatched clients refuse to play. */
-export const ENGINE_BUILD = 'lockstep-1';
+export const ENGINE_BUILD = 'firebase-friends-20261031-v1';
 
 export const RoomStatus = Object.freeze({
   lobby: 'lobby',
@@ -56,6 +56,7 @@ export function deckChecksum(deck) {
     '|',
     ...(deck.spells || []).map(String),
     deck.format ? `|${deck.format}` : '',
+    '|metadata',JSON.stringify([deck.collection||[],deck.collectionMode||'constructed',deck.dragon??null,deck.officialId??null]),
   ];
   let h = 2166136261;
   const s = parts.join(',');
@@ -90,6 +91,7 @@ export function toDeckPayload(deck, who) {
     updatedAt: Date.now(),
   };
   if (deck.format) payload.format = String(deck.format);
+  for(const key of ['collection','collectionMode','dragon','officialId'])if(deck[key]!==undefined)payload[key]=structuredClone(deck[key]);
   payload.checksum = deckChecksum(payload);
   payload.counts = { atlas: payload.atlas.length, spells: payload.spells.length };
   return payload;

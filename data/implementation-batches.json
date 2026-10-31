@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-30",
+  "checkedAt": "2026-10-31T00:16:12.588Z",
   "batchSize": 5,
-  "batchCount": 83,
-  "addedCards": 415,
-  "remainingNotStarted": 127,
+  "batchCount": 115,
+  "addedCards": 542,
+  "remainingNotStarted": 0,
   "batches": [
     {
       "batch": 1,
@@ -2909,6 +2909,1121 @@
           "effectTest": "passed"
         }
       ]
+    },
+    {
+      "batch": 84,
+      "cards": [
+        {
+          "slug": "iron_man_talus",
+          "name": "Iron Man Talus",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "driftwood_marrows",
+          "name": "Driftwood Marrows",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "hemogolem",
+          "name": "Hemogolem",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "purge_juggernaut",
+          "name": "Purge Juggernaut",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "clay_golem",
+          "name": "Clay Golem",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ],
+      "validation": "tests/remaining-rules.test.js",
+      "source": "docs/RULE_SOURCES.md"
+    },
+    {
+      "batch": 85,
+      "cards": [
+        {
+          "slug": "arcade_of_bones",
+          "name": "Arcade of Bones",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "land_deed",
+          "name": "Land Deed",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "king_arthur",
+          "name": "King Arthur",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "endless_fence",
+          "name": "Endless Fence",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "duplicator",
+          "name": "Duplicator",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ],
+      "validation": "tests/remaining-rules.test.js",
+      "source": "docs/RULE_SOURCES.md"
+    },
+    {
+      "batch": 86,
+      "cards": [
+        {
+          "slug": "swap",
+          "name": "Swap",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "backstab",
+          "name": "Backstab",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "blasphemy",
+          "name": "Blasphemy",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "awakened_mummies",
+          "name": "Awakened Mummies",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "haystack",
+          "name": "Haystack",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ],
+      "validation": "tests/remaining-rules.test.js",
+      "source": "docs/RULE_SOURCES.md"
+    },
+    {
+      "batch": 87,
+      "cards": [
+        {
+          "slug": "black_cat",
+          "name": "Black Cat",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "kythera_mechanism",
+          "name": "Kythera Mechanism",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "rat_king",
+          "name": "Rat King",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "undertaker_engine",
+          "name": "Undertaker Engine",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "grim_reaper",
+          "name": "Grim Reaper",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ],
+      "validation": "tests/remaining-rules.test.js",
+      "source": "docs/RULE_SOURCES.md"
+    },
+    {
+      "batch": 88,
+      "cards": [
+        {
+          "slug": "arcane_barrage",
+          "name": "Arcane Barrage",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "assorted_animals",
+          "name": "Assorted Animals",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "blaze_of_glory",
+          "name": "Blaze of Glory",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "monks_of_kobalsa",
+          "name": "Monks of Kobalsa",
+          "playable": true,
+          "effectTest": "passed"
+        },
+        {
+          "slug": "the_doom_of_dilmun",
+          "name": "The Doom of Dilmun",
+          "playable": true,
+          "effectTest": "passed"
+        }
+      ],
+      "validation": "tests/remaining-rules.test.js",
+      "source": "docs/RULE_SOURCES.md"
+    },
+    {
+      "batch": 89,
+      "key": "final101:src/final-avatars.js",
+      "cards": [
+        {
+          "slug": "animist",
+          "name": "Animist",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "archimago",
+          "name": "Archimago",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "avatar_of_fire",
+          "name": "Avatar of Fire",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "avatar_of_water",
+          "name": "Avatar of Water",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "deathspeaker",
+          "name": "Deathspeaker",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "magician",
+          "name": "Magician",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "mephistopheles",
+          "name": "Mephistopheles",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "pathfinder",
+          "name": "Pathfinder",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "realm_eater",
+          "name": "Realm-Eater",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-avatars.test.js",
+      "source": "docs/final-avatars.md"
+    },
+    {
+      "batch": 90,
+      "key": "final101:src/final-grids.js",
+      "cards": [
+        {
+          "slug": "burning_hands",
+          "name": "Burning Hands",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "day_of_judgment",
+          "name": "Day of Judgment",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "firebreathing",
+          "name": "Firebreathing",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "flame_strike",
+          "name": "Flame Strike",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "flame_wave",
+          "name": "Flame Wave",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "hellstar",
+          "name": "Hellstar",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "holy_nova",
+          "name": "Holy Nova",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "lava_flow",
+          "name": "Lava Flow",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "mester_stoor_worm",
+          "name": "Mester Stoor Worm",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "meteor_shower",
+          "name": "Meteor Shower",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "wreathed_in_righteousness",
+          "name": "Wreathed in Righteousness",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-grids.test.js",
+      "source": "docs/final-grids.md"
+    },
+    {
+      "batch": 91,
+      "key": "final101:src/final-artifacts.js",
+      "cards": [
+        {
+          "slug": "cage_of_sidrak",
+          "name": "Cage of Sidrak",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "corpse_catapult",
+          "name": "Corpse Catapult",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "doomsday_device",
+          "name": "Doomsday Device",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "koscheis_egg",
+          "name": "Koschei's Egg",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "tabula_rasa",
+          "name": "Tabula Rasa",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "the_pallid_bust",
+          "name": "The Pallid Bust",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "tombstone_wardens",
+          "name": "Tombstone Wardens",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-artifacts.test.js",
+      "source": "docs/final-artifacts.md"
+    },
+    {
+      "batch": 92,
+      "key": "final101:src/final-units.js",
+      "cards": [
+        {
+          "slug": "captain_baldassare",
+          "name": "Captain Baldassare",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "crave_golem",
+          "name": "Crave Golem",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "dame_britomart",
+          "name": "Dame Britomart",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "giant_shark",
+          "name": "Giant Shark",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "gnarled_wendigo",
+          "name": "Gnarled Wendigo",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "grigori_rasputin",
+          "name": "Grigori Rasputin",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "grosse_poltergeist",
+          "name": "Grösse Poltergeist",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "i_am_colossus",
+          "name": "I Am Colossus!",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "jack_the_ripper",
+          "name": "Jack the Ripper",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "kairos_the_archivist",
+          "name": "Kairos the Archivist",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "karkemish_chimera",
+          "name": "Karkemish Chimera",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "mimic",
+          "name": "Mimic",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "monastery_gargoyle",
+          "name": "Monastery Gargoyle",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "sea_raider",
+          "name": "Sea Raider",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "stitched_abomination",
+          "name": "Stitched Abomination",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "the_inquisition",
+          "name": "The Inquisition",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "tringh_constrictor",
+          "name": "Tringh Constrictor",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-units.test.js",
+      "source": "docs/final-units.md"
+    },
+    {
+      "batch": 93,
+      "key": "final101:src/final-geometry.js",
+      "cards": [
+        {
+          "slug": "aethermoeba",
+          "name": "Aethermoeba",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "cerberus_in_chains",
+          "name": "Cerberus in Chains",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "edge_of_the_world",
+          "name": "Edge of the World",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "felbog_frog_men",
+          "name": "Felbog Frog Men",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "magellan_globe",
+          "name": "Magellan Globe",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "megamoeba",
+          "name": "Megamoeba",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "putrid_presence",
+          "name": "Putrid Presence",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "the_rack",
+          "name": "The Rack",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "the_void",
+          "name": "The Void",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "yog_sothoth",
+          "name": "Yog-Sothoth",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-geometry.test.js",
+      "source": "docs/final-geometry.md"
+    },
+    {
+      "batch": 94,
+      "key": "final101:src/final-effects.js",
+      "cards": [
+        {
+          "slug": "chaos_twister",
+          "name": "Chaos Twister",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "corpse_explosion",
+          "name": "Corpse Explosion",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "demonic_contract",
+          "name": "Demonic Contract",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "dhol_chants",
+          "name": "Dhol Chants",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "earthquake",
+          "name": "Earthquake",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "joust",
+          "name": "Joust!",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "led_astray",
+          "name": "Led Astray",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-effects.test.js",
+      "source": "docs/final-effects.md"
+    },
+    {
+      "batch": 95,
+      "key": "final101:src/final-sites.js",
+      "cards": [
+        {
+          "slug": "darkest_dungeon",
+          "name": "Darkest Dungeon",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "mount_ussar_sanctuary",
+          "name": "Mount Ussar Sanctuary",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "mudslide",
+          "name": "Mudslide",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "orpheus_crossing",
+          "name": "Orpheus' Crossing",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-sites.test.js",
+      "source": "docs/final-sites.md"
+    },
+    {
+      "batch": 96,
+      "key": "final101:src/final-passives.js",
+      "cards": [
+        {
+          "slug": "blasted_oak",
+          "name": "Blasted Oak",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "book_of_blessings",
+          "name": "Book of Blessings",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "order_of_the_white_wing",
+          "name": "Order of the White Wing",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "red_rock_of_ravannis",
+          "name": "Red Rock of Ravannis",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "saint_of_redemption",
+          "name": "Saint of Redemption",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "the_immortal_throne",
+          "name": "The Immortal Throne",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-passives.test.js",
+      "source": "docs/final-oak.md"
+    },
+    {
+      "batch": 97,
+      "key": "final101:src/final-waves.js",
+      "cards": [
+        {
+          "slug": "snowball",
+          "name": "Snowball",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "wave_of_eviction",
+          "name": "Wave of Eviction",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-waves.test.js",
+      "source": "docs/final-waves.md"
+    },
+    {
+      "batch": 98,
+      "key": "final101:src/cemetery-access.js",
+      "cards": [
+        {
+          "slug": "bureau_of_occult_control",
+          "name": "Bureau of Occult Control",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "mismanaged_mortuary",
+          "name": "Mismanaged Mortuary",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "wormelow_tump",
+          "name": "Wormelow Tump",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/cemetery-access.test.js",
+      "source": "docs/final-passives.md"
+    },
+    {
+      "batch": 99,
+      "key": "final101:null",
+      "cards": [
+        {
+          "slug": "the_flood",
+          "name": "The Flood",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "partial"
+        }
+      ],
+      "validation": null,
+      "source": null
+    },
+    {
+      "batch": 100,
+      "key": "final101:src/final-reactions.js",
+      "cards": [
+        {
+          "slug": "dodge_roll",
+          "name": "Dodge Roll",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "valor",
+          "name": "Valor",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-reactions.test.js",
+      "source": "docs/final-reactions.md"
+    },
+    {
+      "batch": 101,
+      "key": "final101:src/final-animation.js",
+      "cards": [
+        {
+          "slug": "enchantress",
+          "name": "Enchantress",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-animation.test.js",
+      "source": "docs/final-animation.md"
+    },
+    {
+      "batch": 102,
+      "key": "final101:src/final-built-sites.js",
+      "cards": [
+        {
+          "slug": "free_city",
+          "name": "Free City",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "rift_valley",
+          "name": "Rift Valley",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "the_apex_of_babel",
+          "name": "The Apex of Babel",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "the_base_of_babel",
+          "name": "The Base of Babel",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "vindictive_nation",
+          "name": "Vindictive Nation",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-built-sites.test.js",
+      "source": "docs/final-built-sites.md"
+    },
+    {
+      "batch": 103,
+      "key": "final101:src/final-orb.js",
+      "cards": [
+        {
+          "slug": "orb_of_baal_berith",
+          "name": "Orb of Ba'al Berith",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-orb.test.js",
+      "source": "docs/final-orb.md"
+    },
+    {
+      "batch": 104,
+      "key": "final101:src/final-damage.js",
+      "cards": [
+        {
+          "slug": "royal_bodyguard",
+          "name": "Royal Bodyguard",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "sir_gawain",
+          "name": "Sir Gawain",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-damage.test.js",
+      "source": "docs/final-damage.md"
+    },
+    {
+      "batch": 105,
+      "key": "final101:src/final-site-damage.js",
+      "cards": [
+        {
+          "slug": "city_of_souls",
+          "name": "City of Souls",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "mortal_soil",
+          "name": "Mortal Soil",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-site-damage.test.js",
+      "source": "docs/final-site-damage.md"
+    },
+    {
+      "batch": 106,
+      "key": "final101:src/final-control.js",
+      "cards": [
+        {
+          "slug": "courtesan_thais",
+          "name": "Courtesan Thaïs",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-control.test.js",
+      "source": "docs/final-control.md"
+    },
+    {
+      "batch": 107,
+      "key": "final101:src/ability-sources.js",
+      "cards": [
+        {
+          "slug": "dragonlord",
+          "name": "Dragonlord",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "imposter",
+          "name": "Imposter",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/ability-sources.test.js",
+      "source": "docs/final-avatars.md"
+    },
+    {
+      "batch": 108,
+      "key": "final101:src/final-altar.js",
+      "cards": [
+        {
+          "slug": "altar_of_malachai",
+          "name": "Altar of Malachai",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-altar.test.js",
+      "source": "docs/final-altar.md"
+    },
+    {
+      "batch": 109,
+      "key": "final101:src/final-types.js",
+      "cards": [
+        {
+          "slug": "corruptor",
+          "name": "Corruptor",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        },
+        {
+          "slug": "persecutor",
+          "name": "Persecutor",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-types.test.js",
+      "source": "docs/final-types.md"
+    },
+    {
+      "batch": 110,
+      "key": "final101:src/final-factory.js",
+      "cards": [
+        {
+          "slug": "infusion_factory",
+          "name": "Infusion Factory",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-factory.test.js",
+      "source": "docs/final-animation.md"
+    },
+    {
+      "batch": 111,
+      "key": "final101:src/final-ability-layers.js",
+      "cards": [
+        {
+          "slug": "key_to_the_city",
+          "name": "Key to the City",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-key.test.js",
+      "source": "docs/final-artifacts.md"
+    },
+    {
+      "batch": 112,
+      "key": "final101:src/final-malleus.js",
+      "cards": [
+        {
+          "slug": "the_malleus_maleficarum",
+          "name": "The Malleus Maleficarum",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-malleus.test.js",
+      "source": "docs/final-malleus.md"
+    },
+    {
+      "batch": 113,
+      "key": "final101:src/final-flood.js",
+      "cards": [
+        {
+          "slug": "the_flood",
+          "name": "The Flood",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-flood.test.js",
+      "source": "docs/final-flood.md"
+    },
+    {
+      "batch": 114,
+      "key": "final101:src/final-vivien.js",
+      "cards": [
+        {
+          "slug": "vivien_the_enchantress",
+          "name": "Vivien the Enchantress",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-vivien.test.js",
+      "source": "docs/final-vivien-readiness.md"
+    },
+    {
+      "batch": 115,
+      "key": "final101:src/final-chaos.js",
+      "cards": [
+        {
+          "slug": "chaoswish",
+          "name": "Chaoswish",
+          "playable": true,
+          "effectTest": "passed",
+          "completionStatus": "completed-core-effect-tested"
+        }
+      ],
+      "validation": "tests/final-chaos.test.js",
+      "source": null
     }
   ]
 }

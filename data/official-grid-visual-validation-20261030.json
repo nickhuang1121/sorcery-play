@@ -1,0 +1,176 @@
+{
+  "checkedAt": "2026-10-30T22:30:21.734Z",
+  "method": "Actual official sorcerytcg.com pages rendered in background IAB tab6; printed card images directly visually inspected, not inferred from repository patterns. Prior web fetch failures were availability errors, not a permission denial.",
+  "coordinates": "x right, y down; directional spells north is negative y. Blanks are zero. Exact screenshots preserved.",
+  "cards": [
+    {
+      "slug": "hellstar",
+      "page": "https://sorcerytcg.com/cards/hellstar",
+      "image": "https://d27a44hjr9gen3.cloudfront.net/cards/006-hellstar-b-s.png?updated=2026-08-29T00:54:57.527Z",
+      "screenshot": "data/official-grid-evidence/official-hellstar-grid-20261030.jpg",
+      "matrix": [
+        [
+          3,
+          5,
+          3
+        ],
+        [
+          5,
+          7,
+          5
+        ],
+        [
+          3,
+          5,
+          3
+        ]
+      ],
+      "origin": [
+        1,
+        1
+      ],
+      "textLimit": "Each other unit; actor excluded. Actual full interactions not inferred."
+    },
+    {
+      "slug": "firebreathing",
+      "page": "https://sorcerytcg.com/cards/firebreathing",
+      "image": "https://d27a44hjr9gen3.cloudfront.net/cards/004-firebreathing-b-s.png?updated=2026-08-29T00:51:33.999Z",
+      "screenshot": "data/official-grid-evidence/official-firebreathing-grid-20261030.jpg",
+      "matrix": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          4,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "origin": [
+        1,
+        2
+      ],
+      "northOffsets": [
+        [
+          -1,
+          -1,
+          1
+        ],
+        [
+          0,
+          -1,
+          4
+        ],
+        [
+          1,
+          -1,
+          1
+        ],
+        [
+          0,
+          -2,
+          1
+        ]
+      ]
+    },
+    {
+      "slug": "flame_strike",
+      "page": "https://sorcerytcg.com/cards/flame_strike",
+      "image": "https://d27a44hjr9gen3.cloudfront.net/cards/006-flame_strike-b-s.png?updated=2026-08-29T00:54:01.043Z",
+      "screenshot": "data/official-grid-evidence/official-flame-strike-grid-20261030.jpg",
+      "matrix": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "origin": [
+        1,
+        2
+      ],
+      "northOffsets": [
+        [
+          -1,
+          -2,
+          1
+        ],
+        [
+          0,
+          -2,
+          1
+        ],
+        [
+          1,
+          -2,
+          1
+        ],
+        [
+          0,
+          -1,
+          3
+        ]
+      ]
+    },
+    {
+      "slug": "flame_wave",
+      "page": "https://sorcerytcg.com/cards/flame_wave",
+      "image": "https://d27a44hjr9gen3.cloudfront.net/cards/002-flame_wave-b-s.png?updated=2026-08-29T00:49:17.621Z",
+      "screenshot": "data/official-grid-evidence/official-flame-wave-grid-20261030.jpg",
+      "printedNonzeroRow": [
+        7,
+        5,
+        3,
+        1
+      ],
+      "repeatedRows": 4,
+      "textLimit": "Horizontally from edge; flip/no-rotation constraints from separate official FAQs, not proven by image alone. Blank locations do not receive damage."
+    },
+    {
+      "slug": "holy_nova",
+      "page": "https://sorcerytcg.com/cards/holy_nova",
+      "image": "https://sorcerytcg.com/_next/image?url=https%3A%2F%2Fd27a44hjr9gen3.cloudfront.net%2Fcards%2F006-holy_nova-b-s.png%3Fupdated%3D2026-08-29T00%3A54%3A59.950Z&w=750&q=75",
+      "screenshot": "data/official-grid-evidence/official-holy-nova-grid-20261030.jpg",
+      "matrix": [
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          2,
+          3,
+          2
+        ],
+        [
+          1,
+          2,
+          1
+        ]
+      ],
+      "origin": [
+        1,
+        1
+      ],
+      "textLimit": "Only enemies; optional allied Ward recenter. Image alone does not resolve location/region/Ward timing questions."
+    }
+  ],
+  "scope": "Visual source verification only. Does not establish all card legal operations, timings, UI or combinations."
+}

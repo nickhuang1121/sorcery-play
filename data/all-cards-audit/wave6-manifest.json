@@ -1,0 +1,108 @@
+{
+  "checkedAt": "2026-10-30T20:38:33.074931+00:00",
+  "newlyReviewed": 54,
+  "batches": [
+    {
+      "categoryFile": "data/all-cards-audit/minions.json",
+      "slugs": [
+        "failed_mutation",
+        "faith_incarnate",
+        "fallen_angel",
+        "far_east_assassin",
+        "felbog_frog_men",
+        "fenvale_muse",
+        "fey_changeling",
+        "field_laborers",
+        "fine_courser",
+        "finwife",
+        "fishermans_family",
+        "flagellant",
+        "flaming_skull",
+        "flayer",
+        "foot_soldier",
+        "forsaken",
+        "fowl_bones",
+        "frisky_red_squirrel"
+      ],
+      "test": "tests/catalog-minions-wave-next.test.js",
+      "doc": "docs/AUDIT_MINIONS_WAVE_NEXT.md",
+      "result": "89/89 passed"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/minions.json",
+      "slugs": [
+        "young_master_damion",
+        "yourke_crossbowmen",
+        "zephyranne_airship",
+        "zeppelin_of_zealots",
+        "zombie_bruiser",
+        "zombie_horde"
+      ],
+      "test": "tests/catalog-minions-tail.test.js",
+      "doc": "docs/AUDIT_MINIONS_TAIL.md",
+      "result": "18/18 passed in root33/33 Panpipes+Damion subset"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/magics.json",
+      "slugs": [
+        "dhol_chants",
+        "disenchant",
+        "disintegrate",
+        "dispel",
+        "displace",
+        "divine_healing",
+        "divine_intervention",
+        "divine_lance",
+        "dodge_roll",
+        "dream_quest",
+        "dredge",
+        "drown"
+      ],
+      "test": "tests/catalog-magics-wave3.test.js",
+      "doc": "docs/AUDIT_MAGICS_WAVE3.md",
+      "result": "81/81 passed after Dredge integration; full running"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/artifacts.json",
+      "slugs": [
+        "kairos_the_archivist",
+        "key_to_the_city",
+        "koscheis_egg",
+        "kythera_mechanism",
+        "lance",
+        "land_deed"
+      ],
+      "test": "tests/catalog-artifacts-wave4.test.js",
+      "doc": "docs/AUDIT_ARTIFACTS_WAVE4.md",
+      "result": "13/13 passed"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/artifacts.json",
+      "slugs": [
+        "mandrake_jars",
+        "mask_of_mayhem",
+        "meat_hook",
+        "merlins_staff",
+        "mix_aer",
+        "mix_aqua"
+      ],
+      "test": "tests/catalog-artifacts-wave5.test.js",
+      "doc": "docs/AUDIT_ARTIFACTS_WAVE5.md",
+      "result": "15/15 passed"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/artifacts.json",
+      "slugs": [
+        "mix_ignis",
+        "mix_terra",
+        "nadir_seed",
+        "onyx_core",
+        "orb_of_baal_berith",
+        "panpipes_of_pnom"
+      ],
+      "test": "tests/catalog-artifacts-wave6.test.js",
+      "doc": "docs/AUDIT_ARTIFACTS_WAVE6.md",
+      "result": "15/15 after Panpipes zero-power fix, included root33/33 subset"
+    }
+  ]
+}

@@ -1,3 +1,9 @@
+import {abilityProjectileBarrier} from './final-ability-layers.js';
+import {geometryStepOrigins} from './final-geometry.js';
+import {spatialCannotForce} from './borrowed-spatial.js';
+import {finalArchivePrintedCard} from './card-lineage.js';
+import {geometryLocationRecords} from './final-geometry.js';
+import {viewCemeteryEntries,physicalCemeteryEntries,takeAccessGrave} from './cemetery-access.js';
 // Explicit rules for batches 59–68. No text-to-effect fallback.
 export const fiftyBatches=[
  ['guardian_angel','harpyon_urge','vesper_swarm','tactical_move','whirling_blades'],
@@ -12,7 +18,7 @@ export const fiftyBatches=[
  ['lord_of_destruction','onslaught','unland_eel','siege_giant','the_manor_at_daperyll_hill'],
 ];
 export const fiftyDefinitions={
- guardian_angel:{genesis:[{op:'fiftyFly',ward:true,optional:true,untargeted:true,select:{kind:'unit',minion:true,ally:true,weaker:true,other:true,notHere:true,anyRegion:true,untargeted:true}}]},
+ guardian_angel:{genesis:[{op:'fiftyFly',ward:true,untargeted:true,select:{kind:'unit',minion:true,ally:true,weakerThanSource:true,other:true,notHere:true,anyRegion:true,untargeted:true}}]},
  harpyon_urge:{cast:[{op:'fiftyFlyAlly',untargeted:true,select:{kind:'unit',ally:true,anyRegion:true,untargeted:true}}]},
  vesper_swarm:{activated:[{label:'每回合一次：飛向受傷隨從',once:true,declare:true,steps:[{op:'fiftyFly',untargeted:true,select:{kind:'unit',minion:true,wounded:true,notHere:true,anyRegion:true,untargeted:true}}]}]},
  tactical_move:{cast:[{op:'fiftyTactical'}]},whirling_blades:{cast:[{op:'fiftyWhirling',untargeted:true,select:{kind:'unit',ally:true,anyRegion:true,untargeted:true}}]},
@@ -25,7 +31,7 @@ export const fiftyDefinitions={
  bone_spear:{cast:[{op:'fiftyBone',untargeted:true,select:{kind:'unit',minion:true,ally:true,types:['Undead'],anyRegion:true,untargeted:true}}]},
  ball_lightning:{cast:[{op:'fiftyBall',amount:4}]},grapple_shot:{cast:[{op:'fiftyGrapple',untargeted:true,select:{kind:'unit',ally:true,anyRegion:true,untargeted:true}}]},
  nelly_longarms:{activated:[{label:'橫置：投射物拖回單位，可將其下潛',tap:true,declare:true,steps:[{op:'fiftyNelly'}]}]},
- rhongomyniad:{activated:[{label:'橫置持有者：投擲貫穿長槍，造成 3 傷害',bearerTap:true,fiftyThrow:true,steps:[{op:'projectile',amount:3,piercing:true,fiftySpear:true}]}]},
+ rhongomyniad:{activated:[{bearerGranted:true,label:'橫置持有者：投擲貫穿長槍，造成 3 傷害',bearerTap:true,fiftyThrow:true,steps:[{op:'projectile',amount:3,piercing:true,fiftySpear:true}]}]},
  enduring_faith:{cast:[{op:'fiftyFaith',untargeted:true,select:{kind:'unit',minion:true,ally:true,anyRegion:true,untargeted:true}}]},
  just_a_rock:{genesis:[{op:'fiftyRock'}]},magnetic_muzzle:{end:[{op:'fiftyMuzzle'}]},regurgitator:{end:[{op:'fiftyRegurgitate'}]},
  sentinel_trap:{genesis:[{op:'fiftyFacing'}]},
@@ -45,14 +51,13 @@ export const fiftyAuras={castles_ablaze:{singleSite:true,fiftyRarities:['Elite',
 export const fiftyOperations=('fiftyFly fiftyFlyAlly fiftyFlyTarget fiftyPathDeclare fiftyPathStep fiftyPathFinish fiftyTactical fiftyWhirling fiftyWind fiftyScatter fiftyPushChoose fiftyWhirlArea fiftyWhirlDirection fiftySea fiftySeaFinish fiftyGrasp fiftyGraspTarget fiftyAblaze fiftyInvasion fiftyStar fiftyStarPlace fiftyStarStrike fiftyApostles fiftyApostlesSummon fiftyGhost fiftyHorror fiftyHorrorPlace fiftyLocust fiftyLady fiftyLadyPlace fiftyBone fiftyBall fiftyBallImpact fiftyBallBounce fiftyGrapple fiftyGrappleImpact fiftyGrappleStrike fiftyNelly fiftyNellyImpact fiftyNellySubmerge fiftyFaith fiftyRock fiftyMuzzle fiftyRegurgitate fiftyFacing fiftySentinel fiftyArmageddon fiftyArmageddonFinish fiftyOnslaught fiftySiege fiftyManor fiftyMirrorChoose fiftySiteCommit fiftyRam fiftySpearLand fiftyBoltAim fiftyBoltTravel fiftyBoltHit fiftyRockCommit fiftyRamCommit fiftyEelPull fiftyLordStrike').split(' ');
 
 export function fiftyForceAllowed(s,u,p,api){
- const {card,disabled,nearby,region}=api;if(!u||u.dying)return false;
- if(!u.silenced&&!disabled(u)&&card(u.card).slug==='talamh_dreig')return false;
- if(p!==u.controller&&s.units.some(v=>v.controller===u.controller&&!v.dying&&!v.silenced&&!disabled(v)&&card(v.card).slug==='old_salt_anchorman'&&nearby(v.at,u.at)&&region(s,v)===region(s,u)))return false;
+ const {card,disabled,nearby,region,regionNames,regionsOverlap}=api;if(!u||u.dying)return false;
+ if(spatialCannotForce(s,u,p,api))return false;
  return true;
 }
 
 export function resolveFifty(s,frame,A){
- const {card,printedKeywords,unit,avatar,power,keywords,disabled,region,nearby,distance,occupied,locations,canEnterOnGround,queueEffects,kill,hurt,strike,strikeMany,heal,removeObject,enterSite,destroySite,draw,shuffle,log,makeUnit,summonedGenesis,graveEntries,takeGrave,canSummonEntry,paySummoningTax,selectEffects,blocked,resources,siteAffinity,area,inside,artifactController,commitSiteCard}=A;
+ const {card,printedKeywords,unit,avatar,power,keywords,disabled,region,regionNames,regionsOverlap,nearby,distance,occupied,locations,canEnterOnGround,queueEffects,kill,hurt,strike,strikeMany,heal,removeObject,enterSite,destroySite,draw,shuffle,log,makeUnit,summonedGenesis,graveEntries,takeGrave,canSummonEntry,paySummoningTax,selectEffects,blocked,resources,siteAffinity,area,inside,artifactController,commitSiteCard}=A;
  const {step,source,controller:p,selected}=frame,op=step.op,layer=u=>u.layer||'surface',here=(a,b)=>occupied(a).some(at=>occupied(b).includes(at))&&layer(a)===layer(b),alive=uid=>{const u=unit(s,uid);return u&&!u.dying?u:null;},pos=at=>String.fromCharCode(65+at%5)+(4-Math.floor(at/5));
  if(!fiftyOperations.includes(op))return false;
  const queue=(steps,src=source,player=p,effect=frame.effectCard)=>queueEffects(s,steps,src,player,effect);
@@ -73,7 +78,7 @@ export function resolveFifty(s,frame,A){
    if(selected===undefined){const options=selectEffects(s,{...frame,source:step.caster},{kind:'unit',minion:true}).filter(o=>power(alive(o.value.uid))<power(u)&&!here(alive(o.value.uid),u));choice([...options,skip]);return true;}
    const target=alive(selected?.uid);if(target&&!blocked(s,p,target)&&power(target)<power(u))queue([{op:'fiftyPathDeclare',uid:u.uid,target:target.uid,flying:true,finish:'strike'}],u);return true;
   }
-  if(op==='fiftyFly'){const u=alive(source.uid),target=alive(selected?.uid);if(u&&target&&!here(u,target)&&(!step.ward||power(target)<power(u)))queue([{op:'fiftyPathDeclare',uid:u.uid,target:target.uid,flying:true,finish:step.ward?'ward':null}],u);return true;}
+  if(op==='fiftyFly'){const u=alive(source.uid),target=alive(selected?.uid);if(u&&target&&!here(u,target)&&(!step.ward||Math.floor((power(target)+power(target,true))/2)<Math.floor((power(u)+power(u,true))/2)))queue([{op:'fiftyPathDeclare',uid:u.uid,target:target.uid,flying:true,finish:step.ward?'ward':null}],u);return true;}
   if(op==='fiftyWhirling'){const u=alive(selected?.uid);if(u)queue([{op:'fiftyPathDeclare',uid:u.uid,max:2,finish:'whirl'}],u);return true;}
   if(op==='fiftyTactical'){
    const done=step.done||[],options=s.units.filter(u=>u.controller===p&&!u.dying&&!done.includes(u.uid));if(!options.length)return true;
@@ -81,7 +86,7 @@ export function resolveFifty(s,frame,A){
    const u=options.find(u=>u.uid===selected);if(u)queue([{op:'fiftyPathDeclare',uid:u.uid,max:2},{op:'fiftyTactical',done:[...done,u.uid]}],u);return true;
   }
   if(op==='fiftyPathDeclare'){
-   const u=alive(step.uid),target=alive(step.target);if(!u)return true;let paths=[];
+   const u=alive(step.uid),target=alive(step.target);if(!u)return true;if(step.finish==='whirl'&&u.geometryLocations&&(u.geometryGrowing??!u.silenced)){queue([{op:'geometryWhirlDeclare',uid:u.uid,plan:[]}],u);return true;}let paths=[];
    if(step.target){if(!target||here(u,target))return true;let front=[{at:u.at,layer:layer(u),path:[]}],seen=new Map(),limit=0;while(front.length&&!paths.length&&limit++<25){const next=[];for(const n of front)for(const to of oneSteps({...u,at:n.at,layer:n.layer},step.flying)){const path=[...n.path,{at:to.at,layer:to.layer}];if(occupied({...u,at:to.at}).some(at=>occupied(target).includes(at))&&to.layer===layer(target)){if(paths.length<64)paths.push(path);}else{const key=to.at+':'+to.layer;if((seen.get(key)??99)>=path.length){seen.set(key,path.length);next.push({at:to.at,layer:to.layer,path});}}}front=next.slice(0,300);}}
    else {paths=[[]];for(const a of oneSteps(u)) {paths.push([{at:a.at,layer:a.layer}]);if(step.max===2)for(const b of oneSteps({...u,at:a.at,layer:a.layer}))paths.push([{at:a.at,layer:a.layer},{at:b.at,layer:b.layer}]);}}
    if(selected===undefined){if(paths.length)choice(paths.map(path=>({label:path.length?path.map(v=>pos(v.at)+(v.layer==='below'?'↓':'')).join(' → '):'留在原處',value:path})));return true;}
@@ -91,19 +96,19 @@ export function resolveFifty(s,frame,A){
   }
   if(op==='fiftyPathStep'){
    const u=alive(step.uid);if(!u||u.at!==step.from.at||layer(u)!==step.from.layer)return true;
-   if(oneSteps(u,step.flying).some(v=>v.at===step.to.at&&v.layer===step.to.layer)){moved(u,step.to);(u.fiftyRoute||(u.fiftyRoute=[])).push(step.to);}return true;
+   if(oneSteps(u,step.flying).some(v=>v.at===step.to.at&&v.layer===step.to.layer)&&(!step.to.growthFrom||geometryStepOrigins(s,u,step.to,{...A,keywords:v=>[...keywords(v),...(step.flying?['Airborne']:[])]}).some(from=>JSON.stringify(from)===JSON.stringify(step.to.growthFrom)))){if(step.to.growthFrom){u.geometryMovementFrom={...step.to.growthFrom};(u.fiftyRoute||(u.fiftyRoute=[])).push(step.to.growthFrom);}moved(u,step.to);(u.fiftyRoute||(u.fiftyRoute=[])).push({at:u.at,layer:layer(u)});}return true;
   }
   if(op==='fiftyPathFinish'){
    const u=alive(step.uid),target=alive(step.target);if(!u)return true;delete u.fiftyFlying;
-   if(step.finish==='ward'&&target&&here(u,target)&&!card(target.card).umbrellas.includes('Evil')&&!disabled(target))target.ward=true;
+   if(step.finish==='ward'&&target&&here(u,target)&&!A.unitUmbrellas(target).includes('Evil')&&!disabled(target))target.ward=true;
    if(step.finish==='strike'&&target&&here(u,target))strike(s,u,target);
    const actual=u.fiftyRoute||[];delete u.fiftyRoute;if(step.finish==='whirl'&&actual.length>1){const victims=s.units.filter(v=>v.controller!==p&&!v.dying&&actual.some(loc=>occupied(v).includes(loc.at)&&layer(v)===loc.layer));strikeMany(s,u,victims.map(v=>({uid:v.uid,amount:A.strikeTotal(s,u)})));}return true;
   }
   if(op==='fiftyWind'){
    if(selected===undefined){choice(['北','東','南','西'].map((label,i)=>({label,value:i})));return true;}
-   const objects=[...s.units.filter(u=>!u.dying),...s.artifacts.filter(o=>!o.bearer)].filter(o=>layer(o)==='surface'&&occupied(o).some(at=>s.board[at])),moves=[];
-   for(const o of objects){const to=adjacent(o.at,selected);if(to===null||!s.board[to]||region(s,o)!==region(s,{at:to,layer:'surface'})||o.size===2&&!occupied({...o,at:to}).every(at=>s.board[at])||!fits(o,{at:to,layer:'surface'}))continue;moves.push({o,to});}
-   for(const {o,to} of moves){if(unit(s,o.uid)&&!forceAllowed(o))continue;moved(o,{at:to,layer:'surface'});}return true;
+   const growth=s.units.filter(u=>!u.dying&&u.geometryLocations&&!u.silenced&&geometryLocationRecords(u).some(loc=>loc.layer==='surface'&&s.board[loc.at])),objects=[...s.units.filter(u=>!u.dying&&!growth.includes(u)),...s.artifacts.filter(o=>!o.bearer)].filter(o=>layer(o)==='surface'&&occupied(o).some(at=>s.board[at])),moves=[];
+   for(const o of objects){const to=adjacent(o.at,selected);if(to===null||!s.board[to]||!regionsOverlap(s,o,{at:to,layer:'surface'})||o.size===2&&!occupied({...o,at:to}).every(at=>s.board[at])||!fits(o,{at:to,layer:'surface'}))continue;moves.push({o,to});}
+   if(growth.length){const delta=[[0,-1],[1,0],[0,1],[-1,0]][selected];queue([{op:'geometryForcePlan',pending:growth.filter(forceAllowed).map(u=>({uid:u.uid,spec:{delta,fromLayer:'surface',layer:'surface',onSites:true}})),moves:moves.map(({o,to})=>({uid:o.uid,from:{at:o.at,layer:layer(o)},to:{at:to,layer:'surface'}}))}]);return true;}for(const {o,to} of moves){if(unit(s,o.uid)&&!forceAllowed(o))continue;moved(o,{at:to,layer:'surface'});}return true;
   }
   if(op==='fiftyScatter'){const items=[...s.units.filter(u=>!u.dying&&occupied(u).includes(selected.at)&&layer(u)===selected.layer),...s.artifacts.filter(o=>o.at===selected.at&&layer(o)===selected.layer)].map(o=>({entity:unit(s,o.uid)?'unit':'artifact',uid:o.uid}));queue([{op:'fiftyPushChoose',remaining:items}]);return true;}
   if(op==='fiftyPushChoose'){
@@ -116,14 +121,14 @@ export function resolveFifty(s,frame,A){
   if(op==='fiftyWhirlArea'){queue([{op:'fiftyWhirlDirection',at:selected.at}]);return true;}
   if(op==='fiftyWhirlDirection'){
    if(selected===undefined){choice([{label:'順時針',value:1},{label:'逆時針',value:-1}]);return true;}const cells=area(step.at),ring=[cells[0],cells[1],cells[3],cells[2]],items=[...s.units.filter(u=>!u.dying&&u.size!==2),...s.artifacts.filter(o=>!o.bearer)].filter(o=>layer(o)==='surface'&&s.board[o.at]&&ring.includes(o.at)),moves=items.map(o=>({o,to:ring[(ring.indexOf(o.at)+selected+4)%4]}));
-   for(const {o,to} of moves)if(s.board[to]&&fits(o,{at:to,layer:'surface'})&&(!unit(s,o.uid)||forceAllowed(o)))moved(o,{at:to,layer:'surface'});return true;
+   const growth=s.units.filter(u=>!u.dying&&u.geometryLocations&&!u.silenced&&geometryLocationRecords(u).some(loc=>loc.layer==='surface'&&s.board[loc.at]&&ring.includes(loc.at)));if(growth.length){const map=Object.fromEntries(ring.map((at,i)=>[at,ring[(i+selected+4)%4]]));queue([{op:'geometryForcePlan',pending:growth.filter(forceAllowed).map(u=>({uid:u.uid,spec:{map,fromLayer:'surface',layer:'surface',onSites:true}})),moves:moves.filter(({o,to})=>!growth.includes(o)&&s.board[to]&&fits(o,{at:to,layer:'surface'})).map(({o,to})=>({uid:o.uid,from:{at:o.at,layer:layer(o)},to:{at:to,layer:'surface'}}))}]);return true;}for(const {o,to} of moves)if(s.board[to]&&fits(o,{at:to,layer:'surface'})&&(!unit(s,o.uid)||forceAllowed(o)))moved(o,{at:to,layer:'surface'});return true;
   }
   if(op==='fiftySea'){
-   const at=selected.at,targets=s.units.filter(u=>!u.dying&&card(u.card).type==='Minion'&&s.board[u.at]&&(layer(u)==='surface'||region(s,u)==='underwater')&&distance(u.at,at)===1);queue([...targets.map(u=>({op:'unitStep',uid:u.uid,toward:{at,layer:layer(u)}})),{op:'fiftySeaFinish',at}]);return true;
+   const at=selected.at,targets=s.units.filter(u=>!u.dying&&card(u.card).type==='Minion'&&s.board[u.at]&&(layer(u)==='surface'||regionNames(s,u).has('underwater'))&&distance(u.at,at)===1);queue([...targets.map(u=>({op:'unitStep',uid:u.uid,toward:{at,layer:layer(u)}})),{op:'fiftySeaFinish',at}]);return true;
   }
-  if(op==='fiftySeaFinish'){for(const u of s.units)if(!u.dying&&card(u.card).type==='Minion'&&layer(u)==='surface'&&occupied(u).includes(step.at)&&forceAllowed(u)&&fits(u,{at:u.at,layer:'below'}))moved(u,{at:u.at,layer:'below'});return true;}
+  if(op==='fiftySeaFinish'){queue([{op:'shiftLayer',forceAction:'submerge',forceUids:s.units.filter(u=>!u.dying&&card(u.card).type==='Minion'&&occupied(u).includes(step.at)).map(u=>u.uid)}]);return true;}
   if(op==='fiftyGrasp'){
-   const done=step.done||[],allies=s.units.filter(u=>u.controller===p&&!u.dying&&layer(u)==='below'&&region(s,u)==='underground'&&!done.includes(u.uid));if(!allies.length)return true;
+   const done=step.done||[],allies=s.units.filter(u=>u.controller===p&&!u.dying&&layer(u)==='below'&&regionNames(s,u).has('underground')&&!done.includes(u.uid));if(!allies.length)return true;
    if(selected===undefined){choice([...allies.map(u=>({label:card(u.card).name,value:u.uid})),skip],undefined,{done});return true;}if(selected===null)return true;
    const u=alive(selected);if(u)queue([{op:'fiftyGraspTarget',actor:u.uid,caster:source},{op:'fiftyGrasp',done:[...done,u.uid]}]);return true;
   }
@@ -159,43 +164,44 @@ export function resolveFifty(s,frame,A){
    if(selected===null){shuffle(s,pl.spells);return true;}if(pl.spells[selected.index]!==selected.card)return true;pl.spells.splice(selected.index,1);shuffle(s,pl.spells);const u=summon(selected.card,p,source.at,layer(source));if(u){u.apostlesSource=source.uid;summonedGenesis(s,u);}return true;
   }
   if(op==='fiftyGhost'||op==='fiftyLady'){
-   const actor=alive(source.uid);if(!actor)return true;const options=[...(op==='fiftyGhost'?[0,1]:[p])].flatMap(player=>graveEntries(s,player).filter(g=>{const c=card(g.card);return c.playable&&(op==='fiftyGhost'?c.type==='Minion'&&c.subtypes.includes('Spirit'):c.type==='Artifact'||c.type==='Minion'&&c.subtypes.includes('Mortal'));}).map(g=>({label:card(g.card).name+' · 玩家 '+(player+1),value:g})));
+   const actor=alive(source.uid);if(!actor)return true;const options=(op==='fiftyGhost'?[0,1].flatMap(player=>physicalCemeteryEntries(s,player,A,{actor:p,affect:true})):viewCemeteryEntries(s,p,A,{actor:p,affect:true})).filter(g=>{const c=card(g.card);return c.playable&&(op==='fiftyGhost'?c.type==='Minion'&&c.subtypes.includes('Spirit'):c.type==='Artifact'||c.type==='Minion'&&c.subtypes.includes('Mortal'));}).map(g=>({label:card(g.card).name+' · 玩家 '+(g.player+1),value:g}));
    if(selected===undefined){choice([...options,skip]);return true;}if(selected===null)return true;
    const g=options.find(o=>o.value.uid===selected.uid&&o.value.player===selected.player)?.value;if(!g)return true;
-   if(card(g.card).type==='Artifact'){takeGrave(s,g.player,g.index,g.card,g.uid);s.artifacts.push({uid:'o'+s.next++,card:g.card,owner:g.player,controller:p,at:actor.at,layer:layer(actor),bearer:null});queue(A.definitions[card(g.card).slug]?.genesis||[],s.artifacts[s.artifacts.length-1],p,g.card);}
-   else{if(!canSummonEntry(s,p,card(g.card),actor.at,layer(actor)))return true;takeGrave(s,g.player,g.index,g.card,g.uid);const u=summon(g.card,g.player,actor.at,layer(actor));if(u)summonedGenesis(s,u);}
+   if(card(g.card).type==='Artifact'){if(!takeAccessGrave(s,g,p,A))return true;s.artifacts.push({uid:'o'+s.next++,card:g.card,owner:g.player,controller:p,at:actor.at,layer:layer(actor),bearer:null});queue(A.definitions[card(g.card).slug]?.genesis||[],s.artifacts[s.artifacts.length-1],p,g.card);}
+   else{if(!canSummonEntry(s,p,card(g.card),actor.at,layer(actor)))return true;if(!takeAccessGrave(s,g,p,A))return true;const u=summon(g.card,g.player,actor.at,layer(actor));if(u)summonedGenesis(s,u);}
    if(op==='fiftyLady'){const owner=actor.owner;A.leaveUnit(s,actor,'spells');shuffle(s,s.players[owner].spells);}return true;
   }
   if(op==='fiftyHorror'){
-   const remaining=step.remaining||[0,1].flatMap(player=>graveEntries(s,player).filter(g=>card(g.card).type==='Minion'&&card(g.card).playable&&printedKeywords(card(g.card)).includes('Voidwalk')).map(g=>({player,uid:g.uid})));if(!remaining.length)return true;
+   const remaining=step.remaining||[0,1].flatMap(player=>physicalCemeteryEntries(s,player,A,{actor:p,affect:true}).filter(g=>card(g.card).type==='Minion'&&card(g.card).playable&&printedKeywords(card(g.card)).includes('Voidwalk')).map(g=>({player,uid:g.uid})));if(!remaining.length)return true;
    const first=remaining[0],g=graveEntries(s,first.player).find(g=>g.uid===first.uid);queue([{...step,remaining:remaining.slice(1)}]);if(g)queue([{op:'fiftyHorrorPlace',grave:g}]);return true;
   }
   if(op==='fiftyHorrorPlace'){
    const g=graveEntries(s,step.grave.player).find(g=>g.uid===step.grave.uid);if(!g)return true;const options=selectEffects(s,frame,{kind:'location',nearby:true,canSummon:g.card}).filter(o=>canSummonEntry(s,p,card(g.card),o.value.at,o.value.layer));
    if(selected===undefined){if(options.length)choice(options);return true;}if(!options.some(o=>o.value.at===selected.at&&o.value.layer===selected.layer))return true;
-   takeGrave(s,g.player,g.index,g.card,g.uid);const u=summon(g.card,g.player,selected.at,selected.layer);if(u)summonedGenesis(s,u);return true;
+   if(!takeAccessGrave(s,g,p,A))return true;const u=summon(g.card,g.player,selected.at,selected.layer);if(u)summonedGenesis(s,u);return true;
   }
   if(op==='fiftyLocust'){
-   if(s.fiftyLocustTurn===s.turn)return true;const actor=alive(source.uid);if(!actor)return true;const options=selectEffects(s,frame,{kind:'location',nearby:true,surface:true}).filter(o=>s.board[o.value.at]&&canSummonEntry(s,p,card(actor.card),o.value.at,'surface'));
-   if(selected===undefined){if(options.length)choice(options);return true;}if(s.fiftyLocustTurn!==s.turn&&options.some(o=>o.value.at===selected.at)){const u=summon(actor.card,actor.owner,selected.at);if(u){s.fiftyLocustTurn=s.turn;u.tapped=true;u.tokenCopy=true;summonedGenesis(s,u);}}return true;
+   const actor=alive(source.uid);if(!actor)return true;const name=card(actor.card).name,blocked=()=>s.summonHistory?s.summonHistory.some(e=>e.turn===s.turn&&e.name===name):(s.units.some(u=>u.born===s.turn&&card(u.card).name===name)||name===card('locusts_of_illyria').name&&s.fiftyLocustTurn===s.turn);if(blocked())return true;const options=selectEffects(s,frame,{kind:'location',nearby:true,surface:true}).filter(o=>s.board[o.value.at]&&canSummonEntry(s,p,card(actor.card),o.value.at,'surface'));
+   if(selected===undefined){if(options.length)choice(options);return true;}if(!blocked()&&options.some(o=>o.value.at===selected.at)){const u=summon(finalArchivePrintedCard(actor.card,A),actor.owner,selected.at);if(u){s.fiftyLocustTurn=s.turn;u.tapped=true;u.tokenCopy=true;summonedGenesis(s,u);}}return true;
   }
-  if(op==='fiftyFaith'){const u=alive(selected?.uid);if(u){if(!card(u.card).umbrellas.includes('Evil')&&!disabled(u))u.ward=true;u.mods.push({fiftyFaith:true,until:p});}return true;}
+  if(op==='fiftyFaith'){const u=alive(selected?.uid);if(u){if(!A.unitUmbrellas(u).includes('Evil')&&!disabled(u))u.ward=true;u.mods.push({fiftyFaith:true,until:p});}return true;}
   if(op==='fiftyOnslaught'){(s.ongoingEffects||(s.ongoingEffects=[])).push({op:'fiftyOnslaught',controller:p,end:s.turn});return true;}
   if(op==='fiftyArmageddon'){
-   queue([{op:'fiftyArmageddonFinish',objects:[...s.artifacts,...s.auras].map(o=>o.uid),sites:s.board.flatMap((site,at)=>site?[at]:[])}]);for(const u of [...s.units])if(card(u.card).type==='Minion')kill(s,u);return true;
+   A.beginRealmDestruction(s);
+   queue([{op:'fiftyArmageddonFinish',inert:(s.inertCards||[]).map(c=>c.uid),objects:[...s.artifacts,...s.auras].map(o=>o.uid),sites:s.board.flatMap((site,at)=>site?[at]:[])}]);for(const u of [...s.units])if(card(u.card).type==='Minion')kill(s,u);return true;
   }
-  if(op==='fiftyArmageddonFinish'){for(const o of [...s.artifacts,...s.auras])if(step.objects.includes(o.uid))removeObject(s,o,'cemetery');for(const at of step.sites)destroySite(s,at);return true;}
+  if(op==='fiftyArmageddonFinish'){A.destroyInertCards?.(s,step.inert||[]);for(const o of [...s.artifacts,...s.auras])if(step.objects.includes(o.uid))removeObject(s,o,'cemetery');for(const at of step.sites)destroySite(s,at);A.finishRealmDestruction(s);return true;}
   if(op==='fiftyMuzzle'){
    const o=s.artifacts.find(o=>o.uid===source.uid);if(!o||o.bearer)return true;const options=selectEffects(s,frame,{kind:'unit',minion:true,nearby:true,untargeted:true});
    if(selected===undefined){if(options.length)choice(options);return true;}const u=alive(selected?.uid);if(u){o.bearer=u.uid;o.at=u.at;o.layer=layer(u);}return true;
   }
   if(op==='fiftyRock'){const o=s.artifacts.find(o=>o.uid===source.uid),u=o&&alive(o.bearer);if(!u||!o.rockVictim)return true;const victim=s.artifacts.find(a=>a.uid===o.rockVictim&&a.bearer===u.uid);if(victim)removeObject(s,victim,'banished');delete o.rockVictim;return true;}
   if(op==='fiftyFacing'){const o=s.artifacts.find(o=>o.uid===source.uid);if(!o)return true;if(selected===undefined){choice(['北','東','南','西'].map((label,i)=>({label,value:i})));return true;}o.facing=selected;return true;}
-  if(op==='fiftySentinel'){const o=s.artifacts.find(o=>o.uid===source.uid);if(!o)return true;const at=adjacent(o.at,o.facing||0);o.facing=((o.facing||0)+1)%4;if(at!==null&&region(s,{at,layer:layer(o)})===region(s,o))for(const u of s.units)if(!u.dying&&occupied(u).includes(at)&&layer(u)===layer(o))hurt(s,u,4,false,'ability',o);return true;}
+  if(op==='fiftySentinel'){const o=s.artifacts.find(o=>o.uid===source.uid);if(!o)return true;const at=adjacent(o.at,o.facing||0);o.facing=((o.facing||0)+1)%4;if(at!==null&&regionsOverlap(s,{at,layer:layer(o)},o))for(const u of s.units)if(!u.dying&&occupied(u).includes(at)&&layer(u)===layer(o))hurt(s,u,4,false,'ability',o);return true;}
   if(op==='fiftyRegurgitate'){
    const actor=alive(source.uid);if(!actor)return true;if(actor.regurgitatedPower!==undefined){const n=actor.regurgitatedPower;delete actor.regurgitatedPower;queue([{op:'projectile',amount:n}],actor);return true;}
-   const options=[0,1].flatMap(player=>graveEntries(s,player).filter(g=>card(g.card).type==='Minion').map(g=>({label:card(g.card).name,value:g})));if(selected===undefined){if(options.length)choice(options);return true;}
-   const g=graveEntries(s,selected?.player).find(g=>g.uid===selected?.uid);if(g){actor.regurgitatedPower=card(g.card).attack||0;takeGrave(s,g.player,g.index,g.card,g.uid);s.players[g.player].banished.push(g.card);}return true;
+   const options=[0,1].flatMap(player=>physicalCemeteryEntries(s,player,A,{actor:p,affect:true}).filter(g=>card(g.card).type==='Minion').map(g=>({label:card(g.card).name,value:g})));if(selected===undefined){if(options.length)choice(options);return true;}
+   const g=graveEntries(s,selected?.player).find(g=>g.uid===selected?.uid);if(g&&takeAccessGrave(s,g,p,A)){actor.regurgitatedPower=card(g.card).attack||0;s.players[g.player].banished.push(g.card);}return true;
   }
   if(op==='fiftyManor'){const u=alive(selected?.uid);if(u&&hurt(s,u,3,false,'ability',source)===3&&s.eventContext?.fiftyReceipt?.uid===u.uid&&s.eventContext.fiftyReceipt.at===source.at)heal(s,p,3);return true;}
   if(op==='fiftyRam'){
@@ -203,7 +209,7 @@ export function resolveFifty(s,frame,A){
   }
   if(op==='fiftySiege'){
    const u=step.uid?alive(step.uid):alive(selected?.uid);if(!u)return true;if(!step.uid){queue([{...step,select:undefined,uid:u.uid}]);return true;}
-   const options=selectEffects(s,frame,{kind:'location',nearby:true}).filter(o=>fits(u,o.value,true,true)&&region(s,o.value)===region(s,u));if(selected===undefined){choice(options);return true;}if(forceAllowed(u)&&options.some(o=>o.value.at===selected.at&&o.value.layer===selected.layer)){u.carryFlying=true;moved(u,selected);}return true;
+   const options=selectEffects(s,frame,{kind:'location',nearby:true}).filter(o=>fits(u,o.value,true,true)&&regionsOverlap(s,o.value,u));if(selected===undefined){choice(options);return true;}if(forceAllowed(u)&&options.some(o=>o.value.at===selected.at&&o.value.layer===selected.layer)){u.carryFlying=true;moved(u,selected);}return true;
   }
   if(op==='fiftyBone'){const u=alive(selected?.uid);if(u){const shooter={...u};kill(s,u,false,true,true);queue([{op:'fiftyBoltAim',kind:'bone',amount:3}],shooter);}return true;}
   if(op==='fiftyGrapple'){const u=alive(selected?.uid);if(u&&!disabled(u))queue([{op:'fiftyBoltAim',kind:'grapple',shooter:u.uid}],u);return true;}
@@ -214,14 +220,19 @@ export function resolveFifty(s,frame,A){
   }
   if(op==='fiftyBoltTravel'){
    const object=step.object&&s.artifacts.find(o=>o.uid===step.object);if(object){object.bearer=null;object.at=step.at;object.layer=step.layer;}
-   const hit=s.units.filter(u=>!u.dying&&u.uid!==step.ignore&&(!u.stealth||alive(source.uid)?.canSeeStealth)&&(!u.projectileOver||disabled(u))&&occupied(u).includes(step.at)&&layer(u)===step.layer&&(!(step.kind==='ball'&&!step.leftFirst&&step.at===step.firstAt||step.origin)||u.controller!==p)&&!(step.hits||[]).includes(u.uid));
-   const next=adjacent(step.at,step.direction),blockedNext=next!==null&&(s.board[next]&&A.passives[card(s.board[next].card).slug]?.projectileBarrierAll||s.units.some(u=>!u.dying&&!u.silenced&&!disabled(u)&&u.controller!==p&&occupied(u).includes(next)&&layer(u)===step.layer&&A.passives[card(u.card).slug]?.projectileBarrier));
-   if(hit.length&&step.kind!=='spear'){queue([{op:'fiftyBoltHit',bolt:step,untargeted:true,select:{kind:'unit',uids:hit.map(u=>u.uid),anyRegion:true,untargeted:true}}]);return true;}
-   if(next!==null&&!blockedNext&&step.remaining>0&&region(s,{at:next,layer:step.layer})===region(s,{at:step.at,layer:step.layer}))queue([{...step,at:next,origin:false,leftFirst:true,ignore:null,remaining:step.remaining-1,trail:[...step.trail,step.at],hits:[...step.hits||[],...hit.map(u=>u.uid)]}]);
+   const hit=s.units.filter(u=>!u.dying&&u.uid!==step.ignore&&(!u.stealth||alive(source.uid)?.canSeeStealth)&&(!u.projectileOver||disabled(u))&&geometryLocationRecords(u).some(loc=>loc.at===step.at&&loc.layer===step.layer)&&(!(step.kind==='ball'&&!step.leftFirst&&step.at===step.firstAt||step.origin)||u.controller!==p)&&!(step.hits||[]).includes(u.uid));
+   const next=adjacent(step.at,step.direction),blockedNext=next!==null&&(s.board[next]&&A.passives[card(s.board[next].card).slug]?.projectileBarrierAll||abilityProjectileBarrier(s,next,step.layer,p,A));
+   if(hit.length&&(step.kind!=='spear'||hit.length>1)){queue([{op:'fiftyBoltHit',bolt:step,untargeted:true,select:{kind:'unit',uids:hit.map(u=>u.uid),anyRegion:true,untargeted:true}}]);return true;}
+   if(next!==null&&!blockedNext&&step.remaining>0&&regionsOverlap(s,{at:next,layer:step.layer},{at:step.at,layer:step.layer}))queue([{...step,at:next,origin:false,leftFirst:true,ignore:null,remaining:step.remaining-1,trail:[...step.trail,step.at],hits:[...step.hits||[],...hit.map(u=>u.uid)]}]);
    if(step.kind==='spear')for(const u of hit)hurt(s,u,3,false,'ability',source);return true;
   }
   if(op==='fiftyBoltHit'){
    const target=alive(selected?.uid),b=step.bolt;if(!target)return true;
+   if(b.kind==='spear'){
+    const next=adjacent(b.at,b.direction),blockedNext=next!==null&&(s.board[next]&&A.passives[card(s.board[next].card).slug]?.projectileBarrierAll||abilityProjectileBarrier(s,next,b.layer,p,A));
+    if(next!==null&&!blockedNext&&b.remaining>0&&regionsOverlap(s,{at:next,layer:b.layer},{at:b.at,layer:b.layer}))queue([{...b,op:'fiftyBoltTravel',at:next,origin:false,leftFirst:true,ignore:null,remaining:b.remaining-1,trail:[...b.trail,b.at],hits:[...b.hits||[],target.uid]}]);
+    hurt(s,target,3,false,'ability',source);return true;
+   }
    if(b.kind==='ball'){if(b.amount>1)queue([{op:'fiftyBoltAim',kind:'ball',amount:Math.floor(b.amount/2),bounce:b,ignore:target.uid}]);hurt(s,target,b.amount,false,'magic',source);return true;}
    if(b.kind==='bone'){hurt(s,target,3,false,'magic',source);return true;}
    if(b.kind==='grapple'){
@@ -234,7 +245,7 @@ export function resolveFifty(s,frame,A){
     queue([...steps,{op:'fiftyNellySubmerge',uid:target.uid}],source);return true;
    }return true;
   }
-  if(op==='fiftyGrappleStrike'){const u=alive(step.uid),target=alive(step.target);if(!u||!target||!here(u,target))return true;if(selected===undefined){choice([{label:'出手攻擊',value:true},skip]);return true;}if(selected)strike(s,u,target);return true;}
+  if(op==='fiftyGrappleStrike'){const u=alive(step.uid),target=alive(step.target);if(!u||!target||!here(u,target))return true;if(selected===undefined){choice([{label:'進行打擊',value:true},skip]);return true;}if(selected)strike(s,u,target);return true;}
   if(op==='fiftyNellySubmerge'){
    const u=alive(step.uid),nelly=alive(source.uid);if(!u||!nelly||!here(u,nelly)||card(u.card).type==='Avatar'||!A.waterSite(s,u.at,card))return true;
    if(selected===undefined){choice([{label:'將其下潛',value:true},skip]);return true;}if(selected&&forceAllowed(u)&&fits(u,{at:u.at,layer:'below'}))moved(u,{at:u.at,layer:'below'});return true;
@@ -255,5 +266,5 @@ export function resolveFifty(s,frame,A){
   return false;
  }
  function adjacent(at,d){const x=at%5+[0,1,0,-1][d],y=Math.floor(at/5)+[-1,0,1,0][d];return x<0||x>4||y<0||y>3?null:y*5+x;}
- function pushOptions(o){return [0,1,2,3].map(d=>adjacent(o.at,d)).filter(at=>at!==null&&fits(o,{at,layer:layer(o)})&&occupied({...o,at}).every((cell,i)=>region(s,{at:cell,layer:layer(o)})===region(s,{at:occupied(o)[i],layer:layer(o)})));}
+ function pushOptions(o){return [0,1,2,3].map(d=>adjacent(o.at,d)).filter(at=>at!==null&&fits(o,{at,layer:layer(o)})&&occupied({...o,at}).every((cell,i)=>regionsOverlap(s,{at:cell,layer:layer(o)},{at:occupied(o)[i],layer:layer(o)})));}
 }

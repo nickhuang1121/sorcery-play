@@ -1,0 +1,51 @@
+{
+  "checkedAt": "2026-10-30T21:08:53.200Z",
+  "command": "node tools/smoke-games.mjs",
+  "status": "passed",
+  "matches": 16,
+  "actions": 2323,
+  "exitCode": 0,
+  "startedAt": "2026-10-30T20:50:56.702Z",
+  "finishedAt": "2026-10-30T20:57:03.070Z",
+  "sourceFingerprint": "8f1f86e15681f5ff891fb77e5b2f8c88a855b58d16a46664431c5f118b9e3aa6",
+  "sourceUnchanged": true,
+  "currentRuntimeChangesAfterRun": [
+    "Cradle minus-one applies to De Vermis fixed5 payment",
+    "Azuridge printed/passive type and derived Evil scope corrected outside realm and under Silence"
+  ],
+  "affectedCardPresenceInOfficialPrecons": {
+    "cradle_of_etherrum": [],
+    "de_vermis_mysteriis": [],
+    "azuridge_caravan": []
+  },
+  "scope": "Full16 passed for the precisely fingerprinted pre-Cradle version. New Cradle/Azuridge behavior is verified by native8 tests, Dragonlord integration40 and current full2211, plus actual Cradle/Vermis UI. Do not call the16 a test of every latest card interaction.",
+  "latestAttempt": {
+    "startedAt": "2026-10-30T21:32:39.819Z",
+    "session": 24216,
+    "expectedMatches": 16,
+    "completedMatches": 4,
+    "status": "outcome-uncertain-session-no-longer-addressable",
+    "lastProgressAt": "2026-10-30T21:33:35.447763+00:00",
+    "checkedAt": "2026-10-30T21:37:34.999950+00:00",
+    "sourceFingerprint": "3db2772607dff5b27f2ac2a2889e39ca19554d278744d9c101d2565e79735afb",
+    "evidence": "data/smoke-game-progress.json and /tmp/smoke-wave9-cost.log",
+    "blockingChecks": [
+      {
+        "action": "write_stdin(session24216) read-only poll",
+        "result": "Unknown process id24216; no completion/exit result returned",
+        "classification": "outcome uncertain"
+      },
+      {
+        "action": "ps -A -o pid,etime,time,pcpu,comm (read-only process inventory)",
+        "result": "operation not permitted: ps",
+        "classification": "denied; stopped, no retry/alternate process-inventory route"
+      },
+      {
+        "action": "Codex app read_thread_terminal read-only output",
+        "result": "No app terminal session attached",
+        "classification": "unavailable"
+      }
+    ],
+    "restartPolicy": "Do not duplicate/restart this uncertain run until its execution outcome is verified. Continue independent source audit/UI work. If a late result arrives, check fingerprint before calling it latest-source coverage."
+  }
+}

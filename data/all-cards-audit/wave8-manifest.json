@@ -1,0 +1,67 @@
+{
+  "checkedAt": "2026-10-30T21:22:38.989967+00:00",
+  "newlyReviewed": 25,
+  "batches": [
+    {
+      "categoryFile": "data/all-cards-audit/minions.json",
+      "slugs": [
+        "giant_killer",
+        "giant_shark",
+        "gibbous_nightgaunts",
+        "gloam_toads",
+        "gnarled_wendigo",
+        "gneissgnath_gnomes"
+      ],
+      "test": "tests/catalog-minions-wave8.test.js",
+      "doc": "docs/AUDIT_MINIONS_WAVE8.md"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/minions.json",
+      "slugs": [
+        "willing_tribute",
+        "wills_o_the_wisp",
+        "wind_sylph",
+        "winter_nymph",
+        "witherwing_hero",
+        "wolpertinger"
+      ],
+      "test": "tests/catalog-minions-tail3.test.js",
+      "doc": "docs/AUDIT_MINIONS_TAIL3.md"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/artifacts.json",
+      "slugs": [
+        "plate_of_the_whale",
+        "pnakotic_manuscript",
+        "poisonous_dagger",
+        "purge_juggernaut",
+        "red_rock_of_ravannis",
+        "rhongomyniad"
+      ],
+      "test": "tests/catalog-artifacts-wave8.test.js",
+      "doc": "docs/AUDIT_ARTIFACTS_WAVE8.md"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/magics.json",
+      "slugs": [
+        "fade",
+        "fatality",
+        "feast_for_crows",
+        "feign_death",
+        "fireball",
+        "firebolts"
+      ],
+      "test": "tests/catalog-magics-wave5.test.js",
+      "doc": "docs/AUDIT_MAGICS_WAVE5.md"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/minions.json",
+      "slugs": [
+        "those_who_linger"
+      ],
+      "test": "tests/catalog-magics-wave5.test.js",
+      "doc": "docs/AUDIT_MAGICS_WAVE5.md"
+    }
+  ],
+  "scope": "Representative actual printed effects and explicit boundaries; actual UI not reviewed for this batch. Known sacrifice-cost failure retained, not excluded."
+}

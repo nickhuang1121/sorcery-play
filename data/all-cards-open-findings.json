@@ -1,0 +1,118 @@
+{
+  "checkedAt": "2026-10-30T22:33:19.886Z",
+  "scope": "Open recorded findings, not a claim that unreviewed cards have no defects.",
+  "findings": [
+    {
+      "slug": "book_of_blessings",
+      "name": "Book of Blessings",
+      "source": "data/all-cards-audit/artifacts.json",
+      "status": "known-rule-blocker-original101",
+      "topic": "Single allied Minion choice over staged Magic",
+      "reference": "docs/ALL_CARDS_RULES_AUDIT_QUEUE.md; FAQ aa28f077-ea12-4e65-8495-19dd0cb388b3 revision ddCziRH2Fm886tLDwywuSn",
+      "productionPlayable": false
+    },
+    {
+      "slug": "flame_of_the_first_ones",
+      "name": "Flame of the First Ones",
+      "source": "data/all-cards-audit/artifacts.json",
+      "status": "rule-clarification-required",
+      "topic": "Uncontrolled Flame: who receives life benefit of you after last bearer drops it? Owner orders trigger but beneficiary unspecified in inspected sources.",
+      "reference": "src/card-batches.js; engine movedSinceStop/visitedSites/flameStopLife",
+      "nextTest": "Site novelty tracks physical Site UID since artifact entry; conjuring does not stop, actual movement then stopping does. Current stop code falls back to old controller when uncontrolled: reproduce actual drop then Displace before claiming you/your semantics."
+    },
+    {
+      "slug": "bane_of_aventis",
+      "name": "Bane of Aventis",
+      "source": "data/all-cards-audit/minions.json",
+      "status": "rule-clarification-required",
+      "observed": "Untargeted native Genesis changes nearby Warded Monks controller.",
+      "question": "Does native cannot-be-modified forbid this control change? Existing gained guard and passive King behavior differ from this generic control handler.",
+      "reproduction": "node --test --test-name-pattern=\"catalog effect Bane of Aventis: native Genesis gains\" /tmp/catalog-minions-batch2-effects.mjs",
+      "log": "/tmp/catalog-minions-batch2-effects.log",
+      "result": "isolated assertion fails: Monks controller 0, expected 1 pending rule confirmation",
+      "primaryCodex": "5b78b0b7-6d27-421b-898e-cc69bd33771b",
+      "primaryFAQ": "16344cc3-ea06-484e-b987-90aa4e98d1b4",
+      "officialPageRead": "https://sorcerytcg.com/cards/bane_of_aventis",
+      "officialPageCacheAge": "web tool reports crawled two weeks ago; not a guaranteed same-day card update check",
+      "candidates": [
+        "Control is allowed because controller is not listed among minion characteristics and no primary source defines control as a status modification.",
+        "Control is blocked if a control-changing ongoing effect counts as a status modifier under cannot-be-modified."
+      ],
+      "notProof": "Existing King and gained-modification-guard control rejection is implementation precedent, not primary rules evidence."
+    }
+  ],
+  "runtimeReproductions": [
+    {
+      "name": "Empty deck draw",
+      "status": "fixed-formal-regression-passed",
+      "description": "已接入正式流程並通過1806項完整回歸；具體案例見tests/catalog-draw.test.js或tests/catalog-auras.test.js，未宣稱全卡UI完成。",
+      "evidence": [
+        "tools/pending-audit/build-catalog-empty-draw-patch.py",
+        "src/engine.js draw",
+        "data/all-cards-audit/avatars.json",
+        "data/final-101-validation.json"
+      ]
+    },
+    {
+      "name": "Wall of Ice below",
+      "status": "fixed-formal-regression-passed",
+      "description": "已接入正式流程並通過1806項完整回歸；具體案例見tests/catalog-draw.test.js或tests/catalog-auras.test.js，未宣稱全卡UI完成。",
+      "evidence": [
+        "tools/pending-audit/catalog-auras-walls.log",
+        "data/final-101-validation.json"
+      ]
+    },
+    {
+      "name": "Mariners Curse below entry",
+      "status": "fixed-formal-regression-passed",
+      "description": "正式1820/1820已涵蓋此修復與來源／存檔／獨立disabled邊界，實際UI仍未驗。",
+      "evidence": [
+        "tools/pending-audit/catalog-aura-mariner-boundaries.log",
+        "docs/CATALOG_MARINER_BOUND_SPIRIT.md",
+        "data/all-cards-audit/logs/mariner-bound-214.log"
+      ]
+    },
+    {
+      "name": "Mariners Curse mixed oversized body",
+      "status": "fixed-formal-regression-passed",
+      "description": "正式1820/1820已涵蓋此修復與來源／存檔／獨立disabled邊界，實際UI仍未驗。",
+      "evidence": [
+        "tools/pending-audit/catalog-aura-mariner-boundaries.log",
+        "docs/CATALOG_MARINER_BOUND_SPIRIT.md",
+        "data/all-cards-audit/logs/mariner-bound-214.log"
+      ]
+    },
+    {
+      "name": "Bound Spirit / Eerie Coral",
+      "status": "fixed-formal-regression-passed",
+      "description": "正式1820/1820已涵蓋此修復與來源／存檔／獨立disabled邊界，實際UI仍未驗。",
+      "evidence": [
+        "src/engine.js refreshContinuous needsSpellcaster",
+        "docs/FINAL_101_HANDOFF.md",
+        "docs/CATALOG_MARINER_BOUND_SPIRIT.md",
+        "data/all-cards-audit/logs/mariner-bound-214.log"
+      ]
+    },
+    {
+      "name": "Sparkmage served UI",
+      "status": "fixed-native-ui-regression-verified",
+      "description": "Existing5500 service used. Actual hit-test reproduced landscape selector overriding the old fix; specific landscape :has rule+popover2 reload now opens native activation, cancellation untaps and confirmation taps Avatar at C1 without moving.",
+      "evidence": [
+        "data/ui-5500-validation.json",
+        "docs/UI_5500_AUDIT.md"
+      ]
+    },
+    {
+      "name": "Preconstructed matches session 52118",
+      "status": "historical-incomplete-superseded",
+      "description": "舊12/16不沿用；主對話確認停止後授權的新run已16/16、2313actions、exit0、來源不變。Wave2後修改須另驗。",
+      "evidence": [
+        "data/final-101-current-games-validation.json",
+        "data/smoke-game-progress.json",
+        "data/smoke-game-results.json"
+      ]
+    }
+  ],
+  "ruleDecisions": "docs/PLAYER_RULE_DECISIONS.md",
+  "additionalRuleClarifications": "docs/ALL_CARDS_RULE_CLARIFICATIONS.md"
+}

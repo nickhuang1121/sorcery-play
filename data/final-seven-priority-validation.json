@@ -1,0 +1,166 @@
+{
+  "checkedAt": "2026-10-30T23:52:04.168068+00:00",
+  "baseline101": {
+    "completedCore": 99,
+    "partial": 2,
+    "unstarted": 0
+  },
+  "catalog1100": {
+    "reviewedVaryingScopes": 698,
+    "unreviewed": 402,
+    "fullyVerified": 0,
+    "note": "Only in-scope Snowball moved from unreviewed with actual new source/native/UI audit; unrelated402 batch remains paused."
+  },
+  "lastAcceptedFull": {
+    "checkedAt": "2026-10-30T23:51:13.161Z",
+    "command": "node --test --test-reporter=tap tests/*.test.js",
+    "exitCode": 0,
+    "tests": 2699,
+    "passed": 2699,
+    "failed": 0,
+    "skipped": 0,
+    "resultFile": "data/all-cards-audit/logs/full-sorcery-full-regression-67HUxP.tap",
+    "sourceBefore": "20e7cea4e00086e3273624bd13321db0c409967a2ac41a5d97c8fd96ccdd050e",
+    "sourceAfter": "20e7cea4e00086e3273624bd13321db0c409967a2ac41a5d97c8fd96ccdd050e",
+    "sourceUnchanged": true,
+    "isolatedResult": "/tmp/sorcery-full-regression-67HUxP/validation.json"
+  },
+  "currentFullAttempt": {
+    "session": 53053,
+    "directory": "/tmp/sorcery-full-regression-67HUxP",
+    "outcome": "completed-success",
+    "tests": 2699,
+    "passed": 2699,
+    "failed": 0,
+    "skipped": 0,
+    "sourceUnchanged": true
+  },
+  "targetedResults": [
+    {
+      "command": "node --test tests/final-effects.test.js",
+      "tests": 47,
+      "passed": 47,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "node --test tests/final-seven-chaos-waves.test.js tests/final-seven-passives.test.js tests/final-seven-globe.test.js",
+      "tests": 14,
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "beforeAdditionalTargetLabelTest": true
+    },
+    {
+      "command": "node --test tests/final-seven-chaos-waves.test.js tests/final-chaos.test.js tests/final-avatars.test.js",
+      "tests": 106,
+      "passed": 106,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "ui": "Actual production UI on existing5500; authored initial states; original match restored; physical reports synthetic and explicitly labeled; no new server",
+  "houseRulesApproved": false,
+  "digitalTwister": {
+    "authorizedByUser": true,
+    "rule": "digital-uniform-board-v1",
+    "sampleSpace": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "noFiltering": true,
+    "scope": "Uniform baseline native RNG; existing legitimate random controllers retain their abilities. Not official physical procedure.",
+    "resultPersistence": "finalTwisterDigitalResults + queued landing",
+    "targetedTests": 81,
+    "passed": 81,
+    "failed": 0,
+    "skipped": 0,
+    "ui": "actual5500 cast/cancel/recast, paid4, landing2, damage/death settled, reload retained one result, original match restored",
+    "evidence": "data/ui5500-twister-digital-resolved.json"
+  },
+  "choiceReplayGuard": {
+    "implemented": true,
+    "currentUI": "choiceToken captured at rendering; local stale handler ignored; online token/player validation and inFlight+flush",
+    "engine": "supplied stale token rejected before mutation",
+    "legacyLimit": "Old no-token logs remain compatible; raw legacy API/transport has no general idempotency. Not authentication.",
+    "networkScope": "Memory peers and actual online submission function body, not live Firebase or dual-browser network UI",
+    "engineBuild": "lockstep-20261030-project-rulings-v3",
+    "rapidClick": "Actual5500 Contract double-click exposed click-through via modal backdrop. Added400ms human cross-menu guard and routed cancelDialog through same guarded choice handler; repeatactualdblclick leaves search pending; finalmanualselection pays2/audit1/onecard.",
+    "uiEvidence": "data/ui5500-contract-doubleclick-after.png"
+  },
+  "processCheck": {
+    "action": "ps -A -o pid,ppid,etime,comm",
+    "result": "denied",
+    "reason": "zsh operation not permitted: ps",
+    "retry": "One requested read attempt after new parent instruction; stopped after denial, no alternate inventory route",
+    "fullRerun": "Not started; old62668 termination still unverified"
+  },
+  "softwareScope": {
+    "chaos_twister": "Accepted completed core: user-authorized digital-uniform-board-v1; entire20-square RNG, fixed persistence, cancellation, restore, relevant effects, memory sync and actual UI. Not official physical blow.",
+    "demonic_contract": "Accepted completed core: human-confirmed-classification software; cancellation, confirmation, commit/search, JSON, illegal/stale/repeated inputs, memory sync and actual UI doubleclick corrected. Human category fact is external input, not missing software. No liveFirebase/UI-network claim.",
+    "formalCounts": "Accepted96/5/0 from actual2678/2678 full; Twister digital variant and Contract human-assisted software core accepted, fullyVerified remains0."
+  },
+  "latestScopedRun": {
+    "tests": 334,
+    "passed": 334,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0,
+    "scope": "Eleven named seven-card/native/context/sync suites, not entire tests directory",
+    "log": "data/all-cards-audit/logs/final-seven-scoped-334-latest.log"
+  },
+  "remainingCards": [
+    {
+      "name": "Book of Blessings",
+      "slug": "book_of_blessings",
+      "remaining": "Magic選擇集合及Recall/Flood有實驗測試；single範圍及Symmetric Suffering的Ward時點仍待裁定，Book未接正式施放，不能把候選解讀當官方規則"
+    },
+    {
+      "name": "Chaoswish",
+      "slug": "chaoswish",
+      "remaining": "核心複本與Kythera有限次數流程已驗；Globe結果已能真正免費conjure；完整池仍有Book未開放結果，固定保留抽中結果並阻擋，不過濾或重抽"
+    }
+  ],
+  "projectRules": {
+    "authority": "explicit user project choices, not officialFAQ",
+    "profile": "user-rulings-20261030-v1",
+    "networkBuild": "lockstep-20261030-project-rulings-v3",
+    "source": "data/project-rule-decisions-20261030.json",
+    "code": "src/project-rules.js",
+    "scopeDocument": "docs/FINAL_FIVE_RULINGS_IMPLEMENTATION.md"
+  },
+  "finalFiveRulings": {
+    "scopedTests": 19,
+    "passed": 19,
+    "failed": 0,
+    "skip": 0,
+    "memoryScope": "Globe retainedAura/latepeer exactstate; Snowball latepeer saved direction/uniqueimpact/fullstate; dualThrone bothactive values, allactualMatchSync in memory, noFirebase",
+    "actualUI": [
+      "realGlobe-Silence-Alkahest-retain",
+      "Snowballclosedloop",
+      "Throneactive0",
+      "Throneactive1",
+      "Doomsday4not8",
+      "ChaoswishGlobe-loose-and-carried"
+    ],
+    "document": "docs/FINAL_FIVE_RULINGS_IMPLEMENTATION.md"
+  }
+}

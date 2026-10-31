@@ -1,4 +1,4 @@
-/** Public Firebase web config (Realtime Database + anonymous Auth via transport.ensureAuth). */}
+/** Public Firebase web config (Realtime Database + anonymous Auth via transport.ensureAuth). */
 export const firebaseConfig = {
   apiKey: 'AIzaSyBVeDe9x6xlUDITMAL_Rvc7bGJuqVmmRzM',
   authDomain: 'sorcery-codex.firebaseapp.com',

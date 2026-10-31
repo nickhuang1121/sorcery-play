@@ -1,0 +1,78 @@
+{
+  "startedAt": "2026-10-31T02:08:33.881Z",
+  "checkedAt": "2026-10-31T02:10:13.572Z",
+  "command": "node --test --test-reporter=tap tests/*.test.js",
+  "exitCode": 0,
+  "signal": null,
+  "tests": 2745,
+  "passed": 2745,
+  "failed": 0,
+  "skipped": 0,
+  "cancelled": 0,
+  "sourceBefore": "54e640e3f703d4641371e746bddcc7fe93a607220dc49f23ec8a01f317b226a0",
+  "sourceAfter": "54e640e3f703d4641371e746bddcc7fe93a607220dc49f23ec8a01f317b226a0",
+  "sourceUnchanged": true,
+  "resultFile": "/tmp/sorcery-full-regression-EDbLSu/results.tap",
+  "stderrFile": "/tmp/sorcery-full-regression-EDbLSu/stderr.log",
+  "playedMatch": {
+    "viewport": "390x844",
+    "mode": "ai",
+    "difficulty": "easy",
+    "seed": 42,
+    "decks": [
+      "BETA · 大地燼火",
+      "BETA · 風暴軍勢"
+    ],
+    "startedThroughProductionNewMatch": true,
+    "authoredLateGameStateUsed": false,
+    "directStateMutationUsed": false,
+    "actions": 70,
+    "actionTypes": {
+      "mulligan": 2,
+      "site": 13,
+      "cast": 8,
+      "end": 14,
+      "draw": 14,
+      "move": 4,
+      "attack": 13,
+      "defend": 1,
+      "pass": 1
+    },
+    "winner": 0,
+    "finalTurn": 15,
+    "finalLife": [
+      9,
+      0
+    ],
+    "enemyDeathDoorTurn": 13,
+    "entireExportMatchesFreshReplay": true,
+    "replayFile": "data/mobile-played-match.json"
+  },
+  "uiFixes": [
+    "Normalize fresh matches before rendering card stacks and equipment counts",
+    "Resolve covered entity targets when tapping their highlighted cell",
+    "Add result-screen lobby and replay export actions"
+  ],
+  "browserChecks": {
+    "newMatchAndMulligan": true,
+    "nativeCardDrag": true,
+    "targetSelectionAndStackExpansion": true,
+    "combatDefenseAndDamage": true,
+    "deathDoorAndKillingBlow": true,
+    "victoryScreen": true,
+    "returnToLobby": true,
+    "resumeFinishedMatch": true,
+    "rematchSetup": true,
+    "replayDownloaded": true,
+    "originalMatchRestored": true,
+    "viewportReset": true,
+    "consoleErrorsAfterFix": []
+  },
+  "persistentResultFile": "output/ui/mobile-full-match-regression.tap",
+  "screenshots": [
+    "output/ui/mobile-full-match-opening.png",
+    "output/ui/mobile-full-match-frontline.png",
+    "output/ui/mobile-full-match-deaths-door.png",
+    "output/ui/mobile-full-match-victory.png"
+  ]
+}

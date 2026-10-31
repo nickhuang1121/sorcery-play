@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-30",
+  "mode": "actual-browser-component-workflow-with-synthetic-human-classification",
+  "url": "http://127.0.0.1:8767/tests/final-manual-ui.html",
+  "screenshot": "data/final-101-manual-contract-ui.jpg",
+  "observed": [
+    "cancel preserves mana, life, artifact and empty audit",
+    "Ruby Core chosen; confirmation requested before any payment",
+    "human confirmation removes artifact and grants two mana",
+    "subsequent Wild Boars search completes; fixture displays success"
+  ],
+  "limitations": [
+    "classification input was synthetic; no physical card classification was verified",
+    "fixture uses actual engine and shared effect-choice-ui, not an entire normal game table",
+    "served application revision/cache requires independent confirmation",
+    "does not justify fully automated or whole-card completion"
+  ],
+  "status": "partial-component-ui-verified"
+}

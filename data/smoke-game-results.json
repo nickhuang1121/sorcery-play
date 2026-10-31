@@ -1,0 +1,136 @@
+{
+  "checkedAt": "2026-10-30T20:57:03.070Z",
+  "matches": 16,
+  "results": [
+    {
+      "a": "beta-air",
+      "b": "beta-air",
+      "seed": 42,
+      "steps": 104,
+      "turn": 18,
+      "winner": 0
+    },
+    {
+      "a": "beta-air",
+      "b": "beta-earth",
+      "seed": 43,
+      "steps": 106,
+      "turn": 18,
+      "winner": 1
+    },
+    {
+      "a": "beta-air",
+      "b": "beta-fire",
+      "seed": 44,
+      "steps": 148,
+      "turn": 23,
+      "winner": 0
+    },
+    {
+      "a": "beta-air",
+      "b": "beta-water",
+      "seed": 45,
+      "steps": 124,
+      "turn": 18,
+      "winner": 1
+    },
+    {
+      "a": "beta-earth",
+      "b": "beta-air",
+      "seed": 46,
+      "steps": 133,
+      "turn": 20,
+      "winner": 1
+    },
+    {
+      "a": "beta-earth",
+      "b": "beta-earth",
+      "seed": 47,
+      "steps": 147,
+      "turn": 21,
+      "winner": 1
+    },
+    {
+      "a": "beta-earth",
+      "b": "beta-fire",
+      "seed": 48,
+      "steps": 97,
+      "turn": 16,
+      "winner": 1
+    },
+    {
+      "a": "beta-earth",
+      "b": "beta-water",
+      "seed": 49,
+      "steps": 247,
+      "turn": 26,
+      "winner": 1
+    },
+    {
+      "a": "beta-fire",
+      "b": "beta-air",
+      "seed": 50,
+      "steps": 147,
+      "turn": 25,
+      "winner": 0
+    },
+    {
+      "a": "beta-fire",
+      "b": "beta-earth",
+      "seed": 51,
+      "steps": 88,
+      "turn": 16,
+      "winner": 1
+    },
+    {
+      "a": "beta-fire",
+      "b": "beta-fire",
+      "seed": 52,
+      "steps": 96,
+      "turn": 18,
+      "winner": 0
+    },
+    {
+      "a": "beta-fire",
+      "b": "beta-water",
+      "seed": 53,
+      "steps": 287,
+      "turn": 38,
+      "winner": 0
+    },
+    {
+      "a": "beta-water",
+      "b": "beta-air",
+      "seed": 54,
+      "steps": 68,
+      "turn": 12,
+      "winner": 1
+    },
+    {
+      "a": "beta-water",
+      "b": "beta-earth",
+      "seed": 55,
+      "steps": 103,
+      "turn": 18,
+      "winner": 1
+    },
+    {
+      "a": "beta-water",
+      "b": "beta-fire",
+      "seed": 56,
+      "steps": 239,
+      "turn": 33,
+      "winner": 0
+    },
+    {
+      "a": "beta-water",
+      "b": "beta-water",
+      "seed": 57,
+      "steps": 189,
+      "turn": 30,
+      "winner": 0
+    }
+  ],
+  "sourceFingerprint": "8f1f86e15681f5ff891fb77e5b2f8c88a855b58d16a46664431c5f118b9e3aa6",
+  "sourceUnchanged": true
+}

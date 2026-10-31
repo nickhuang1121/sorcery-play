@@ -1,0 +1,41 @@
+{
+  "startedAt": "2026-10-30T21:32:39.819Z",
+  "status": "running",
+  "expectedMatches": 16,
+  "completedMatches": 4,
+  "sourceFingerprint": "3db2772607dff5b27f2ac2a2889e39ca19554d278744d9c101d2565e79735afb",
+  "results": [
+    {
+      "a": "beta-air",
+      "b": "beta-air",
+      "seed": 42,
+      "steps": 104,
+      "turn": 18,
+      "winner": 0
+    },
+    {
+      "a": "beta-air",
+      "b": "beta-earth",
+      "seed": 43,
+      "steps": 106,
+      "turn": 18,
+      "winner": 1
+    },
+    {
+      "a": "beta-air",
+      "b": "beta-fire",
+      "seed": 44,
+      "steps": 148,
+      "turn": 23,
+      "winner": 0
+    },
+    {
+      "a": "beta-air",
+      "b": "beta-water",
+      "seed": 45,
+      "steps": 124,
+      "turn": 18,
+      "winner": 1
+    }
+  ]
+}

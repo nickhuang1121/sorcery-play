@@ -17,13 +17,17 @@
       "slug": "aethermoeba",
       "name": "Aethermoeba",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-geometry.md"
     },
     {
       "slug": "altar_of_malachai",
       "name": "Altar of Malachai",
       "category": "Site",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-altar.md"
     },
     {
       "slug": "a_midsummer_nights_dream",
@@ -36,25 +40,31 @@
       "slug": "animist",
       "name": "Animist",
       "category": "Avatar",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "slug": "arcade_of_bones",
       "name": "Arcade of Bones",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 85
     },
     {
       "slug": "arcane_barrage",
       "name": "Arcane Barrage",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 88
     },
     {
       "slug": "archimago",
       "name": "Archimago",
       "category": "Avatar",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "slug": "assimilator_snail",
@@ -67,7 +77,8 @@
       "slug": "assorted_animals",
       "name": "Assorted Animals",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 88
     },
     {
       "slug": "atlantean_fate",
@@ -80,31 +91,38 @@
       "slug": "avatar_of_fire",
       "name": "Avatar of Fire",
       "category": "Avatar",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "slug": "avatar_of_water",
       "name": "Avatar of Water",
       "category": "Avatar",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "slug": "awakened_mummies",
       "name": "Awakened Mummies",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 86
     },
     {
       "slug": "backstab",
       "name": "Backstab",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 86
     },
     {
       "slug": "black_cat",
       "name": "Black Cat",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 87
     },
     {
       "slug": "bladedancer",
@@ -117,19 +135,23 @@
       "slug": "blasphemy",
       "name": "Blasphemy",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 86
     },
     {
       "slug": "blasted_oak",
       "name": "Blasted Oak",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-oak.md"
     },
     {
       "slug": "blaze_of_glory",
       "name": "Blaze of Glory",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 88
     },
     {
       "slug": "blightstone",
@@ -149,7 +171,9 @@
       "slug": "book_of_blessings",
       "name": "Book of Blessings",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-passives.md"
     },
     {
       "slug": "book_of_the_dead",
@@ -176,55 +200,72 @@
       "slug": "bureau_of_occult_control",
       "name": "Bureau of Occult Control",
       "category": "Site",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-passives.md"
     },
     {
       "slug": "burning_hands",
       "name": "Burning Hands",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-grids.md"
     },
     {
       "slug": "cage_of_sidrak",
       "name": "Cage of Sidrak",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-artifacts.md"
     },
     {
       "slug": "captain_baldassare",
       "name": "Captain Baldassare",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "slug": "cerberus_in_chains",
       "name": "Cerberus in Chains",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-geometry.md"
     },
     {
       "slug": "chaos_twister",
       "name": "Chaos Twister",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-effects.md"
     },
     {
       "slug": "chaoswish",
       "name": "Chaoswish",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": null
     },
     {
       "slug": "city_of_souls",
       "name": "City of Souls",
       "category": "Site",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-site-damage.md"
     },
     {
       "slug": "clay_golem",
       "name": "Clay Golem",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 84
     },
     {
       "slug": "consecrate",
@@ -237,25 +278,33 @@
       "slug": "corpse_catapult",
       "name": "Corpse Catapult",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-artifacts.md"
     },
     {
       "slug": "corpse_explosion",
       "name": "Corpse Explosion",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-effects.md"
     },
     {
       "slug": "corruptor",
       "name": "Corruptor",
       "category": "Avatar",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-types.md"
     },
     {
       "slug": "courtesan_thais",
       "name": "Courtesan Thaïs",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-control.md"
     },
     {
       "slug": "cradle_of_etherrum",
@@ -268,37 +317,49 @@
       "slug": "crave_golem",
       "name": "Crave Golem",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "slug": "dame_britomart",
       "name": "Dame Britomart",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "slug": "darkest_dungeon",
       "name": "Darkest Dungeon",
       "category": "Site",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-sites.md"
     },
     {
       "slug": "day_of_judgment",
       "name": "Day of Judgment",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-grids.md"
     },
     {
       "slug": "deathspeaker",
       "name": "Deathspeaker",
       "category": "Avatar",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "slug": "demonic_contract",
       "name": "Demonic Contract",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-effects.md"
     },
     {
       "slug": "desecrate",
@@ -311,13 +372,17 @@
       "slug": "dhol_chants",
       "name": "Dhol Chants",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-effects.md"
     },
     {
       "slug": "dodge_roll",
       "name": "Dodge Roll",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-reactions.md"
     },
     {
       "slug": "doomsday_cult",
@@ -330,13 +395,17 @@
       "slug": "doomsday_device",
       "name": "Doomsday Device",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-artifacts.md"
     },
     {
       "slug": "dragonlord",
       "name": "Dragonlord",
       "category": "Avatar",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "slug": "dream_quest",
@@ -349,7 +418,8 @@
       "slug": "driftwood_marrows",
       "name": "Driftwood Marrows",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 84
     },
     {
       "slug": "druid",
@@ -362,19 +432,24 @@
       "slug": "duplicator",
       "name": "Duplicator",
       "category": "Avatar",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 85
     },
     {
       "slug": "earthquake",
       "name": "Earthquake",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-effects.md"
     },
     {
       "slug": "edge_of_the_world",
       "name": "Edge of the World",
       "category": "Site",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-geometry.md"
     },
     {
       "slug": "elder_ruins",
@@ -387,13 +462,16 @@
       "slug": "enchantress",
       "name": "Enchantress",
       "category": "Avatar",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-animation.md"
     },
     {
       "slug": "endless_fence",
       "name": "Endless Fence",
       "category": "Site",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 85
     },
     {
       "slug": "eriks_curiosa",
@@ -420,7 +498,9 @@
       "slug": "felbog_frog_men",
       "name": "Felbog Frog Men",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-geometry.md"
     },
     {
       "slug": "fields_of_phyxis",
@@ -433,19 +513,25 @@
       "slug": "firebreathing",
       "name": "Firebreathing",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-grids.md"
     },
     {
       "slug": "flame_strike",
       "name": "Flame Strike",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-grids.md"
     },
     {
       "slug": "flame_wave",
       "name": "Flame Wave",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-grids.md"
     },
     {
       "slug": "forlorn_keep",
@@ -465,13 +551,17 @@
       "slug": "free_city",
       "name": "Free City",
       "category": "Site",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-built-sites.md"
     },
     {
       "slug": "giant_shark",
       "name": "Giant Shark",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "slug": "gilman_house",
@@ -484,7 +574,9 @@
       "slug": "gnarled_wendigo",
       "name": "Gnarled Wendigo",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "slug": "great_old_one",
@@ -497,19 +589,24 @@
       "slug": "grigori_rasputin",
       "name": "Grigori Rasputin",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "slug": "grim_reaper",
       "name": "Grim Reaper",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 87
     },
     {
       "slug": "grosse_poltergeist",
       "name": "Grösse Poltergeist",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "slug": "harbinger",
@@ -522,25 +619,31 @@
       "slug": "haystack",
       "name": "Haystack",
       "category": "Site",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 86
     },
     {
       "slug": "hellstar",
       "name": "Hellstar",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-grids.md"
     },
     {
       "slug": "hemogolem",
       "name": "Hemogolem",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 84
     },
     {
       "slug": "holy_nova",
       "name": "Holy Nova",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-rules-open-questions.md"
     },
     {
       "slug": "horns_of_behemoth",
@@ -553,19 +656,25 @@
       "slug": "i_am_colossus",
       "name": "I Am Colossus!",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "slug": "imposter",
       "name": "Imposter",
       "category": "Avatar",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "slug": "infusion_factory",
       "name": "Infusion Factory",
       "category": "Site",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-animation.md"
     },
     {
       "slug": "interrogator",
@@ -578,67 +687,85 @@
       "slug": "iron_man_talus",
       "name": "Iron Man Talus",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 84
     },
     {
       "slug": "jack_the_ripper",
       "name": "Jack the Ripper",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "slug": "joust",
       "name": "Joust!",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-effects.md"
     },
     {
       "slug": "kairos_the_archivist",
       "name": "Kairos the Archivist",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "slug": "karkemish_chimera",
       "name": "Karkemish Chimera",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "slug": "key_to_the_city",
       "name": "Key to the City",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-artifacts.md"
     },
     {
       "slug": "king_arthur",
       "name": "King Arthur",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 85
     },
     {
       "slug": "koscheis_egg",
       "name": "Koschei's Egg",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-artifacts.md"
     },
     {
       "slug": "kythera_mechanism",
       "name": "Kythera Mechanism",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 87
     },
     {
       "slug": "land_deed",
       "name": "Land Deed",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 85
     },
     {
       "slug": "lava_flow",
       "name": "Lava Flow",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-grids.md"
     },
     {
       "slug": "leadworks",
@@ -651,7 +778,9 @@
       "slug": "led_astray",
       "name": "Led Astray",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-effects.md"
     },
     {
       "slug": "legion_of_gall",
@@ -664,19 +793,24 @@
       "slug": "lucid_dreamers",
       "name": "Lucid Dreamers",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "validation": "tests/remaining-rules.test.js"
     },
     {
       "slug": "magellan_globe",
       "name": "Magellan Globe",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-geometry.md"
     },
     {
       "slug": "magician",
       "name": "Magician",
       "category": "Avatar",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "slug": "mask_of_mayhem",
@@ -689,13 +823,17 @@
       "slug": "megamoeba",
       "name": "Megamoeba",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-geometry.md"
     },
     {
       "slug": "mephistopheles",
       "name": "Mephistopheles",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "slug": "merlin",
@@ -715,25 +853,33 @@
       "slug": "mester_stoor_worm",
       "name": "Mester Stoor Worm",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-grids.md"
     },
     {
       "slug": "meteor_shower",
       "name": "Meteor Shower",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-grids.md"
     },
     {
       "slug": "mimic",
       "name": "Mimic",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "slug": "mismanaged_mortuary",
       "name": "Mismanaged Mortuary",
       "category": "Site",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-passives.md"
     },
     {
       "slug": "molten_maar",
@@ -746,13 +892,16 @@
       "slug": "monastery_gargoyle",
       "name": "Monastery Gargoyle",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "slug": "monks_of_kobalsa",
       "name": "Monks of Kobalsa",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 88
     },
     {
       "slug": "monstermorphosis",
@@ -772,19 +921,25 @@
       "slug": "mortal_soil",
       "name": "Mortal Soil",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-site-damage.md"
     },
     {
       "slug": "mount_ussar_sanctuary",
       "name": "Mount Ussar Sanctuary",
       "category": "Site",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-sites.md"
     },
     {
       "slug": "mudslide",
       "name": "Mudslide",
       "category": "Site",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-sites.md"
     },
     {
       "slug": "old_mortimers_den",
@@ -797,19 +952,25 @@
       "slug": "orb_of_baal_berith",
       "name": "Orb of Ba'al Berith",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-orb.md"
     },
     {
       "slug": "order_of_the_white_wing",
       "name": "Order of the White Wing",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-passives.md"
     },
     {
       "slug": "orpheus_crossing",
       "name": "Orpheus' Crossing",
       "category": "Site",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-sites.md"
     },
     {
       "slug": "overflowing_court",
@@ -822,7 +983,9 @@
       "slug": "pathfinder",
       "name": "Pathfinder",
       "category": "Avatar",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "slug": "peace_offering",
@@ -842,55 +1005,71 @@
       "slug": "persecutor",
       "name": "Persecutor",
       "category": "Avatar",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-types.md"
     },
     {
       "slug": "purge_juggernaut",
       "name": "Purge Juggernaut",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 84
     },
     {
       "slug": "putrid_presence",
       "name": "Putrid Presence",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-geometry.md"
     },
     {
       "slug": "rat_king",
       "name": "Rat King",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 87
     },
     {
       "slug": "realm_eater",
       "name": "Realm-Eater",
       "category": "Avatar",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "slug": "red_rock_of_ravannis",
       "name": "Red Rock of Ravannis",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-passives.md"
     },
     {
       "slug": "rift_valley",
       "name": "Rift Valley",
       "category": "Site",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-built-sites.md"
     },
     {
       "slug": "royal_bodyguard",
       "name": "Royal Bodyguard",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-damage.md"
     },
     {
       "slug": "saint_of_redemption",
       "name": "Saint of Redemption",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-passives.md"
     },
     {
       "slug": "salt_the_earth",
@@ -903,7 +1082,9 @@
       "slug": "sea_raider",
       "name": "Sea Raider",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "slug": "selfsame_simulacrum",
@@ -958,7 +1139,9 @@
       "slug": "sir_gawain",
       "name": "Sir Gawain",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-damage.md"
     },
     {
       "slug": "skeleton_mage",
@@ -985,7 +1168,9 @@
       "slug": "snowball",
       "name": "Snowball",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-waves.md"
     },
     {
       "slug": "sold_out_cemetery",
@@ -1012,7 +1197,9 @@
       "slug": "stitched_abomination",
       "name": "Stitched Abomination",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "slug": "sturmgeist",
@@ -1025,37 +1212,47 @@
       "slug": "swap",
       "name": "Swap",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 86
     },
     {
       "slug": "tabula_rasa",
       "name": "Tabula Rasa",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-artifacts.md"
     },
     {
       "slug": "the_apex_of_babel",
       "name": "The Apex of Babel",
       "category": "Site",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-built-sites.md"
     },
     {
       "slug": "the_base_of_babel",
       "name": "The Base of Babel",
       "category": "Site",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-built-sites.md"
     },
     {
       "slug": "the_doom_of_dilmun",
       "name": "The Doom of Dilmun",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 88
     },
     {
       "slug": "the_flood",
       "name": "The Flood",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-flood.md"
     },
     {
       "slug": "the_great_drowning_of_men",
@@ -1075,43 +1272,57 @@
       "slug": "the_immortal_throne",
       "name": "The Immortal Throne",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-passives.md"
     },
     {
       "slug": "the_inquisition",
       "name": "The Inquisition",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "slug": "the_malleus_maleficarum",
       "name": "The Malleus Maleficarum",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-malleus.md"
     },
     {
       "slug": "the_pallid_bust",
       "name": "The Pallid Bust",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-pallid-progress.md"
     },
     {
       "slug": "the_rack",
       "name": "The Rack",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-geometry.md"
     },
     {
       "slug": "the_void",
       "name": "The Void",
       "category": "Site",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-geometry.md"
     },
     {
       "slug": "tombstone_wardens",
       "name": "Tombstone Wardens",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-artifacts.md"
     },
     {
       "slug": "toolbox",
@@ -1131,7 +1342,9 @@
       "slug": "tringh_constrictor",
       "name": "Tringh Constrictor",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "slug": "troll_bridge",
@@ -1158,13 +1371,16 @@
       "slug": "undertaker_engine",
       "name": "Undertaker Engine",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "implementationBatch": 87
     },
     {
       "slug": "valor",
       "name": "Valor",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-reactions.md"
     },
     {
       "slug": "vaults_of_zul",
@@ -1184,13 +1400,17 @@
       "slug": "vindictive_nation",
       "name": "Vindictive Nation",
       "category": "Site",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-built-sites.md"
     },
     {
       "slug": "vivien_the_enchantress",
       "name": "Vivien the Enchantress",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-vivien-readiness.md"
     },
     {
       "slug": "wall_of_air",
@@ -1231,7 +1451,9 @@
       "slug": "wave_of_eviction",
       "name": "Wave of Eviction",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-waves.md"
     },
     {
       "slug": "wills_o_the_wisp",
@@ -1265,13 +1487,17 @@
       "slug": "wormelow_tump",
       "name": "Wormelow Tump",
       "category": "Site",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-passives.md"
     },
     {
       "slug": "wreathed_in_righteousness",
       "name": "Wreathed in Righteousness",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-grids.md"
     },
     {
       "slug": "year_of_the_blaze",
@@ -1284,7 +1510,9 @@
       "slug": "yog_sothoth",
       "name": "Yog-Sothoth",
       "category": "Spell",
-      "status": "pending"
+      "status": "effect-tested",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-geometry.md"
     },
     {
       "slug": "young_master_damion",
@@ -1294,12 +1522,12 @@
       "implementationBatch": 72
     }
   ],
-  "checkedAt": "2026-10-30",
-  "verifiedEffectCases": 75,
-  "remaining": 127,
+  "checkedAt": "2026-10-31T00:16:12.588Z",
+  "verifiedEffectCases": 202,
+  "remaining": 0,
   "fullyVerified": 0,
   "status": "in-progress",
-  "note": "An effect-tested entry is partial support, not exhaustive official-rules certification.",
+  "note": "最終101張逐張進度及剩餘限制見data/final-101-progress.json與docs/FINAL_101_PROGRESS.md；不可把已開放或helper測試當成完整官方驗收。",
   "pendingBatches": [
     {
       "plannedBatch": 84,
@@ -1307,9 +1535,7 @@
       "slugs": [
         "aethermoeba",
         "altar_of_malachai",
-        "animist",
-        "arcade_of_bones",
-        "arcane_barrage"
+        "animist"
       ]
     },
     {
@@ -1317,21 +1543,15 @@
       "status": "pending",
       "slugs": [
         "archimago",
-        "assorted_animals",
         "avatar_of_fire",
-        "avatar_of_water",
-        "awakened_mummies"
+        "avatar_of_water"
       ]
     },
     {
       "plannedBatch": 86,
       "status": "pending",
       "slugs": [
-        "backstab",
-        "black_cat",
-        "blasphemy",
-        "blasted_oak",
-        "blaze_of_glory"
+        "blasted_oak"
       ]
     },
     {
@@ -1352,8 +1572,7 @@
         "cerberus_in_chains",
         "chaos_twister",
         "chaoswish",
-        "city_of_souls",
-        "clay_golem"
+        "city_of_souls"
       ]
     },
     {
@@ -1385,19 +1604,16 @@
         "dhol_chants",
         "dodge_roll",
         "doomsday_device",
-        "dragonlord",
-        "driftwood_marrows"
+        "dragonlord"
       ]
     },
     {
       "plannedBatch": 92,
       "status": "pending",
       "slugs": [
-        "duplicator",
         "earthquake",
         "edge_of_the_world",
-        "enchantress",
-        "endless_fence"
+        "enchantress"
       ]
     },
     {
@@ -1418,7 +1634,6 @@
         "giant_shark",
         "gnarled_wendigo",
         "grigori_rasputin",
-        "grim_reaper",
         "grosse_poltergeist"
       ]
     },
@@ -1426,9 +1641,7 @@
       "plannedBatch": 95,
       "status": "pending",
       "slugs": [
-        "haystack",
         "hellstar",
-        "hemogolem",
         "holy_nova",
         "i_am_colossus"
       ]
@@ -1439,7 +1652,6 @@
       "slugs": [
         "imposter",
         "infusion_factory",
-        "iron_man_talus",
         "jack_the_ripper",
         "joust"
       ]
@@ -1451,7 +1663,6 @@
         "kairos_the_archivist",
         "karkemish_chimera",
         "key_to_the_city",
-        "king_arthur",
         "koscheis_egg"
       ]
     },
@@ -1459,11 +1670,8 @@
       "plannedBatch": 98,
       "status": "pending",
       "slugs": [
-        "kythera_mechanism",
-        "land_deed",
         "lava_flow",
-        "led_astray",
-        "lucid_dreamers"
+        "led_astray"
       ]
     },
     {
@@ -1484,8 +1692,7 @@
         "meteor_shower",
         "mimic",
         "mismanaged_mortuary",
-        "monastery_gargoyle",
-        "monks_of_kobalsa"
+        "monastery_gargoyle"
       ]
     },
     {
@@ -1506,7 +1713,6 @@
         "orpheus_crossing",
         "pathfinder",
         "persecutor",
-        "purge_juggernaut",
         "putrid_presence"
       ]
     },
@@ -1514,7 +1720,6 @@
       "plannedBatch": 103,
       "status": "pending",
       "slugs": [
-        "rat_king",
         "realm_eater",
         "red_rock_of_ravannis",
         "rift_valley",
@@ -1536,11 +1741,9 @@
       "plannedBatch": 105,
       "status": "pending",
       "slugs": [
-        "swap",
         "tabula_rasa",
         "the_apex_of_babel",
-        "the_base_of_babel",
-        "the_doom_of_dilmun"
+        "the_base_of_babel"
       ]
     },
     {
@@ -1561,8 +1764,7 @@
         "the_rack",
         "the_void",
         "tombstone_wardens",
-        "tringh_constrictor",
-        "undertaker_engine"
+        "tringh_constrictor"
       ]
     },
     {

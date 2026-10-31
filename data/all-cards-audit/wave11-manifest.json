@@ -1,0 +1,73 @@
+{
+  "checkedAt": "2026-10-30T22:06:07.793286+00:00",
+  "newlyReviewed": 18,
+  "batches": [
+    {
+      "categoryFile": "data/all-cards-audit/minions.json",
+      "slugs": [
+        "grigori_rasputin",
+        "grim_reaper",
+        "grosse_poltergeist",
+        "guardian_angel",
+        "guile_sirens",
+        "gyre_hippogriffs"
+      ],
+      "test": "tests/catalog-minions-wave11.test.js",
+      "doc": "docs/AUDIT_MINIONS_WAVE11.md",
+      "result": "25/25 native candidates passed; Guardian ties/mandatory/sharedlocation, Guile allpart-origin mirrors and samebody stay, other four exact documented effects"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/magics.json",
+      "slugs": [
+        "gift_of_the_raven",
+        "gift_of_the_serpent",
+        "gift_of_the_wolf",
+        "gigantism",
+        "golden_dawn",
+        "grapple_shot"
+      ],
+      "test": "tests/catalog-magics-wave8.test.js",
+      "doc": "docs/AUDIT_MAGICS_WAVE8.md",
+      "result": "20/20 native candidates; independent stacked and per-instance rounded healing, illegalSummon banish, other printed effects/expiry/movement"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/artifacts.json",
+      "slugs": [
+        "sunken_treasure",
+        "sword_and_shield",
+        "tabula_rasa",
+        "the_immortal_throne",
+        "the_malleus_maleficarum",
+        "the_pallid_bust"
+      ],
+      "test": "tests/catalog-artifacts-wave11.test.js",
+      "doc": "docs/AUDIT_ARTIFACTS_WAVE11.md",
+      "result": "19/19 native candidates; actual cost0..7 Throne progression and printed7/paid4, singleThrone win/block, real other documented artifact flows"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/sites.json",
+      "slugs": [
+        "desecrated_ground",
+        "dome_of_osiros",
+        "donnybrook_inn",
+        "dozmary_pool",
+        "dragonlords_lair",
+        "dread_thicket"
+      ],
+      "test": "tests/catalog-sites-native-wave2.test.js",
+      "doc": "docs/AUDIT_SITES_NATIVE_WAVE2.md",
+      "result": "19/19 native candidates; actual Dozmary threshold1vs3, handArtifact Automaton and immediateUnderwater death+JSON, other printed effects"
+    }
+  ],
+  "scope": "24 additional representative per-card audits:18 previously unreviewed plus six existing code-reviewed Sites. Formal full session67898 in progress; not full-card approval.",
+  "fullValidation": {
+    "checkedAt": "2026-10-30T22:06:52.391Z",
+    "command": "node --test --test-reporter=tap tests/*.test.js",
+    "exitCode": 0,
+    "tests": 2533,
+    "passed": 2533,
+    "failed": 0,
+    "skipped": 0,
+    "resultFile": "data/all-cards-audit/logs/wave11-full-2533.tap"
+  }
+}

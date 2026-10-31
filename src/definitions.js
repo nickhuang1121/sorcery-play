@@ -1,3 +1,25 @@
+import {catalogMagicDefinitions} from './catalog-magics.js';
+import {finalFloodDefinitions} from './final-flood.js';
+import {malleusDefinitions} from './final-malleus.js';
+import {vivienPassives} from './final-vivien.js';
+import {factoryPassives} from './final-factory.js';
+import {sourceDefinitions} from './ability-sources.js';
+import {finalControlDefinitions} from './final-control.js';
+import {animationPassives} from './final-animation.js';
+import {finalOrbPassives} from './final-orb.js';
+import {finalChaosDefinitions} from './final-chaos.js';
+import {vindictivePassives} from './final-built-sites.js';
+import {cityDefinitions,cityPassives} from './final-built-sites.js';
+import {riftPassives} from './final-built-sites.js';
+import {babelPassives} from './final-built-sites.js';
+import {finalReactionDefinitions} from './final-reactions.js';
+import {finalWaveDefinitions} from './final-waves.js';
+import {finalSiteDefinitions,finalSitePassives} from './final-sites.js';
+import {finalPassiveDefinitions,finalPassivePassives} from './final-passives.js';
+import {finalGridDefinitions,finalGridPassives} from './final-grids.js';
+import {finalAvatarDefinitions,finalAvatarPassives} from './final-avatars.js';
+import {finalEffectDefinitions} from './final-effects.js';
+import {finalArtifactDefinitions,finalArtifactPassives} from './final-artifacts.js';
 // Explicitly authored effects from the local official card snapshot. No fallback
 // translates arbitrary prose into a guessed effect. Unsupported cards stay blocked.
 import { expansionDefinitions, expansionPassives } from './expansion.js';
@@ -5,7 +27,21 @@ const sel=(extra={})=>({kind:'unit',...extra});
 const choose=(op,select,extra={})=>({op,select,...extra});
 const token=(slug,count=1,where='source')=>({op:'summon',slug,count,where});
 export const definitions={
+ ...finalFloodDefinitions,
+  ...malleusDefinitions,
+ ...finalControlDefinitions,
+  ...finalChaosDefinitions,
+  ...cityDefinitions,
+  ...finalReactionDefinitions,
+  ...finalWaveDefinitions,
+  ...finalSiteDefinitions,
+  ...finalPassiveDefinitions,
+  ...finalGridDefinitions,
+  ...finalAvatarDefinitions,
+  ...sourceDefinitions,
+  ...finalEffectDefinitions,...finalArtifactDefinitions,
   ...expansionDefinitions,
+  ...catalogMagicDefinitions,
   field_laborers:{activated:[{label:'橫置：獲得 2 法力',tap:true,steps:[{op:'gainMana',amount:2}]}]},
   cherubim:{activated:[{label:'橫置：投射物造成 4 傷害',tap:true,steps:[{op:'projectile',amount:4}]}]},
   ancient_dragon:{activated:[{label:'橫置：附近位置造成 4 傷害',tap:true,steps:[choose('locationDamage',{kind:'location',nearby:true},{amount:4,other:true})]}]},
@@ -79,7 +115,7 @@ export const definitions={
   sacred_scarabs:{death:[{op:'damage',amount:3,all:sel({here:true})}]},
   sacred_stag:{death:[{op:'wardSite',optional:true}]},
   martyrs_of_tomorrow:{death:[choose('ward',sel({ally:true,minion:true}))]},
-  estranged_loner:{death:[{...token('horrible_hybrids'),optional:true}]},
+  estranged_loner:{death:[{op:'collectionSummon',filter:{slug:'horrible_hybrids'}}]},
   sir_mordred:{genesis:[choose('destroy',sel({minion:true,enemy:true,adjacent:true}))],death:[choose('destroy',sel({minion:true,enemy:true,adjacent:true}))]},
   wraetannis_titan:{genesis:[{op:'strike',all:sel({enemy:true,here:true})}]},
   sir_lamorak:{death:[{op:'strike',all:sel({enemy:true,nearby:true})}]},
@@ -92,12 +128,12 @@ export const definitions={
   corruptor_freak:{end:[{op:'damageSite',amount:2}]},
   headless_haunt:{start:[{op:'randomTeleport'}]},
   hauntless_head:{start:[{op:'randomTeleport'}]},
-  four_fat_frogs:{cast:[choose('summon',{kind:'site',ally:true},{slug:'frog',count:4})]},
+  four_fat_frogs:{cast:[choose('summon',{kind:'site',ally:true},{slug:'frog',count:4,layer:'surface'})]},
   plague_of_frogs:{cast:[token('frog',7)]},
   border_militia:{cast:[token('foot_soldier',1,'borderSites')]},
   raise_militia:{cast:[token('skeleton',1,'borderSites')]},
-  guards:{cast:[token('foot_soldier',1,'nearAvatarSites')]},
-  release_the_hounds:{cast:[{...token('hellhounds',2,'avatar'),charge:true}]},
+  guards:{cast:[{...token('foot_soldier',1,'nearAvatarSites'),layer:'surface'}]},
+  release_the_hounds:{cast:[{op:'festival',slugs:['hellhounds','hellhounds'],where:'avatar',charge:true}]},
   harvest_festival:{cast:[choose('festival',{kind:'site',ally:true})]},
   gift_of_the_frog:{cast:[choose('summon',sel({ally:true,minion:true}),{slug:'frog',count:1}),{op:'draw',deck:'spells',count:1}]},
   poison_nova:{cast:[{op:'damage',amount:1,lethal:true,all:sel({minion:true,nearby:true,other:true})}]},
@@ -119,6 +155,30 @@ export const definitions={
 };
 
 export const passives={
+  book_of_blessings:{bookOfBlessings:true},
+  magellan_globe:{geometryWrap:true},
+  aethermoeba:{geometryGrowth:'void'},megamoeba:{geometryGrowth:'all'},the_rack:{geometryRack:true},
+  yog_sothoth:{geometryEverywhere:true},
+  the_void:{geometryAlsoVoid:true},
+  altar_of_malachai:{finalAltar:true},
+  city_of_souls:{finalCityDamage:true},
+  ...finalOrbPassives,
+  royal_bodyguard:{damageGuard:true},sir_gawain:{damageGuard:true},
+  ...vindictivePassives,
+  ...cityPassives,
+  ...riftPassives,
+  ...babelPassives,
+  putrid_presence:{geometryAttackBelow:true},
+  ...finalGridPassives,
+  ...finalSitePassives,
+  ...finalPassivePassives,
+  ...finalAvatarPassives,
+  ...animationPassives,
+  ...factoryPassives,
+  ...vivienPassives,
+  saint_of_redemption:{finalSaint:true},order_of_the_white_wing:{finalOrder:true},
+  felbog_frog_men:{geometryLeap:true},cerberus_in_chains:{geometryFollowAvatar:true},edge_of_the_world:{geometryNeedsVoid:true},
+  ...finalArtifactPassives,
   ...expansionPassives,
   castle_servants:{threshold:'air'},common_cottagers:{threshold:'earth'},fishermans_family:{threshold:'water'},
   house_arn_bannerman:{auraPower:1,other:true,allies:true},

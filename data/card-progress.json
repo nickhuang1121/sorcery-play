@@ -3,14 +3,19 @@
   "source": "https://api.sorcerytcg.com/api/cards",
   "sha256": "4f40372d28309edafe679e2814dc15bd78bdae59ce18ea86e387d60b829a0bf1",
   "total": 1100,
-  "playable": 966,
+  "playable": 1093,
   "runtimeTokens": 7,
-  "partiallyImplemented": 973,
-  "notStarted": 127,
+  "partiallyImplemented": 1100,
+  "notStarted": 0,
   "fullyImplemented": 0,
   "testResults": {
-    "passed": 1708,
-    "failed": 0
+    "passed": 2721,
+    "failed": 0,
+    "command": "npm test",
+    "scope": "目前完整工作目錄，含既有回歸、最終101張效果與未開放helper測試；helper數不等於已完成卡牌數",
+    "integrationMatches": 16,
+    "browserSmokePassed": 11,
+    "browserSmokeFailed": 0
   },
   "cards": [
     {
@@ -147,11 +152,13 @@
       "id": "cmt86akiq06vwnwcyxkh9rd8q",
       "slug": "aethermoeba",
       "name": "Aethermoeba",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-geometry.md"
     },
     {
       "id": "cmt86bpxe07iqnwcy9f9mu4g4",
@@ -227,11 +234,13 @@
       "id": "cmt8685to05k5nwcyhktwjgth",
       "slug": "altar_of_malachai",
       "name": "Altar of Malachai",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-altar.md"
     },
     {
       "id": "cmt85x04k0004nwcyw4a0efox",
@@ -327,11 +336,13 @@
       "id": "cmt86byvp07nsnwcyle7vojdb",
       "slug": "animist",
       "name": "Animist",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "id": "cmt865s5104klnwcy35z5fad6",
@@ -417,21 +428,23 @@
       "id": "cmt8687kn05l4nwcyghb1dtly",
       "slug": "arcade_of_bones",
       "name": "Arcade of Bones",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 85
     },
     {
       "id": "cmt8650ly0457nwcyufwormji",
       "slug": "arcane_barrage",
       "name": "Arcane Barrage",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 88
     },
     {
       "id": "cmt86ale006wcnwcy9ehxejcd",
@@ -477,11 +490,13 @@
       "id": "cmt866dcj04whnwcy8zkk792t",
       "slug": "archimago",
       "name": "Archimago",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "id": "cmt8650ly045anwcyx5r78ec6",
@@ -567,11 +582,12 @@
       "id": "cmt85z0rz014jnwcyqkvj896e",
       "slug": "assorted_animals",
       "name": "Assorted Animals",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 88
     },
     {
       "id": "cmt85yz8s013qnwcyn6df9hlb",
@@ -677,21 +693,25 @@
       "id": "cmt85zv9m01lmnwcyrma67llx",
       "slug": "avatar_of_fire",
       "name": "Avatar of Fire",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "id": "cmt85zx1g01mlnwcy908zfnby",
       "slug": "avatar_of_water",
       "name": "Avatar of Water",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "id": "cmt868b2r05n1nwcylvqobm61",
@@ -707,11 +727,12 @@
       "id": "cmt85x562002znwcy5myynrce",
       "slug": "awakened_mummies",
       "name": "Awakened Mummies",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 86
     },
     {
       "id": "cmt85x6wg003ynwcyvvzckqsm",
@@ -747,11 +768,12 @@
       "id": "cmt85x8mw004xnwcyi9ptqaug",
       "slug": "backstab",
       "name": "Backstab",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 86
     },
     {
       "id": "cmt8650ly0459nwcyruf3b7i9",
@@ -977,11 +999,12 @@
       "id": "cmt868ge305pznwcyzb7kx2t3",
       "slug": "black_cat",
       "name": "Black Cat",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 87
     },
     {
       "id": "cmt866dhh04wlnwcyg4gcugv0",
@@ -1057,21 +1080,24 @@
       "id": "cmt86867905kenwcy3ifrir6i",
       "slug": "blasphemy",
       "name": "Blasphemy",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 86
     },
     {
       "id": "cmt85x3oo0026nwcysukeutuz",
       "slug": "blasted_oak",
       "name": "Blasted Oak",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-oak.md"
     },
     {
       "id": "cmt85x3pj0028nwcy3k3ky9sa",
@@ -1087,11 +1113,12 @@
       "id": "cmt868jwg05rxnwcyj8j1wawa",
       "slug": "blaze_of_glory",
       "name": "Blaze of Glory",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 88
     },
     {
       "id": "cmt8682nj05ihnwcy8rvitrak",
@@ -1307,11 +1334,13 @@
       "id": "cmt86b658077rnwcyttwaii1a",
       "slug": "book_of_blessings",
       "name": "Book of Blessings",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-passives.md"
     },
     {
       "id": "cmt868p7d05uunwcyaz7ywsq7",
@@ -1507,11 +1536,13 @@
       "id": "cmt8689sd05mdnwcysevixhmz",
       "slug": "bureau_of_occult_control",
       "name": "Bureau of Occult Control",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-passives.md"
     },
     {
       "id": "cmt868ugv05xonwcyodi02q72",
@@ -1537,11 +1568,13 @@
       "id": "cmt865vwj04mrnwcy76c8szjf",
       "slug": "burning_hands",
       "name": "Burning Hands",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-grids.md"
     },
     {
       "id": "cmt85x8y60054nwcyj7cco5p1",
@@ -1577,11 +1610,13 @@
       "id": "cmt868w7p05ynnwcy3okes48i",
       "slug": "cage_of_sidrak",
       "name": "Cage of Sidrak",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-artifacts.md"
     },
     {
       "id": "cmt8697ds064unwcyhoi7o4gw",
@@ -1627,11 +1662,13 @@
       "id": "cmt85xc3t006tnwcyqtw58i5r",
       "slug": "captain_baldassare",
       "name": "Captain Baldassare",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "id": "cmt868xys05zmnwcyrzqzs2ut",
@@ -1737,11 +1774,13 @@
       "id": "cmt85y1bl00ktnwcy6u84z6bt",
       "slug": "cerberus_in_chains",
       "name": "Cerberus in Chains",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-geometry.md"
     },
     {
       "id": "cmt85y34w00lunwcyvdvpa9wx",
@@ -1767,21 +1806,25 @@
       "id": "cmt85z7zr018mnwcyflgminj1",
       "slug": "chaos_twister",
       "name": "Chaos Twister",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "使用者批准20格隨機數位替代已驗收，非官方實體吹牌；完整全卡交互驗收尚未完成。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-effects.md"
     },
     {
       "id": "cmt86863v05kdnwcy0kikkhyc",
       "slug": "chaoswish",
       "name": "Chaoswish",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": null
     },
     {
       "id": "cmt866f5j04xlnwcyygeeamym",
@@ -1847,11 +1890,13 @@
       "id": "cmt869383062inwcyrigzerxo",
       "slug": "city_of_souls",
       "name": "City of Souls",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-site-damage.md"
     },
     {
       "id": "cmt8694zo063inwcyhml0h1on",
@@ -1887,11 +1932,12 @@
       "id": "cmt8696qj064hnwcyzbunc3y0",
       "slug": "clay_golem",
       "name": "Clay Golem",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 84
     },
     {
       "id": "cmt85ywji0127nwcy3sy6h0rm",
@@ -2027,31 +2073,37 @@
       "id": "cmt869x1806iznwcy9lvlf8oe",
       "slug": "corpse_catapult",
       "name": "Corpse Catapult",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-artifacts.md"
     },
     {
       "id": "cmt8698he065gnwcyptmizhvo",
       "slug": "corpse_explosion",
       "name": "Corpse Explosion",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-effects.md"
     },
     {
       "id": "cmt869zrf06khnwcytyp3c7pd",
       "slug": "corruptor",
       "name": "Corruptor",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-types.md"
     },
     {
       "id": "cmt869a81066enwcyr61b2gfv",
@@ -2067,11 +2119,13 @@
       "id": "cmt860p4x022bnwcyzbgf7kqa",
       "slug": "courtesan_thais",
       "name": "Courtesan Thaïs",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-control.md"
     },
     {
       "id": "cmt860ajn01u4nwcy19oi0rql",
@@ -2137,11 +2191,13 @@
       "id": "cmt85y8ly00ovnwcypug8uusz",
       "slug": "crave_golem",
       "name": "Crave Golem",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "id": "cmt869byu067cnwcy2wlata8v",
@@ -2277,11 +2333,13 @@
       "id": "cmt86546z047enwcylg87avfr",
       "slug": "dame_britomart",
       "name": "Dame Britomart",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "id": "cmt869dpo068bnwcyfdjs5xvi",
@@ -2317,11 +2375,13 @@
       "id": "cmt8682jz05idnwcy99x1wsvm",
       "slug": "darkest_dungeon",
       "name": "Darkest Dungeon",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-sites.md"
     },
     {
       "id": "cmt85x76t0045nwcy9msscqez",
@@ -2337,11 +2397,13 @@
       "id": "cmt86b767078cnwcyc2tkjm1m",
       "slug": "day_of_judgment",
       "name": "Day of Judgment",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-grids.md"
     },
     {
       "id": "cmt85x8y50053nwcyk41c83cb",
@@ -2377,11 +2439,13 @@
       "id": "cmt85zml701gqnwcy39h4zlxz",
       "slug": "deathspeaker",
       "name": "Deathspeaker",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "id": "cmt8687vm05lbnwcymisar256",
@@ -2457,11 +2521,13 @@
       "id": "cmt86908d060vnwcy14vubbsr",
       "slug": "demonic_contract",
       "name": "Demonic Contract",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "人工輔助分類／取消／恢復／支付／搜尋與防重送軟體已驗收；分類事實由真人提供，不宣稱自動分類或完整全卡交互驗收。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-effects.md"
     },
     {
       "id": "cmt869mgx06d4nwcyckt3dcdf",
@@ -2547,11 +2613,13 @@
       "id": "cmt869o7t06e2nwcyts56x17d",
       "slug": "dhol_chants",
       "name": "Dhol Chants",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-effects.md"
     },
     {
       "id": "cmt85xfyt008ynwcyqqdij23x",
@@ -2657,11 +2725,13 @@
       "id": "cmt85xjws00b4nwcyh54ru3j5",
       "slug": "dodge_roll",
       "name": "Dodge Roll",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-reactions.md"
     },
     {
       "id": "cmt85xln700c3nwcyp9zop37c",
@@ -2697,11 +2767,13 @@
       "id": "cmt85z1qr0156nwcy3vyb5f0l",
       "slug": "doomsday_device",
       "name": "Doomsday Device",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-artifacts.md"
     },
     {
       "id": "cmt860us1025hnwcy1rs6xix7",
@@ -2757,11 +2829,13 @@
       "id": "cmt867ibg05efnwcyu3wbdo7t",
       "slug": "dragonlord",
       "name": "Dragonlord",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "id": "cmt867k3705emnwcyw57fmxi0",
@@ -2817,11 +2891,12 @@
       "id": "cmt86alu706wlnwcyi5fyl8d4",
       "slug": "driftwood_marrows",
       "name": "Driftwood Marrows",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 84
     },
     {
       "id": "cmt85xapb0063nwcyv1b9sri8",
@@ -2887,11 +2962,12 @@
       "id": "cmt869wyq06ixnwcyzscdk8pc",
       "slug": "duplicator",
       "name": "Duplicator",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 85
     },
     {
       "id": "cmt85ybzd00qrnwcym32t0gmb",
@@ -2927,11 +3003,13 @@
       "id": "cmt85ydr200rpnwcyqa6ou1lw",
       "slug": "earthquake",
       "name": "Earthquake",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-effects.md"
     },
     {
       "id": "cmt85xndn00d1nwcyfpwst0j3",
@@ -2957,11 +3035,13 @@
       "id": "cmt860uu2025jnwcyadv3yvva",
       "slug": "edge_of_the_world",
       "name": "Edge of the World",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-geometry.md"
     },
     {
       "id": "cmt86ar5706zhnwcyky0xn4bd",
@@ -3007,21 +3087,24 @@
       "id": "cmt85z2ub015rnwcyvmacj6dm",
       "slug": "enchantress",
       "name": "Enchantress",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-animation.md"
     },
     {
       "id": "cmt86a0gv06kunwcycxkx36vp",
       "slug": "endless_fence",
       "name": "Endless Fence",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 85
     },
     {
       "id": "cmt86a0kq06kwnwcyxgyiwzj0",
@@ -3297,11 +3380,13 @@
       "id": "cmt85yikx00ufnwcyr612brlz",
       "slug": "felbog_frog_men",
       "name": "Felbog Frog Men",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-geometry.md"
     },
     {
       "id": "cmt85ykbq00vdnwcy86xeusim",
@@ -3417,11 +3502,13 @@
       "id": "cmt8657le0498nwcy5n4qf0uh",
       "slug": "firebreathing",
       "name": "Firebreathing",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-grids.md"
     },
     {
       "id": "cmt85z4m1016qnwcyqbilzf6r",
@@ -3477,21 +3564,25 @@
       "id": "cmt8687v905lanwcyv0iwmm1n",
       "slug": "flame_strike",
       "name": "Flame Strike",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-grids.md"
     },
     {
       "id": "cmt85yfiw00sqnwcy9daid9ju",
       "slug": "flame_wave",
       "name": "Flame Wave",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-grids.md"
     },
     {
       "id": "cmt869bmb0675nwcy7snfa83i",
@@ -3667,11 +3758,13 @@
       "id": "cmt860d0l01vinwcyos5vzd9v",
       "slug": "free_city",
       "name": "Free City",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-built-sites.md"
     },
     {
       "id": "cmt8698dp065enwcyknmh2sga",
@@ -3837,11 +3930,13 @@
       "id": "cmt85yj2h00upnwcyhhndpg1f",
       "slug": "giant_shark",
       "name": "Giant Shark",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "id": "cmt86a0sa06l0nwcysqjpigi0",
@@ -3947,11 +4042,13 @@
       "id": "cmt86ajrq06vgnwcyxymzb2ry",
       "slug": "gnarled_wendigo",
       "name": "Gnarled Wendigo",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "id": "cmt85z9ov019jnwcyejjkijgm",
@@ -4177,11 +4274,13 @@
       "id": "cmt868eyr05p7nwcysi1d3btx",
       "slug": "grigori_rasputin",
       "name": "Grigori Rasputin",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "id": "cmt866h0w04yonwcyb9dssi8n",
@@ -4197,21 +4296,24 @@
       "id": "cmt85zbgk01ainwcy2mxcc6or",
       "slug": "grim_reaper",
       "name": "Grim Reaper",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 87
     },
     {
       "id": "cmt85ydxp00runwcy4gmmsshl",
       "slug": "grosse_poltergeist",
       "name": "Grösse Poltergeist",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "id": "cmt86a1j406lgnwcyl6hoy6zb",
@@ -4347,11 +4449,12 @@
       "id": "cmt86aolx06y5nwcy2ja8ezcm",
       "slug": "haystack",
       "name": "Haystack",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 86
     },
     {
       "id": "cmt85z85s018pnwcyv1t9b0ez",
@@ -4427,11 +4530,13 @@
       "id": "cmt869df20685nwcyqft7ubm5",
       "slug": "hellstar",
       "name": "Hellstar",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-grids.md"
     },
     {
       "id": "cmt8659i204aanwcymkiaqg2c",
@@ -4467,11 +4572,12 @@
       "id": "cmt86bwuc07mknwcynm8zh58h",
       "slug": "hemogolem",
       "name": "Hemogolem",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 84
     },
     {
       "id": "cmt868kl605s9nwcy5xli6az2",
@@ -4557,11 +4663,13 @@
       "id": "cmt869f7s0694nwcyt65bzhob",
       "slug": "holy_nova",
       "name": "Holy Nova",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-rules-open-questions.md"
     },
     {
       "id": "cmt86arna06zrnwcyq1xdcatn",
@@ -4717,11 +4825,13 @@
       "id": "cmt86aynf073jnwcyo68o685r",
       "slug": "i_am_colossus",
       "name": "I Am Colossus!",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "id": "cmt860etw01wlnwcyjfdzhktm",
@@ -4807,11 +4917,13 @@
       "id": "cmt86arqr06zunwcyxskah6qw",
       "slug": "imposter",
       "name": "Imposter",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "id": "cmt860d8j01vnnwcyah0k7ewk",
@@ -4847,11 +4959,13 @@
       "id": "cmt86a65p06nynwcy5bhwwh2k",
       "slug": "infusion_factory",
       "name": "Infusion Factory",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-animation.md"
     },
     {
       "id": "cmt86a7yf06oynwcypjy0964l",
@@ -4947,11 +5061,12 @@
       "id": "cmt86607o04p8nwcygl3vc65f",
       "slug": "iron_man_talus",
       "name": "Iron Man Talus",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 84
     },
     {
       "id": "cmt85xl8900bvnwcybljctf4c",
@@ -4977,11 +5092,13 @@
       "id": "cmt86a3ay06mfnwcydr70hb6w",
       "slug": "jack_the_ripper",
       "name": "Jack the Ripper",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "id": "cmt860rg6023nnwcy06ojv01q",
@@ -4997,11 +5114,13 @@
       "id": "cmt865b9r04b8nwcygsw9ogc7",
       "slug": "joust",
       "name": "Joust!",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-effects.md"
     },
     {
       "id": "cmt865z9c04oonwcye0kzu71s",
@@ -5027,21 +5146,25 @@
       "id": "cmt867nmd05f0nwcy9ukjlwcg",
       "slug": "kairos_the_archivist",
       "name": "Kairos the Archivist",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "id": "cmt860cnp01vanwcyukd5ibpb",
       "slug": "karkemish_chimera",
       "name": "Karkemish Chimera",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "id": "cmt865b2804b3nwcy38fkm4au",
@@ -5077,11 +5200,13 @@
       "id": "cmt86b684077tnwcy1l3ifp7e",
       "slug": "key_to_the_city",
       "name": "Key to the City",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-artifacts.md"
     },
     {
       "id": "cmt869cmj067pnwcy057jf7lf",
@@ -5097,11 +5222,12 @@
       "id": "cmt866v86056mnwcy9w8ft54w",
       "slug": "king_arthur",
       "name": "King Arthur",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 85
     },
     {
       "id": "cmt860wni026mnwcysawhtujz",
@@ -5207,21 +5333,24 @@
       "id": "cmt868krs05senwcyhbjx7yw5",
       "slug": "koscheis_egg",
       "name": "Koschei's Egg",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-artifacts.md"
     },
     {
       "id": "cmt85zyta01nknwcyqeexoro0",
       "slug": "kythera_mechanism",
       "name": "Kythera Mechanism",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 87
     },
     {
       "id": "cmt86b7e7078fnwcy0doxk9zj",
@@ -5267,11 +5396,12 @@
       "id": "cmt85z8o7018znwcyeav4evpg",
       "slug": "land_deed",
       "name": "Land Deed",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 85
     },
     {
       "id": "cmt86b958079enwcytct8dffg",
@@ -5307,11 +5437,13 @@
       "id": "cmt866uim0568nwcy8o4040c7",
       "slug": "lava_flow",
       "name": "Lava Flow",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-grids.md"
     },
     {
       "id": "cmt85xcmd0075nwcye69llkkq",
@@ -5347,11 +5479,13 @@
       "id": "cmt8662yx04qrnwcy65rovqfv",
       "slug": "led_astray",
       "name": "Led Astray",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-effects.md"
     },
     {
       "id": "cmt86b7zv078snwcymtqz49qu",
@@ -5527,11 +5661,11 @@
       "id": "cmt868nu905u2nwcy0xbqpcyk",
       "slug": "lucid_dreamers",
       "name": "Lucid Dreamers",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證"
     },
     {
       "id": "cmt85zbpi01aonwcyevpmt8lp",
@@ -5607,11 +5741,13 @@
       "id": "cmt85zc4x01avnwcy6ivn8nyp",
       "slug": "magellan_globe",
       "name": "Magellan Globe",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "已按使用者明確專案裁定實作並驗證，非新增官方FAQ；規則版本user-rulings-20261030-v1，完整全卡交互驗收尚未完成。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-geometry.md"
     },
     {
       "id": "cmt85zrsh01jmnwcy1dclyboe",
@@ -5627,11 +5763,13 @@
       "id": "cmt868o6r05u9nwcyu48mkb8l",
       "slug": "magician",
       "name": "Magician",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "id": "cmt865yh004oanwcyy1evidgc",
@@ -5827,11 +5965,13 @@
       "id": "cmt85yl1800vsnwcy68r0f4vm",
       "slug": "megamoeba",
       "name": "Megamoeba",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-geometry.md"
     },
     {
       "id": "cmt85yfyb00sznwcyfs5j0i3h",
@@ -5847,11 +5987,13 @@
       "id": "cmt86axc5072unwcysrjnjmco",
       "slug": "mephistopheles",
       "name": "Mephistopheles",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "id": "cmt865b5l04b7nwcycmojah7n",
@@ -5907,21 +6049,25 @@
       "id": "cmt866wzw057knwcy0xfpzon3",
       "slug": "mester_stoor_worm",
       "name": "Mester Stoor Worm",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-grids.md"
     },
     {
       "id": "cmt85xm4m00cfnwcyaqd9gahy",
       "slug": "meteor_shower",
       "name": "Meteor Shower",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-grids.md"
     },
     {
       "id": "cmt85zv9m01llnwcyyuylh0zk",
@@ -5947,11 +6093,13 @@
       "id": "cmt869h0d06a3nwcycl70b85m",
       "slug": "mimic",
       "name": "Mimic",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "id": "cmt85zxf901mrnwcy0ola821d",
@@ -6007,11 +6155,13 @@
       "id": "cmt86as5g0701nwcyyxzjx4gl",
       "slug": "mismanaged_mortuary",
       "name": "Mismanaged Mortuary",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-passives.md"
     },
     {
       "id": "cmt85xjml00aznwcyk95uq0vb",
@@ -6087,21 +6237,24 @@
       "id": "cmt85xqi700esnwcy2rhfbd3x",
       "slug": "monastery_gargoyle",
       "name": "Monastery Gargoyle",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "id": "cmt868pzb05v8nwcyx45scyvu",
       "slug": "monks_of_kobalsa",
       "name": "Monks of Kobalsa",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 88
     },
     {
       "id": "cmt85yntq00xdnwcy4v163nrt",
@@ -6187,11 +6340,13 @@
       "id": "cmt86az3x073unwcy1ah38sex",
       "slug": "mortal_soil",
       "name": "Mortal Soil",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "object",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-site-damage.md"
     },
     {
       "id": "cmt86bjo607fanwcyso1mevig",
@@ -6247,11 +6402,13 @@
       "id": "cmt86btj407ktnwcyg7phqt47",
       "slug": "mount_ussar_sanctuary",
       "name": "Mount Ussar Sanctuary",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-sites.md"
     },
     {
       "id": "cmt86bn6207h8nwcyznkdf2fo",
@@ -6297,11 +6454,13 @@
       "id": "cmt869fm7069bnwcyc0cg6hqq",
       "slug": "mudslide",
       "name": "Mudslide",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-sites.md"
     },
     {
       "id": "cmt865gly04e9nwcyiijspjy9",
@@ -6607,11 +6766,13 @@
       "id": "cmt85xu0500gpnwcyno5mg8wo",
       "slug": "orb_of_baal_berith",
       "name": "Orb of Ba'al Berith",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-orb.md"
     },
     {
       "id": "cmt86byjh07nlnwcyuo5vq4tr",
@@ -6637,11 +6798,13 @@
       "id": "cmt868pm405v1nwcytrw0x042",
       "slug": "order_of_the_white_wing",
       "name": "Order of the White Wing",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-passives.md"
     },
     {
       "id": "cmt86c0ak07oknwcyhb5dpj7k",
@@ -6667,11 +6830,13 @@
       "id": "cmt86bmb507grnwcylu1sv7p9",
       "slug": "orpheus_crossing",
       "name": "Orpheus' Crossing",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-sites.md"
     },
     {
       "id": "cmt85zx0301mknwcy5yt8ccjs",
@@ -6777,11 +6942,13 @@
       "id": "cmt85ymyb00wvnwcy7b3b8rs8",
       "slug": "pathfinder",
       "name": "Pathfinder",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "id": "cmt8600b801odnwcytgn0xk0i",
@@ -6907,11 +7074,13 @@
       "id": "cmt86c3tf07p9nwcykr4xhvo6",
       "slug": "persecutor",
       "name": "Persecutor",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-types.md"
     },
     {
       "id": "cmt85ze3o01c0nwcy3cbonnkf",
@@ -7307,11 +7476,12 @@
       "id": "cmt85yqdb00yqnwcyy6ihzs18",
       "slug": "purge_juggernaut",
       "name": "Purge Juggernaut",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 84
     },
     {
       "id": "cmt866m53051gnwcymk9g1m1l",
@@ -7327,11 +7497,13 @@
       "id": "cmt86a7n906ornwcyrk8qlkjl",
       "slug": "putrid_presence",
       "name": "Putrid Presence",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-geometry.md"
     },
     {
       "id": "cmt860ooa0223nwcyiolqhxqq",
@@ -7427,11 +7599,12 @@
       "id": "cmt86c9zi07pxnwcyw5b512fn",
       "slug": "rat_king",
       "name": "Rat King",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 87
     },
     {
       "id": "cmt869hxq06annwcyopf8zzms",
@@ -7457,11 +7630,13 @@
       "id": "cmt86cbr107q4nwcy26ucj6i6",
       "slug": "realm_eater",
       "name": "Realm-Eater",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-avatars.md"
     },
     {
       "id": "cmt8663rk04r8nwcy58nab4mt",
@@ -7547,11 +7722,13 @@
       "id": "cmt868uxh05xynwcyw1krfe9t",
       "slug": "red_rock_of_ravannis",
       "name": "Red Rock of Ravannis",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-passives.md"
     },
     {
       "id": "cmt86b9xz079unwcywdc62cn8",
@@ -7707,11 +7884,13 @@
       "id": "cmt85xxib00ionwcym374a3dn",
       "slug": "rift_valley",
       "name": "Rift Valley",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-built-sites.md"
     },
     {
       "id": "cmt85xsh500fwnwcy3m25wnwu",
@@ -7837,11 +8016,13 @@
       "id": "cmt860jdb01z2nwcy12pddxdp",
       "slug": "royal_bodyguard",
       "name": "Royal Bodyguard",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-damage.md"
     },
     {
       "id": "cmt85yuu80119nwcyuqvj1hqh",
@@ -7917,11 +8098,13 @@
       "id": "cmt86a9ew06pqnwcykigmtowt",
       "slug": "saint_of_redemption",
       "name": "Saint of Redemption",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-passives.md"
     },
     {
       "id": "cmt86adca06rvnwcylc07shn8",
@@ -8117,11 +8300,13 @@
       "id": "cmt86027a01penwcyle0cnv7l",
       "slug": "sea_raider",
       "name": "Sea Raider",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "id": "cmt868s0x05wdnwcyhkd3xelp",
@@ -8617,11 +8802,13 @@
       "id": "cmt866k80050dnwcyhglyxcvp",
       "slug": "sir_gawain",
       "name": "Sir Gawain",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-damage.md"
     },
     {
       "id": "cmt860huu01y7nwcyv4ri61w9",
@@ -8957,11 +9144,13 @@
       "id": "cmt865lxr04h8nwcy6pukwl5a",
       "slug": "snowball",
       "name": "Snowball",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "已按使用者明確專案裁定實作並驗證，非新增官方FAQ；規則版本user-rulings-20261030-v1，完整全卡交互驗收尚未完成。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-waves.md"
     },
     {
       "id": "cmt860lzk020inwcyxfncqyqm",
@@ -9217,11 +9406,13 @@
       "id": "cmt86cyoy07smnwcyizb0r7ok",
       "slug": "stitched_abomination",
       "name": "Stitched Abomination",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "id": "cmt8609h301tgnwcygvmilrmk",
@@ -9357,11 +9548,12 @@
       "id": "cmt869quq06fjnwcyufwwglf4",
       "slug": "swap",
       "name": "Swap",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 86
     },
     {
       "id": "cmt866zvf0596nwcyym8tqm7x",
@@ -9417,11 +9609,13 @@
       "id": "cmt86bv2q07llnwcypo8doast",
       "slug": "tabula_rasa",
       "name": "Tabula Rasa",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-artifacts.md"
     },
     {
       "id": "cmt8669w004ulnwcyn6802qgi",
@@ -9537,21 +9731,25 @@
       "id": "cmt86d0gf07stnwcyehmeu47v",
       "slug": "the_apex_of_babel",
       "name": "The Apex of Babel",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-built-sites.md"
     },
     {
       "id": "cmt86d29607t0nwcyrk6pqizi",
       "slug": "the_base_of_babel",
       "name": "The Base of Babel",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-built-sites.md"
     },
     {
       "id": "cmt865se604ksnwcybvqco72b",
@@ -9577,11 +9775,12 @@
       "id": "cmt869rob06fxnwcyx0ay0m01",
       "slug": "the_doom_of_dilmun",
       "name": "The Doom of Dilmun",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 88
     },
     {
       "id": "cmt86axgm072xnwcyded8camu",
@@ -9607,11 +9806,13 @@
       "id": "cmt86d40m07t7nwcy2ufhqxdw",
       "slug": "the_flood",
       "name": "The Flood",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-flood.md"
     },
     {
       "id": "cmt860k5401zhnwcymovtutzr",
@@ -9667,21 +9868,25 @@
       "id": "cmt85xw0h00hunwcy9jfva9v3",
       "slug": "the_immortal_throne",
       "name": "The Immortal Throne",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "已按使用者明確專案裁定實作並驗證，非新增官方FAQ；規則版本user-rulings-20261030-v1，完整全卡交互驗收尚未完成。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-passives.md"
     },
     {
       "id": "cmt868pkj05v0nwcyy9zekext",
       "slug": "the_inquisition",
       "name": "The Inquisition",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "id": "cmt865neo04i0nwcyns463trg",
@@ -9697,11 +9902,13 @@
       "id": "cmt86d7jx07tlnwcy6w2u89g2",
       "slug": "the_malleus_maleficarum",
       "name": "The Malleus Maleficarum",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-malleus.md"
     },
     {
       "id": "cmt86bdas07bmnwcywyolijmo",
@@ -9727,21 +9934,25 @@
       "id": "cmt86d9b707tsnwcy64l87uqi",
       "slug": "the_pallid_bust",
       "name": "The Pallid Bust",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-pallid-progress.md"
     },
     {
       "id": "cmt86db2o07tznwcypylhi5sg",
       "slug": "the_rack",
       "name": "The Rack",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-geometry.md"
     },
     {
       "id": "cmt866p570534nwcydv0kph0p",
@@ -9757,11 +9968,13 @@
       "id": "cmt86af4v06sunwcy9z0ocha8",
       "slug": "the_void",
       "name": "The Void",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-geometry.md"
     },
     {
       "id": "cmt866avo04v6nwcybrvclfpv",
@@ -9877,11 +10090,13 @@
       "id": "cmt8693s2062unwcy7et8cysa",
       "slug": "tombstone_wardens",
       "name": "Tombstone Wardens",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-artifacts.md"
     },
     {
       "id": "cmt86az94073wnwcyamigllwq",
@@ -10017,11 +10232,13 @@
       "id": "cmt85yvgq011jnwcykhtakqsw",
       "slug": "tringh_constrictor",
       "name": "Tringh Constrictor",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-units.md"
     },
     {
       "id": "cmt8678zo05ddnwcy2bzyywlc",
@@ -10117,11 +10334,12 @@
       "id": "cmt85zmck01gknwcy55a62hf4",
       "slug": "undertaker_engine",
       "name": "Undertaker Engine",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證",
+      "implementationBatch": 87
     },
     {
       "id": "cmt860txv0251nwcybl4k35h4",
@@ -10237,11 +10455,13 @@
       "id": "cmt866cnt04w5nwcy8syvq542",
       "slug": "valor",
       "name": "Valor",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-reactions.md"
     },
     {
       "id": "cmt86afx006t9nwcyf0ic4tei",
@@ -10407,11 +10627,13 @@
       "id": "cmt8690sv0616nwcyyn18iabi",
       "slug": "vindictive_nation",
       "name": "Vindictive Nation",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-built-sites.md"
     },
     {
       "id": "cmt86bbpr07atnwcyuemhc0ld",
@@ -10427,11 +10649,13 @@
       "id": "cmt865mso04hnnwcyabjhzkl6",
       "slug": "vivien_the_enchantress",
       "name": "Vivien the Enchantress",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-vivien-readiness.md"
     },
     {
       "id": "cmt860t28024knwcyen2fejn0",
@@ -10537,11 +10761,13 @@
       "id": "cmt86dnei07vcnwcyp01bjpqw",
       "slug": "wave_of_eviction",
       "name": "Wave of Eviction",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-waves.md"
     },
     {
       "id": "cmt863sw203kfnwcyca4cgtdg",
@@ -10837,11 +11063,13 @@
       "id": "cmt866blo04vjnwcy8zu2s8ko",
       "slug": "wormelow_tump",
       "name": "Wormelow Tump",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-passives.md"
     },
     {
       "id": "cmt8605o601rbnwcyyg4ru74d",
@@ -10867,11 +11095,13 @@
       "id": "cmt86bf3n07cnnwcyuiyll1u5",
       "slug": "wreathed_in_righteousness",
       "name": "Wreathed in Righteousness",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-grids.md"
     },
     {
       "id": "cmt86b114074vnwcysof80328",
@@ -10927,11 +11157,13 @@
       "id": "cmt86dqxh07vqnwcy94hy3z5i",
       "slug": "yog_sothoth",
       "name": "Yog-Sothoth",
-      "status": "未開始",
-      "playable": false,
-      "handler": null,
-      "effectTest": "not-run",
-      "remaining": "效果尚未實作"
+      "status": "部分支援",
+      "playable": true,
+      "handler": "script",
+      "effectTest": "passed",
+      "remaining": "完整官方規則及全卡交互驗收尚未完成；特定限制見details。",
+      "final101Status": "completed-core-effect-tested",
+      "evidence": "docs/final-geometry.md"
     },
     {
       "id": "cmt860kgd01znnwcykirs2xf3",
@@ -11013,5 +11245,21 @@
       "effectTest": "passed",
       "remaining": "完整 Storyline、區域、效果交互與官方裁定驗證"
     }
-  ]
+  ],
+  "checkedAt": "2026-10-31T00:16:12.588Z",
+  "historicalTestResults": {
+    "passed": 1708,
+    "failed": 0,
+    "note": "匯入快照的歷史結果；原 tests/ 不在此工作目錄，未重新驗證。"
+  },
+  "notReleased": 0,
+  "final101Counts": {
+    "baseline": 101,
+    "completed": 101,
+    "partial": 0,
+    "notStarted": 0,
+    "coreImplemented": 101,
+    "notReleased": 0,
+    "fullyVerified": 0
+  }
 }

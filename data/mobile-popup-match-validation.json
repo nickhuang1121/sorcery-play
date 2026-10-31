@@ -1,0 +1,315 @@
+{
+  "match": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "decks": [
+      "BETA 官方預組 · 地 Earth · Geomancer",
+      "BETA 官方預組 · 火 Fire · Flamecaller"
+    ],
+    "startedThroughProductionNewMatch": true,
+    "seed": 42,
+    "mode": "ai",
+    "difficulty": "easy",
+    "historyActions": 77,
+    "actionTypes": {
+      "mulligan": 2,
+      "site": 10,
+      "choose": 16,
+      "end": 12,
+      "draw": 12,
+      "activate": 1,
+      "cast": 9,
+      "move": 3,
+      "ranged": 1,
+      "attack": 7,
+      "defend": 2,
+      "pass": 1,
+      "activateSite": 1
+    },
+    "winner": 0,
+    "finalTurn": 13,
+    "life": [
+      20,
+      0
+    ],
+    "deathDoorTurn": 12,
+    "fullFreshReplayIdentical": true,
+    "lateGameFixtureOrDirectGameActionUsed": false,
+    "sourceReloadsDuringFixes": "Continued the same saved match after UI source fixes; no engine-state mutation or late-game loading for the played match.",
+    "replay": "data/mobile-popup-played-match.json"
+  },
+  "fixes": [
+    "Highlighted destination cards offer coordinate selection instead of unrelated unit actions, including covered entities; parent popup closes before target dispatch",
+    "Draw phase uses shared popup with explicit library choice and a reopen button",
+    "Choice source can be inspected without losing its pending selection; card names in titles and option labels follow selected display language without changing values",
+    "Unavailable hand/unit operations are disabled in details and show their actual reason; removed unintended window.opener assignment",
+    "Portrait drag keeps the original hand-row height to stop the board shifting; real Humble Village drag landed exactly at B2 / index11",
+    "Defense popup names the selected defender and clarifies joining versus replacing the original target",
+    "Selected interception changes response button to finish interception rather than misleadingly saying no interception; response status names selected interceptors"
+  ],
+  "supplementary": {
+    "fixtures": "data/mobile-popup-response-fixtures.json",
+    "scope": "Separate local-control UI cases derived from turn9 of the replay. Interception additionally authors one defender location; these are not additional complete played games.",
+    "checks": [
+      "Defense close X leaves response pending; reopen then keep and replace actions both operate",
+      "Damage allocation closes/reopens, uses translated defender names and resolves two defenders",
+      "Select interceptor then finish resolves combat; decline interception keeps Nomads unharmed",
+      "Avatar draw ability closes action popup, taps Avatar and draws Atlas",
+      "Player info, scrollable battle log, game menu and help have no horizontal overflow; footer and 44px close remain within phone viewport",
+      "Footer close, backdrop, X and Escape verified across actual match and supplementary cases",
+      "Victory closes/reopens, UI exports full replay and Return Home operates",
+      "Unavailable Border Militia details show insufficient mana with disabled primary action",
+      "Browser console had no errors; original match, AI difficulty and viewport were restored"
+    ]
+  },
+  "popupMetrics": [
+    {
+      "kind": "player-info",
+      "buttonLabels": [
+        "×",
+        "關閉"
+      ],
+      "close": {
+        "bottom": 287.3828125,
+        "height": 44,
+        "left": 325,
+        "right": 369,
+        "top": 243.3828125,
+        "width": 44,
+        "x": 325,
+        "y": 243.3828125
+      },
+      "footer": {
+        "bottom": 608.6171875,
+        "height": 75,
+        "left": 13,
+        "right": 377,
+        "top": 533.6171875,
+        "width": 364,
+        "x": 13,
+        "y": 533.6171875
+      },
+      "horizontalOverflow": false,
+      "rect": {
+        "bottom": 609.6171875,
+        "height": 375.234375,
+        "left": 12,
+        "right": 378,
+        "top": 234.3828125,
+        "width": 366,
+        "x": 12,
+        "y": 234.3828125
+      },
+      "title": "你"
+    },
+    {
+      "kind": "battle-log",
+      "buttonLabels": [
+        "×",
+        "關閉"
+      ],
+      "close": {
+        "bottom": 69,
+        "height": 44,
+        "left": 325,
+        "right": 369,
+        "top": 25,
+        "width": 44,
+        "x": 325,
+        "y": 25
+      },
+      "footer": {
+        "bottom": 827,
+        "height": 75,
+        "left": 13,
+        "right": 377,
+        "top": 752,
+        "width": 364,
+        "x": 13,
+        "y": 752
+      },
+      "horizontalOverflow": false,
+      "rect": {
+        "bottom": 828,
+        "height": 812,
+        "left": 12,
+        "right": 378,
+        "top": 16,
+        "width": 366,
+        "x": 12,
+        "y": 16
+      },
+      "title": "對戰紀錄"
+    },
+    {
+      "kind": "game-menu",
+      "buttonLabels": [
+        "×",
+        "遊戲大廳",
+        "新對局",
+        "我的牌組",
+        "卡牌圖書館",
+        "卡面：中文 → 英文",
+        "匯出重播",
+        "墓地",
+        "投降",
+        "操作說明",
+        "開發狀態",
+        "特效：開",
+        "關閉"
+      ],
+      "close": {
+        "bottom": 69.09897041320801,
+        "height": 43.98766326904297,
+        "left": 324.96356201171875,
+        "right": 368.95123291015625,
+        "top": 25.11130714416504,
+        "width": 43.9876708984375,
+        "x": 324.96356201171875,
+        "y": 25.11130714416504
+      },
+      "footer": {
+        "bottom": 826.8864135742188,
+        "height": 74.97894287109375,
+        "left": 13.051034927368164,
+        "right": 376.94898414611816,
+        "top": 751.907470703125,
+        "width": 363.89794921875,
+        "x": 13.051034927368164,
+        "y": 751.907470703125
+      },
+      "horizontalOverflow": false,
+      "rect": {
+        "bottom": 827.8861694335938,
+        "height": 811.7723388671875,
+        "left": 12.051315307617188,
+        "right": 377.9486541748047,
+        "top": 16.11383056640625,
+        "width": 365.8973388671875,
+        "x": 12.051315307617188,
+        "y": 16.11383056640625
+      },
+      "title": "對局選單"
+    },
+    {
+      "kind": "help",
+      "buttonLabels": [
+        "×",
+        "關閉"
+      ],
+      "close": {
+        "bottom": 69,
+        "height": 44,
+        "left": 325,
+        "right": 369,
+        "top": 25,
+        "width": 44,
+        "x": 325,
+        "y": 25
+      },
+      "footer": {
+        "bottom": 827,
+        "height": 75,
+        "left": 13,
+        "right": 377,
+        "top": 752,
+        "width": 364,
+        "x": 13,
+        "y": 752
+      },
+      "horizontalOverflow": false,
+      "rect": {
+        "bottom": 828,
+        "height": 812,
+        "left": 12,
+        "right": 378,
+        "top": 16,
+        "width": 366,
+        "x": 12,
+        "y": 16
+      },
+      "title": "直接操作卡牌與戰場"
+    },
+    {
+      "kind": "avatar-actions",
+      "buttonLabels": [
+        "×",
+        "橫置 · 抽地點",
+        "橫置：以 Atlas 頂牌替換相鄰 Rubble",
+        "移動 / 攻擊",
+        "關閉"
+      ],
+      "close": {
+        "bottom": 309.9765625,
+        "height": 44,
+        "left": 325,
+        "right": 369,
+        "top": 265.9765625,
+        "width": 44,
+        "x": 325,
+        "y": 265.9765625
+      },
+      "footer": {
+        "bottom": 586.0234375,
+        "height": 75,
+        "left": 13,
+        "right": 377,
+        "top": 511.0234375,
+        "width": 364,
+        "x": 13,
+        "y": 511.0234375
+      },
+      "horizontalOverflow": false,
+      "rect": {
+        "bottom": 587.0234375,
+        "height": 330.046875,
+        "left": 12,
+        "right": 378,
+        "top": 256.9765625,
+        "width": 366,
+        "x": 12,
+        "y": 256.9765625
+      },
+      "title": "地術師"
+    }
+  ],
+  "screenshots": [
+    "output/ui/mobile-popup-match-opening.png",
+    "output/ui/mobile-popup-match-targets.png",
+    "output/ui/mobile-popup-match-disabled.png",
+    "output/ui/mobile-popup-match-victory.png",
+    "output/ui/mobile-popup-match-defense.png",
+    "output/ui/mobile-popup-match-allocation.png",
+    "output/ui/mobile-popup-match-intercept.png"
+  ],
+  "sourceHashes": {
+    "src/app.js": "6fc8a298ef9d7872b1bab13ba0fbad4391132565e5abdf5f42716270e1df13a1",
+    "src/card-info-popup.js": "73f35519f454f24ef2158980b9ce3957329fe0e049e495c48e7221272f8d69ca",
+    "src/ui-choice-copy.js": "affd85fe40a36934e3dee8e505dd41a72837663b8171656cf6727be41d171c1f",
+    "src/popup.js": "c527f98265d0a2aef2711fce4ee4f644c1cd9dfe303f8ba2d43d3f4eae49586d",
+    "styles/game.css": "5ae08f8d4feb093b402e848e8eabfd2d7046e7f16ad80013159e2af8bb6d3fcd",
+    "styles/popup.css": "0eee06b0ee35b6775ec0100b7cd7cada164f699fcb01a32d90623e4e35b0a090",
+    "data/mobile-popup-played-match.json": "c1554818e82bb1b305b2082930ffdfd410e83fdd7a3e7b209f1e7dbb688c9d77",
+    "data/mobile-popup-response-fixtures.json": "034de8d5b16a9178facf932a6a9e85d87e4f4495762773b4d144b83e055c5a8e"
+  },
+  "regression": {
+    "startedAt": "2026-10-31T04:55:04.442Z",
+    "checkedAt": "2026-10-31T04:56:46.448Z",
+    "command": "node --test --test-reporter=tap tests/*.test.js",
+    "exitCode": 0,
+    "signal": null,
+    "tests": 2752,
+    "passed": 2752,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "sourceBefore": "c6c466884dd786382c22e0c6bea648561d0c11b4d44cfc00eddfe548b77f4e7c",
+    "sourceAfter": "c6c466884dd786382c22e0c6bea648561d0c11b4d44cfc00eddfe548b77f4e7c",
+    "sourceUnchanged": true,
+    "resultFile": "/tmp/sorcery-full-regression-CdyIN7/results.tap",
+    "stderrFile": "/tmp/sorcery-full-regression-CdyIN7/stderr.log"
+  },
+  "regressionArtifact": "output/ui/mobile-popup-match-regression.tap"
+}

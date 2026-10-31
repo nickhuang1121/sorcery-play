@@ -1917,7 +1917,7 @@
         "cardName": "The Immortal Throne",
         "nameZh": "不朽王座",
         "rulesTextEng": "Whenever anyone plays a card with cost equal to the number of level counters on The Immortal Throne, they draw a card and add a level counter.\r\nAt level 8 or more, an Avatar here alone wins the game.",
-        "rulesTextZh": "每當任何玩家打出一張其成本等於「不朽王座」上等級指示物數量的卡牌時，該玩家抽一張牌，然後在「不朽王座」上放置一個等級指示物。\r\n當等級達到8級或以上時，若此處僅有一位化身，該化身的操控者贏得遊戲。"
+        "rulesTextZh": "每當任何玩家打出一張其成本等於「不朽王座」上等級指示物數量的卡牌時，該玩家抽一張牌，然後在「不朽王座」上放置一個等級指示物。\r\n當等級達到8級或以上時，若一位化身是此位置唯一的單位，該化身的操控者贏得遊戲。"
     },
     "Torshammar Trinket": {
         "cardName": "Torshammar Trinket",
@@ -4725,7 +4725,7 @@
         "cardName": "Dredge",
         "nameZh": "疏浚",
         "rulesTextEng": "Surface everything at target water site and summon two Skeleton tokens there.",
-        "rulesTextZh": "使目標水域地點的所有單位浮出水面，然後在該處召喚兩個骷髏衍生物。"
+        "rulesTextZh": "使目標水域地點的所有物件浮出水面，然後在該處召喚兩個骷髏衍生物。"
     },
     "Driftwood Marrows": {
         "cardName": "Driftwood Marrows",
@@ -5007,7 +5007,7 @@
         "cardName": "Gift of the Raven",
         "nameZh": "渡鴉的恩賜",
         "rulesTextEng": "Choose an allied minion. The next time they strike a unit this turn, the damage heals you. Draw a spell.",
-        "rulesTextZh": "選擇一個友方隨從。本回合下一次該隨從攻擊單位時，造成的傷害會改為使你恢復等量生命。抽一張法術牌。"
+        "rulesTextZh": "選擇一個友方隨從。本回合該隨從下一次打擊單位時，造成的傷害使你恢復等量生命。抽一張法術牌。"
     },
     "Gift of the Serpent": {
         "cardName": "Gift of the Serpent",

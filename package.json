@@ -1,5 +1,11 @@
 {
   "name": "test-scory-codex",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "scripts": {
+    "start:online": "node server/index.mjs",
+    "test": "node --test tests/*.test.js",
+    "test:games": "node tools/smoke-games.mjs",
+    "progress:update": "node tools/update-progress.mjs"
+  }
 }

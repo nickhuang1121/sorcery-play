@@ -1,3 +1,9 @@
+import {sourceDeckErrors} from './ability-sources.js';
+import {registerOrbCopyCards} from './final-orb.js';
+import {registerBuiltSiteCards} from './final-built-sites.js';
+import {finalAvatarDeckProfile} from './final-avatars.js';
+import {prepareFinalUnitCards} from './final-units.js';
+import {registerFinalArtifactCards} from './final-artifacts.js';
 // Official gameplay metadata is preserved verbatim in data/official-cards.json.
 import { definitions, passives } from './definitions.js';
 import { equipment, areaAuras } from './objects.js';
@@ -40,8 +46,19 @@ export function install(raw) {
     rules: c.engine.rules || '', sets: [...new Set(c.printings.map(p => p.set.name))],
     printingId: c.printings.find(p => p.meta?.finish === 'Standard')?.id || c.printings[0]?.id || null,
     released: c.printings.some(p => p.printedAt <= '2026-10-29T23:59:59.000Z') }));
-  for (const c of cards){if(c.slug==='druid'){c.rulesBack=c.rules;c.rules='Tap \u2192 Play or draw a site. If this is your first turn, summon Tawny here.\nTap \u2192 Summon Bruin here. Flip this card.';}Object.assign(c, support(c));}
+  for (const c of cards){if(c.type==='Artifact'&&c.subtypes.includes('Automaton')){c.artifactUnit=true;c.type='Minion';}if(c.slug==='druid'){c.rulesBack=c.rules;c.rules='Tap \u2192 Play or draw a site. If this is your first turn, summon Tawny here.\nTap \u2192 Summon Bruin here. Flip this card.';}Object.assign(c, support(c));}
+  // Official family FAQ ygoDG8fb7HS97qCW69pP1D: colored frames
+  // establish element identity even though these spells need zero threshold.
+  const familyElements={castle_servants:'Air',common_cottagers:'Earth',blacksmith_family:'Fire',fishermans_family:'Water'};
+  for(const c of cards)if(familyElements[c.slug])c.elements=[...new Set([...(c.elements||[]).filter(e=>e!=='None'),familyElements[c.slug]])];
+  // Official Skeleton Codex: Ordinary Undead Air minion, 1 power.
+  // Element identity is not a casting threshold; tokens remain uncastable.
+  for(const c of cards)if(c.slug==='skeleton'){c.subtypes=['Undead'];c.umbrellas=[...new Set([...c.umbrellas,'Evil'])];c.elements=['Air'];c.rarity='Ordinary';}
   byId = new Map(cards.map(c => [c.id, c])); bySlug = new Map(cards.map(c => [c.slug, c]));
+  registerFinalArtifactCards(card,runtimeCard);
+  registerBuiltSiteCards(card,runtimeCard);
+  registerOrbCopyCards(cards,runtimeCard);
+  prepareFinalUnitCards({card,runtimeCard});
   runtimeCard(bySlug.get('druid').id,'druid_back',{rules:bySlug.get('druid').rulesBack});
   runtimeCard(bySlug.get('horns_of_behemoth').id,'behemoth_demon',{type:'Minion',subtypes:['Demon'],umbrellas:['Evil'],rules:''});
   for(const c of cards){if(c.type==='Site')for(const kind of ['disabled_site','silenced_site','fate_site','sinterfee_site'])runtimeCard(c.id,kind,{runtimeMask:true,rules:'',...(kind==='disabled_site'||kind==='sinterfee_site'?{air:0,earth:0,fire:0,water:0}:kind==='fate_site'?{air:0,earth:0,fire:0,water:1}:{})});if(c.type==='Artifact')runtimeCard(c.id,'silenced_artifact',{runtimeMask:true,rules:''});}
@@ -52,7 +69,7 @@ export function printedKeywords(c) {
   if(c.slug==='sewer_rats')return ['Burrowing','Submerge'];
   if(c.slug==='drowned')return ['Submerge'];
   const header=c.rules.split(/\r?\n|\bGenesis\b|\bDeathrite\b/)[0].trim();
-  return ['Airborne','Charge','Voidwalk','Burrowing','Submerge','Landbound','Waterbound','Ranged','Immobile','Lethal','Spellcaster','Stealth','Ward','Lance'].filter(k=>!(c.slug==='zeppelin_of_zealots'&&k==='Airborne')&&new RegExp('(?:^|,\\s*)'+k+'(?:$|[, .]| \\+| \\d)').test(header));
+  return ['Airborne','Charge','Voidwalk','Burrowing','Submerge','Landbound','Waterbound','Ranged','Immobile','Lethal','Spellcaster','Stealth','Ward','Lance'].filter(k=>!(c.slug==='zeppelin_of_zealots'&&k==='Airborne'||k==='Lethal'&&/(?:^|,\s*)Lethal\s+to\b/.test(header))&&new RegExp('(?:^|,\\s*)'+k+'(?:$|[, .]| \\+| \\d)').test(header));
 }
 export async function loadCards() {
   const r = await fetch(new URL('../data/official-cards.json', import.meta.url));
@@ -74,7 +91,9 @@ export function validateDeck(d, requirePlayable = true) {
   for(const id of collection){const c=byId.get(id);if(!c||c.category==='Token'||c.runtimeMask){errors.push('收藏區包含無效卡牌');continue;}if(!c.released)errors.push(c.name+' 尚未發行');if(requirePlayable&&!c.playable)errors.push(c.name+' 尚未實作');collectionCounts.set(id,(collectionCounts.get(id)||0)+1);}
   for(const [id,n] of collectionCounts)if(n>(limits[card(id).slot]||0))errors.push(card(id).name+' 超出收藏區稀有度張數上限');
   if (!d || !Array.isArray(d.atlas) || !Array.isArray(d.spells)) return ['牌組格式錯誤'];
-  const precon=d.format==='beta-precon-2023',sizes=deckSizes(d);
+  const precon=d.format==='beta-precon-2023',sizes=deckSizes(d),avatarProfile=finalAvatarDeckProfile(byId.get(d.avatar));
+  if(avatarProfile.noAtlas&&d.atlas.length)errors.push('Magician 沒有 Atlas，地點須放進 Spellbook');
+  if(avatarProfile.uniqueAtlas&&new Set(d.atlas).size!==d.atlas.length)errors.push('Pathfinder 的 Atlas 不能含重複地點');
   if(precon&&!matchesOfficialBeta(d))errors.push('官方 BETA 預組必須與原表完全一致；修改後請轉為自組牌');
   if (d.atlas.length < sizes.atlas) errors.push('Atlas 至少需要 '+sizes.atlas+' 張地點');
   if (d.spells.length < sizes.spells) errors.push('Spellbook 至少需要 '+sizes.spells+' 張法術');
@@ -83,15 +102,19 @@ export function validateDeck(d, requirePlayable = true) {
   for (const [list, type] of [[d.atlas, 'Site'], [d.spells, 'Spell']]) for (const id of list) {
     const c = byId.get(id);
     if (!c) { errors.push('未知卡牌 ID：' + id); continue; }
-    if ((type === 'Site' && c.type !== 'Site') || (type === 'Spell' && c.category !== 'Spell')) errors.push(c.name + ' 的牌庫類型錯誤');
+    if ((type === 'Site' && c.type !== 'Site') || (type === 'Spell' && c.category !== 'Spell' && !(avatarProfile.sitesInSpellbook&&c.type==='Site'))) errors.push(c.name + ' 的牌庫類型錯誤');
     if (!c.released) errors.push(c.name + ' 尚未發售');
     if (requirePlayable && !c.playable) errors.push(c.name + ' 的效果尚未實作');
     count.set(id, (count.get(id) || 0) + 1);
   }
-  for (const [id, n] of count) if (!passives[card(id).slug]?.unlimited&&n > (limits[card(id).slot] ?? 0)) errors.push(card(id).name + ' 超過稀有度張數上限');
+  const paired=byId.get(d.avatar)?.slug==='duplicator';
+  if(paired)for(const [id,n] of count)if(card(id).slot!=='Unique'||n!==2)errors.push(card(id).name+'：Duplicator 牌庫只允許成對 Unique');
+  if(paired)for(const id of collection)if(count.has(id))errors.push(card(id).name+' 已在 Duplicator 牌庫中，不能再加入收藏區');
+  for (const [id, n] of count) if (!(paired&&card(id).slot==='Unique'&&n===2)&&!passives[card(id).slug]?.unlimited&&n > (limits[card(id).slot] ?? 0)) errors.push(card(id).name + ' 超過稀有度張數上限');
+  if(a&&a.type==='Avatar')errors.push(...sourceDeckErrors(d,{card}));
   return [...new Set(errors)];
 }
-export function deckSizes(d){return d?.format==='beta-precon-2023'?{atlas:16,spells:36}:{atlas:30,spells:60};}
+export function deckSizes(d){if(finalAvatarDeckProfile(byId.get(d?.avatar)).noAtlas)return {atlas:0,spells:60};return d?.format==='beta-precon-2023'?{atlas:16,spells:36}:{atlas:30,spells:60};}
 export function officialBetaDecks(){
   return officialBetaLists.map(d=>({version:1,name:d.name,preset:'official-beta',format:'beta-precon-2023',officialId:d.id,source:betaPreconSource,sourceImage:'https://cdn.sanity.io/images/vg9ve3gy/production/'+d.image,
     description:'官方 2023 BETA 預組原表：36 張 Spellbook、16 張 Atlas、1 位 Avatar。',
@@ -116,31 +139,4 @@ export function starter(kind = 'earth') {
   const sites = ['valley','wasteland','fertile_earth','active_volcano','steppe','windmill','aqueduct','ruins','oasis','mountain_peaks','deep_sea','lighthouse','spire','stream'];
   const atlas = sites.flatMap(s => { const c = card(s); return Array(limits[c.slot]).fill(c.id); }).slice(0,30);
   return { version: 1, name: kind === 'earth' ? '翡翠軍勢 · Earth & Fire' : '燼火先鋒 · Fire & Earth', avatar: card('sorcerer').id, atlas, spells: spells.slice(0,60) };
-}
-
-// Explicit, reproducible lists: every card has a Beta printing. These are custom
-// ready-to-play decks, not the official four Beta preconstructed deck lists.
-export function betaDecks() {
-  const atlas = ['aqueduct','lighthouse','oasis','ruins','steppe','windmill']
-    .flatMap(slug => Array(3).fill(card(slug).id))
-    .concat(['dark_tower','gothic_tower','lone_tower'].flatMap(slug => Array(4).fill(card(slug).id)));
-  const lists = [
-    { name: 'BETA · 大地燼火', list: {
-      wild_boars:4, bosk_troll:4, alvalinne_dryads:4, amazon_warriors:4,
-      autumn_unicorn:3, overpower:4, common_sense:4, gigantism:1, divine_healing:3,
-      raal_dromedary:4, ogre_goons:4, petrosian_cavalry:4, sirocco_scorpions:4,
-      minor_explosion:4, immolation:1, plumed_pegasus:4, snow_leopard:4,
-    } },
-    { name: 'BETA · 風暴軍勢', list: {
-      snow_leopard:4, cloud_spirit:4, apprentice_wizard:4, dead_of_night_demon:4,
-      spectral_stalker:4, plumed_pegasus:4, gyre_hippogriffs:3, peregrine_apparition:3,
-      highland_clansmen:4, lightning_bolt:4, rain_of_arrows:4, teleport:4,
-      mortality:4, shrink:3, swamp_buffalo:4, divine_healing:3,
-    } },
-  ];
-  return lists.map(({name,list}) => ({ version:1, name, preset:'beta',
-    description:'BETA 系列自組預設，非官方預組原表；使用目前引擎支援的卡牌。',
-    avatar:card('sorcerer').id, atlas:[...atlas],
-    spells:Object.entries(list).flatMap(([slug,count]) => Array(count).fill(card(slug).id)),
-  }));
 }

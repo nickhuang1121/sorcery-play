@@ -1,0 +1,78 @@
+# Operating system and editor files
+.DS_Store
+.AppleDouble
+._*
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Dependencies, caches and generated build/test output
+node_modules/
+.online-data/
+.npm/
+.cache/
+.firebase/
+__pycache__/
+*.py[cod]
+coverage/
+.nyc_output/
+dist/
+build/
+playwright-report/
+test-results/
+/output/
+*.log
+*.tap
+*.tsbuildinfo
+
+# Local environment values and server credentials; keep example templates
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+!.env.*.example
+*.pem
+*.key
+*.p12
+*.pfx
+**/service-account*.json
+**/serviceAccount*.json
+**/service_account*.json
+**/*-firebase-adminsdk-*.json
+
+# Local backups and unfinished audit patches (not game/test source)
+*.bak
+*.orig
+*.rej
+/tools/pending-audit/
+/data/*backup*.json
+/data/*-pre-audit-*.json
+/data/*-pre-wave*.json
+
+# Raw audit logs and browser screenshots; retain the directory for audit tools
+/data/all-cards-audit/logs/*
+!/data/all-cards-audit/logs/.gitkeep
+!/data/all-cards-audit/logs/book-real-duel-ui.json
+!/data/all-cards-audit/logs/book-suffering-ui.json
+!/data/all-cards-audit/logs/book-chaoswish-ui.json
+/data/*.jpg
+/data/*.png
+/data/official-grid-evidence/
+
+# Ad-hoc browser saves. Keep records referenced by the progress/audit tools.
+/data/ui-5500-*
+/data/ui5500-*
+!/data/ui5500-globe-retained-after.json
+!/data/ui5500-snowball-loop-after.json
+!/data/ui5500-dual-throne-active0.json
+!/data/ui5500-dual-throne-active1.json
+!/data/ui5500-twister-digital-resolved.json
+!/data/ui5500-contract-resolved.json
+
+# Card image selection lives in card-images/.gitignore, generated from the index.
+# Do not ignore src/, tests/, language/, data/ or assets/ wholesale.

@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {install,card,runtimeCard} from '../src/cards.js';
+import {loadCardImages,cardImage,cardImageHTML} from '../src/card-images.js';
+import {unitsAtLayer} from '../src/realm-stack.js';
+const raw=JSON.parse(fs.readFileSync(new URL('../data/official-cards.json',import.meta.url))),index=JSON.parse(fs.readFileSync(new URL('../data/card-image-index.json',import.meta.url)));install(raw);
+const fetchBefore=globalThis.fetch;globalThis.fetch=async()=>({ok:true,json:async()=>index});await loadCardImages();globalThis.fetch=fetchBefore;
+test('All indexed card images exist; all 1100 cards have an explicit image or black fallback',()=>{assert.equal(Object.keys(index).length,1100);assert.equal(Object.values(index).filter(Boolean).length,1096);for(const entry of Object.values(index).filter(Boolean))for(const file of [entry.front,entry.back].filter(Boolean))assert.ok(fs.existsSync(new URL('../card-images/'+file,import.meta.url)));});
+test('Missing card images have a fixed black frame and no broken img URL',()=>{const c=card('court_of_equity');assert.equal(cardImage(c),null);const html=cardImageHTML(c);assert.ok(html.includes('missing-image'));assert.ok(!html.includes('<img'));});
+test('Runtime masks retain their original face and Druid back uses the reverse image',()=>{const c=card('valley'),masked=card(runtimeCard(c.id,'image_test_mask',{rules:''}));assert.equal(cardImage(masked),cardImage(c));assert.ok(cardImage(card(runtimeCard(card('druid').id,'druid_back'))).endsWith('-r.webp'));});
+test('Surface and subsurface stacks reflect actual locations, independent of printed movement keywords',()=>{const units=[{uid:'above',at:12,layer:'surface'},{uid:'below',at:12,layer:'below'},{uid:'elsewhere',at:13,layer:'surface'}];assert.deepEqual(unitsAtLayer(units,12,'surface').map(u=>u.uid),['above']);assert.deepEqual(unitsAtLayer(units,12,'below').map(u=>u.uid),['below']);});
+test('Reordering stack changes presentation only; never moves a unit across a Site',()=>{const units=[{uid:'one',at:12,layer:'surface'},{uid:'two',at:12,layer:'surface'},{uid:'under',at:12,layer:'below'}],before=structuredClone(units),order=new Map([['one',3]]);assert.deepEqual(unitsAtLayer(units,12,'surface',order).map(u=>u.uid),['two','one']);assert.deepEqual(units,before);assert.deepEqual(unitsAtLayer(units,12,'below',order).map(u=>u.uid),['under']);});

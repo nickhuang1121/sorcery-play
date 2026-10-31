@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-10-30T20:19:10.838584+00:00",
+  "baselineArchive": "/tmp/sorcery-play-baselines/sorcery-play-20261030T120940Z.tar.gz",
+  "checks": {
+    "data/official-cards.json": {
+      "unchanged": true
+    },
+    "src/net/firebase-config.js": {
+      "unchanged": true
+    }
+  },
+  "note": "只記比較結果，不輸出或複製任何憑證值。",
+  "originalTestFiles": [
+    {
+      "path": "tests/remaining-rules.test.js",
+      "unchanged": false,
+      "authorizedCorrections": "Official Ownership Codex carriable exception; Blaze scenario registers actual collection Hybrids. Exact prior file backed up in data/official-arthur-test-correction-backup.json."
+    }
+  ],
+  "intentionalTestCorrections": [
+    "data/external-flood-test-correction-backup.json",
+    "data/loner-summon-tax-test-correction-backup.json"
+  ]
+}

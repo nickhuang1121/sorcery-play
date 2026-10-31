@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-10-30T19:54:05.264Z",
+  "matches": 2,
+  "results": [
+    {
+      "a": "beta-earth",
+      "b": "beta-air",
+      "seed": 46,
+      "steps": 133,
+      "turn": 20,
+      "winner": 1
+    },
+    {
+      "a": "beta-earth",
+      "b": "beta-earth",
+      "seed": 47,
+      "steps": 147,
+      "turn": 21,
+      "winner": 1
+    }
+  ],
+  "sourceFingerprint": "8fc95f52cc0c18b50d8156b7d42691c9bf50f54ce656ff9180380ca3a32e9a1d",
+  "sourceUnchanged": true
+}

@@ -1,0 +1,18 @@
+{
+  "startedAt": "2026-10-31T00:20:06.079Z",
+  "checkedAt": "2026-10-31T00:21:47.687Z",
+  "command": "node --test --test-reporter=tap tests/*.test.js",
+  "exitCode": 0,
+  "signal": null,
+  "tests": 2721,
+  "passed": 2721,
+  "failed": 0,
+  "skipped": 0,
+  "cancelled": 0,
+  "sourceBefore": "8c638d59df190974bdb42b35b63dc48a94a53935aa26ca4d2d4c37a4bf198516",
+  "sourceAfter": "8c638d59df190974bdb42b35b63dc48a94a53935aa26ca4d2d4c37a4bf198516",
+  "sourceUnchanged": true,
+  "resultFile": "data/card-implementation-check-20261031-tests.tap",
+  "stderrFile": "/tmp/sorcery-full-regression-uyZ3id/stderr.log",
+  "originalResultFile": "/tmp/sorcery-full-regression-uyZ3id/results.tap"
+}

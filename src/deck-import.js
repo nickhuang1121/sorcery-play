@@ -94,6 +94,7 @@ export function toOfficialDeckJson(deck) {
   const out = {
     name: deck.name || 'Deck',
     decklist,
+    ...(deck.dragon?{dragon:deck.dragon}:{}),
   };
   // Keep official-looking format label when we know it; beta precon stays annotated separately.
   if (deck.format === 'beta-precon-2023') out.format = 'Constructed';
@@ -134,7 +135,7 @@ export function parseOfficialDeckJson(d, opts = {}) {
     spells,
     source: 'official-json',
     warnings,
-    extras: {...(d.id ? { officialId: d.id, id: d.id } : {}),...(collection.length?{collection}:{})},
+    extras: {...(d.dragon?{dragon:d.dragon}:{}),...(d.id ? { officialId: d.id, id: d.id } : {}),...(collection.length?{collection}:{})},
   });
   if (matchesOfficialBeta({ ...deck, format:'beta-precon-2023' })) {
     deck.format='beta-precon-2023';

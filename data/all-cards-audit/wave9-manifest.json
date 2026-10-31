@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-10-30T21:31:24.493497+00:00",
+  "newlyReviewed": 18,
+  "batches": [
+    {
+      "categoryFile": "data/all-cards-audit/minions.json",
+      "slugs": [
+        "goat_for_azazel",
+        "golgor",
+        "gossamer_ghost",
+        "grain_sparrow",
+        "granary_rats",
+        "grand_old_boar"
+      ],
+      "test": "tests/catalog-minions-wave9.test.js",
+      "doc": "docs/AUDIT_MINIONS_WAVE9.md",
+      "result": "19/19 native tests passed including actual Silence and Pallid Bust gained-source/drop/pickup controls; /tmp/audit-minions-wave9.log"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/magics.json",
+      "slugs": [
+        "fire_harpoons",
+        "firebreathing",
+        "flame_strike",
+        "flame_wave",
+        "flanking_maneuver",
+        "font_of_life"
+      ],
+      "test": "tests/catalog-magics-wave6.test.js",
+      "doc": "docs/AUDIT_MAGICS_WAVE6.md",
+      "result": "20/20 in joint37/37 native test run; /tmp/wave9-minions-magics-after.log"
+    },
+    {
+      "categoryFile": "data/all-cards-audit/artifacts.json",
+      "slugs": [
+        "ring_of_morrigan",
+        "rolling_boulder",
+        "ruby_core",
+        "scarecrow",
+        "screaming_skull",
+        "sensu_of_the_fang"
+      ],
+      "test": "tests/catalog-artifacts-wave9.test.js",
+      "doc": "docs/AUDIT_ARTIFACTS_WAVE9.md",
+      "result": "18/18 native tests; /tmp/artifacts-wave9-ring-after.log"
+    }
+  ],
+  "scope": "Representative native printed effects and explicit boundaries, not full per-card validation; full formal run19968 in progress."
+}

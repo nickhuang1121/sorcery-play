@@ -15,7 +15,7 @@ export const siteDefinitions={
   broceliande:{genesis:[{op:'broceliande'}]},
   valley_of_delight:{genesis:[{op:'permanentAffinity'}]},
   funeral_pyre:{genesis:[{op:'banishGraves',count:3,optionalCards:true,select:{kind:'player'}}]},
-  postern_gate:{genesis:[{op:'giveSite'}]},
+  postern_gate:{}, // Control is an entry replacement, not a Genesis trigger.
   quagmire:{genesis:[{op:'terrainEffect',nearby:true,keyword:'Immobile',allLayers:true}]},
   bog:{genesis:[{op:'terrainEffect',keyword:'Immobile',select:{kind:'site',nearby:true}}]},
   babbling_brook:{genesis:[{op:'terrainEffect',nearby:true,minion:true,disabled:true}]},
@@ -23,6 +23,8 @@ export const siteDefinitions={
 };
 import {batchSitePassives} from './card-batches.js';
 export const sitePassives={
+  postern_gate:{entersOpponentControl:true},
+  city_of_souls:{manaThreshold:'earth'},
   ...batchSitePassives,
   sea_of_ash:{killBelowNearby:true},
   blessed_village:{ward:true},blessed_well:{ward:true},

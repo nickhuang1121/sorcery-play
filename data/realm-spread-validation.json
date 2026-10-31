@@ -1,0 +1,1333 @@
+{
+  "measurements": [
+    {
+      "label": "phone-final-geometry",
+      "boardWidth": 372,
+      "piles": [
+        {
+          "area": {
+            "bottom": 174.1015625,
+            "height": 80.3046875,
+            "left": 163,
+            "right": 227,
+            "top": 93.796875,
+            "width": 64,
+            "x": 163,
+            "y": 93.796875
+          },
+          "at": "2",
+          "cards": [
+            {
+              "id": "u8",
+              "rect": {
+                "bottom": 174.1015625,
+                "height": 80.3046875,
+                "left": 166.2421875,
+                "right": 223.7421875,
+                "top": 93.796875,
+                "width": 57.5,
+                "x": 166.2421875,
+                "y": 93.796875
+              }
+            }
+          ],
+          "layer": "surface",
+          "mode": "spread"
+        },
+        {
+          "area": {
+            "bottom": 265.1953125,
+            "height": 33.1484375,
+            "left": 88,
+            "right": 152,
+            "top": 232.046875,
+            "width": 64,
+            "x": 88,
+            "y": 232.046875
+          },
+          "at": "6",
+          "cards": [
+            {
+              "id": "layout-113",
+              "rect": {
+                "bottom": 265.1953125,
+                "height": 33.1484375,
+                "left": 108.125,
+                "right": 131.859375,
+                "top": 232.046875,
+                "width": 23.734375,
+                "x": 108.125,
+                "y": 232.046875
+              }
+            }
+          ],
+          "layer": "surface",
+          "mode": "spread"
+        },
+        {
+          "area": {
+            "bottom": 336.5,
+            "height": 33.15625,
+            "left": 88,
+            "right": 152,
+            "top": 303.34375,
+            "width": 64,
+            "x": 88,
+            "y": 303.34375
+          },
+          "at": "6",
+          "cards": [
+            {
+              "id": "layout-114",
+              "rect": {
+                "bottom": 336.5,
+                "height": 33.15625,
+                "left": 88,
+                "right": 111.7421875,
+                "top": 303.34375,
+                "width": 23.7421875,
+                "x": 88,
+                "y": 303.34375
+              }
+            },
+            {
+              "id": "layout-115",
+              "rect": {
+                "bottom": 336.5,
+                "height": 33.15625,
+                "left": 108.125,
+                "right": 131.8671875,
+                "top": 303.34375,
+                "width": 23.7421875,
+                "x": 108.125,
+                "y": 303.34375
+              }
+            },
+            {
+              "id": "layout-under-ruby",
+              "rect": {
+                "bottom": 336.5,
+                "height": 33.15625,
+                "left": 128.25,
+                "right": 151.9921875,
+                "top": 303.34375,
+                "width": 23.7421875,
+                "x": 128.25,
+                "y": 303.34375
+              }
+            }
+          ],
+          "layer": "below",
+          "mode": "stack"
+        },
+        {
+          "area": {
+            "bottom": 450.6015625,
+            "height": 80.3046875,
+            "left": 88,
+            "right": 152,
+            "top": 370.296875,
+            "width": 64,
+            "x": 88,
+            "y": 370.296875
+          },
+          "at": "11",
+          "cards": [
+            {
+              "id": "layout-109",
+              "rect": {
+                "bottom": 441.1640625,
+                "height": 61.4453125,
+                "left": 88,
+                "right": 132,
+                "top": 379.71875,
+                "width": 44,
+                "x": 88,
+                "y": 379.71875
+              }
+            },
+            {
+              "id": "layout-110",
+              "rect": {
+                "bottom": 441.1640625,
+                "height": 61.4453125,
+                "left": 93,
+                "right": 137,
+                "top": 379.71875,
+                "width": 44,
+                "x": 93,
+                "y": 379.71875
+              }
+            },
+            {
+              "id": "layout-111",
+              "rect": {
+                "bottom": 441.1640625,
+                "height": 61.4453125,
+                "left": 98,
+                "right": 142,
+                "top": 379.71875,
+                "width": 44,
+                "x": 98,
+                "y": 379.71875
+              }
+            },
+            {
+              "id": "layout-112",
+              "rect": {
+                "bottom": 441.1640625,
+                "height": 61.4453125,
+                "left": 103,
+                "right": 147,
+                "top": 379.71875,
+                "width": 44,
+                "x": 103,
+                "y": 379.71875
+              }
+            },
+            {
+              "id": "layout-ruby",
+              "rect": {
+                "bottom": 441.1640625,
+                "height": 61.4453125,
+                "left": 108,
+                "right": 152,
+                "top": 379.71875,
+                "width": 44,
+                "x": 108,
+                "y": 379.71875
+              }
+            }
+          ],
+          "layer": "surface",
+          "mode": "stack"
+        },
+        {
+          "area": {
+            "bottom": 450.6015625,
+            "height": 80.3046875,
+            "left": 163,
+            "right": 227,
+            "top": 370.296875,
+            "width": 64,
+            "x": 163,
+            "y": 370.296875
+          },
+          "at": "12",
+          "cards": [
+            {
+              "id": "layout-101",
+              "rect": {
+                "bottom": 441.1640625,
+                "height": 61.4453125,
+                "left": 163,
+                "right": 207,
+                "top": 379.71875,
+                "width": 44,
+                "x": 163,
+                "y": 379.71875
+              }
+            },
+            {
+              "id": "layout-102",
+              "rect": {
+                "bottom": 441.1640625,
+                "height": 61.4453125,
+                "left": 165.8515625,
+                "right": 209.8515625,
+                "top": 379.71875,
+                "width": 44,
+                "x": 165.8515625,
+                "y": 379.71875
+              }
+            },
+            {
+              "id": "layout-103",
+              "rect": {
+                "bottom": 441.1640625,
+                "height": 61.4453125,
+                "left": 168.7109375,
+                "right": 212.7109375,
+                "top": 379.71875,
+                "width": 44,
+                "x": 168.7109375,
+                "y": 379.71875
+              }
+            },
+            {
+              "id": "layout-104",
+              "rect": {
+                "bottom": 441.1640625,
+                "height": 61.4453125,
+                "left": 171.5703125,
+                "right": 215.5703125,
+                "top": 379.71875,
+                "width": 44,
+                "x": 171.5703125,
+                "y": 379.71875
+              }
+            },
+            {
+              "id": "layout-105",
+              "rect": {
+                "bottom": 441.1640625,
+                "height": 61.4453125,
+                "left": 174.421875,
+                "right": 218.421875,
+                "top": 379.71875,
+                "width": 44,
+                "x": 174.421875,
+                "y": 379.71875
+              }
+            },
+            {
+              "id": "layout-106",
+              "rect": {
+                "bottom": 441.1640625,
+                "height": 61.4453125,
+                "left": 177.28125,
+                "right": 221.28125,
+                "top": 379.71875,
+                "width": 44,
+                "x": 177.28125,
+                "y": 379.71875
+              }
+            },
+            {
+              "id": "layout-107",
+              "rect": {
+                "bottom": 441.1640625,
+                "height": 61.4453125,
+                "left": 180.140625,
+                "right": 224.140625,
+                "top": 379.71875,
+                "width": 44,
+                "x": 180.140625,
+                "y": 379.71875
+              }
+            },
+            {
+              "id": "layout-108",
+              "rect": {
+                "bottom": 441.1640625,
+                "height": 61.4453125,
+                "left": 183,
+                "right": 227,
+                "top": 379.71875,
+                "width": 44,
+                "x": 183,
+                "y": 379.71875
+              }
+            }
+          ],
+          "layer": "surface",
+          "mode": "stack"
+        },
+        {
+          "area": {
+            "bottom": 588.8515625,
+            "height": 80.3046875,
+            "left": 163,
+            "right": 227,
+            "top": 508.546875,
+            "width": 64,
+            "x": 163,
+            "y": 508.546875
+          },
+          "at": "17",
+          "cards": [
+            {
+              "id": "u1",
+              "rect": {
+                "bottom": 569.640625,
+                "height": 41.890625,
+                "left": 163,
+                "right": 193,
+                "top": 527.75,
+                "width": 30,
+                "x": 163,
+                "y": 527.75
+              }
+            },
+            {
+              "id": "layout-100",
+              "rect": {
+                "bottom": 569.640625,
+                "height": 41.890625,
+                "left": 197,
+                "right": 227,
+                "top": 527.75,
+                "width": 30,
+                "x": 197,
+                "y": 527.75
+              }
+            }
+          ],
+          "layer": "surface",
+          "mode": "spread"
+        }
+      ],
+      "viewportWidth": 390
+    },
+    {
+      "label": "desktop-final",
+      "boardWidth": 1902,
+      "piles": [
+        {
+          "area": {
+            "bottom": 201.546875,
+            "height": 97.75,
+            "left": 775.953125,
+            "right": 1144.0390625,
+            "top": 103.796875,
+            "width": 368.0859375,
+            "x": 775.953125,
+            "y": 103.796875
+          },
+          "at": "2",
+          "cards": [
+            {
+              "id": "u8",
+              "rect": {
+                "bottom": 201.546875,
+                "height": 97.75,
+                "left": 924.9921875,
+                "right": 994.984375,
+                "top": 103.796875,
+                "width": 69.9921875,
+                "x": 924.9921875,
+                "y": 103.796875
+              }
+            }
+          ],
+          "layer": "surface",
+          "mode": "spread"
+        },
+        {
+          "area": {
+            "bottom": 303.765625,
+            "height": 41.875,
+            "left": 394.4765625,
+            "right": 762.5546875,
+            "top": 261.890625,
+            "width": 368.078125,
+            "x": 394.4765625,
+            "y": 261.890625
+          },
+          "at": "6",
+          "cards": [
+            {
+              "id": "layout-113",
+              "rect": {
+                "bottom": 303.765625,
+                "height": 41.875,
+                "left": 563.515625,
+                "right": 593.5,
+                "top": 261.890625,
+                "width": 29.984375,
+                "x": 563.515625,
+                "y": 261.890625
+              }
+            }
+          ],
+          "layer": "surface",
+          "mode": "spread"
+        },
+        {
+          "area": {
+            "bottom": 383.796875,
+            "height": 41.8828125,
+            "left": 394.4765625,
+            "right": 762.5546875,
+            "top": 341.9140625,
+            "width": 368.078125,
+            "x": 394.4765625,
+            "y": 341.9140625
+          },
+          "at": "6",
+          "cards": [
+            {
+              "id": "layout-114",
+              "rect": {
+                "bottom": 383.796875,
+                "height": 41.8828125,
+                "left": 529.5234375,
+                "right": 559.5078125,
+                "top": 341.9140625,
+                "width": 29.984375,
+                "x": 529.5234375,
+                "y": 341.9140625
+              }
+            },
+            {
+              "id": "layout-115",
+              "rect": {
+                "bottom": 383.796875,
+                "height": 41.8828125,
+                "left": 563.515625,
+                "right": 593.5,
+                "top": 341.9140625,
+                "width": 29.984375,
+                "x": 563.515625,
+                "y": 341.9140625
+              }
+            },
+            {
+              "id": "layout-under-ruby",
+              "rect": {
+                "bottom": 383.796875,
+                "height": 41.8828125,
+                "left": 597.5078125,
+                "right": 627.4921875,
+                "top": 341.9140625,
+                "width": 29.984375,
+                "x": 597.5078125,
+                "y": 341.9140625
+              }
+            }
+          ],
+          "layer": "below",
+          "mode": "spread"
+        },
+        {
+          "area": {
+            "bottom": 517.75,
+            "height": 97.7578125,
+            "left": 394.4765625,
+            "right": 762.5546875,
+            "top": 419.9921875,
+            "width": 368.078125,
+            "x": 394.4765625,
+            "y": 419.9921875
+          },
+          "at": "11",
+          "cards": [
+            {
+              "id": "layout-109",
+              "rect": {
+                "bottom": 517.75,
+                "height": 97.7578125,
+                "left": 395.5078125,
+                "right": 465.5078125,
+                "top": 419.9921875,
+                "width": 70,
+                "x": 395.5078125,
+                "y": 419.9921875
+              }
+            },
+            {
+              "id": "layout-110",
+              "rect": {
+                "bottom": 517.75,
+                "height": 97.7578125,
+                "left": 469.5078125,
+                "right": 539.5078125,
+                "top": 419.9921875,
+                "width": 70,
+                "x": 469.5078125,
+                "y": 419.9921875
+              }
+            },
+            {
+              "id": "layout-111",
+              "rect": {
+                "bottom": 517.75,
+                "height": 97.7578125,
+                "left": 543.5078125,
+                "right": 613.5078125,
+                "top": 419.9921875,
+                "width": 70,
+                "x": 543.5078125,
+                "y": 419.9921875
+              }
+            },
+            {
+              "id": "layout-112",
+              "rect": {
+                "bottom": 517.75,
+                "height": 97.7578125,
+                "left": 617.515625,
+                "right": 687.515625,
+                "top": 419.9921875,
+                "width": 70,
+                "x": 617.515625,
+                "y": 419.9921875
+              }
+            },
+            {
+              "id": "layout-ruby",
+              "rect": {
+                "bottom": 517.75,
+                "height": 97.7578125,
+                "left": 691.515625,
+                "right": 761.515625,
+                "top": 419.9921875,
+                "width": 70,
+                "x": 691.515625,
+                "y": 419.9921875
+              }
+            }
+          ],
+          "layer": "surface",
+          "mode": "spread"
+        },
+        {
+          "area": {
+            "bottom": 517.75,
+            "height": 97.7578125,
+            "left": 775.953125,
+            "right": 1144.0390625,
+            "top": 419.9921875,
+            "width": 368.0859375,
+            "x": 775.953125,
+            "y": 419.9921875
+          },
+          "at": "12",
+          "cards": [
+            {
+              "id": "layout-101",
+              "rect": {
+                "bottom": 498.546875,
+                "height": 59.359375,
+                "left": 775.953125,
+                "right": 818.4609375,
+                "top": 439.1875,
+                "width": 42.5078125,
+                "x": 775.953125,
+                "y": 439.1875
+              }
+            },
+            {
+              "id": "layout-102",
+              "rect": {
+                "bottom": 498.546875,
+                "height": 59.359375,
+                "left": 822.4609375,
+                "right": 864.96875,
+                "top": 439.1875,
+                "width": 42.5078125,
+                "x": 822.4609375,
+                "y": 439.1875
+              }
+            },
+            {
+              "id": "layout-103",
+              "rect": {
+                "bottom": 498.546875,
+                "height": 59.359375,
+                "left": 868.96875,
+                "right": 911.4765625,
+                "top": 439.1875,
+                "width": 42.5078125,
+                "x": 868.96875,
+                "y": 439.1875
+              }
+            },
+            {
+              "id": "layout-104",
+              "rect": {
+                "bottom": 498.546875,
+                "height": 59.359375,
+                "left": 915.484375,
+                "right": 957.9921875,
+                "top": 439.1875,
+                "width": 42.5078125,
+                "x": 915.484375,
+                "y": 439.1875
+              }
+            },
+            {
+              "id": "layout-105",
+              "rect": {
+                "bottom": 498.546875,
+                "height": 59.359375,
+                "left": 961.9921875,
+                "right": 1004.5,
+                "top": 439.1875,
+                "width": 42.5078125,
+                "x": 961.9921875,
+                "y": 439.1875
+              }
+            },
+            {
+              "id": "layout-106",
+              "rect": {
+                "bottom": 498.546875,
+                "height": 59.359375,
+                "left": 1008.5,
+                "right": 1051.0078125,
+                "top": 439.1875,
+                "width": 42.5078125,
+                "x": 1008.5,
+                "y": 439.1875
+              }
+            },
+            {
+              "id": "layout-107",
+              "rect": {
+                "bottom": 498.546875,
+                "height": 59.359375,
+                "left": 1055.015625,
+                "right": 1097.5234375,
+                "top": 439.1875,
+                "width": 42.5078125,
+                "x": 1055.015625,
+                "y": 439.1875
+              }
+            },
+            {
+              "id": "layout-108",
+              "rect": {
+                "bottom": 498.546875,
+                "height": 59.359375,
+                "left": 1101.5234375,
+                "right": 1144.03125,
+                "top": 439.1875,
+                "width": 42.5078125,
+                "x": 1101.5234375,
+                "y": 439.1875
+              }
+            }
+          ],
+          "layer": "surface",
+          "mode": "spread"
+        },
+        {
+          "area": {
+            "bottom": 675.8515625,
+            "height": 97.7578125,
+            "left": 775.953125,
+            "right": 1144.0390625,
+            "top": 578.09375,
+            "width": 368.0859375,
+            "x": 775.953125,
+            "y": 578.09375
+          },
+          "at": "17",
+          "cards": [
+            {
+              "id": "u1",
+              "rect": {
+                "bottom": 675.8515625,
+                "height": 97.7578125,
+                "left": 887.9921875,
+                "right": 957.9921875,
+                "top": 578.09375,
+                "width": 70,
+                "x": 887.9921875,
+                "y": 578.09375
+              }
+            },
+            {
+              "id": "layout-100",
+              "rect": {
+                "bottom": 675.8515625,
+                "height": 97.7578125,
+                "left": 961.9921875,
+                "right": 1031.9921875,
+                "top": 578.09375,
+                "width": 70,
+                "x": 961.9921875,
+                "y": 578.09375
+              }
+            }
+          ],
+          "layer": "surface",
+          "mode": "spread"
+        }
+      ],
+      "viewportWidth": 1920
+    },
+    {
+      "label": "phone-zoom-final",
+      "boardWidth": 746,
+      "piles": [
+        {
+          "area": {
+            "bottom": 37.8515625,
+            "height": 216.5546875,
+            "left": 125.59375,
+            "right": 264.3984375,
+            "top": -178.703125,
+            "width": 138.8046875,
+            "x": 125.59375,
+            "y": -178.703125
+          },
+          "at": "2",
+          "cards": [
+            {
+              "id": "u8",
+              "rect": {
+                "bottom": 13.359375,
+                "height": 167.578125,
+                "left": 134.9921875,
+                "right": 254.9921875,
+                "top": -154.21875,
+                "width": 120,
+                "x": 134.9921875,
+                "y": -154.21875
+              }
+            }
+          ],
+          "layer": "surface",
+          "mode": "spread"
+        },
+        {
+          "area": {
+            "bottom": 197.0703125,
+            "height": 101.2734375,
+            "left": -24.203125,
+            "right": 114.59375,
+            "top": 95.796875,
+            "width": 138.796875,
+            "x": -24.203125,
+            "y": 95.796875
+          },
+          "at": "6",
+          "cards": [
+            {
+              "id": "layout-113",
+              "rect": {
+                "bottom": 197.0703125,
+                "height": 101.2734375,
+                "left": 8.9296875,
+                "right": 81.4453125,
+                "top": 95.796875,
+                "width": 72.515625,
+                "x": 8.9296875,
+                "y": 95.796875
+              }
+            }
+          ],
+          "layer": "surface",
+          "mode": "spread"
+        },
+        {
+          "area": {
+            "bottom": 336.5,
+            "height": 101.28125,
+            "left": -24.203125,
+            "right": 114.59375,
+            "top": 235.21875,
+            "width": 138.796875,
+            "x": -24.203125,
+            "y": 235.21875
+          },
+          "at": "6",
+          "cards": [
+            {
+              "id": "layout-114",
+              "rect": {
+                "bottom": 316.296875,
+                "height": 60.8828125,
+                "left": -24.203125,
+                "right": 19.390625,
+                "top": 255.4140625,
+                "width": 43.59375,
+                "x": -24.203125,
+                "y": 255.4140625
+              }
+            },
+            {
+              "id": "layout-115",
+              "rect": {
+                "bottom": 316.296875,
+                "height": 60.8828125,
+                "left": 23.390625,
+                "right": 66.984375,
+                "top": 255.4140625,
+                "width": 43.59375,
+                "x": 23.390625,
+                "y": 255.4140625
+              }
+            },
+            {
+              "id": "layout-under-ruby",
+              "rect": {
+                "bottom": 316.296875,
+                "height": 60.8828125,
+                "left": 70.9921875,
+                "right": 114.5859375,
+                "top": 255.4140625,
+                "width": 43.59375,
+                "x": 70.9921875,
+                "y": 255.4140625
+              }
+            }
+          ],
+          "layer": "below",
+          "mode": "spread"
+        },
+        {
+          "area": {
+            "bottom": 586.8515625,
+            "height": 216.5546875,
+            "left": -24.203125,
+            "right": 114.59375,
+            "top": 370.296875,
+            "width": 138.796875,
+            "x": -24.203125,
+            "y": 370.296875
+          },
+          "at": "11",
+          "cards": [
+            {
+              "id": "layout-109",
+              "rect": {
+                "bottom": 439.8125,
+                "height": 69.515625,
+                "left": -6.5859375,
+                "right": 43.1875,
+                "top": 370.296875,
+                "width": 49.7734375,
+                "x": -6.5859375,
+                "y": 370.296875
+              }
+            },
+            {
+              "id": "layout-110",
+              "rect": {
+                "bottom": 439.8125,
+                "height": 69.515625,
+                "left": 47.1953125,
+                "right": 96.96875,
+                "top": 370.296875,
+                "width": 49.7734375,
+                "x": 47.1953125,
+                "y": 370.296875
+              }
+            },
+            {
+              "id": "layout-111",
+              "rect": {
+                "bottom": 513.328125,
+                "height": 69.515625,
+                "left": -6.5859375,
+                "right": 43.1875,
+                "top": 443.8125,
+                "width": 49.7734375,
+                "x": -6.5859375,
+                "y": 443.8125
+              }
+            },
+            {
+              "id": "layout-112",
+              "rect": {
+                "bottom": 513.328125,
+                "height": 69.515625,
+                "left": 47.1953125,
+                "right": 96.96875,
+                "top": 443.8125,
+                "width": 49.7734375,
+                "x": 47.1953125,
+                "y": 443.8125
+              }
+            },
+            {
+              "id": "layout-ruby",
+              "rect": {
+                "bottom": 586.84375,
+                "height": 69.515625,
+                "left": 20.3046875,
+                "right": 70.078125,
+                "top": 517.328125,
+                "width": 49.7734375,
+                "x": 20.3046875,
+                "y": 517.328125
+              }
+            }
+          ],
+          "layer": "surface",
+          "mode": "spread"
+        },
+        {
+          "area": {
+            "bottom": 586.8515625,
+            "height": 216.5546875,
+            "left": 125.59375,
+            "right": 264.3984375,
+            "top": 370.296875,
+            "width": 138.8046875,
+            "x": 125.59375,
+            "y": 370.296875
+          },
+          "at": "12",
+          "cards": [
+            {
+              "id": "layout-101",
+              "rect": {
+                "bottom": 444.1171875,
+                "height": 60.8828125,
+                "left": 125.59375,
+                "right": 169.1953125,
+                "top": 383.234375,
+                "width": 43.6015625,
+                "x": 125.59375,
+                "y": 383.234375
+              }
+            },
+            {
+              "id": "layout-102",
+              "rect": {
+                "bottom": 444.1171875,
+                "height": 60.8828125,
+                "left": 173.1953125,
+                "right": 216.796875,
+                "top": 383.234375,
+                "width": 43.6015625,
+                "x": 173.1953125,
+                "y": 383.234375
+              }
+            },
+            {
+              "id": "layout-103",
+              "rect": {
+                "bottom": 444.1171875,
+                "height": 60.8828125,
+                "left": 220.796875,
+                "right": 264.3984375,
+                "top": 383.234375,
+                "width": 43.6015625,
+                "x": 220.796875,
+                "y": 383.234375
+              }
+            },
+            {
+              "id": "layout-104",
+              "rect": {
+                "bottom": 509.0078125,
+                "height": 60.8828125,
+                "left": 125.59375,
+                "right": 169.1953125,
+                "top": 448.125,
+                "width": 43.6015625,
+                "x": 125.59375,
+                "y": 448.125
+              }
+            },
+            {
+              "id": "layout-105",
+              "rect": {
+                "bottom": 509.0078125,
+                "height": 60.8828125,
+                "left": 173.1953125,
+                "right": 216.796875,
+                "top": 448.125,
+                "width": 43.6015625,
+                "x": 173.1953125,
+                "y": 448.125
+              }
+            },
+            {
+              "id": "layout-106",
+              "rect": {
+                "bottom": 509.0078125,
+                "height": 60.8828125,
+                "left": 220.796875,
+                "right": 264.3984375,
+                "top": 448.125,
+                "width": 43.6015625,
+                "x": 220.796875,
+                "y": 448.125
+              }
+            },
+            {
+              "id": "layout-107",
+              "rect": {
+                "bottom": 573.8984375,
+                "height": 60.8828125,
+                "left": 149.390625,
+                "right": 192.9921875,
+                "top": 513.015625,
+                "width": 43.6015625,
+                "x": 149.390625,
+                "y": 513.015625
+              }
+            },
+            {
+              "id": "layout-108",
+              "rect": {
+                "bottom": 573.8984375,
+                "height": 60.8828125,
+                "left": 196.9921875,
+                "right": 240.59375,
+                "top": 513.015625,
+                "width": 43.6015625,
+                "x": 196.9921875,
+                "y": 513.015625
+              }
+            }
+          ],
+          "layer": "surface",
+          "mode": "spread"
+        },
+        {
+          "area": {
+            "bottom": 861.3515625,
+            "height": 216.5546875,
+            "left": 125.59375,
+            "right": 264.3984375,
+            "top": 644.796875,
+            "width": 138.8046875,
+            "x": 125.59375,
+            "y": 644.796875
+          },
+          "at": "17",
+          "cards": [
+            {
+              "id": "u1",
+              "rect": {
+                "bottom": 751.0703125,
+                "height": 106.2734375,
+                "left": 156.9375,
+                "right": 233.0390625,
+                "top": 644.796875,
+                "width": 76.1015625,
+                "x": 156.9375,
+                "y": 644.796875
+              }
+            },
+            {
+              "id": "layout-100",
+              "rect": {
+                "bottom": 861.34375,
+                "height": 106.2734375,
+                "left": 156.9375,
+                "right": 233.0390625,
+                "top": 755.0703125,
+                "width": 76.1015625,
+                "x": 156.9375,
+                "y": 755.0703125
+              }
+            }
+          ],
+          "layer": "surface",
+          "mode": "spread"
+        }
+      ],
+      "viewportWidth": 390
+    }
+  ],
+  "layerSeparation": {
+    "below": true,
+    "site": {
+      "bottom": 326.9140625,
+      "height": 22.1484375,
+      "left": 394.4765625,
+      "right": 762.5546875,
+      "top": 304.765625,
+      "width": 368.078125,
+      "x": 394.4765625,
+      "y": 304.765625
+    },
+    "surface": true
+  },
+  "checks": [
+    {
+      "view": "phone-final-geometry",
+      "at": "2",
+      "layer": "surface",
+      "mode": "spread",
+      "count": 1,
+      "allCardsInsideLayer": true,
+      "overlapping": false
+    },
+    {
+      "view": "phone-final-geometry",
+      "at": "6",
+      "layer": "surface",
+      "mode": "spread",
+      "count": 1,
+      "allCardsInsideLayer": true,
+      "overlapping": false
+    },
+    {
+      "view": "phone-final-geometry",
+      "at": "6",
+      "layer": "below",
+      "mode": "stack",
+      "count": 3,
+      "allCardsInsideLayer": true,
+      "overlapping": true
+    },
+    {
+      "view": "phone-final-geometry",
+      "at": "11",
+      "layer": "surface",
+      "mode": "stack",
+      "count": 5,
+      "allCardsInsideLayer": true,
+      "overlapping": true
+    },
+    {
+      "view": "phone-final-geometry",
+      "at": "12",
+      "layer": "surface",
+      "mode": "stack",
+      "count": 8,
+      "allCardsInsideLayer": true,
+      "overlapping": true
+    },
+    {
+      "view": "phone-final-geometry",
+      "at": "17",
+      "layer": "surface",
+      "mode": "spread",
+      "count": 2,
+      "allCardsInsideLayer": true,
+      "overlapping": false
+    },
+    {
+      "view": "desktop-final",
+      "at": "2",
+      "layer": "surface",
+      "mode": "spread",
+      "count": 1,
+      "allCardsInsideLayer": true,
+      "overlapping": false
+    },
+    {
+      "view": "desktop-final",
+      "at": "6",
+      "layer": "surface",
+      "mode": "spread",
+      "count": 1,
+      "allCardsInsideLayer": true,
+      "overlapping": false
+    },
+    {
+      "view": "desktop-final",
+      "at": "6",
+      "layer": "below",
+      "mode": "spread",
+      "count": 3,
+      "allCardsInsideLayer": true,
+      "overlapping": false
+    },
+    {
+      "view": "desktop-final",
+      "at": "11",
+      "layer": "surface",
+      "mode": "spread",
+      "count": 5,
+      "allCardsInsideLayer": true,
+      "overlapping": false
+    },
+    {
+      "view": "desktop-final",
+      "at": "12",
+      "layer": "surface",
+      "mode": "spread",
+      "count": 8,
+      "allCardsInsideLayer": true,
+      "overlapping": false
+    },
+    {
+      "view": "desktop-final",
+      "at": "17",
+      "layer": "surface",
+      "mode": "spread",
+      "count": 2,
+      "allCardsInsideLayer": true,
+      "overlapping": false
+    },
+    {
+      "view": "phone-zoom-final",
+      "at": "2",
+      "layer": "surface",
+      "mode": "spread",
+      "count": 1,
+      "allCardsInsideLayer": true,
+      "overlapping": false
+    },
+    {
+      "view": "phone-zoom-final",
+      "at": "6",
+      "layer": "surface",
+      "mode": "spread",
+      "count": 1,
+      "allCardsInsideLayer": true,
+      "overlapping": false
+    },
+    {
+      "view": "phone-zoom-final",
+      "at": "6",
+      "layer": "below",
+      "mode": "spread",
+      "count": 3,
+      "allCardsInsideLayer": true,
+      "overlapping": false
+    },
+    {
+      "view": "phone-zoom-final",
+      "at": "11",
+      "layer": "surface",
+      "mode": "spread",
+      "count": 5,
+      "allCardsInsideLayer": true,
+      "overlapping": false
+    },
+    {
+      "view": "phone-zoom-final",
+      "at": "12",
+      "layer": "surface",
+      "mode": "spread",
+      "count": 8,
+      "allCardsInsideLayer": true,
+      "overlapping": false
+    },
+    {
+      "view": "phone-zoom-final",
+      "at": "17",
+      "layer": "surface",
+      "mode": "spread",
+      "count": 2,
+      "allCardsInsideLayer": true,
+      "overlapping": false
+    }
+  ],
+  "fixture": "data/realm-layout-fixture.json",
+  "fixtureScope": "Authored layout and interaction test scene; no claim of a new full played match.",
+  "interactions": [
+    "Phone C1 two fully spread cards each open the correct detail popup by direct tap",
+    "Subsurface artifact opens its own correct card detail",
+    "Dragged layout-100 from C1 to crowded C2; DOM confirms destination12 and no stray popup",
+    "C2 expands to show all nine units after the real drag",
+    "Zooming phone from1 to1.96 releases 3/5/8-card crowded layers into complete spread",
+    "Surface and subsurface card bounds stay on their respective sides of the Site",
+    "Browser console error list empty",
+    "Original match restored and temporary viewport override reset"
+  ],
+  "regression": {
+    "startedAt": "2026-10-31T05:25:39.203Z",
+    "checkedAt": "2026-10-31T05:27:26.434Z",
+    "command": "node --test --test-reporter=tap tests/*.test.js",
+    "exitCode": 0,
+    "signal": null,
+    "tests": 2758,
+    "passed": 2758,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "sourceBefore": "42fc26fce4867ae9e98321abc4afb38135396dd70ca585d0cfc77bccbfe44225",
+    "sourceAfter": "42fc26fce4867ae9e98321abc4afb38135396dd70ca585d0cfc77bccbfe44225",
+    "sourceUnchanged": true,
+    "resultFile": "/tmp/sorcery-full-regression-0woD1m/results.tap",
+    "stderrFile": "/tmp/sorcery-full-regression-0woD1m/stderr.log"
+  },
+  "regressionArtifact": "output/ui/realm-spread-regression.tap",
+  "sourceHashes": {
+    "src/realm-layout.js": "74b55f3927b9545ddaacf7a5e79e2fadfbc48a3162de88f492f857d2ff57808f",
+    "src/app.js": "45e8479f1770721af1af86fe1a04849b84518008cf2ccf032faaef544883692c",
+    "styles/game.css": "b1db62333d3d136a90dce007d2f6785b3d0c3d57777e68fa1b2af22f506aea11"
+  },
+  "screenshots": [
+    "output/ui/realm-spread-desktop.jpg",
+    "output/ui/realm-spread-phone.jpg",
+    "output/ui/realm-spread-zoom.jpg"
+  ],
+  "desktopPreviewViewport": {
+    "width": 1200,
+    "height": 900
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "checkedAt": "2026-10-30T14:03:50Z",
+  "url": "http://127.0.0.1:8766/tests/index.html",
+  "method": "CUA browser reload and visible accessibility result",
+  "passed": 11,
+  "failed": 0,
+  "scope": "實際CUA瀏覽器本機模組／預組載入煙霧驗證；非101張逐卡效果測試，後續批次修改另驗。"
+}
