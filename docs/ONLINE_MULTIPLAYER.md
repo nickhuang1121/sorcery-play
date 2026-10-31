@@ -63,4 +63,4 @@ firebase deploy --only database --project sorcery-codex
 - 實際 Firebase 規則／交易：8 項檢查通過，兩個受規則限制的 Google token 測試身分執行 119 次操作，19 回合自然結束，生命 14／0。這不是兩個 Google 帳號的瀏覽器 OAuth 實戰。
 - Chrome 已實際完成 Google OAuth 登入、建房、上傳牌組、準備、重新整理後恢復席位與登出；測試時沒有 Node 對戰服務。
 - 390×844 手機頁面已檢查中英文、選單、關閉及登入前操作限制，並修正頁首擠壓與英文席位標籤。
-- 本機證據在忽略上傳的 `output/firebase-online/`。Firebase 設定與規則已套用；新的前端檔案尚未發布至 GitHub Pages。
+- 本機證據在忽略上傳的 `output/firebase-online/`。Firebase 設定與規則已套用；前端已由 GitHub `main` 分支部署至上述 GitHub Pages 正式網址。

@@ -1,6 +1,6 @@
 # GitHub 上傳與排除規則
 
-專案根目錄的 `.gitignore` 排除本機產物；`card-images/.gitignore` 只放行卡圖索引正在使用的版本。本次沒有刪除任何檔案，也沒有初始化 Git、建立提交或推送。
+專案根目錄的 `.gitignore` 排除本機產物；`card-images/.gitignore` 只放行卡圖索引正在使用的版本。目前已連接 `nickhuang1121/sorcery-play`，GitHub Pages 從 `main` 分支根目錄自動部署。
 
 ## 不提交的內容
 
@@ -41,7 +41,7 @@ node tools/update-upload-excludes.mjs
 
 檢查細節保存在本機 `output/github-upload/`，該目錄本身不提交。排除規則預估減少約 134 MiB；這是初次掃描時的數字，之後產物增加時會改變。
 
-目前專案根目錄尚無 `.git`；未來使用 Git 加入檔案時會套用規則。若改在已有歷史的儲存庫使用，`.gitignore` 不會自動取消既有檔案的追蹤。GitHub 網頁手動上傳也不會自動套用本機 Git 的排除規則。
+專案根目錄已建立 `.git` 並保留遠端提交歷史；之後使用 Git 加入檔案時會套用規則。若改在已有歷史的儲存庫使用，`.gitignore` 不會自動取消既有檔案的追蹤。GitHub 網頁手動上傳也不會自動套用本機 Git 的排除規則。
 
 本次隔離副本驗證結果：完整 Node 測試 **2775／2775 通過、0 失敗**；17 個忽略行為案例通過，卡圖索引重建一致。
 

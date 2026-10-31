@@ -1,4 +1,4 @@
-import {createOnlineClient,savedOnlineRoom} from './net/online-client.js';
+import {createOnlineClient,savedOnlineRoom,bindOnlinePageLifecycle} from './net/online-client.js';
 import {battleNoticeEvents,createBattleNoticeFeed} from './battle-notices.js';
 import {arrangeRealmPiles} from './realm-layout.js';
 import {localizeChoice} from './ui-choice-copy.js';
@@ -844,7 +844,7 @@ try{
     // produces effects; old history is never replayed on reconnect.
     if(before&&previous+1===snapshot.revision&&snapshot.lastAction){const a=snapshot.lastAction;playBattleEffects(battleEffects(before,state,a,card));const notices=battleNoticeEvents(before,state,a,card),localized=localizeChoice({title:'',options:notices.flatMap(n=>[{label:n.text},{label:n.context||''}])},cards,cardTitle);battleNotices.enqueue(notices.map((n,i)=>({...n,text:localized.options[i*2].label,context:localized.options[i*2+1].label})));}
    }});
-   window.addEventListener('pagehide',()=>{online.offline();online.close();});
+   bindOnlinePageLifecycle(online);
    document.querySelector('.offline').textContent=label('● 線上對戰','● Online match');
    online.start();
   }else{

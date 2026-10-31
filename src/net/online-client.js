@@ -6,6 +6,14 @@ const base=()=>location.port==='5500'?location.protocol+'//'+location.hostname+'
 export const onlineRoomKey='sorcery.firebaseOnlineRoom';
 export function savedOnlineRoom(){try{return JSON.parse(localStorage.getItem(onlineRoomKey));}catch{return null;}}
 export function saveOnlineRoom(room){const v={id:room.id,seat:room.seat,token:room.token,provider:room.provider||'firebase'};localStorage.setItem(onlineRoomKey,JSON.stringify(v));return v;}
+// A back/forward-cache restore retains a client closed by pagehide. Reload the
+// authenticated room instead of displaying that disconnected, stale snapshot.
+export function bindOnlinePageLifecycle(client,{target=window,reload=()=>location.reload()}={}){
+ const hide=()=>{void client.offline();client.close();};
+ const show=event=>{if(event.persisted)reload();};
+ target.addEventListener('pagehide',hide);target.addEventListener('pageshow',show);
+ return ()=>{target.removeEventListener('pagehide',hide);target.removeEventListener('pageshow',show);};
+}
 export async function onlineRequest(route,options={}){const {getFirebaseOnline}=await import('./firebase-online.js');return (await getFirebaseOnline()).request(route,options);}
 // Optional local authority adapter, used by development tests only.
 export async function httpOnlineRequest(route,{method='GET',token,body,signal}={}){
