@@ -1,0 +1,11 @@
+/* One neutral glass surface for every game dialog, including nested dialogs. */
+.glass-runtime{--popup-surface:rgba(0,0,0,.52)}
+.glass-runtime dialog.popup{background:rgba(0,0,0,.52);border:1px solid #ffffff24;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);color:#eee}
+.glass-runtime dialog.popup::backdrop{background:rgba(0,0,0,.24);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
+.glass-runtime dialog.popup :is(.popup-body,.popup-footer,.popup-menu,.popup-log,.fs-footer,#tutorial-dialog-tools){background:transparent}
+.glass-runtime dialog.popup button:not([data-card]):not(.card):not(.unit){background:rgba(255,255,255,.04);border-color:#ffffff24;color:#eee}
+.glass-runtime dialog.popup :is(button.primary,button.confirm-yes,button[aria-pressed="true"]):not([data-card]):not(.card):not(.unit){background:rgba(255,255,255,.12);border-color:#ffffff4d;color:#fff}
+.glass-runtime dialog.popup :is(input,select,textarea,.carry-picks label){background:rgba(0,0,0,.35);border-color:#ffffff24;color:#eee;color-scheme:dark}
+.glass-runtime dialog.popup :is(.eyebrow,h3,.muted,.notice,.card-info-meta){color:#bfc3c7}
+.glass-runtime dialog.popup .tutorial-menu-items{background:rgba(0,0,0,.72);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+@media(hover:hover){.glass-runtime dialog.popup button:not([data-card]):not(.card):not(.unit):hover{background:rgba(255,255,255,.18)}}

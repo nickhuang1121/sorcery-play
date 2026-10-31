@@ -15,29 +15,23 @@ export function scopePresentation(source){
 export function battleHTML(source,{lobby=false}={}){
  let s=source.replaceAll('href="./index.html"','href="./battle.html"')
   .replace(/(href|src)="\.\/(styles|src|docs|tests)\//g,'$1="../../$2/')
-  .replace(/src="\.\.\/\.\.\/src\/app\.js[^\"]*"/g,'src="./battle-app.js?v=20261031-glass-popups"')
-  .replace(/src="\.\.\/\.\.\/src\/online-lobby\.js[^\"]*"/g,'src="./lobby-app.js?v=20261031-glass-popups"')
+  .replace(/src="\.\.\/\.\.\/src\/app\.js[^\"]*"/g,'src="./battle-app.js?v=20261031-live-tabletop"')
+  .replace(/src="\.\.\/\.\.\/src\/online-lobby\.js[^\"]*"/g,'src="./lobby-app.js?v=20261031-live-tabletop"')
   .replace('<body class="','<body class="forest-runtime ')
-  .replace('</head>','<link rel="stylesheet" href="./battle-skin.css?v=20261031-glass-popups"><link rel="stylesheet" href="./mobile-stack.css?v=20261031-glass-popups"><link rel="stylesheet" href="./frosted-popups.css?v=20261031-glass-popups"></head>')
-  .replace('</body>','<script type="module" src="./battle-adapter.js?v=20261031-glass-popups"></script></body>');
+  .replace('</body>','<script type="module" src="./battle-adapter.js?v=20261031-live-tabletop"></script></body>');
  return s.replace(/<title>[^<]+<\/title>/,'<title data-i18n-preserve>Sorcery · 森境對戰'+(lobby?'大廳':'')+'</title>');
 }
 export async function syncBattle({check=false}={}){
  const sources={};for(const path of ['src/app.js','src/online-lobby.js','index.html','online-play.html','lobby.html'])sources[path]=await readFile(new URL(path,root),'utf8');
  let app=scopePresentation(sources['src/app.js']);
- const publicCounts='data-player="${p}"';if(app.split(publicCounts).length!==2)throw Error('Player HUD markup changed; review public pile counts.');
- app=app.replace("import {arrangeRealmPiles} from '../../src/realm-layout.js';","import {arrangeMobileRealmPiles as arrangeRealmPiles} from './mobile-stack-layout.js?v=20261031-glass-popups';\nimport {createForestStack} from './mobile-stack.js?v=20261031-glass-popups';");
- const hooks=[['function openStack(at,layer){','function openStack(at,layer){if(forestStack.enabled()&&forestStack.open(at,layer))return;'],['function chooseAt(at,target){','function chooseAt(at,target){if(forestStack.routeTarget(at))return;'],['function tryBoardChoice(hit){','function tryBoardChoice(hit){if(forestStack.routeChoice(hit))return true;']];
- for(const [before,after]of hooks){if(!app.includes(before))throw Error('Native UI hook changed: '+before);app=app.replace(before,after);}
- const start='try{\n  await loadCards();';if(!app.includes(start))throw Error('Bootstrap changed');app=app.replace(start,(await readFile(new URL('battle-stack-bridge.inc.js',here),'utf8'))+'\n'+start);
- app=app.replace(publicCounts,'data-player="${p}" data-atlas-count="${pl.atlas.length}" data-spell-count="${pl.spells.length}" data-grave-count="${pl.cemetery.length}"');
+
  const outputs={
   'battle-app.js':`// GENERATED from src/app.js; run node experiments/tabletop/sync-battle.mjs.\n// Shared engine and legal actions are unchanged. Local saves are scoped.\n${app}`,
   'lobby-app.js':`// GENERATED from src/online-lobby.js; shared Firebase modules and room protocol.\n${scopePresentation(sources['src/online-lobby.js'])}`,
   'battle.html':battleHTML(sources['index.html']),
   'online-play.html':battleHTML(sources['online-play.html']),
   'lobby.html':battleHTML(sources['lobby.html'],{lobby:true}),
-  'runtime-manifest.json':JSON.stringify({description:'Generated UI entrypoints only; no copied rule engine. Existing production files are not modified.',sources:Object.fromEntries(Object.entries(sources).map(([p,s])=>[p,hash(s)])),storage:{match:'sorcery.tabletop.match',decks:'sorcery.tabletop.decks',tutorial:'sorcery.tabletop.tutorial.v1'},network:'Same Firebase Auth, room credentials, protocol and engine modules as production.'},null,2)+'\n'
+  'runtime-manifest.json':JSON.stringify({description:'Generated experimental entrypoints; production presentation and the shared rule engine are canonical.',sources:Object.fromEntries(Object.entries(sources).map(([p,s])=>[p,hash(s)])),storage:{match:'sorcery.tabletop.match',decks:'sorcery.tabletop.decks',tutorial:'sorcery.tabletop.tutorial.v1'},network:'Same Firebase Auth, room credentials, protocol and engine modules as production.'},null,2)+'\n'
  };
  for(const [path,content]of Object.entries(outputs)){if(check){if(await readFile(new URL(path,here),'utf8')!==content)throw Error('Experimental presentation is stale: '+path);}else await writeFile(new URL(path,here),content);}
  return outputs;

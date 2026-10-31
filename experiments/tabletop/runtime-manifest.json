@@ -1,11 +1,11 @@
 {
-  "description": "Generated UI entrypoints only; no copied rule engine. Existing production files are not modified.",
+  "description": "Generated experimental entrypoints; production presentation and the shared rule engine are canonical.",
   "sources": {
-    "src/app.js": "92b2089f4a2fccb2823969cf6e77ccb8e95db46163c2cf263c49e4a394dbb905",
+    "src/app.js": "7f4f3d6aac1ac7dbbe2b177dbaa71900e7587002bb93107aca98178ff1f26458",
     "src/online-lobby.js": "75aabac975796160718c42b8fa3d53fcc0b1418565efc4291691e0056a82865e",
-    "index.html": "4c4ac7efd2136d542b46d2378dbbc30537b4df845a941ba5f3c39da5cacb2e77",
-    "online-play.html": "10df99fffe8308a14edc6b9b270ec64b9af851ba6e000b375fc7a0db58b711dd",
-    "lobby.html": "eece56bed3ee5604814ab1c0b1558a3abe1c7b2622f6ffd443e20a5420ec5d97"
+    "index.html": "52513cd0123b418c0ded154de1d974e4eb29c48e0d9bca222814f73acead6d6e",
+    "online-play.html": "97a3e5b42a60fa73524c4900f830a56290aed0652d33c46edcdc09424db5bd3d",
+    "lobby.html": "a4b9394c22b9eb275052efda48935fc2bd308b31dec2d03ace8cb4a7c70dcec2"
   },
   "storage": {
     "match": "sorcery.tabletop.match",

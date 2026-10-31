@@ -5,8 +5,9 @@ import {TUTORIAL_KEY,tutorialChapters,tutorialText,cleanTutorialProgress,createT
 import {createTutorialGuide} from '../../src/tutorial-ui.js';
 import {createOnlineClient,savedOnlineRoom,bindOnlinePageLifecycle} from '../../src/net/online-client.js?v=20261031-mobile-natural';
 import {battleNoticeEvents,createBattleNoticeFeed} from '../../src/battle-notices.js';
-import {arrangeMobileRealmPiles as arrangeRealmPiles} from './mobile-stack-layout.js?v=20261031-glass-popups';
-import {createForestStack} from './mobile-stack.js?v=20261031-glass-popups';
+import {arrangeMobileRealmPiles as arrangeRealmPiles} from '../../src/realm-mobile-layout.js?v=20261031-live-tabletop';
+import {createForestStack} from '../../src/realm-mobile-picker.js?v=20261031-live-tabletop';
+import '../../src/battle-scene.js?v=20261031-live-tabletop';
 import {localizeChoice} from '../../src/ui-choice-copy.js';
 import {connectPopup} from '../../src/popup.js';
 import {createCardInfoPopup} from '../../src/card-info-popup.js';
@@ -880,7 +881,7 @@ function syncGameNav(){
  nav.hidden=view==='play'||view==='home';nav.innerHTML=[['home','⌂','大廳'],['play','⚔','對戰'],['decks','▣','牌組'],['library','✧','圖鑑']].map(([v,icon,label])=>`<button type="button" data-game-view="${v}" ${view===v?'aria-current="page"':''}><span aria-hidden="true">${icon}</span>${label}</button>`).join('');
  nav.querySelectorAll('[data-game-view]').forEach(b=>b.onclick=()=>{view=b.dataset.gameView;selected=null;close();render();if(view==='play')scheduleAI();});
 }
-function render(){const popupOpen=!!document.querySelector('dialog[open]');protectUIStrings(saved.filter(d=>!d.officialId).map(d=>d.name));if(view!=='play'){mulliganSeen=null;clearTimeout(aiTimer);}document.body.classList.toggle('in-home',view==='home');battleNotices.setActive(view==='play');document.body.classList.toggle('in-battle',view==='play');document.body.classList.toggle('in-archive',view!=='play');document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));if(view!=='play')clearBattleEffects();if(view==='home')renderHome();else if(view==='play')renderBattle();else renderLibrary(view==='decks');syncGameNav();if(view==='play'&&state.phase==='mulligan'&&human()&&!state.choice&&!popupOpen&&mulliganSeen!==state){mulliganSeen=state;mulliganDialog();}if(view==='play'&&state.choice&&human()&&!popupOpen)effectDialog();if(view==='play'&&state.phase==='draw'&&human()&&!state.choice&&!popupOpen&&drawSeen!==state){drawSeen=state;drawDialog();}if(view==='play'&&state.winner!==null&&resultSeen!==state){resultSeen=state;resultDialog();}tutorialGuide.refresh();if(tutorial?.done&&!tutorialCompletionShown){tutorialCompletionShown=true;tutorialCompleteDialog();}}
+function render(){const popupOpen=!!document.querySelector('dialog[open]');protectUIStrings(saved.filter(d=>!d.officialId).map(d=>d.name));if(view!=='play'){mulliganSeen=null;clearTimeout(aiTimer);}document.body.classList.toggle('in-home',view==='home');battleNotices.setActive(view==='play');document.body.classList.toggle('in-battle',view==='play');document.body.classList.toggle('forest-runtime',view==='play');document.body.classList.toggle('in-archive',view!=='play');document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));if(view!=='play')clearBattleEffects();if(view==='home')renderHome();else if(view==='play')renderBattle();else renderLibrary(view==='decks');syncGameNav();if(view==='play'&&state.phase==='mulligan'&&human()&&!state.choice&&!popupOpen&&mulliganSeen!==state){mulliganSeen=state;mulliganDialog();}if(view==='play'&&state.choice&&human()&&!popupOpen)effectDialog();if(view==='play'&&state.phase==='draw'&&human()&&!state.choice&&!popupOpen&&drawSeen!==state){drawSeen=state;drawDialog();}if(view==='play'&&state.winner!==null&&resultSeen!==state){resultSeen=state;resultDialog();}tutorialGuide.refresh();if(tutorial?.done&&!tutorialCompletionShown){tutorialCompletionShown=true;tutorialCompleteDialog();}}
 window.addEventListener('sorcery:languagechange',()=>{
  setLang(getUILanguage()==='en'?'en':'zh');
  if(!state)return;
@@ -896,7 +897,7 @@ window.addEventListener('sorcery:languagechange',()=>{
  localizeInterface();
 });
 window.addEventListener('resize',()=>requestAnimationFrame(layoutBoard));
-// Included in the generated presentation module. Uses native UI actions only.
+// Mobile realm picker bridge. Uses the existing legal actions and native UI only.
 const forestStack=createForestStack({
  locale:getUILanguage,revision:()=>state,selection:()=>selected,hasChoice:()=>!!boardChoice(),
  canBrowse:()=>view==='play'&&!panMode&&!tutorial&&!pointer?.moved,
@@ -979,4 +980,4 @@ try{
   tutorialProgress=cleanTutorialProgress(store.get('sorcery.tabletop.tutorial.v1',null));
   view='home';render();
   }
-}catch(e){app.innerHTML=`<div class="notice"><h2>無法啟動遊戲</h2><p>${esc(e.message)}</p><p>請在 VS Code 對 index.html 使用 Open with Live Server。遊戲需要以 HTTP 載入本機 ES Modules 與 JSON。</p></div>`;console.error(e);}
+}catch(e){app.innerHTML=onlineMode?`<div class="notice"><h2>${tt('無法進入線上對局','Could not enter the online match')}</h2><p>${esc(e.message)}</p><a class="action-button" href="./lobby.html">${tt('返回線上大廳','Return to online lobby')}</a></div>`:`<div class="notice"><h2>無法啟動遊戲</h2><p>${esc(e.message)}</p><p>請在 VS Code 對 index.html 使用 Open with Live Server。遊戲需要以 HTTP 載入本機 ES Modules 與 JSON。</p></div>`;console.error(e);}
