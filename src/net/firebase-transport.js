@@ -1,6 +1,17 @@
 import { FIREBASE_SDK_VERSION } from './firebase-config.js';
 import {isGooglePlayer} from './firebase-auth.js';
 
+// A transaction can first see null even when remote data exists. Keep a value
+// listener until it has loaded, so an intentional undefined abort (e.g. GC of
+// active rooms) is based on actual data instead of an empty local cache.
+export async function runPrimedFirebaseTransaction(reference,updater,{onValue,runTransaction}){
+  let unsubscribe;
+  try{
+    await new Promise((resolve,reject)=>{unsubscribe=onValue(reference,resolve,reject);});
+    return await runTransaction(reference,updater,{applyLocally:false});
+  }finally{unsubscribe?.();}
+}
+
 /**
  * Realtime Database transport — same surface as memory: get / set / update / subscribe.
  * Uses Firebase JS SDK via CDN (no bundler). Not wired into app.js yet.
@@ -29,7 +40,7 @@ export async function createFirebaseTransport(config) {
   let clockOffset=0,connected=false;
   onValue(ref(db,'.info/serverTimeOffset'),snap=>{clockOffset=Number(snap.val())||0;});
   onValue(ref(db,'.info/connected'),snap=>{connected=snap.val()===true;});
-  async function transact(path,updater){const result=await runTransaction(ref(db,path),current=>updater(current??null),{applyLocally:false});return {committed:result.committed,value:result.snapshot.exists()?result.snapshot.val():null};}
+  async function transact(path,updater){const result=await runPrimedFirebaseTransaction(ref(db,path),current=>updater(current??null),{onValue,runTransaction});return {committed:result.committed,value:result.snapshot.exists()?result.snapshot.val():null};}
 
   async function ensureAuth() {
     if (config.skipAuth) return null;

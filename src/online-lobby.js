@@ -1,10 +1,10 @@
 import {getGoogleAuth,googleAuthMessage} from './net/firebase-auth.js';
-import {resetFirebaseOnline} from './net/firebase-online.js';
-import {onlineRoomKey} from './net/online-client.js';
+import {resetFirebaseOnline} from './net/firebase-online.js?v=20261031-mobile-natural';
+import {onlineRoomKey} from './net/online-client.js?v=20261031-mobile-natural';
 import {loadCards,officialBetaDecks,validateDeck} from './cards.js';
 import {parseJsonDeck} from './deck-import.js';
 import {ENGINE_BUILD} from './net/protocol.js';
-import {onlineRequest,savedOnlineRoom,saveOnlineRoom} from './net/online-client.js';
+import {onlineRequest,savedOnlineRoom,saveOnlineRoom} from './net/online-client.js?v=20261031-mobile-natural';
 import {showNotice} from './popup.js';
 import {getUILanguage} from './ui-language.js';
 const $=s=>document.querySelector(s),text=(zh,en)=>getUILanguage()==='en'?en:zh;

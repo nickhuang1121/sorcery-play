@@ -14,7 +14,7 @@ export function bindOnlinePageLifecycle(client,{target=window,reload=()=>locatio
  target.addEventListener('pagehide',hide);target.addEventListener('pageshow',show);
  return ()=>{target.removeEventListener('pagehide',hide);target.removeEventListener('pageshow',show);};
 }
-export async function onlineRequest(route,options={}){const {getFirebaseOnline}=await import('./firebase-online.js');return (await getFirebaseOnline()).request(route,options);}
+export async function onlineRequest(route,options={}){const {getFirebaseOnline}=await import('./firebase-online.js?v=20261031-mobile-natural');return (await getFirebaseOnline()).request(route,options);}
 // Optional local authority adapter, used by development tests only.
 export async function httpOnlineRequest(route,{method='GET',token,body,signal}={}){
  const response=await fetch(base()+'/api'+route,{method,signal:signal??AbortSignal.timeout(8000),headers:{...(token?{Authorization:'Bearer '+token}:{}),...(body?{'Content-Type':'application/json'}:{})},body:body?JSON.stringify({...body,build:ENGINE_BUILD}):undefined});

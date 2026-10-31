@@ -1,0 +1,2840 @@
+{
+  "build": "firebase-friends-20261031-v1",
+  "source": "https://nickhuang1121.github.io/sorcery-play/",
+  "validationDate": "2026-10-31",
+  "browsers": [
+    {
+      "name": "Google Chrome",
+      "viewport": {
+        "width": 440,
+        "height": 956
+      }
+    },
+    {
+      "name": "Safari",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "authentication": "Two distinct Google accounts; all game commands were entered through the production mobile UI.",
+  "observations": {
+    "offline": {
+      "revision": 31,
+      "turn": 7,
+      "commands": 30
+    },
+    "deathDoor": {
+      "revision": 63,
+      "turn": 13,
+      "life": [
+        20,
+        0
+      ],
+      "winner": null
+    }
+  },
+  "decks": [
+    {
+      "version": 1,
+      "name": "BETA 官方預組 · 地 Earth · Geomancer",
+      "preset": "official-beta",
+      "format": "beta-precon-2023",
+      "officialId": "beta-earth",
+      "source": "https://sorcerytcg.com/news/introducing-the-beta-elemental-preconstructed-decks",
+      "sourceImage": "https://cdn.sanity.io/images/vg9ve3gy/production/c1b92216e4f5e9405b5cff386616dad52f230404-1190x493.png",
+      "description": "官方 2023 BETA 預組原表：36 張 Spellbook、16 張 Atlas、1 位 Avatar。",
+      "avatar": "cmt863aal03bknwcysyugsz7b",
+      "spells": [
+        "cmt85zm3301gfnwcyan5jssw7",
+        "cmt85zm3301gfnwcyan5jssw7",
+        "cmt85zwrq01menwcyq32ith5o",
+        "cmt85zwrq01menwcyq32ith5o",
+        "cmt85zhm201dynwcyu2knaa7t",
+        "cmt85zhm201dynwcyu2knaa7t",
+        "cmt85z0zy014pnwcyru8s1xtb",
+        "cmt85z0zy014pnwcyru8s1xtb",
+        "cmt85z0zy014pnwcyru8s1xtb",
+        "cmt85y3oz00m7nwcy6qyjkoai",
+        "cmt85y3oz00m7nwcy6qyjkoai",
+        "cmt85y3oz00m7nwcy6qyjkoai",
+        "cmt85zpwh01ijnwcyc4xiqjr8",
+        "cmt85zpwh01ijnwcyc4xiqjr8",
+        "cmt860l440201nwcypj2g4l1m",
+        "cmt85yol700xrnwcyda0jt1sd",
+        "cmt85z8v80193nwcy005gvne2",
+        "cmt85z8v80193nwcy005gvne2",
+        "cmt85xi6d00a7nwcyrrie3hvp",
+        "cmt85x1xv0018nwcyiqskwodh",
+        "cmt85x1xv0018nwcyiqskwodh",
+        "cmt8605o601rbnwcyyg4ru74d",
+        "cmt85zq2001innwcydzdbg1ji",
+        "cmt85zgqj01dfnwcyciam5srm",
+        "cmt85xziu00jsnwcyf3bkgjla",
+        "cmt85xziu00jsnwcyf3bkgjla",
+        "cmt85y6ob00nsnwcyjajs29ka",
+        "cmt860m72020mnwcyic4r2u8y",
+        "cmt85x8y60054nwcyj7cco5p1",
+        "cmt85x8y60054nwcyj7cco5p1",
+        "cmt85x3oj0025nwcye8qkdrb2",
+        "cmt85zs4v01jsnwcyobvq1rwn",
+        "cmt85y76z00o5nwcy2cih4hrd",
+        "cmt85zhc801dsnwcyhzv0s0id",
+        "cmt85zh1201dmnwcyhxyp276k",
+        "cmt8600b801odnwcytgn0xk0i"
+      ],
+      "atlas": [
+        "cmt85zam801a3nwcy05zh31fh",
+        "cmt85zam801a3nwcy05zh31fh",
+        "cmt85zam801a3nwcy05zh31fh",
+        "cmt85zfva01d0nwcytt0ityj1",
+        "cmt85zfva01d0nwcytt0ityj1",
+        "cmt85zfva01d0nwcytt0ityj1",
+        "cmt85zl4d01fxnwcybhuv29xd",
+        "cmt85zl4d01fxnwcybhuv29xd",
+        "cmt85zl4d01fxnwcybhuv29xd",
+        "cmt85z0ym014onwcycwzgydm0",
+        "cmt85z0ym014onwcycwzgydm0",
+        "cmt860ooa0223nwcyiolqhxqq",
+        "cmt860ooa0223nwcyiolqhxqq",
+        "cmt860wnb026lnwcy1jacx4yu",
+        "cmt85ximc00ahnwcyw23jzj7w",
+        "cmt85xrdl00fanwcygz6u06rn"
+      ]
+    },
+    {
+      "version": 1,
+      "name": "BETA 官方預組 · 火 Fire · Flamecaller",
+      "preset": "official-beta",
+      "format": "beta-precon-2023",
+      "officialId": "beta-fire",
+      "source": "https://sorcerytcg.com/news/introducing-the-beta-elemental-preconstructed-decks",
+      "sourceImage": "https://cdn.sanity.io/images/vg9ve3gy/production/af807cf7fb37a391c344f0ae8d8cf896f1cda80c-1190x549.png",
+      "description": "官方 2023 BETA 預組原表：36 張 Spellbook、16 張 Atlas、1 位 Avatar。",
+      "avatar": "cmt8636r4039tnwcyuy3jfmyz",
+      "spells": [
+        "cmt860qfb0234nwcyx2qg24zv",
+        "cmt860qfb0234nwcyx2qg24zv",
+        "cmt85xnvj00denwcy0cu99n8g",
+        "cmt85xnvj00denwcy0cu99n8g",
+        "cmt85xcmd0075nwcye69llkkq",
+        "cmt85xsh500fwnwcy3m25wnwu",
+        "cmt85xsh500fwnwcy3m25wnwu",
+        "cmt85xsl900fynwcys8h6vydq",
+        "cmt85xsl900fynwcys8h6vydq",
+        "cmt85z4gk016nnwcyrxtn1q5y",
+        "cmt85z4gk016nnwcyrxtn1q5y",
+        "cmt85xduc007snwcybczlp7ul",
+        "cmt85yrc000zbnwcy4ag5ljnb",
+        "cmt85yrc000zbnwcy4ag5ljnb",
+        "cmt85yrc000zbnwcy4ag5ljnb",
+        "cmt85ytp0010knwcyrcbke2fv",
+        "cmt85z9qo019knwcye5w3h308",
+        "cmt85ze3o01c0nwcy3cbonnkf",
+        "cmt85y87200onnwcy0wgem43o",
+        "cmt85y87200onnwcy0wgem43o",
+        "cmt85yods00xmnwcyxndc6jzw",
+        "cmt85x3q30029nwcylgdjklyx",
+        "cmt85xatt0066nwcye4tz37nt",
+        "cmt86096k01tanwcy9ltsymat",
+        "cmt85xp4300e0nwcyjo11cvym",
+        "cmt85xp4300e0nwcyjo11cvym",
+        "cmt85ycg200r2nwcyvm2w365r",
+        "cmt85x3pj0028nwcy3k3ky9sa",
+        "cmt85xquk00eznwcygwkgw6et",
+        "cmt860gaf01xbnwcyypbdwmrg",
+        "cmt860gaf01xbnwcyypbdwmrg",
+        "cmt860wkj026jnwcyv7y0hsry",
+        "cmt860d8j01vnnwcyah0k7ewk",
+        "cmt85xcgd0071nwcy1s6ji5yq",
+        "cmt85ztj001kmnwcymggky6vq",
+        "cmt860llk020anwcy0q28eucm"
+      ],
+      "atlas": [
+        "cmt860nqi021inwcywoxk0u4c",
+        "cmt860nqi021inwcywoxk0u4c",
+        "cmt860nqi021inwcywoxk0u4c",
+        "cmt860nqi021inwcywoxk0u4c",
+        "cmt860ra1023jnwcyj62p57jz",
+        "cmt860ra1023jnwcyj62p57jz",
+        "cmt860ra1023jnwcyj62p57jz",
+        "cmt860ra1023jnwcyj62p57jz",
+        "cmt860t11024inwcywr8r8bn3",
+        "cmt860t11024inwcywr8r8bn3",
+        "cmt860t11024inwcywr8r8bn3",
+        "cmt860t11024inwcywr8r8bn3",
+        "cmt85zgrp01dhnwcybpshqmjc",
+        "cmt85zgrp01dhnwcybpshqmjc",
+        "cmt85zo4m01hjnwcyap6a3m5v",
+        "cmt860pgs022inwcyhbg8dxxw"
+      ]
+    }
+  ],
+  "initialState": {
+    "version": 1,
+    "projectRuleProfile": "user-rulings-20261030-v1",
+    "rng": 766803157,
+    "seed": 1035973914,
+    "mode": "online",
+    "turn": 1,
+    "active": 0,
+    "phase": "mulligan",
+    "mulligan": 0,
+    "next": 15,
+    "winner": null,
+    "board": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "units": [
+      {
+        "uid": "u1",
+        "card": "cmt863aal03bknwcysyugsz7b",
+        "owner": 0,
+        "controller": 0,
+        "at": 17,
+        "tapped": false,
+        "born": 1,
+        "damage": 0,
+        "ward": false,
+        "stealth": false,
+        "mods": [],
+        "stamp": 1,
+        "summonedAt": 17,
+        "justEntered": true,
+        "geometryWrap": false,
+        "observedTapped": false,
+        "observedPosition": {
+          "at": 17,
+          "layer": "surface",
+          "cells": [
+            17
+          ]
+        },
+        "finalTabula": false,
+        "finalCaged": false,
+        "gainedCannotDisable": false,
+        "gainedCannotImmobilize": false,
+        "carrierPosition": {
+          "at": 17,
+          "layer": "surface"
+        },
+        "fiftyOnslaught": false,
+        "restraintDisabled": false,
+        "iceMagicProtection": false,
+        "effectDisabled": false,
+        "silenced": false,
+        "ongoingPower": 0,
+        "grantedTypes": [],
+        "grantedKeywords": [],
+        "grantedMovement": 0,
+        "grantedRange": 0,
+        "spellElements": [],
+        "deniedKeywords": [],
+        "zeroPower": false,
+        "magicProtected": false,
+        "whaleArmor": false,
+        "canSeeStealth": false,
+        "magicDamageProtected": false,
+        "projectileOver": false,
+        "verticalWrap": false,
+        "moveAxis": null,
+        "powerSuppressed": false,
+        "rangeBonus": 0,
+        "lethalImmune": false,
+        "unrestrictedCaster": false,
+        "finalNoEvil": false,
+        "boundDisabled": false,
+        "conditionDisabled": false,
+        "permanentRevealByAbility": {
+          "printed:u1": []
+        },
+        "permanentRevealContacts": [],
+        "carryKeywords": [],
+        "carryDisabled": false,
+        "transportImmobile": false,
+        "geometryAbilitySources": [],
+        "spatialFloodSources": [],
+        "geometryGrowing": false,
+        "geometryIgnoreSites": false,
+        "geometrySafetyEverywhere": false,
+        "finalCorruptor": false,
+        "rowFree": false,
+        "freeRows": []
+      },
+      {
+        "uid": "u8",
+        "card": "cmt8636r4039tnwcyuy3jfmyz",
+        "owner": 1,
+        "controller": 1,
+        "at": 2,
+        "tapped": false,
+        "born": 1,
+        "damage": 0,
+        "ward": false,
+        "stealth": false,
+        "mods": [],
+        "stamp": 8,
+        "summonedAt": 2,
+        "justEntered": true,
+        "geometryWrap": false,
+        "observedTapped": false,
+        "observedPosition": {
+          "at": 2,
+          "layer": "surface",
+          "cells": [
+            2
+          ]
+        },
+        "finalTabula": false,
+        "finalCaged": false,
+        "gainedCannotDisable": false,
+        "gainedCannotImmobilize": false,
+        "carrierPosition": {
+          "at": 2,
+          "layer": "surface"
+        },
+        "fiftyOnslaught": false,
+        "restraintDisabled": false,
+        "iceMagicProtection": false,
+        "effectDisabled": false,
+        "silenced": false,
+        "ongoingPower": 0,
+        "grantedTypes": [],
+        "grantedKeywords": [],
+        "grantedMovement": 0,
+        "grantedRange": 0,
+        "spellElements": [],
+        "deniedKeywords": [],
+        "zeroPower": false,
+        "magicProtected": false,
+        "whaleArmor": false,
+        "canSeeStealth": false,
+        "magicDamageProtected": false,
+        "projectileOver": false,
+        "verticalWrap": false,
+        "moveAxis": null,
+        "powerSuppressed": false,
+        "rangeBonus": 0,
+        "lethalImmune": false,
+        "unrestrictedCaster": false,
+        "finalNoEvil": false,
+        "boundDisabled": false,
+        "conditionDisabled": false,
+        "permanentRevealByAbility": {
+          "printed:u8": []
+        },
+        "permanentRevealContacts": [],
+        "carryKeywords": [],
+        "carryDisabled": false,
+        "transportImmobile": false,
+        "geometryAbilitySources": [],
+        "spatialFloodSources": [],
+        "geometryGrowing": false,
+        "geometryIgnoreSites": false,
+        "geometrySafetyEverywhere": false,
+        "finalCorruptor": false,
+        "rowFree": false,
+        "freeRows": []
+      }
+    ],
+    "players": [
+      {
+        "name": "玩家 1",
+        "life": 20,
+        "maxLife": 20,
+        "doorTurn": null,
+        "collection": [],
+        "collectionMode": "constructed",
+        "turnsTaken": 1,
+        "hand": [
+          {
+            "uid": "h2",
+            "card": "cmt860ooa0223nwcyiolqhxqq"
+          },
+          {
+            "uid": "h3",
+            "card": "cmt85zpwh01ijnwcyc4xiqjr8"
+          },
+          {
+            "uid": "h4",
+            "card": "cmt85zam801a3nwcy05zh31fh"
+          },
+          {
+            "uid": "h5",
+            "card": "cmt85x1xv0018nwcyiqskwodh"
+          },
+          {
+            "uid": "h6",
+            "card": "cmt85zl4d01fxnwcybhuv29xd"
+          },
+          {
+            "uid": "h7",
+            "card": "cmt85zwrq01menwcyq32ith5o"
+          }
+        ],
+        "atlas": [
+          "cmt85zfva01d0nwcytt0ityj1",
+          "cmt85zl4d01fxnwcybhuv29xd",
+          "cmt85z0ym014onwcycwzgydm0",
+          "cmt85zfva01d0nwcytt0ityj1",
+          "cmt85xrdl00fanwcygz6u06rn",
+          "cmt85zfva01d0nwcytt0ityj1",
+          "cmt85zam801a3nwcy05zh31fh",
+          "cmt85zl4d01fxnwcybhuv29xd",
+          "cmt860wnb026lnwcy1jacx4yu",
+          "cmt860ooa0223nwcyiolqhxqq",
+          "cmt85zam801a3nwcy05zh31fh",
+          "cmt85z0ym014onwcycwzgydm0",
+          "cmt85ximc00ahnwcyw23jzj7w"
+        ],
+        "spells": [
+          "cmt85zwrq01menwcyq32ith5o",
+          "cmt85z0zy014pnwcyru8s1xtb",
+          "cmt85z0zy014pnwcyru8s1xtb",
+          "cmt85xziu00jsnwcyf3bkgjla",
+          "cmt8605o601rbnwcyyg4ru74d",
+          "cmt85y6ob00nsnwcyjajs29ka",
+          "cmt85zpwh01ijnwcyc4xiqjr8",
+          "cmt85xziu00jsnwcyf3bkgjla",
+          "cmt860m72020mnwcyic4r2u8y",
+          "cmt85zq2001innwcydzdbg1ji",
+          "cmt85y3oz00m7nwcy6qyjkoai",
+          "cmt85zm3301gfnwcyan5jssw7",
+          "cmt85zs4v01jsnwcyobvq1rwn",
+          "cmt85yol700xrnwcyda0jt1sd",
+          "cmt85y3oz00m7nwcy6qyjkoai",
+          "cmt85zm3301gfnwcyan5jssw7",
+          "cmt8600b801odnwcytgn0xk0i",
+          "cmt85z8v80193nwcy005gvne2",
+          "cmt85y3oz00m7nwcy6qyjkoai",
+          "cmt85xi6d00a7nwcyrrie3hvp",
+          "cmt85z0zy014pnwcyru8s1xtb",
+          "cmt860l440201nwcypj2g4l1m",
+          "cmt85zhc801dsnwcyhzv0s0id",
+          "cmt85zhm201dynwcyu2knaa7t",
+          "cmt85x3oj0025nwcye8qkdrb2",
+          "cmt85x8y60054nwcyj7cco5p1",
+          "cmt85zh1201dmnwcyhxyp276k",
+          "cmt85x8y60054nwcyj7cco5p1",
+          "cmt85zgqj01dfnwcyciam5srm",
+          "cmt85zhm201dynwcyu2knaa7t",
+          "cmt85y76z00o5nwcy2cih4hrd",
+          "cmt85x1xv0018nwcyiqskwodh",
+          "cmt85z8v80193nwcy005gvne2"
+        ],
+        "cemetery": [],
+        "banished": [],
+        "spent": 0,
+        "finalHasPlayedSite": false,
+        "graves": []
+      },
+      {
+        "name": "玩家 2",
+        "life": 20,
+        "maxLife": 20,
+        "doorTurn": null,
+        "collection": [],
+        "collectionMode": "constructed",
+        "turnsTaken": 0,
+        "hand": [
+          {
+            "uid": "h9",
+            "card": "cmt860t11024inwcywr8r8bn3"
+          },
+          {
+            "uid": "h10",
+            "card": "cmt860qfb0234nwcyx2qg24zv"
+          },
+          {
+            "uid": "h11",
+            "card": "cmt860t11024inwcywr8r8bn3"
+          },
+          {
+            "uid": "h12",
+            "card": "cmt85y87200onnwcy0wgem43o"
+          },
+          {
+            "uid": "h13",
+            "card": "cmt860ra1023jnwcyj62p57jz"
+          },
+          {
+            "uid": "h14",
+            "card": "cmt85xsl900fynwcys8h6vydq"
+          }
+        ],
+        "atlas": [
+          "cmt85zgrp01dhnwcybpshqmjc",
+          "cmt85zo4m01hjnwcyap6a3m5v",
+          "cmt860t11024inwcywr8r8bn3",
+          "cmt860pgs022inwcyhbg8dxxw",
+          "cmt860nqi021inwcywoxk0u4c",
+          "cmt85zgrp01dhnwcybpshqmjc",
+          "cmt860nqi021inwcywoxk0u4c",
+          "cmt860nqi021inwcywoxk0u4c",
+          "cmt860ra1023jnwcyj62p57jz",
+          "cmt860t11024inwcywr8r8bn3",
+          "cmt860nqi021inwcywoxk0u4c",
+          "cmt860ra1023jnwcyj62p57jz",
+          "cmt860ra1023jnwcyj62p57jz"
+        ],
+        "spells": [
+          "cmt860gaf01xbnwcyypbdwmrg",
+          "cmt85xsh500fwnwcy3m25wnwu",
+          "cmt85xatt0066nwcye4tz37nt",
+          "cmt85xp4300e0nwcyjo11cvym",
+          "cmt85xnvj00denwcy0cu99n8g",
+          "cmt85x3pj0028nwcy3k3ky9sa",
+          "cmt85z9qo019knwcye5w3h308",
+          "cmt85yrc000zbnwcy4ag5ljnb",
+          "cmt860wkj026jnwcyv7y0hsry",
+          "cmt860qfb0234nwcyx2qg24zv",
+          "cmt85ze3o01c0nwcy3cbonnkf",
+          "cmt860gaf01xbnwcyypbdwmrg",
+          "cmt85y87200onnwcy0wgem43o",
+          "cmt85xcgd0071nwcy1s6ji5yq",
+          "cmt85xduc007snwcybczlp7ul",
+          "cmt85xcmd0075nwcye69llkkq",
+          "cmt860llk020anwcy0q28eucm",
+          "cmt86096k01tanwcy9ltsymat",
+          "cmt85ytp0010knwcyrcbke2fv",
+          "cmt85yrc000zbnwcy4ag5ljnb",
+          "cmt85xsh500fwnwcy3m25wnwu",
+          "cmt85xsl900fynwcys8h6vydq",
+          "cmt85z4gk016nnwcyrxtn1q5y",
+          "cmt85ycg200r2nwcyvm2w365r",
+          "cmt860d8j01vnnwcyah0k7ewk",
+          "cmt85z4gk016nnwcyrxtn1q5y",
+          "cmt85yrc000zbnwcy4ag5ljnb",
+          "cmt85yods00xmnwcyxndc6jzw",
+          "cmt85x3q30029nwcylgdjklyx",
+          "cmt85xnvj00denwcy0cu99n8g",
+          "cmt85ztj001kmnwcymggky6vq",
+          "cmt85xp4300e0nwcyjo11cvym",
+          "cmt85xquk00eznwcygwkgw6et"
+        ],
+        "cemetery": [],
+        "banished": [],
+        "spent": 0,
+        "finalHasPlayedSite": false,
+        "graves": []
+      }
+    ],
+    "pending": null,
+    "log": [
+      {
+        "turn": 1,
+        "text": "對局建立。玩家 1 起手 6 張；玩家 2 起手 6 張；玩家 1 隨機取得先手，首回合不抽牌。"
+      }
+    ],
+    "history": [],
+    "firstPlayer": 0,
+    "avatarSetupComplete": true,
+    "artifacts": [],
+    "auras": [],
+    "boundControls": [],
+    "finalAvatarBrands": []
+  },
+  "history": [
+    {
+      "type": "mulligan",
+      "player": 0,
+      "cards": [],
+      "actor": 0
+    },
+    {
+      "type": "mulligan",
+      "player": 1,
+      "cards": [],
+      "actor": 1
+    },
+    {
+      "type": "site",
+      "player": 0,
+      "hand": "h6",
+      "at": 17,
+      "actor": 0
+    },
+    {
+      "type": "choose",
+      "player": 0,
+      "option": 0,
+      "actor": 0,
+      "choiceToken": "choice-v1:6cb7e85f:577"
+    },
+    {
+      "type": "choose",
+      "player": 0,
+      "option": 0,
+      "actor": 0,
+      "choiceToken": "choice-v1:816d2fe0:2067"
+    },
+    {
+      "type": "end",
+      "player": 0,
+      "actor": 0
+    },
+    {
+      "type": "draw",
+      "player": 1,
+      "deck": "spells",
+      "actor": 1
+    },
+    {
+      "type": "site",
+      "player": 1,
+      "hand": "h9",
+      "at": 2,
+      "actor": 1
+    },
+    {
+      "type": "choose",
+      "player": 1,
+      "option": 0,
+      "actor": 1,
+      "choiceToken": "choice-v1:dc6356b6:583"
+    },
+    {
+      "type": "cast",
+      "player": 1,
+      "hand": "h10",
+      "caster": "u8",
+      "at": 2,
+      "actor": 1
+    },
+    {
+      "type": "end",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "draw",
+      "player": 0,
+      "deck": "spells",
+      "actor": 0
+    },
+    {
+      "type": "site",
+      "player": 0,
+      "hand": "h4",
+      "at": 12,
+      "actor": 0
+    },
+    {
+      "type": "choose",
+      "player": 0,
+      "option": 1,
+      "actor": 0,
+      "choiceToken": "choice-v1:de3f3ae5:577"
+    },
+    {
+      "type": "choose",
+      "player": 0,
+      "option": 0,
+      "actor": 0,
+      "choiceToken": "choice-v1:4e573335:2046"
+    },
+    {
+      "type": "cast",
+      "player": 0,
+      "hand": "h7",
+      "caster": "u1",
+      "at": 12,
+      "actor": 0
+    },
+    {
+      "type": "move",
+      "player": 0,
+      "unit": "u16",
+      "at": 12,
+      "path": [
+        12
+      ],
+      "actor": 0
+    },
+    {
+      "type": "end",
+      "player": 0,
+      "actor": 0
+    },
+    {
+      "type": "draw",
+      "player": 1,
+      "deck": "spells",
+      "actor": 1
+    },
+    {
+      "type": "site",
+      "player": 1,
+      "hand": "h13",
+      "at": 7,
+      "actor": 1
+    },
+    {
+      "type": "choose",
+      "player": 1,
+      "option": 1,
+      "actor": 1,
+      "choiceToken": "choice-v1:1af65ea:708"
+    },
+    {
+      "type": "move",
+      "player": 1,
+      "unit": "u20",
+      "at": 7,
+      "path": [
+        7
+      ],
+      "actor": 1
+    },
+    {
+      "type": "end",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "draw",
+      "player": 0,
+      "deck": "spells",
+      "actor": 0
+    },
+    {
+      "type": "site",
+      "player": 0,
+      "hand": "h2",
+      "at": 16,
+      "actor": 0
+    },
+    {
+      "type": "choose",
+      "player": 0,
+      "option": 0,
+      "actor": 0,
+      "choiceToken": "choice-v1:d4821e73:2062"
+    },
+    {
+      "type": "cast",
+      "player": 0,
+      "hand": "h3",
+      "caster": "u1",
+      "at": 12,
+      "actor": 0
+    },
+    {
+      "type": "end",
+      "player": 0,
+      "actor": 0
+    },
+    {
+      "type": "draw",
+      "player": 1,
+      "deck": "atlas",
+      "actor": 1
+    },
+    {
+      "type": "end",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "draw",
+      "player": 0,
+      "deck": "spells",
+      "actor": 0
+    },
+    {
+      "type": "attack",
+      "player": 0,
+      "unit": "u31",
+      "at": 7,
+      "path": [
+        7
+      ],
+      "target": "u20",
+      "actor": 0
+    },
+    {
+      "type": "pass",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "attack",
+      "player": 0,
+      "unit": "u16",
+      "at": 7,
+      "path": [
+        7
+      ],
+      "target": "site:7",
+      "actor": 0
+    },
+    {
+      "type": "pass",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "attack",
+      "player": 0,
+      "unit": "u24",
+      "at": 7,
+      "path": [
+        7
+      ],
+      "target": "site:7",
+      "actor": 0
+    },
+    {
+      "type": "pass",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "cast",
+      "player": 0,
+      "hand": "h28",
+      "caster": "u1",
+      "at": 12,
+      "actor": 0
+    },
+    {
+      "type": "end",
+      "player": 0,
+      "actor": 0
+    },
+    {
+      "type": "draw",
+      "player": 1,
+      "deck": "atlas",
+      "actor": 1
+    },
+    {
+      "type": "site",
+      "player": 1,
+      "hand": "h11",
+      "at": 1,
+      "actor": 1
+    },
+    {
+      "type": "choose",
+      "player": 1,
+      "option": 2,
+      "actor": 1,
+      "choiceToken": "choice-v1:3548ced3:709"
+    },
+    {
+      "type": "end",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "draw",
+      "player": 0,
+      "deck": "spells",
+      "actor": 0
+    },
+    {
+      "type": "attack",
+      "player": 0,
+      "unit": "u31",
+      "at": 7,
+      "path": [],
+      "target": "site:7",
+      "actor": 0
+    },
+    {
+      "type": "attack",
+      "player": 0,
+      "unit": "u34",
+      "at": 7,
+      "path": [
+        7
+      ],
+      "target": "site:7",
+      "actor": 0
+    },
+    {
+      "type": "end",
+      "player": 0,
+      "actor": 0
+    },
+    {
+      "type": "draw",
+      "player": 1,
+      "deck": "spells",
+      "actor": 1
+    },
+    {
+      "type": "cast",
+      "player": 1,
+      "hand": "h18",
+      "caster": "u8",
+      "target": 7,
+      "actor": 1
+    },
+    {
+      "type": "end",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "draw",
+      "player": 0,
+      "deck": "spells",
+      "actor": 0
+    },
+    {
+      "type": "cast",
+      "player": 0,
+      "hand": "h33",
+      "caster": "u1",
+      "at": 12,
+      "actor": 0
+    },
+    {
+      "type": "attack",
+      "player": 0,
+      "unit": "u31",
+      "at": 7,
+      "path": [],
+      "target": "site:7",
+      "actor": 0
+    },
+    {
+      "type": "pass",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "end",
+      "player": 0,
+      "actor": 0
+    },
+    {
+      "type": "draw",
+      "player": 1,
+      "deck": "spells",
+      "actor": 1
+    },
+    {
+      "type": "site",
+      "player": 1,
+      "hand": "h35",
+      "at": 3,
+      "actor": 1
+    },
+    {
+      "type": "cast",
+      "player": 1,
+      "hand": "h12",
+      "caster": "u8",
+      "at": 3,
+      "actor": 1
+    },
+    {
+      "type": "end",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "draw",
+      "player": 0,
+      "deck": "spells",
+      "actor": 0
+    },
+    {
+      "type": "attack",
+      "player": 0,
+      "unit": "u31",
+      "at": 7,
+      "path": [],
+      "target": "site:7",
+      "actor": 0
+    },
+    {
+      "type": "attack",
+      "player": 0,
+      "unit": "u40",
+      "at": 7,
+      "path": [
+        7
+      ],
+      "target": "site:7",
+      "actor": 0
+    },
+    {
+      "type": "end",
+      "player": 0,
+      "actor": 0
+    },
+    {
+      "type": "draw",
+      "player": 1,
+      "deck": "spells",
+      "actor": 1
+    },
+    {
+      "type": "end",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "draw",
+      "player": 0,
+      "deck": "spells",
+      "actor": 0
+    },
+    {
+      "type": "attack",
+      "player": 0,
+      "unit": "u31",
+      "at": 2,
+      "path": [
+        2
+      ],
+      "target": "u8",
+      "actor": 0
+    },
+    {
+      "type": "defend",
+      "player": 1,
+      "unit": "u43",
+      "keep": false,
+      "actor": 1
+    },
+    {
+      "type": "pass",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "ranged",
+      "player": 0,
+      "unit": "u40",
+      "direction": 0,
+      "actor": 0
+    }
+  ],
+  "state": {
+    "version": 1,
+    "projectRuleProfile": "user-rulings-20261030-v1",
+    "rng": 766803157,
+    "seed": 1035973914,
+    "mode": "online",
+    "turn": 15,
+    "active": 0,
+    "phase": "over",
+    "mulligan": 1,
+    "next": 47,
+    "winner": 0,
+    "board": [
+      null,
+      {
+        "uid": "s36",
+        "stamp": 36,
+        "card": "cmt860t11024inwcywr8r8bn3",
+        "controller": 1,
+        "owner": 1,
+        "born": 8,
+        "ward": false,
+        "finalAltarSpent": false
+      },
+      {
+        "uid": "s19",
+        "stamp": 19,
+        "card": "cmt860t11024inwcywr8r8bn3",
+        "controller": 1,
+        "owner": 1,
+        "born": 2,
+        "ward": false,
+        "finalAltarSpent": false
+      },
+      {
+        "uid": "s42",
+        "stamp": 42,
+        "card": "cmt85zo4m01hjnwcyap6a3m5v",
+        "controller": 1,
+        "owner": 1,
+        "born": 12,
+        "ward": false,
+        "finalAltarSpent": false
+      },
+      null,
+      null,
+      null,
+      {
+        "uid": "s27",
+        "stamp": 27,
+        "card": "cmt860ra1023jnwcyj62p57jz",
+        "controller": 1,
+        "owner": 1,
+        "born": 4,
+        "ward": false,
+        "finalAltarSpent": false
+      },
+      null,
+      null,
+      null,
+      null,
+      {
+        "uid": "s22",
+        "stamp": 22,
+        "card": "cmt85zam801a3nwcy05zh31fh",
+        "controller": 0,
+        "owner": 0,
+        "born": 3,
+        "ward": false,
+        "finalAltarSpent": false
+      },
+      null,
+      null,
+      null,
+      {
+        "uid": "s29",
+        "stamp": 29,
+        "card": "cmt860ooa0223nwcyiolqhxqq",
+        "controller": 0,
+        "owner": 0,
+        "born": 5,
+        "ward": false,
+        "finalAltarSpent": false
+      },
+      {
+        "uid": "s15",
+        "stamp": 15,
+        "card": "cmt85zl4d01fxnwcybhuv29xd",
+        "controller": 0,
+        "owner": 0,
+        "born": 1,
+        "ward": false,
+        "finalAltarSpent": false
+      },
+      {
+        "uid": "s30",
+        "card": "cmt85yuu80119nwcyuqvj1hqh",
+        "owner": null,
+        "controller": null,
+        "ward": false
+      },
+      null
+    ],
+    "units": [
+      {
+        "uid": "u1",
+        "card": "cmt863aal03bknwcysyugsz7b",
+        "owner": 0,
+        "controller": 0,
+        "at": 17,
+        "tapped": false,
+        "born": 1,
+        "damage": 0,
+        "ward": false,
+        "stealth": false,
+        "mods": [],
+        "stamp": 1,
+        "summonedAt": 17,
+        "justEntered": false,
+        "geometryWrap": false,
+        "observedTapped": false,
+        "observedPosition": {
+          "at": 17,
+          "layer": "surface",
+          "cells": [
+            17
+          ],
+          "locations": [
+            {
+              "at": 17,
+              "layer": "surface"
+            }
+          ],
+          "region": "surface",
+          "regions": [
+            "surface"
+          ]
+        },
+        "finalTabula": false,
+        "finalCaged": false,
+        "gainedCannotDisable": false,
+        "gainedCannotImmobilize": false,
+        "carrierPosition": {
+          "at": 17,
+          "layer": "surface"
+        },
+        "fiftyOnslaught": false,
+        "restraintDisabled": false,
+        "iceMagicProtection": false,
+        "effectDisabled": false,
+        "silenced": false,
+        "ongoingPower": 0,
+        "grantedTypes": [],
+        "grantedKeywords": [],
+        "grantedMovement": 0,
+        "grantedRange": 0,
+        "spellElements": [],
+        "deniedKeywords": [],
+        "zeroPower": false,
+        "magicProtected": false,
+        "whaleArmor": false,
+        "canSeeStealth": false,
+        "magicDamageProtected": false,
+        "projectileOver": false,
+        "verticalWrap": false,
+        "moveAxis": null,
+        "powerSuppressed": false,
+        "rangeBonus": 0,
+        "lethalImmune": false,
+        "unrestrictedCaster": false,
+        "finalNoEvil": false,
+        "boundDisabled": false,
+        "conditionDisabled": false,
+        "permanentRevealByAbility": {
+          "printed:u1": []
+        },
+        "permanentRevealContacts": [],
+        "carryKeywords": [],
+        "carryDisabled": false,
+        "transportImmobile": false,
+        "geometryAbilitySources": [],
+        "spatialFloodSources": [],
+        "geometryGrowing": false,
+        "geometryIgnoreSites": false,
+        "geometrySafetyEverywhere": false,
+        "finalCorruptor": false,
+        "rowFree": false,
+        "freeRows": [],
+        "gateVoidwalk": false,
+        "lethal": false,
+        "notRest": false,
+        "elementGifts": [],
+        "spellCastTurn": 11,
+        "castElements": [
+          "earth"
+        ],
+        "castCount": 1,
+        "interactedTurn": 11
+      },
+      {
+        "uid": "u8",
+        "card": "cmt8636r4039tnwcyuy3jfmyz",
+        "owner": 1,
+        "controller": 1,
+        "at": 2,
+        "tapped": false,
+        "born": 1,
+        "damage": 0,
+        "ward": false,
+        "stealth": false,
+        "mods": [],
+        "stamp": 8,
+        "summonedAt": 2,
+        "justEntered": false,
+        "geometryWrap": false,
+        "observedTapped": false,
+        "observedPosition": {
+          "at": 2,
+          "layer": "surface",
+          "cells": [
+            2
+          ],
+          "locations": [
+            {
+              "at": 2,
+              "layer": "surface"
+            }
+          ],
+          "region": "surface",
+          "regions": [
+            "surface"
+          ]
+        },
+        "finalTabula": false,
+        "finalCaged": false,
+        "gainedCannotDisable": false,
+        "gainedCannotImmobilize": false,
+        "carrierPosition": {
+          "at": 2,
+          "layer": "surface"
+        },
+        "fiftyOnslaught": false,
+        "restraintDisabled": false,
+        "iceMagicProtection": false,
+        "effectDisabled": false,
+        "silenced": false,
+        "ongoingPower": 0,
+        "grantedTypes": [],
+        "grantedKeywords": [],
+        "grantedMovement": 0,
+        "grantedRange": 0,
+        "spellElements": [],
+        "deniedKeywords": [],
+        "zeroPower": false,
+        "magicProtected": false,
+        "whaleArmor": false,
+        "canSeeStealth": false,
+        "magicDamageProtected": false,
+        "projectileOver": false,
+        "verticalWrap": false,
+        "moveAxis": null,
+        "powerSuppressed": false,
+        "rangeBonus": 0,
+        "lethalImmune": false,
+        "unrestrictedCaster": false,
+        "finalNoEvil": false,
+        "boundDisabled": false,
+        "conditionDisabled": false,
+        "permanentRevealByAbility": {
+          "printed:u8": []
+        },
+        "permanentRevealContacts": [],
+        "carryKeywords": [],
+        "carryDisabled": false,
+        "transportImmobile": false,
+        "geometryAbilitySources": [],
+        "spatialFloodSources": [],
+        "geometryGrowing": false,
+        "geometryIgnoreSites": false,
+        "geometrySafetyEverywhere": false,
+        "finalCorruptor": false,
+        "rowFree": false,
+        "freeRows": [],
+        "lethal": false,
+        "gateVoidwalk": false,
+        "elementGifts": [],
+        "spellCastTurn": 12,
+        "castElements": [
+          "fire"
+        ],
+        "castCount": 1,
+        "interactedTurn": 12,
+        "notRest": false,
+        "finalNextMagicGifts": [],
+        "damageTakenTurn": 15
+      },
+      {
+        "uid": "u40",
+        "card": "cmt85z0zy014pnwcyru8s1xtb",
+        "owner": 0,
+        "controller": 0,
+        "at": 7,
+        "tapped": true,
+        "born": 11,
+        "damage": 0,
+        "ward": false,
+        "stealth": false,
+        "mods": [],
+        "stamp": 40,
+        "summonedAt": 12,
+        "justEntered": false,
+        "geometryWrap": false,
+        "finalCastFromHand": true,
+        "notRest": false,
+        "layer": "surface",
+        "finalTabula": false,
+        "finalCaged": false,
+        "gainedCannotDisable": false,
+        "gainedCannotImmobilize": false,
+        "carrierPosition": {
+          "at": 7,
+          "layer": "surface"
+        },
+        "fiftyOnslaught": false,
+        "restraintDisabled": false,
+        "iceMagicProtection": false,
+        "effectDisabled": false,
+        "silenced": false,
+        "ongoingPower": 0,
+        "grantedTypes": [],
+        "grantedKeywords": [],
+        "grantedMovement": 0,
+        "grantedRange": 0,
+        "spellElements": [],
+        "deniedKeywords": [],
+        "zeroPower": false,
+        "magicProtected": false,
+        "whaleArmor": false,
+        "canSeeStealth": false,
+        "magicDamageProtected": false,
+        "projectileOver": false,
+        "verticalWrap": false,
+        "moveAxis": null,
+        "powerSuppressed": false,
+        "rangeBonus": 0,
+        "lethalImmune": false,
+        "unrestrictedCaster": false,
+        "gateVoidwalk": false,
+        "finalNoEvil": false,
+        "boundDisabled": false,
+        "conditionDisabled": false,
+        "permanentRevealByAbility": {
+          "printed:u40": []
+        },
+        "permanentRevealContacts": [],
+        "carryKeywords": [],
+        "carryDisabled": false,
+        "transportImmobile": false,
+        "geometryAbilitySources": [],
+        "spatialFloodSources": [],
+        "geometryGrowing": false,
+        "geometryIgnoreSites": false,
+        "geometrySafetyEverywhere": false,
+        "finalCorruptor": false,
+        "rowFree": false,
+        "freeRows": [],
+        "finalPassiveEntryChecked": true,
+        "observedTapped": true,
+        "observedPosition": {
+          "at": 7,
+          "layer": "surface",
+          "cells": [
+            7
+          ],
+          "locations": [
+            {
+              "at": 7,
+              "layer": "surface"
+            }
+          ],
+          "region": "surface",
+          "regions": [
+            "surface"
+          ]
+        },
+        "entryProcessed": true,
+        "lethal": false,
+        "inBasicTravel": false,
+        "shotDuringMove": false,
+        "spatialShotsUsed": {},
+        "movedSinceStop": false,
+        "interactedTurn": 15,
+        "attackedTurn": 13
+      }
+    ],
+    "players": [
+      {
+        "name": "玩家 1",
+        "life": 20,
+        "maxLife": 20,
+        "doorTurn": null,
+        "collection": [],
+        "collectionMode": "constructed",
+        "turnsTaken": 8,
+        "hand": [
+          {
+            "uid": "h5",
+            "card": "cmt85x1xv0018nwcyiqskwodh"
+          },
+          {
+            "uid": "h21",
+            "card": "cmt85zwrq01menwcyq32ith5o"
+          },
+          {
+            "uid": "h25",
+            "card": "cmt85zfva01d0nwcytt0ityj1"
+          },
+          {
+            "uid": "h37",
+            "card": "cmt85xziu00jsnwcyf3bkgjla"
+          },
+          {
+            "uid": "h39",
+            "card": "cmt8605o601rbnwcyyg4ru74d"
+          },
+          {
+            "uid": "h44",
+            "card": "cmt85y6ob00nsnwcyjajs29ka"
+          },
+          {
+            "uid": "h46",
+            "card": "cmt85zpwh01ijnwcyc4xiqjr8"
+          }
+        ],
+        "atlas": [
+          "cmt85zl4d01fxnwcybhuv29xd",
+          "cmt85z0ym014onwcycwzgydm0",
+          "cmt85zfva01d0nwcytt0ityj1",
+          "cmt85xrdl00fanwcygz6u06rn",
+          "cmt85zfva01d0nwcytt0ityj1",
+          "cmt85zam801a3nwcy05zh31fh",
+          "cmt85zl4d01fxnwcybhuv29xd",
+          "cmt860wnb026lnwcy1jacx4yu",
+          "cmt860ooa0223nwcyiolqhxqq",
+          "cmt85zam801a3nwcy05zh31fh",
+          "cmt85z0ym014onwcycwzgydm0",
+          "cmt85ximc00ahnwcyw23jzj7w"
+        ],
+        "spells": [
+          "cmt85xziu00jsnwcyf3bkgjla",
+          "cmt860m72020mnwcyic4r2u8y",
+          "cmt85zq2001innwcydzdbg1ji",
+          "cmt85y3oz00m7nwcy6qyjkoai",
+          "cmt85zm3301gfnwcyan5jssw7",
+          "cmt85zs4v01jsnwcyobvq1rwn",
+          "cmt85yol700xrnwcyda0jt1sd",
+          "cmt85y3oz00m7nwcy6qyjkoai",
+          "cmt85zm3301gfnwcyan5jssw7",
+          "cmt8600b801odnwcytgn0xk0i",
+          "cmt85z8v80193nwcy005gvne2",
+          "cmt85y3oz00m7nwcy6qyjkoai",
+          "cmt85xi6d00a7nwcyrrie3hvp",
+          "cmt85z0zy014pnwcyru8s1xtb",
+          "cmt860l440201nwcypj2g4l1m",
+          "cmt85zhc801dsnwcyhzv0s0id",
+          "cmt85zhm201dynwcyu2knaa7t",
+          "cmt85x3oj0025nwcye8qkdrb2",
+          "cmt85x8y60054nwcyj7cco5p1",
+          "cmt85zh1201dmnwcyhxyp276k",
+          "cmt85x8y60054nwcyj7cco5p1",
+          "cmt85zgqj01dfnwcyciam5srm",
+          "cmt85zhm201dynwcyu2knaa7t",
+          "cmt85y76z00o5nwcy2cih4hrd",
+          "cmt85x1xv0018nwcyiqskwodh",
+          "cmt85z8v80193nwcy005gvne2"
+        ],
+        "cemetery": [
+          "cmt85zwrq01menwcyq32ith5o",
+          "cmt85z0zy014pnwcyru8s1xtb",
+          "cmt85zpwh01ijnwcyc4xiqjr8"
+        ],
+        "banished": [
+          "cmt85z4i3016onwcygir4ma8b"
+        ],
+        "spent": 0,
+        "finalHasPlayedSite": true,
+        "graves": [
+          {
+            "uid": "g2",
+            "card": "cmt85zwrq01menwcyq32ith5o",
+            "deathTurn": 8
+          },
+          {
+            "uid": "g3",
+            "card": "cmt85z0zy014pnwcyru8s1xtb",
+            "deathTurn": 10
+          },
+          {
+            "uid": "g5",
+            "card": "cmt85zpwh01ijnwcyc4xiqjr8",
+            "deathTurn": 15
+          }
+        ],
+        "bonusMana": 0,
+        "bonusAffinity": {},
+        "drawTurn": 15,
+        "spellsDrawn": 1,
+        "cardsDrawn": 1,
+        "castTurn": 11,
+        "castAir": 0,
+        "castNonFire": true
+      },
+      {
+        "name": "玩家 2",
+        "life": 0,
+        "maxLife": 20,
+        "doorTurn": 13,
+        "collection": [],
+        "collectionMode": "constructed",
+        "turnsTaken": 7,
+        "hand": [
+          {
+            "uid": "h14",
+            "card": "cmt85xsl900fynwcys8h6vydq"
+          },
+          {
+            "uid": "h26",
+            "card": "cmt85xsh500fwnwcy3m25wnwu"
+          },
+          {
+            "uid": "h32",
+            "card": "cmt85zgrp01dhnwcybpshqmjc"
+          },
+          {
+            "uid": "h38",
+            "card": "cmt85xatt0066nwcye4tz37nt"
+          },
+          {
+            "uid": "h41",
+            "card": "cmt85xp4300e0nwcyjo11cvym"
+          },
+          {
+            "uid": "h45",
+            "card": "cmt85xnvj00denwcy0cu99n8g"
+          }
+        ],
+        "atlas": [
+          "cmt860t11024inwcywr8r8bn3",
+          "cmt860pgs022inwcyhbg8dxxw",
+          "cmt860nqi021inwcywoxk0u4c",
+          "cmt85zgrp01dhnwcybpshqmjc",
+          "cmt860nqi021inwcywoxk0u4c",
+          "cmt860nqi021inwcywoxk0u4c",
+          "cmt860ra1023jnwcyj62p57jz",
+          "cmt860t11024inwcywr8r8bn3",
+          "cmt860nqi021inwcywoxk0u4c",
+          "cmt860ra1023jnwcyj62p57jz",
+          "cmt860ra1023jnwcyj62p57jz"
+        ],
+        "spells": [
+          "cmt85x3pj0028nwcy3k3ky9sa",
+          "cmt85z9qo019knwcye5w3h308",
+          "cmt85yrc000zbnwcy4ag5ljnb",
+          "cmt860wkj026jnwcyv7y0hsry",
+          "cmt860qfb0234nwcyx2qg24zv",
+          "cmt85ze3o01c0nwcy3cbonnkf",
+          "cmt860gaf01xbnwcyypbdwmrg",
+          "cmt85y87200onnwcy0wgem43o",
+          "cmt85xcgd0071nwcy1s6ji5yq",
+          "cmt85xduc007snwcybczlp7ul",
+          "cmt85xcmd0075nwcye69llkkq",
+          "cmt860llk020anwcy0q28eucm",
+          "cmt86096k01tanwcy9ltsymat",
+          "cmt85ytp0010knwcyrcbke2fv",
+          "cmt85yrc000zbnwcy4ag5ljnb",
+          "cmt85xsh500fwnwcy3m25wnwu",
+          "cmt85xsl900fynwcys8h6vydq",
+          "cmt85z4gk016nnwcyrxtn1q5y",
+          "cmt85ycg200r2nwcyvm2w365r",
+          "cmt860d8j01vnnwcyah0k7ewk",
+          "cmt85z4gk016nnwcyrxtn1q5y",
+          "cmt85yrc000zbnwcy4ag5ljnb",
+          "cmt85yods00xmnwcyxndc6jzw",
+          "cmt85x3q30029nwcylgdjklyx",
+          "cmt85xnvj00denwcy0cu99n8g",
+          "cmt85ztj001kmnwcymggky6vq",
+          "cmt85xp4300e0nwcyjo11cvym",
+          "cmt85xquk00eznwcygwkgw6et"
+        ],
+        "cemetery": [
+          "cmt860qfb0234nwcyx2qg24zv",
+          "cmt860gaf01xbnwcyypbdwmrg",
+          "cmt85y87200onnwcy0wgem43o"
+        ],
+        "banished": [],
+        "spent": 0,
+        "finalHasPlayedSite": true,
+        "graves": [
+          {
+            "uid": "g1",
+            "card": "cmt860qfb0234nwcyx2qg24zv",
+            "deathTurn": 7
+          },
+          {
+            "uid": "g4",
+            "card": "cmt860gaf01xbnwcyypbdwmrg",
+            "deathTurn": null
+          },
+          {
+            "uid": "g6",
+            "card": "cmt85y87200onnwcy0wgem43o",
+            "deathTurn": 15
+          }
+        ],
+        "bonusMana": 0,
+        "drawTurn": 14,
+        "spellsDrawn": 1,
+        "cardsDrawn": 1,
+        "castTurn": 12,
+        "castAir": 0,
+        "castNonFire": false,
+        "bonusAffinity": {},
+        "lostLifeTurn": 13
+      }
+    ],
+    "pending": null,
+    "log": [
+      {
+        "turn": 1,
+        "text": "對局建立。玩家 1 起手 6 張；玩家 2 起手 6 張；玩家 1 隨機取得先手，首回合不抽牌。"
+      },
+      {
+        "turn": 1,
+        "text": "玩家 1 完成重抽。"
+      },
+      {
+        "turn": 1,
+        "text": "玩家 2 完成重抽。"
+      },
+      {
+        "turn": 1,
+        "text": "玩家 1 放置 Simple Village。"
+      },
+      {
+        "turn": 2,
+        "text": "玩家 2 的回合開始。"
+      },
+      {
+        "turn": 2,
+        "text": "玩家 2 放置 Remote Desert。"
+      },
+      {
+        "turn": 2,
+        "text": "召喚 Raal Dromedary。"
+      },
+      {
+        "turn": 3,
+        "text": "玩家 1 的回合開始。"
+      },
+      {
+        "turn": 3,
+        "text": "玩家 1 放置 Humble Village。"
+      },
+      {
+        "turn": 3,
+        "text": "召喚 Land Surveyor。"
+      },
+      {
+        "turn": 4,
+        "text": "玩家 2 的回合開始。"
+      },
+      {
+        "turn": 4,
+        "text": "玩家 2 放置 Red Desert。"
+      },
+      {
+        "turn": 5,
+        "text": "玩家 1 的回合開始。"
+      },
+      {
+        "turn": 5,
+        "text": "玩家 1 放置 Quagmire。"
+      },
+      {
+        "turn": 5,
+        "text": "召喚 Autumn Unicorn。"
+      },
+      {
+        "turn": 6,
+        "text": "玩家 2 的回合開始。"
+      },
+      {
+        "turn": 7,
+        "text": "玩家 1 的回合開始。"
+      },
+      {
+        "turn": 7,
+        "text": "Autumn Unicorn 進入攻擊結算。"
+      },
+      {
+        "turn": 7,
+        "text": "Raal Dromedary → cemetery"
+      },
+      {
+        "turn": 7,
+        "text": "Foot Soldier 進入攻擊結算。"
+      },
+      {
+        "turn": 7,
+        "text": "Land Surveyor 進入攻擊結算。"
+      },
+      {
+        "turn": 7,
+        "text": "召喚 Belmotte Longbowmen。"
+      },
+      {
+        "turn": 8,
+        "text": "玩家 2 的回合開始。"
+      },
+      {
+        "turn": 8,
+        "text": "玩家 2 放置 Remote Desert。"
+      },
+      {
+        "turn": 8,
+        "text": "Foot Soldier → banished"
+      },
+      {
+        "turn": 8,
+        "text": "Land Surveyor → cemetery"
+      },
+      {
+        "turn": 9,
+        "text": "玩家 1 的回合開始。"
+      },
+      {
+        "turn": 9,
+        "text": "Autumn Unicorn 進入攻擊結算。"
+      },
+      {
+        "turn": 9,
+        "text": "Belmotte Longbowmen 進入攻擊結算。"
+      },
+      {
+        "turn": 10,
+        "text": "玩家 2 的回合開始。"
+      },
+      {
+        "turn": 10,
+        "text": "施放 Minor Explosion。"
+      },
+      {
+        "turn": 10,
+        "text": "Belmotte Longbowmen → cemetery"
+      },
+      {
+        "turn": 11,
+        "text": "玩家 1 的回合開始。"
+      },
+      {
+        "turn": 11,
+        "text": "召喚 Belmotte Longbowmen。"
+      },
+      {
+        "turn": 11,
+        "text": "Autumn Unicorn 進入攻擊結算。"
+      },
+      {
+        "turn": 12,
+        "text": "玩家 2 的回合開始。"
+      },
+      {
+        "turn": 12,
+        "text": "玩家 2 放置 Vesuvius。"
+      },
+      {
+        "turn": 12,
+        "text": "召喚 Sand Worm。"
+      },
+      {
+        "turn": 13,
+        "text": "玩家 1 的回合開始。"
+      },
+      {
+        "turn": 13,
+        "text": "Autumn Unicorn 進入攻擊結算。"
+      },
+      {
+        "turn": 13,
+        "text": "玩家 2 進入 Death’s Door，本回合免於死亡。"
+      },
+      {
+        "turn": 13,
+        "text": "Belmotte Longbowmen 進入攻擊結算。"
+      },
+      {
+        "turn": 14,
+        "text": "玩家 2 的回合開始。"
+      },
+      {
+        "turn": 15,
+        "text": "玩家 1 的回合開始。"
+      },
+      {
+        "turn": 15,
+        "text": "Autumn Unicorn 進入攻擊結算。"
+      },
+      {
+        "turn": 15,
+        "text": "Autumn Unicorn → cemetery"
+      },
+      {
+        "turn": 15,
+        "text": "Sand Worm → cemetery"
+      },
+      {
+        "turn": 15,
+        "text": "玩家 2 遭受致命一擊。"
+      }
+    ],
+    "history": [
+      {
+        "type": "mulligan",
+        "player": 0,
+        "cards": [],
+        "actor": 0
+      },
+      {
+        "type": "mulligan",
+        "player": 1,
+        "cards": [],
+        "actor": 1
+      },
+      {
+        "type": "site",
+        "player": 0,
+        "hand": "h6",
+        "at": 17,
+        "actor": 0
+      },
+      {
+        "type": "choose",
+        "player": 0,
+        "option": 0,
+        "actor": 0,
+        "choiceToken": "choice-v1:6cb7e85f:577"
+      },
+      {
+        "type": "choose",
+        "player": 0,
+        "option": 0,
+        "actor": 0,
+        "choiceToken": "choice-v1:816d2fe0:2067"
+      },
+      {
+        "type": "end",
+        "player": 0,
+        "actor": 0
+      },
+      {
+        "type": "draw",
+        "player": 1,
+        "deck": "spells",
+        "actor": 1
+      },
+      {
+        "type": "site",
+        "player": 1,
+        "hand": "h9",
+        "at": 2,
+        "actor": 1
+      },
+      {
+        "type": "choose",
+        "player": 1,
+        "option": 0,
+        "actor": 1,
+        "choiceToken": "choice-v1:dc6356b6:583"
+      },
+      {
+        "type": "cast",
+        "player": 1,
+        "hand": "h10",
+        "caster": "u8",
+        "at": 2,
+        "actor": 1
+      },
+      {
+        "type": "end",
+        "player": 1,
+        "actor": 1
+      },
+      {
+        "type": "draw",
+        "player": 0,
+        "deck": "spells",
+        "actor": 0
+      },
+      {
+        "type": "site",
+        "player": 0,
+        "hand": "h4",
+        "at": 12,
+        "actor": 0
+      },
+      {
+        "type": "choose",
+        "player": 0,
+        "option": 1,
+        "actor": 0,
+        "choiceToken": "choice-v1:de3f3ae5:577"
+      },
+      {
+        "type": "choose",
+        "player": 0,
+        "option": 0,
+        "actor": 0,
+        "choiceToken": "choice-v1:4e573335:2046"
+      },
+      {
+        "type": "cast",
+        "player": 0,
+        "hand": "h7",
+        "caster": "u1",
+        "at": 12,
+        "actor": 0
+      },
+      {
+        "type": "move",
+        "player": 0,
+        "unit": "u16",
+        "at": 12,
+        "path": [
+          12
+        ],
+        "actor": 0
+      },
+      {
+        "type": "end",
+        "player": 0,
+        "actor": 0
+      },
+      {
+        "type": "draw",
+        "player": 1,
+        "deck": "spells",
+        "actor": 1
+      },
+      {
+        "type": "site",
+        "player": 1,
+        "hand": "h13",
+        "at": 7,
+        "actor": 1
+      },
+      {
+        "type": "choose",
+        "player": 1,
+        "option": 1,
+        "actor": 1,
+        "choiceToken": "choice-v1:1af65ea:708"
+      },
+      {
+        "type": "move",
+        "player": 1,
+        "unit": "u20",
+        "at": 7,
+        "path": [
+          7
+        ],
+        "actor": 1
+      },
+      {
+        "type": "end",
+        "player": 1,
+        "actor": 1
+      },
+      {
+        "type": "draw",
+        "player": 0,
+        "deck": "spells",
+        "actor": 0
+      },
+      {
+        "type": "site",
+        "player": 0,
+        "hand": "h2",
+        "at": 16,
+        "actor": 0
+      },
+      {
+        "type": "choose",
+        "player": 0,
+        "option": 0,
+        "actor": 0,
+        "choiceToken": "choice-v1:d4821e73:2062"
+      },
+      {
+        "type": "cast",
+        "player": 0,
+        "hand": "h3",
+        "caster": "u1",
+        "at": 12,
+        "actor": 0
+      },
+      {
+        "type": "end",
+        "player": 0,
+        "actor": 0
+      },
+      {
+        "type": "draw",
+        "player": 1,
+        "deck": "atlas",
+        "actor": 1
+      },
+      {
+        "type": "end",
+        "player": 1,
+        "actor": 1
+      },
+      {
+        "type": "draw",
+        "player": 0,
+        "deck": "spells",
+        "actor": 0
+      },
+      {
+        "type": "attack",
+        "player": 0,
+        "unit": "u31",
+        "at": 7,
+        "path": [
+          7
+        ],
+        "target": "u20",
+        "actor": 0
+      },
+      {
+        "type": "pass",
+        "player": 1,
+        "actor": 1
+      },
+      {
+        "type": "attack",
+        "player": 0,
+        "unit": "u16",
+        "at": 7,
+        "path": [
+          7
+        ],
+        "target": "site:7",
+        "actor": 0
+      },
+      {
+        "type": "pass",
+        "player": 1,
+        "actor": 1
+      },
+      {
+        "type": "attack",
+        "player": 0,
+        "unit": "u24",
+        "at": 7,
+        "path": [
+          7
+        ],
+        "target": "site:7",
+        "actor": 0
+      },
+      {
+        "type": "pass",
+        "player": 1,
+        "actor": 1
+      },
+      {
+        "type": "cast",
+        "player": 0,
+        "hand": "h28",
+        "caster": "u1",
+        "at": 12,
+        "actor": 0
+      },
+      {
+        "type": "end",
+        "player": 0,
+        "actor": 0
+      },
+      {
+        "type": "draw",
+        "player": 1,
+        "deck": "atlas",
+        "actor": 1
+      },
+      {
+        "type": "site",
+        "player": 1,
+        "hand": "h11",
+        "at": 1,
+        "actor": 1
+      },
+      {
+        "type": "choose",
+        "player": 1,
+        "option": 2,
+        "actor": 1,
+        "choiceToken": "choice-v1:3548ced3:709"
+      },
+      {
+        "type": "end",
+        "player": 1,
+        "actor": 1
+      },
+      {
+        "type": "draw",
+        "player": 0,
+        "deck": "spells",
+        "actor": 0
+      },
+      {
+        "type": "attack",
+        "player": 0,
+        "unit": "u31",
+        "at": 7,
+        "path": [],
+        "target": "site:7",
+        "actor": 0
+      },
+      {
+        "type": "attack",
+        "player": 0,
+        "unit": "u34",
+        "at": 7,
+        "path": [
+          7
+        ],
+        "target": "site:7",
+        "actor": 0
+      },
+      {
+        "type": "end",
+        "player": 0,
+        "actor": 0
+      },
+      {
+        "type": "draw",
+        "player": 1,
+        "deck": "spells",
+        "actor": 1
+      },
+      {
+        "type": "cast",
+        "player": 1,
+        "hand": "h18",
+        "caster": "u8",
+        "target": 7,
+        "actor": 1
+      },
+      {
+        "type": "end",
+        "player": 1,
+        "actor": 1
+      },
+      {
+        "type": "draw",
+        "player": 0,
+        "deck": "spells",
+        "actor": 0
+      },
+      {
+        "type": "cast",
+        "player": 0,
+        "hand": "h33",
+        "caster": "u1",
+        "at": 12,
+        "actor": 0
+      },
+      {
+        "type": "attack",
+        "player": 0,
+        "unit": "u31",
+        "at": 7,
+        "path": [],
+        "target": "site:7",
+        "actor": 0
+      },
+      {
+        "type": "pass",
+        "player": 1,
+        "actor": 1
+      },
+      {
+        "type": "end",
+        "player": 0,
+        "actor": 0
+      },
+      {
+        "type": "draw",
+        "player": 1,
+        "deck": "spells",
+        "actor": 1
+      },
+      {
+        "type": "site",
+        "player": 1,
+        "hand": "h35",
+        "at": 3,
+        "actor": 1
+      },
+      {
+        "type": "cast",
+        "player": 1,
+        "hand": "h12",
+        "caster": "u8",
+        "at": 3,
+        "actor": 1
+      },
+      {
+        "type": "end",
+        "player": 1,
+        "actor": 1
+      },
+      {
+        "type": "draw",
+        "player": 0,
+        "deck": "spells",
+        "actor": 0
+      },
+      {
+        "type": "attack",
+        "player": 0,
+        "unit": "u31",
+        "at": 7,
+        "path": [],
+        "target": "site:7",
+        "actor": 0
+      },
+      {
+        "type": "attack",
+        "player": 0,
+        "unit": "u40",
+        "at": 7,
+        "path": [
+          7
+        ],
+        "target": "site:7",
+        "actor": 0
+      },
+      {
+        "type": "end",
+        "player": 0,
+        "actor": 0
+      },
+      {
+        "type": "draw",
+        "player": 1,
+        "deck": "spells",
+        "actor": 1
+      },
+      {
+        "type": "end",
+        "player": 1,
+        "actor": 1
+      },
+      {
+        "type": "draw",
+        "player": 0,
+        "deck": "spells",
+        "actor": 0
+      },
+      {
+        "type": "attack",
+        "player": 0,
+        "unit": "u31",
+        "at": 2,
+        "path": [
+          2
+        ],
+        "target": "u8",
+        "actor": 0
+      },
+      {
+        "type": "defend",
+        "player": 1,
+        "unit": "u43",
+        "keep": false,
+        "actor": 1
+      },
+      {
+        "type": "pass",
+        "player": 1,
+        "actor": 1
+      },
+      {
+        "type": "ranged",
+        "player": 0,
+        "unit": "u40",
+        "direction": 0,
+        "actor": 0
+      }
+    ],
+    "firstPlayer": 0,
+    "avatarSetupComplete": true,
+    "artifacts": [],
+    "auras": [],
+    "boundControls": [],
+    "finalAvatarBrands": [],
+    "finalInquisitionHandSeen": {},
+    "finalInquisitionTopSeen": {},
+    "storyline": [],
+    "nextZoneAccess": 58,
+    "zoneAccessScopes": {
+      "access1": {
+        "id": "access1",
+        "permissions": {}
+      },
+      "access2": {
+        "id": "access2",
+        "permissions": {}
+      },
+      "access3": {
+        "id": "access3",
+        "permissions": {}
+      },
+      "access4": {
+        "id": "access4",
+        "permissions": {}
+      },
+      "access5": {
+        "id": "access5",
+        "permissions": {}
+      },
+      "access6": {
+        "id": "access6",
+        "permissions": {}
+      },
+      "access7": {
+        "id": "access7",
+        "permissions": {}
+      },
+      "access8": {
+        "id": "access8",
+        "permissions": {}
+      },
+      "access9": {
+        "id": "access9",
+        "permissions": {}
+      },
+      "access10": {
+        "id": "access10",
+        "permissions": {}
+      },
+      "access11": {
+        "id": "access11",
+        "permissions": {}
+      },
+      "access12": {
+        "id": "access12",
+        "permissions": {}
+      },
+      "access13": {
+        "id": "access13",
+        "permissions": {}
+      },
+      "access14": {
+        "id": "access14",
+        "permissions": {}
+      },
+      "access15": {
+        "id": "access15",
+        "permissions": {}
+      },
+      "access16": {
+        "id": "access16",
+        "permissions": {}
+      },
+      "access17": {
+        "id": "access17",
+        "permissions": {}
+      },
+      "access18": {
+        "id": "access18",
+        "permissions": {}
+      },
+      "access19": {
+        "id": "access19",
+        "permissions": {}
+      },
+      "access20": {
+        "id": "access20",
+        "permissions": {}
+      },
+      "access21": {
+        "id": "access21",
+        "permissions": {}
+      },
+      "access22": {
+        "id": "access22",
+        "permissions": {}
+      },
+      "access23": {
+        "id": "access23",
+        "permissions": {}
+      },
+      "access24": {
+        "id": "access24",
+        "permissions": {}
+      },
+      "access25": {
+        "id": "access25",
+        "permissions": {}
+      },
+      "access26": {
+        "id": "access26",
+        "permissions": {}
+      },
+      "access27": {
+        "id": "access27",
+        "permissions": {}
+      },
+      "access28": {
+        "id": "access28",
+        "permissions": {}
+      },
+      "access29": {
+        "id": "access29",
+        "permissions": {}
+      },
+      "access30": {
+        "id": "access30",
+        "permissions": {}
+      },
+      "access31": {
+        "id": "access31",
+        "permissions": {}
+      },
+      "access32": {
+        "id": "access32",
+        "permissions": {}
+      },
+      "access33": {
+        "id": "access33",
+        "permissions": {}
+      },
+      "access34": {
+        "id": "access34",
+        "permissions": {}
+      },
+      "access35": {
+        "id": "access35",
+        "permissions": {}
+      },
+      "access36": {
+        "id": "access36",
+        "permissions": {}
+      },
+      "access37": {
+        "id": "access37",
+        "permissions": {}
+      },
+      "access38": {
+        "id": "access38",
+        "permissions": {}
+      },
+      "access39": {
+        "id": "access39",
+        "permissions": {}
+      },
+      "access40": {
+        "id": "access40",
+        "permissions": {}
+      },
+      "access41": {
+        "id": "access41",
+        "permissions": {}
+      },
+      "access42": {
+        "id": "access42",
+        "permissions": {}
+      },
+      "access43": {
+        "id": "access43",
+        "permissions": {}
+      },
+      "access44": {
+        "id": "access44",
+        "permissions": {}
+      },
+      "access45": {
+        "id": "access45",
+        "permissions": {}
+      },
+      "access46": {
+        "id": "access46",
+        "permissions": {}
+      },
+      "access47": {
+        "id": "access47",
+        "permissions": {}
+      },
+      "access48": {
+        "id": "access48",
+        "permissions": {}
+      },
+      "access49": {
+        "id": "access49",
+        "permissions": {}
+      },
+      "access50": {
+        "id": "access50",
+        "permissions": {}
+      },
+      "access51": {
+        "id": "access51",
+        "permissions": {}
+      },
+      "access52": {
+        "id": "access52",
+        "permissions": {}
+      },
+      "access53": {
+        "id": "access53",
+        "permissions": {}
+      },
+      "access54": {
+        "id": "access54",
+        "permissions": {}
+      },
+      "access55": {
+        "id": "access55",
+        "permissions": {}
+      },
+      "access56": {
+        "id": "access56",
+        "permissions": {}
+      },
+      "access57": {
+        "id": "access57",
+        "permissions": {}
+      },
+      "access58": {
+        "id": "access58",
+        "permissions": {}
+      }
+    },
+    "choice": null,
+    "summonHistory": [
+      {
+        "uid": "u16",
+        "turn": 1,
+        "name": "Foot Soldier",
+        "card": "cmt85z4i3016onwcygir4ma8b",
+        "controller": 0
+      },
+      {
+        "uid": "u20",
+        "turn": 2,
+        "name": "Raal Dromedary",
+        "card": "cmt860qfb0234nwcyx2qg24zv",
+        "controller": 1
+      },
+      {
+        "uid": "u24",
+        "turn": 3,
+        "name": "Land Surveyor",
+        "card": "cmt85zwrq01menwcyq32ith5o",
+        "controller": 0
+      },
+      {
+        "uid": "u31",
+        "turn": 5,
+        "name": "Autumn Unicorn",
+        "card": "cmt85zpwh01ijnwcyc4xiqjr8",
+        "controller": 0
+      },
+      {
+        "uid": "u34",
+        "turn": 7,
+        "name": "Belmotte Longbowmen",
+        "card": "cmt85z0zy014pnwcyru8s1xtb",
+        "controller": 0
+      },
+      {
+        "uid": "u40",
+        "turn": 11,
+        "name": "Belmotte Longbowmen",
+        "card": "cmt85z0zy014pnwcyru8s1xtb",
+        "controller": 0
+      },
+      {
+        "uid": "u43",
+        "turn": 12,
+        "name": "Sand Worm",
+        "card": "cmt85y87200onnwcy0wgem43o",
+        "controller": 1
+      }
+    ],
+    "finalDungeonArms": [],
+    "ongoingEffects": [],
+    "pendingMana": [],
+    "deathHistory": [
+      {
+        "card": "cmt860qfb0234nwcyx2qg24zv",
+        "uid": "u20",
+        "at": 7,
+        "layer": "surface",
+        "controller": 1,
+        "turn": 7,
+        "creditPriority": 1,
+        "killers": [
+          {
+            "uid": "u31",
+            "card": "cmt85zpwh01ijnwcyc4xiqjr8",
+            "controller": 0
+          }
+        ]
+      },
+      {
+        "card": "cmt85z4i3016onwcygir4ma8b",
+        "uid": "u16",
+        "at": 7,
+        "layer": "surface",
+        "controller": 0,
+        "turn": 8,
+        "creditPriority": null,
+        "killers": []
+      },
+      {
+        "card": "cmt85zwrq01menwcyq32ith5o",
+        "uid": "u24",
+        "at": 7,
+        "layer": "surface",
+        "controller": 0,
+        "turn": 8,
+        "creditPriority": null,
+        "killers": []
+      },
+      {
+        "card": "cmt85z0zy014pnwcyru8s1xtb",
+        "uid": "u34",
+        "at": 7,
+        "layer": "surface",
+        "controller": 0,
+        "turn": 10,
+        "creditPriority": 2,
+        "killers": [
+          {
+            "uid": "u8",
+            "card": "cmt8636r4039tnwcyuy3jfmyz",
+            "controller": 1
+          }
+        ]
+      },
+      {
+        "card": "cmt85zpwh01ijnwcyc4xiqjr8",
+        "uid": "u31",
+        "at": 2,
+        "layer": "surface",
+        "controller": 0,
+        "turn": 15,
+        "creditPriority": 1,
+        "killers": [
+          {
+            "uid": "u43",
+            "card": "cmt85y87200onnwcy0wgem43o",
+            "controller": 1
+          }
+        ]
+      },
+      {
+        "card": "cmt85y87200onnwcy0wgem43o",
+        "uid": "u43",
+        "at": 2,
+        "layer": "surface",
+        "controller": 1,
+        "turn": 15,
+        "creditPriority": 1,
+        "killers": [
+          {
+            "uid": "u31",
+            "card": "cmt85zpwh01ijnwcyc4xiqjr8",
+            "controller": 0
+          }
+        ]
+      }
+    ],
+    "deaths": [],
+    "boundSpells": [],
+    "nextGrave": 7,
+    "nextMagicChoiceContext": 1,
+    "magicChoiceContexts": [
+      {
+        "id": "magic1",
+        "card": "cmt860gaf01xbnwcyypbdwmrg",
+        "slug": "minor_explosion",
+        "player": 1,
+        "caster": {
+          "uid": "u8",
+          "card": "cmt8636r4039tnwcyuy3jfmyz",
+          "owner": 1,
+          "controller": 1,
+          "at": 2,
+          "tapped": false,
+          "born": 1,
+          "damage": 0,
+          "ward": false,
+          "stealth": false,
+          "mods": [],
+          "stamp": 8,
+          "summonedAt": 2,
+          "justEntered": false,
+          "geometryWrap": false,
+          "observedTapped": false,
+          "observedPosition": {
+            "at": 2,
+            "layer": "surface",
+            "cells": [
+              2
+            ],
+            "locations": [
+              {
+                "at": 2,
+                "layer": "surface"
+              }
+            ],
+            "region": "surface",
+            "regions": [
+              "surface"
+            ]
+          },
+          "finalTabula": false,
+          "finalCaged": false,
+          "gainedCannotDisable": false,
+          "gainedCannotImmobilize": false,
+          "carrierPosition": {
+            "at": 2,
+            "layer": "surface"
+          },
+          "fiftyOnslaught": false,
+          "restraintDisabled": false,
+          "iceMagicProtection": false,
+          "effectDisabled": false,
+          "silenced": false,
+          "ongoingPower": 0,
+          "grantedTypes": [],
+          "grantedKeywords": [],
+          "grantedMovement": 0,
+          "grantedRange": 0,
+          "spellElements": [],
+          "deniedKeywords": [],
+          "zeroPower": false,
+          "magicProtected": false,
+          "whaleArmor": false,
+          "canSeeStealth": false,
+          "magicDamageProtected": false,
+          "projectileOver": false,
+          "verticalWrap": false,
+          "moveAxis": null,
+          "powerSuppressed": false,
+          "rangeBonus": 0,
+          "lethalImmune": false,
+          "unrestrictedCaster": false,
+          "finalNoEvil": false,
+          "boundDisabled": false,
+          "conditionDisabled": false,
+          "permanentRevealByAbility": {
+            "printed:u8": []
+          },
+          "permanentRevealContacts": [],
+          "carryKeywords": [],
+          "carryDisabled": false,
+          "transportImmobile": false,
+          "geometryAbilitySources": [],
+          "spatialFloodSources": [],
+          "geometryGrowing": false,
+          "geometryIgnoreSites": false,
+          "geometrySafetyEverywhere": false,
+          "finalCorruptor": false,
+          "rowFree": false,
+          "freeRows": [],
+          "lethal": false,
+          "gateVoidwalk": false,
+          "elementGifts": [],
+          "spellCastTurn": 10,
+          "castElements": [
+            "fire"
+          ],
+          "castCount": 1,
+          "interactedTurn": 2,
+          "notRest": false,
+          "finalNextMagicGifts": []
+        },
+        "actualCast": true,
+        "books": [],
+        "countingPolicy": "allied-minions",
+        "minions": [],
+        "selectionComplete": true,
+        "warded": null,
+        "closed": true
+      }
+    ]
+  }
+}

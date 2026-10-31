@@ -1,4 +1,4 @@
-import {createOnlineClient,savedOnlineRoom,bindOnlinePageLifecycle} from './net/online-client.js?v=20261031-pages-resume';
+import {createOnlineClient,savedOnlineRoom,bindOnlinePageLifecycle} from './net/online-client.js?v=20261031-mobile-natural';
 import {battleNoticeEvents,createBattleNoticeFeed} from './battle-notices.js';
 import {arrangeRealmPiles} from './realm-layout.js';
 import {localizeChoice} from './ui-choice-copy.js';

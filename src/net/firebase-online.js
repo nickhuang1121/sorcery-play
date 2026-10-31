@@ -1,4 +1,4 @@
-import {createFirebaseTransport} from './firebase-transport.js';
+import {createFirebaseTransport} from './firebase-transport.js?v=20261031-mobile-natural';
 import {firebaseConfig} from './firebase-config.js';
 import {ENGINE_BUILD,PRESENCE_BEAT_MS} from './protocol.js';
 import {FIREBASE_ROOMS,FIREBASE_DIRECTORY,firebaseSeat,firebaseRoomExpired,makeFirebaseRoom,claimFirebaseGuest,reduceFirebaseRoom,firebaseRoomSnapshot} from './firebase-match-model.js';
