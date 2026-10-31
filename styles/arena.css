@@ -1,0 +1,170 @@
+/* Shared game skin: quiet surfaces, tactile cards, light only for action. */
+:root{--bg:#0b0e14;--panel:#161c26f2;--line:#ffffff12;--text:#eef1f5;--muted:#9ca9b9;--gold:#c6a37c;--gold-2:#8a6b51;--green:#9cc6aa;--red:#ee9d8d;--action:#bf734c;--action-hover:#d58a5b;--focus:#b6dcf8;--target:#83c6ee;--hostile:#e38772;--popup-surface:linear-gradient(145deg,#202936f5,#111720fa 70%);--popup-border:transparent;--popup-radius:14px}
+body{background:#0b0e14;color:var(--text)}
+button{border-color:transparent;background:#222c39;border-radius:7px;color:var(--text);box-shadow:none;transition:background .15s,color .15s,transform .15s}
+button:hover{border-color:transparent;background:#303d4d}
+button:active{transform:translateY(1px)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+button.primary,.primary{border:0;background:linear-gradient(120deg,#a95e3f,#c78053);color:#fff6ee;box-shadow:0 4px 16px #713e302e}
+button.primary:hover,.primary:hover{background:linear-gradient(120deg,#bd714e,#d59060)}
+input,textarea,select{background:#0d131d;border-color:#ffffff1a;border-radius:7px}
+a{color:#bed9ef}.muted{color:var(--muted)}
+.masthead{border:0;background:#111720de;backdrop-filter:blur(16px)}
+.brand-mark{border:0;background:linear-gradient(140deg,#354254,#19212c);color:#dce6ef;box-shadow:0 4px 16px #0005}
+.brand small,.eyebrow,.badge{color:#a7b6c9}.badge{border:0;background:#ffffff0a}
+nav button.active,nav button[aria-current="page"]{border-color:#88b7d6;color:#d9eaf8}
+.notice{border:0;background:#1d2838;color:#d7e1ec;box-shadow:none}
+.site-footer{border:0;color:#8190a3}
+/* The battlefield is a single surface. The grid is orientation, not decoration. */
+.table{background:radial-gradient(ellipse at 50% 40%,#33435765,transparent 68%),radial-gradient(ellipse at 50% 100%,#07090ef0,transparent 55%),linear-gradient(125deg,#121923,#181e28 48%,#10151d)}
+.stage{background:radial-gradient(ellipse at center,#53657c18,transparent 70%)}
+.board-frame,.board-frame::before{border:0;box-shadow:none;background:transparent;border-radius:0}
+.board-frame::before{display:none}
+.board .cell{border:1px solid #b0c4db0a;border-radius:4px;background:#ffffff01;box-shadow:none}
+.board .cell.has-site{border-color:#d4e4f00d;background:linear-gradient(150deg,#26324088,#0c121b99);box-shadow:none}
+.board .cell.own-site,.board .cell.enemy-site{box-shadow:none}
+.board .site-scenery{opacity:.5;filter:saturate(.7)}
+.board .coordinate{color:#b5c2d04d;font:8px/1.1 system-ui}
+.board .void-label,.board .void-divider{color:#8592a62b;letter-spacing:.2em}
+.board .site-name.site-divider{border:0;border-radius:2px;background:linear-gradient(90deg,#101720dd,#10172050);color:#d4deea;font-weight:400;box-shadow:none}
+.board .site-divider .card-image{border:0}
+.board .image-unit,.board .unit.avatar,.board .unit.enemy{border:0;border-radius:4px;box-shadow:0 3px 9px #000b;background:#10151c}
+.board .image-unit .unit-name{background:linear-gradient(0deg,#070b12ed,#070b1200);color:#eaf0f6}
+.board .unit-stat{background:#121a25ed;color:#fff;border:0;border-radius:3px;font-weight:700}
+.board .pile-open{border:0;background:#111b29cf;color:#c4d3e2;border-radius:3px;box-shadow:none}
+.board .pile-open .pile-count{color:#edf5ff}
+.board .below{box-shadow:0 3px 10px #0009;filter:saturate(.65)}
+.board .below .pile-open{color:#8bc2df}
+.board .cell.legal{border:1px solid #8fceec66;background:radial-gradient(ellipse at center,#8ac9ed24,#4e8db20a);box-shadow:inset 0 0 28px #7cc7f12c,0 0 12px #82bfe61c;animation:arenaTarget 2s ease-in-out infinite}
+.board .cell.legal::after{color:#c8eaff;text-shadow:0 0 7px #77bbef88}
+.board .cell.threat{border-color:#e7877377;background:radial-gradient(ellipse at center,#cb62452b,transparent);box-shadow:inset 0 0 26px #e5887229,0 0 16px #e5887214}
+.board .cell.threat::after{color:#ffc7b6}
+.board .cell.preview,.board .cell.legal:focus-visible{outline:2px solid #c3eaff;outline-offset:-3px}
+.board .cell.preview-invalid{outline:2px solid #e89382;outline-offset:-3px}
+.board .unit.selected,.board .unit.choice-pick{outline:1px solid #bde3fa;outline-offset:1px;box-shadow:0 0 18px #85bfe66b}
+.board .cell.path{background-color:#6d9db52b;box-shadow:inset 0 0 12px #8ec7e944}
+@keyframes arenaTarget{50%{box-shadow:inset 0 0 36px #7cc7f13b,0 0 18px #82bfe628}}
+/* Avatar and resources float above the table, rather than filling a framed bar. */
+.hud-top,.hud-bottom,.you-row{border:0;box-shadow:none}
+.hud-top{background:linear-gradient(#080d16bb,transparent)}
+.hud-bottom{background:linear-gradient(0deg,#070b12 42%,#080d16ba 78%,transparent)}
+.player-bar,.player-bar.current,.player-bar.has-priority{border:0;background:transparent;box-shadow:none;border-radius:0;padding:4px 8px}
+.player-bar .portrait{border:0;background:radial-gradient(circle at 40% 25%,#5b697b,#171e2a 80%);color:#e0e8f3;box-shadow:0 4px 16px #0008;overflow:hidden}
+.portrait>.card-image{display:block;width:100%;height:100%;border-radius:50%}
+.portrait>.card-image img{width:100%;height:100%;object-fit:cover;object-position:50% 24%;transform:scale(1.7);transform-origin:50% 26%}
+.player-bar.has-priority .portrait{box-shadow:0 0 18px #a0ceef70,0 3px 12px #000a}
+.player-bar.has-priority .life{color:#fff;text-shadow:0 0 15px #bde3ff88}
+.life{border:0;border-radius:0;background:transparent;color:#edf3fa;font:600 25px/1 Georgia,serif;width:auto;min-width:38px;box-shadow:none}
+.life small{color:#93a5b9;font:8px/1.5 system-ui}
+.mana{color:#c5e4f5;font:18px/1.2 system-ui}
+.player-meta strong{color:#edf1f6;font:500 13px/1.4 system-ui}
+.player-meta small{color:#8797ab}
+.element{border:0;box-shadow:none;background:#202d3d}
+.phase-chip .turn-number{color:#b9cbdc;font:16px/1 system-ui}
+.phase-chip strong{color:#cbd5e1;font:13px/1.4 system-ui}
+.phase-track .on{color:#bddef4}
+.opponent-hand b{color:#a9bdd2}
+.opponent-hand .card-back{border:0;background:repeating-linear-gradient(45deg,#202c3c 0 4px,#304056 4px 5px)}
+#tools-toggle,.tools-fab.open #tools-toggle{border:0;background:#131d2cbf;color:#cfdeeb;box-shadow:none}
+.tools-panel{border:0;background:#17212ef5;box-shadow:0 14px 36px #0008}
+.tools-panel button{border:0;background:#253244;color:#d8e5f1}
+.tools-panel button[aria-pressed="true"],.tools-panel button[aria-expanded="true"]{background:#374e66;box-shadow:none}
+.minimap{border:0;background:#0d1420d9;box-shadow:0 5px 12px #0005}
+.minimap i.mini-legal{box-shadow:inset 0 0 0 1px #a4d5f4}
+.edge{border:0;background:#1c2d42e8;color:#c2e5fa;box-shadow:0 3px 12px #0008}
+/* Hand cards retain the printed card art and gain only a selection glow. */
+.fan .card{border:0;box-shadow:0 6px 16px #000a;background:#070b12;border-radius:5px}
+.fan .card[aria-pressed="true"]{outline:1px solid #bde4fa;box-shadow:0 0 20px #8ac7ef66,0 7px 18px #000b}
+.card-caption{background:linear-gradient(0deg,#080d15f2,#080d1588);color:#e1e8f0}
+.hand-label,.hand-group h3{color:#8e9fb4}.hand-hint{color:#718399}
+#toggle-hand{border:0;background:#18223099;color:#acbdce;box-shadow:none}
+.context{color:#afc2d5}.context strong{color:#e6eef6}
+.context button,.action-button{border:0;background:#253246;color:#d8e5ef;box-shadow:none}
+#end,#pass{border:0;border-radius:7px;background:linear-gradient(115deg,#a95f40,#ca8357);color:#fff5ed;box-shadow:0 5px 18px #0005;font-weight:600}
+#end:disabled,#pass:disabled{background:#253041;color:#7b8da3;box-shadow:none;opacity:.65}
+#bound-spells{background:#1a2535;color:#adbed1}
+.battle-notice{border:0;background:linear-gradient(110deg,#172334ed,#111925e8);box-shadow:0 6px 24px #0007;border-radius:8px}
+.battle-notice small{color:#8da8c1}.battle-notice p{color:#e5edf5}
+#online-status{border:0;background:#152333ed;color:#bbdbee;box-shadow:0 3px 16px #0005}
+#online-status[data-connected="false"]{border:0;color:#efb499}
+/* The same material and button hierarchy continue through the home and archive. */
+.home-wordmark,.home-menu>span,.home-kicker{color:#b6c7d7}
+.game-home h1{color:#e2e9ef;text-shadow:0 5px 30px #000a}
+.home-kicker span{background:linear-gradient(90deg,transparent,#829bb0)}
+.home-action,.home-action:first-child{border:0;border-radius:8px;background:linear-gradient(100deg,#1d2938e6,#121b27b3);box-shadow:0 6px 22px #0004}
+.home-action:hover{border:0;background:linear-gradient(100deg,#2e4258ed,#1a293be8);box-shadow:inset 3px 0 #98c8e8,0 8px 25px #0005}
+.home-action-icon,.home-action-arrow{color:#afc5d9}.home-action strong{color:#e9eff5;font-family:system-ui;font-weight:500;letter-spacing:.02em}
+.home-action small{color:#a4b4c6}.home-action-badge{border:0;background:#7c9bb51a;color:#b6cde0;border-radius:3px}
+.home-menu{border:0;background:#182331a1;color:#cad8e6}
+.home-resume,.home-footer>button{color:#bad5e9}.home-resume:hover,.home-footer>button:hover{color:#ecf7ff}
+.panel,.deck-editor,.deck-section,.intro,.collection-panel{border-color:transparent;background:#151e2b;box-shadow:none}
+.panel-title,.deck-preset-label{color:#aebfd2}
+.library-grid .card{border:0;box-shadow:0 4px 12px #0007}
+.filters{border:0;background:transparent}.filters button{border:0}
+.deck-row{border-color:#ffffff0a}.deck-row button{border:0}
+.deck-summary,.deck-avatar,.deck-preset-bar{border-color:transparent;background:#1b2838}
+#game-nav{border:0;background:#111b28ed;box-shadow:0 -4px 20px #0005}
+#game-nav button[aria-current="page"]{color:#c4e4fb;background:#2b4055;border:0;box-shadow:none}
+.lobby-page .lobby .panel{border:0;background:linear-gradient(125deg,#1c2838,#131c29);border-radius:12px;box-shadow:0 10px 30px #0003;padding:22px}
+.lobby-page .lobby textarea,.lobby-page .lobby select,.lobby-page .lobby input[type=text]{background:#0e1724;border:1px solid #ffffff17;color:#dfe8f2;border-radius:7px}
+.lobby-page .lobby .code{color:#b7dff5}
+.lobby-page .lobby h2{color:#d6e3ef;font:500 17px/1.4 system-ui}
+.lobby-page .lobby .row{gap:10px}.lobby-page .lobby .row button{min-height:44px}
+.lobby-page .masthead nav>span{color:#c5dcecff!important}
+/* Respect the existing layout profiles while removing their old framed bars. */
+.table[data-hand-profile] .you-row .player-bar{border:0;background:linear-gradient(90deg,#101a29df,#101a2900);box-shadow:none}
+@media(max-width:900px){
+ .table[data-hand-profile="portrait"] .you-row{pointer-events:auto;max-width:190px;top:0;bottom:auto}
+ .table[data-hand-profile="portrait"] .you-row .portrait{display:grid;width:28px;height:28px}
+ .table[data-hand-profile="portrait"] .you-row .life{border:0;background:transparent;min-width:28px;width:auto;font-size:23px}
+ .table[data-hand-profile="portrait"] .you-row .player-bar{padding:3px 7px;border-radius:0;gap:7px}
+ .table[data-hand-profile="landscape"] .you-row{pointer-events:auto}
+ .table[data-hand-profile="landscape"] .you-row .portrait{display:grid;width:26px;height:26px}
+ .table[data-hand-profile="landscape"] .you-row .life{min-width:26px;width:auto;font-size:22px}
+ .table[data-hand-profile="portrait"] .hud-top{background:linear-gradient(#090f19c7,transparent)}
+ .home-action{min-height:70px}.home-action strong{font-size:16px}
+ .lobby-page .lobby .panel{padding:18px}
+}
+@media(max-height:580px) and (orientation:landscape){
+ .game-home .home-main{padding:16px 0}.home-copy{width:min(740px,100%)}
+ .game-home h1{font-size:42px;margin:0 0 8px;text-align:left}.home-kicker,.home-subtitle{display:none}
+ .home-actions{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.home-action{min-height:62px;padding:10px 14px}
+ .home-shell{min-height:calc(100dvh - 24px)}.game-home{padding-top:12px;padding-bottom:12px}
+ .home-footer{margin-top:10px}
+}
+@media(prefers-reduced-motion:reduce){.board .cell.legal{animation:none}}
+/* Override older layout-specific accents as well as the base card rule. */
+:root{--gold:#afc8dc;--gold-2:#728aa0}
+.fan .card[data-deck]{box-shadow:0 6px 16px #000a;border:0}
+.fan[data-layout] .card[aria-pressed="true"],.fan[data-layout] .card:focus-visible{border:0;outline:1px solid #bde4fa;box-shadow:0 0 20px #8ac7ef66,0 7px 18px #000b}
+.card.selected,.mulligan-cards .card.selected{border-color:transparent;outline:1px solid #bde4fa;box-shadow:0 0 16px #8ac7ef66}
+.hand-seal{border:0;background:#111d2deb;color:#d7e9f8;box-shadow:0 4px 20px #0008}
+#toast{border:0;border-radius:8px;background:#223249f5;color:#e3edf6;box-shadow:0 6px 24px #0007}
+.realm-object.preview-target{outline-color:#bde4fa}
+.player-bar[data-player]:focus-visible{outline-color:#b6dcf8}
+.popup .inspect-sheet>.card[data-tutorial-blocked]{opacity:1}
+.board .void-divider{border:0;background:transparent;color:transparent;font-size:0;flex:0 0 8px}
+.strike-arrow line{stroke:#efb19d}.strike-arrow path{fill:#efb19d}
+.popup .modal-actions button[data-tutorial-blocked]{background:#253041;color:#8292a6;box-shadow:none}
+/* Contextual cancel replaces the unrelated bound-spell shortcut on short screens. */
+@media(max-height:580px) and (orientation:landscape){
+ .table[data-hand-profile="landscape"]:has(#cancel,#pass,#resume-choice) #bound-spells{display:none}
+ .table[data-hand-profile="landscape"] .action-dock{overflow:auto}
+ .table[data-hand-profile="landscape"] .context{flex:0 0 auto;max-height:52px;overflow:auto;color:#aebfd1}
+ .table[data-hand-profile="landscape"] .dock-actions{flex:0 0 auto}
+ .table[data-hand-profile="landscape"] .context:has(#cancel){font-size:0;line-height:0;min-height:44px;max-height:44px}
+ .table[data-hand-profile="landscape"] .context:has(#cancel)>strong{display:none}
+ .table[data-hand-profile="landscape"] #cancel{display:block;width:100%;height:44px;min-height:44px;margin:0;font:13px/1.4 system-ui;background:#30445a;color:#d8ebf9}
+}
+.board .cell.legal:hover{outline:1px solid #bde4fa;outline-offset:-2px}
+.intro,.deck-preset-bar,.deck-summary{background:transparent;border:0;box-shadow:none}
+.deck-swipe-tabs{background:linear-gradient(#0b0e14 75%,#0b0e1400)}
+.deck-swipe-tabs button,.deck-swipe-tabs button.active{border:0;background:#1a2636;color:#97aabd;box-shadow:none}
+.deck-swipe-tabs button.active{background:#2c4056;color:#e5f2fd;box-shadow:inset 0 -2px #8cbedc}
+.popup .stack-expanded .image-unit{border:0;background:#0b121d;box-shadow:0 4px 12px #0007;border-radius:5px}
+.lobby-deck-advanced{margin:18px 0 10px;padding:0;color:#a7bdcf}
+.lobby-deck-advanced summary{cursor:pointer;min-height:44px;padding:12px 0;font:13px/1.5 system-ui}
+.lobby-deck-advanced summary:focus-visible{outline:2px solid #b6dcf8;outline-offset:2px}
+.lobby-deck-advanced[open]{padding-bottom:6px}
+.lobby-page #build-badge{display:none}
+.catalogue .card{border:0;box-shadow:0 5px 16px #0007;background:#0a111c}

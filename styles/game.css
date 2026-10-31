@@ -215,7 +215,7 @@ h2{font-weight:normal;font-size:22px}
 .fan[data-layout="fan"] .card[aria-pressed="true"],.fan[data-layout="fan"] .card:focus-visible{transform:translateX(var(--fan-spread,0px)) translateY(calc(var(--fan-lift,0px) - 30px)) rotate(0deg) scale(1.08);z-index:40;border-color:var(--gold);box-shadow:0 0 0 2px var(--gold),0 16px 28px #000b}
 .table[data-hand-profile="tablet"] .fan[data-layout="fan"]{padding-top:18px}
 .table[data-hand-profile="tablet"] .fan[data-layout="fan"] .hand-group h3{position:static;margin:0 0 4px;text-align:center}
-.fan[data-layout="strip"],.fan[data-layout="compact"]{justify-content:flex-start;align-items:stretch;overflow-x:scroll;overflow-y:hidden;scrollbar-gutter:stable;scroll-snap-type:x mandatory;scroll-padding-inline:var(--snap-pad,16px);padding:4px var(--snap-pad,16px) 2px;gap:10px;touch-action:pan-x;-webkit-overflow-scrolling:touch}
+.fan[data-layout="strip"],.fan[data-layout="compact"]{justify-content:flex-start;align-items:stretch;overflow-x:scroll;overflow-y:hidden;scrollbar-gutter:stable;scroll-snap-type:none;scroll-padding-inline:var(--snap-pad,16px);padding:4px var(--snap-pad,16px) 2px;gap:10px;touch-action:pan-x;-webkit-overflow-scrolling:touch}
 .fan[data-layout="strip"] .hand-group,.fan[data-layout="compact"] .hand-group{flex:0 0 auto;max-width:none;width:max-content;align-items:stretch;height:100%;min-width:0}
 .fan[data-layout="strip"] .hand-group h3,.fan[data-layout="compact"] .hand-group h3{position:static;margin:0 0 4px;text-align:left}
 .fan[data-layout="strip"] .hand-cards,.fan[data-layout="compact"] .hand-cards{gap:8px;height:100%;max-width:none;min-width:max-content;width:max-content;align-items:flex-end;justify-content:flex-start}

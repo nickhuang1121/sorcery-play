@@ -1,0 +1,41 @@
+#tutorial-guide[hidden]{display:none}
+#tutorial-guide{position:fixed;inset:0;z-index:900;pointer-events:none}
+.tutorial-shade,.tutorial-rings{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.tutorial-rings>div{position:absolute;border:1px solid #d8efff9c;border-radius:5px;box-shadow:0 0 18px #b5def64d,inset 0 0 8px #d4eeff18;pointer-events:none}
+#tutorial-bar{position:absolute;top:max(6px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);width:min(660px,calc(100% - 20px));padding:10px 13px;background:linear-gradient(110deg,#1e2b3af2,#111b29e6);border:0;border-radius:10px;box-shadow:0 8px 30px #0005;pointer-events:auto;color:#edf3f9;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:10px}
+.tutorial-progress{font:10px/1.4 system-ui;letter-spacing:.08em;color:#98b2cc;grid-column:1}
+#tutorial-bar strong{display:block;font:500 15px/1.4 system-ui;margin:2px 0;grid-column:1}
+#tutorial-bar p{font:12px/1.6 system-ui;margin:4px 0 0;overflow-wrap:anywhere;grid-column:1/-1;color:#cedce9}
+.tutorial-controls{grid-column:2;grid-row:1/3;align-self:center;display:flex;align-items:center;gap:5px}
+.tutorial-controls button,#tutorial-dialog-tools button{border:0;min-height:44px;padding:6px 9px;font:12px/1.3 system-ui;background:transparent;color:#b7d3e9;box-shadow:none}
+.tutorial-controls button:hover,#tutorial-dialog-tools button:hover{background:#ffffff0b}
+.tutorial-more{position:relative}
+.tutorial-more summary{list-style:none;display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;font:24px/1 system-ui;color:#cbdcea;cursor:pointer}
+.tutorial-more summary::-webkit-details-marker{display:none}
+.tutorial-more summary:hover,.tutorial-more[open] summary{background:#ffffff0b}
+.tutorial-more summary:focus-visible{outline:2px solid #b6dcf8;outline-offset:2px}
+.tutorial-menu-items{position:absolute;right:0;top:calc(100% + 5px);z-index:20;min-width:170px;max-width:calc(100vw - 32px);padding:6px;background:#1b2a3bf9;border:0;border-radius:9px;box-shadow:0 12px 32px #0009;display:flex;flex-direction:column}
+.tutorial-menu-items button{text-align:left;white-space:normal;min-height:44px!important}
+#tutorial-dialog-tools{padding:0 18px 14px;border:0;background:transparent;flex:none;display:flex;align-items:center;gap:10px}
+#tutorial-dialog-tools p{font:11px/1.5 system-ui;color:#96adc3;margin:0;flex:1}
+#tutorial-dialog-tools>div{display:flex;gap:3px;flex:none}
+#card-info #tutorial-dialog-tools{position:absolute;top:7px;right:54px;z-index:6;padding:0}
+#card-info #tutorial-dialog-tools p,#card-info #tutorial-dialog-tools .tutorial-hint{display:none}
+.with-dialog #tutorial-bar{visibility:hidden}
+.in-tutorial .table{padding-top:var(--tutorial-top,108px)}
+.in-tutorial .table[data-hand-profile="portrait"]{grid-template-rows:auto minmax(70px,1fr) minmax(225px,34%)}
+.in-tutorial .tools-fab{visibility:hidden}
+.tutorial-chapters{display:grid;gap:6px;margin-top:18px}
+.tutorial-chapters button{display:grid;grid-template-columns:26px 1fr auto;gap:10px;align-items:center;min-height:52px;text-align:left;border:0;background:#243348;color:#dfeaf3;border-radius:6px}
+.tutorial-chapters button>span{color:#93b9d6}.tutorial-chapters strong{font:500 14px/1.4 system-ui}.tutorial-chapters small{color:#96aabd;font:10px/1.4 system-ui}
+[data-tutorial-blocked]{opacity:.28;cursor:default}
+.tutorial-nudge{animation:tutorialNudge .3s ease-out}
+@keyframes tutorialNudge{50%{box-shadow:0 0 20px #badff655}}
+@media(max-height:580px) and (orientation:landscape){
+ #tutorial-bar{left:8px;transform:none;width:min(440px,65%);padding:7px 12px}
+ #tutorial-bar strong{font-size:13px}#tutorial-bar p{font-size:11px}.tutorial-progress{font-size:9px}
+ .in-tutorial .table{padding-top:var(--tutorial-top,102px)}.in-tutorial .hud-top{display:none}
+ .in-tutorial .board-frame{min-height:440px}
+}
+@media(max-height:650px) and (orientation:portrait){.in-tutorial .board-frame{min-height:360px}}
+@media(prefers-reduced-motion:reduce){.tutorial-nudge{animation:none}}

@@ -1,6 +1,11 @@
 import {actionEnglish} from './action-catalog.js';
 // Interface copy is separate from engine state, deck data and card definitions.
 export const english={...actionEnglish,...Object.fromEntries(`
+非官方社群開發專案 · 線上對戰	Unofficial community project · Online play
+進階：匯入牌組	Advanced: import a deck
+自創牌組可在「編輯牌組」儲存後，重新整理此頁。	Save custom decks in “Build a deck”, then refresh this page.
+教學對手	Tutor
+點高亮格子或目標	Choose a highlighted square or target
 · 席位	· Seat
 Firebase 拒絕房間存取，請確認登入身分與房間權限。	Firebase denied room access. Check your sign-in and room permissions.
 Firebase 重新連線中，請稍候。	Reconnecting to Firebase. Please wait.
