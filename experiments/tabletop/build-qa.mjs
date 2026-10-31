@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import {install,card} from '../../src/cards.js';
+import {restoreGame,dispatch} from '../../src/engine.js';
+import {createTutorialScene} from '../../src/tutorial.js';
+install(JSON.parse(fs.readFileSync(new URL('../../data/official-cards.json',import.meta.url))));
+const replay=JSON.parse(fs.readFileSync(new URL('../../data/online-google-mobile-natural-match.json',import.meta.url)));
+let s=restoreGame(structuredClone(replay.initialState));for(const a of replay.history.slice(0,-4))s=dispatch(s,a);
+const combat=structuredClone(s);combat.mode='local';combat.players[0].name='你';combat.players[1].name='對手';
+let finish=structuredClone(combat);for(const a of replay.history.slice(-4))finish=dispatch(finish,a);if(finish.winner!==0||finish.history.some(a=>a.type==='concede'))throw Error('Natural finish replay failed');
+const stack=createTutorialScene(6);stack.mode='local';stack.players[1].name='對手';
+for(let i=0;i<3;i++)stack.units.push({uid:'qa-surface-'+i,card:card('common_cottagers').id,at:17,owner:0,controller:0,layer:'surface',born:0,tapped:false,damage:0,mods:[]});
+stack.units.push({uid:'qa-burrower',card:card('cave_trolls').id,at:17,owner:0,controller:0,layer:'below',born:0,tapped:false,damage:0,mods:[]});
+stack.board[12]={uid:'qa-water-site',card:card('autumn_river').id,owner:0,controller:0};
+stack.units.push({uid:'qa-submerged',card:card('deep_sea_mermaids').id,at:12,owner:0,controller:0,layer:'below',born:0,tapped:false,damage:0,mods:[]});
+const fx=JSON.parse(fs.readFileSync(new URL('../../data/mobile-ui-fixture.json',import.meta.url))).state;fx.mode='local';
+fs.writeFileSync(new URL('./qa-fixtures.json',import.meta.url),JSON.stringify({description:'QA only. Combat is a native replay immediately before the final four non-concede actions of an existing natural match. Stack is an authored layer/overflow display scene. Effects reuses the existing native CONDUIT audit scene.',combat,combatActions:replay.history.slice(-4),stack,fx},null,2)+'\n');
+console.log('QA scenes generated; native combat replay ends with winner 0 without concession.');

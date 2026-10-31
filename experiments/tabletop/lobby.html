@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0e14">
+  <title data-i18n-preserve>Sorcery · 森境對戰大廳</title>
+  <link rel="stylesheet" href="../../styles/game.css?v=20261031-hand-stable"><link rel="stylesheet" href="../../styles/popup.css?v=20261031-arena">
+  <style>
+    .lobby{max-width:720px;margin:28px auto;padding:0 16px 48px}
+    .lobby h1{margin:8px 0 6px}
+    .lobby .panel{background:#0e1416;border:1px solid #2a3336;border-radius:12px;padding:16px;margin-top:16px}
+    .lobby .panel h2{margin:0 0 12px;font-size:1.05rem}
+    .lobby textarea{width:100%;min-height:140px;font:12px/1.45 ui-monospace,monospace;background:#070b0c;color:#e8e4d9;border:1px solid #3a4448;border-radius:8px;padding:10px}
+    .lobby .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+    .lobby .code{font:700 1.4rem ui-monospace,monospace;letter-spacing:.12em;color:#f0d7a2}
+    .lobby .muted{color:var(--muted);font:12px/1.5 sans-serif}
+    .lobby #status{margin-top:12px}
+    .lobby select,.lobby input[type=text]{background:#070b0c;color:#e8e4d9;border:1px solid #3a4448;border-radius:8px;padding:10px 12px;min-height:42px}
+    .lobby input[type=text]{flex:1;min-width:160px}
+    .lobby #status:empty{display:none}
+    .lobby #google-profile{overflow-wrap:anywhere}
+    @media(max-width:600px){
+      .lobby-page .masthead{display:flex;flex-wrap:wrap;gap:12px;padding:16px}
+      .lobby-page .masthead .brand{flex:1;min-width:0}
+      .lobby-page .masthead .header-end{flex:none}
+      .lobby-page .masthead nav{order:3;display:flex;flex:1 0 100%;gap:8px;white-space:nowrap}
+      .lobby-page #build-badge{display:none}
+      .lobby-page .masthead button{min-height:44px}
+      .lobby .row button{min-height:44px}
+      .lobby select{max-width:100%}
+    }
+  </style>
+<link rel="stylesheet" href="../../styles/arena.css?v=20261031-hand-stable"><link rel="stylesheet" href="./battle-skin.css?v=20261031-forest-rules"></head>
+<body class="forest-runtime lobby-page">
+<header class="masthead">
+  <a class="brand" href="./battle.html"><span class="brand-mark">S</span><span>SORCERY<small>CONTESTED REALM</small></span></a>
+  <nav aria-label="主要導覽">
+    <a href="./battle.html" style="color:inherit;text-decoration:none;padding:8px 10px">本機對戰</a>
+    <span style="padding:8px 10px;color:#f0d7a2">線上大廳</span>
+  </nav>
+  <div class="header-end"><button type="button" data-ui-settings-open aria-haspopup="dialog">選單</button><span class="offline" id="build-badge">build …</span></div>
+</header>
+
+<main class="lobby">
+  <div class="eyebrow">ONLINE LOBBY</div>
+  <h1>線上對戰</h1>
+  <p class="muted">建立房間，邀請另一位玩家。雙方準備後，進入正式戰場。雙方離線超過 15 分鐘的房間會自動清除。</p>
+
+  <div class="panel" id="connect-panel">
+    <h2>1. Google 登入</h2>
+    <div class="row">
+      <button type="button" id="btn-connect" class="primary" disabled>使用 Google 登入</button><button type="button" id="btn-signout" hidden>登出</button>
+      <span class="muted" id="connect-label">正在準備登入…</span>
+    </div>
+    <div id="google-profile" hidden><strong id="google-name" data-i18n-preserve></strong><p id="google-email" class="muted" data-i18n-preserve></p></div>
+    <p class="muted">登入後即可建立或加入房間。同一個 Google 帳號可在其他裝置恢復原本席位。</p>
+  </div>
+
+  <div class="panel" id="room-panel" hidden>
+    <h2>2. 房間</h2>
+    <div class="row" style="margin-bottom:10px">
+      <button type="button" id="btn-create">建立房間</button>
+      <input type="text" id="join-code" placeholder="輸入房號" maxlength="8" aria-label="房號">
+      <button type="button" id="btn-join">加入房間</button>
+      <button type="button" id="btn-reclaim">恢復我的席位</button>
+      <button type="button" id="btn-copy-room" disabled>複製房號</button>
+      <button type="button" id="btn-refresh-rooms">重新整理房間列表</button>
+    </div>
+    <p class="muted">房號：<span class="code" id="room-code">—</span> · 席位：<span id="seat-label">—</span> · 對手：<span id="peer-label">—</span></p>
+    <p class="muted" style="margin-top:10px">近期房間（點房號可填入）</p>
+    <div id="room-list" class="muted">連線後載入…</div>
+  </div>
+
+  <div class="panel" id="deck-panel" hidden>
+    <h2>3. 牌組</h2>
+    <p class="muted" id="decks-loading">正在載入官方／自創牌組…</p>
+    <label class="muted">選擇牌組
+      <select id="deck-pick" style="display:block;width:100%;margin-top:6px" disabled>
+        <option value="">載入中…</option>
+      </select>
+    </label>
+    <p class="muted" style="margin-top:8px">自創牌組可在「編輯牌組」儲存後，重新整理此頁。</p>
+    <details class="lobby-deck-advanced"><summary>進階：匯入牌組</summary><p class="muted" style="margin-top:10px">官方牌組 JSON（含 decklist；選完會自動填入）</p>
+    <textarea id="deck-json" spellcheck="false" placeholder='{"name":"我的牌組","format":"Constructed","decklist":[{"board":"Avatar","quantity":1,"card":{"slug":"sorcerer"}}]}'></textarea></details>
+    <div class="row" style="margin-top:10px">
+      <button type="button" id="btn-publish">上傳牌組</button>
+      <button type="button" id="btn-ready" class="primary" disabled>宣告 Ready</button>
+      <button type="button" id="btn-unready" disabled>取消 Ready</button>
+    </div>
+    <p class="muted" id="deck-summary" style="margin-top:10px">尚未上傳</p>
+  </div>
+
+  <div class="panel" id="match-panel" hidden>
+    <h2>4. 對局就緒</h2>
+    <p class="muted" id="opp-summary">等待對手…</p>
+    <div class="row">
+      <button type="button" id="btn-start" class="primary" hidden disabled>開始對局（房主）</button>
+    </div>
+    <div class="notice" id="match-result" style="margin-top:12px" hidden></div>
+  </div>
+
+  <pre id="status" class="notice"></pre>
+</main>
+
+<footer class="site-footer">
+  <span>非官方社群開發專案 · 線上對戰</span>
+  <span><a href="./battle.html">本機遊戲 ↗</a></span>
+</footer>
+
+<script type="module" src="./lobby-app.js?v=20261031-forest-rules"></script>
+<script type="module" src="../../src/ui-language-bootstrap.js"></script><script type="module" src="./battle-adapter.js?v=20261031-forest-rules"></script></body>
+</html>

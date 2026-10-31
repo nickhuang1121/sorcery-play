@@ -39,3 +39,7 @@ dialog{border:1px solid #b6bc8d55;border-radius:10px;background:linear-gradient(
  .scene .deck-atlas .card-back i,.scene .deck-own .card-back i{font-size:17px}
 }
 @media(orientation:portrait) and (max-width:360px){.turn-caption{display:none}}
+
+.battle-entry{position:absolute;top:24px;right:78px;z-index:10;color:#d9e7c6;text-decoration:none;font:11px system-ui;padding:7px 12px;border:1px solid #bbd0a647;border-radius:20px;background:#152e22b8}.battle-entry:hover{background:#31523ad9}
+@media(orientation:portrait){.battle-entry{top:139px;left:14px;right:auto;font-size:9px;padding:6px 10px}}
+@media(orientation:landscape) and (max-height:600px){.battle-entry{top:12px;right:57px;font-size:8px;padding:5px 9px}}

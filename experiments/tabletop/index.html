@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="zh-Hant">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#101b1b"><title>Sorcery · 森境牌桌</title><link rel="stylesheet" href="./tabletop.css"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#101b1b"><title>Sorcery · 森境牌桌</title><link rel="stylesheet" href="./tabletop.css?v=20261031-forest-rules"></head>
 <body>
 <main class="scene" id="scene">
  <div class="environment" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div><div class="embers" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
  <header class="scene-heading"><span class="eyebrow">SORCERY · CONTESTED REALM</span><h1 data-copy="title">森境交界</h1><span class="scene-subtitle" data-copy="subtitle">THE VERDANT THRESHOLD</span></header>
- <div class="prototype-mark" data-copy="preview">場景試玩</div><button class="menu-button round" id="menu" aria-label="開啟選單">☰</button>
+ <a class="battle-entry" data-copy="battle" href="./battle.html">正式規則對戰 ↗</a><div class="prototype-mark" data-copy="preview">場景試玩</div><button class="menu-button round" id="menu" aria-label="開啟選單">☰</button>
  <section class="portrait-group opponent" aria-label="對手資訊"><button class="avatar" id="opponent-info"><img id="opponent-art" alt=""><span class="life" id="opponent-life">18</span></button><div class="player-copy"><small data-copy="opponent">你的對手</small><strong data-copy="opponentName">灰燼賢者</strong><span class="mana"><i></i><i></i><i></i><i class="spent"></i><b>3 / 4</b></span></div></section>
  <div class="opponent-hand" aria-label="對手手牌"></div>
  <button class="deck deck-enemy" data-pile="opponent"><span class="card-back"><i>✧</i></span><b>24</b><small data-copy="spellbook">法術牌庫</small></button>
@@ -21,5 +21,5 @@
  <div class="drag-ghost" id="drag-ghost" aria-hidden="true"></div>
 </main>
 <dialog id="modal"><button class="modal-close round" id="modal-close" aria-label="關閉">×</button><div id="modal-content"></div></dialog>
-<script type="module" src="./tabletop.js"></script>
+<script type="module" src="./tabletop.js?v=20261031-forest-rules"></script>
 </body></html>

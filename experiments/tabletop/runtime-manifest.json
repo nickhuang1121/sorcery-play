@@ -1,0 +1,16 @@
+{
+  "description": "Generated UI entrypoints only; no copied rule engine. Existing production files are not modified.",
+  "sources": {
+    "src/app.js": "92b2089f4a2fccb2823969cf6e77ccb8e95db46163c2cf263c49e4a394dbb905",
+    "src/online-lobby.js": "75aabac975796160718c42b8fa3d53fcc0b1418565efc4291691e0056a82865e",
+    "index.html": "4c4ac7efd2136d542b46d2378dbbc30537b4df845a941ba5f3c39da5cacb2e77",
+    "online-play.html": "10df99fffe8308a14edc6b9b270ec64b9af851ba6e000b375fc7a0db58b711dd",
+    "lobby.html": "eece56bed3ee5604814ab1c0b1558a3abe1c7b2622f6ffd443e20a5420ec5d97"
+  },
+  "storage": {
+    "match": "sorcery.tabletop.match",
+    "decks": "sorcery.tabletop.decks",
+    "tutorial": "sorcery.tabletop.tutorial.v1"
+  },
+  "network": "Same Firebase Auth, room credentials, protocol and engine modules as production."
+}
