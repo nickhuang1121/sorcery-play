@@ -5,7 +5,8 @@ import {TUTORIAL_KEY,tutorialChapters,tutorialText,cleanTutorialProgress,createT
 import {createTutorialGuide} from '../../src/tutorial-ui.js';
 import {createOnlineClient,savedOnlineRoom,bindOnlinePageLifecycle} from '../../src/net/online-client.js?v=20261031-mobile-natural';
 import {battleNoticeEvents,createBattleNoticeFeed} from '../../src/battle-notices.js';
-import {arrangeRealmPiles} from '../../src/realm-layout.js';
+import {arrangeMobileRealmPiles as arrangeRealmPiles} from './mobile-stack-layout.js';
+import {createForestStack} from './mobile-stack.js';
 import {localizeChoice} from '../../src/ui-choice-copy.js';
 import {connectPopup} from '../../src/popup.js';
 import {createCardInfoPopup} from '../../src/card-info-popup.js';
@@ -225,7 +226,7 @@ function perform(a,script=false){if(tutorial&&!tutorialAllows(tutorial,state,a,{
 function scheduleAI(){clearTimeout(aiTimer);if(view!=='play')return;if(tutorial){if(!document.querySelector('dialog[open]')){const a=tutorialScriptAction(tutorial,state);if(a)aiTimer=setTimeout(()=>{if(tutorial&&view==='play'&&!document.querySelector('dialog[open]'))perform(a,true);},600);}return;}if(!state.choice?.manual&&state.mode==='ai'&&finalDecisionController(state,acting())===1&&state.winner===null){const difficulty=AI_DIFFICULTIES.includes(state.aiDifficulty)?state.aiDifficulty:'medium';const delay=difficulty==='strong'?280:difficulty==='easy'?420:350;aiTimer=setTimeout(()=>{const a=acting()!==1?chooseFinalControlAction(observation(state,1),legalActions(state,acting()),1,{dispatch,evaluate}):chooseAction(observation(state,1),legalActions(state,acting()),acting(),{difficulty,root:state,omniscient:!!(state.aiOmniscient??aiOmniscient)});if(a)perform(a);},delay);}}
 let lastChoiceSubmissionAt=-Infinity;
 function chooseEffect(option,expected=choiceToken(state)){const now=performance.now();if(now-lastChoiceSubmissionAt<400||!state.choice||expected!==choiceToken(state))return;const action=choiceAction(state,option);lastChoiceSubmissionAt=now;close();perform(action);}
-function tryBoardChoice(hit){
+function tryBoardChoice(hit){if(forestStack.routeChoice(hit))return true;
   const spots=boardChoice();
   if(!spots||!human())return false;
   const idxs=matchingBoardChoices(spots,hit.at,hit.uid);
@@ -318,7 +319,7 @@ function stackLayer(at,layer){const units=stackUnits(at,layer),objects=objectsHT
 function siteAffinityLabel(at){return state.board[at]&&resourcesForSiteWater(at)?'水下':'地下';}
 function resourcesForSiteWater(at){return state.board[at]&&waterSite(state,at,card);}
 function stackCell(at,c){return `${stackLayer(at,'surface')}${c?`<button class="site-name site-divider" data-site="${at}" data-card="${c.id}" title="${esc(c.name)}">${cardImageHTML(c)}<span>${esc(cardTitle(c))}</span></button>`:'<span class="void-divider">VOID</span>'}${stackUnits(at,'below').length||objectsHTML(at,'below')?stackLayer(at,'below'):''}`;}
-function openStack(at,layer){const units=stackUnits(at,layer);show(`<div class="eyebrow">${String.fromCharCode(65+at%5)}${4-Math.floor(at/5)} · ${layer==='surface'?'地表':siteAffinityLabel(at)}</div><h2>卡牌堆疊</h2><p class="muted">置頂只調整展示順序。切換上下層請選單位後使用合法移動。</p><div class="stack-expanded">${units.map(u=>`<div class="stack-entry">${unitHTML(u,at,true)}<button data-stack-front="${u.uid}">置頂</button></div>`).join('')||'<p>這一層沒有單位。</p>'}</div><div class="stack-expanded-objects">${objectsHTML(at,layer)}</div>`,'realm-sheet');bindBattle();bindCards();document.querySelectorAll('#modal-body [data-unit]').forEach(b=>{const action=b.onclick;b.onclick=e=>{close();action(e);};});document.querySelectorAll('[data-stack-front]').forEach(b=>b.onclick=()=>{displayOrder.set(b.dataset.stackFront,Math.max(0,...displayOrder.values())+1);render();openStack(at,layer);});bindObjects();bindCardInfo();}
+function openStack(at,layer){if(forestStack.enabled()&&forestStack.open(at,layer))return;const units=stackUnits(at,layer);show(`<div class="eyebrow">${String.fromCharCode(65+at%5)}${4-Math.floor(at/5)} · ${layer==='surface'?'地表':siteAffinityLabel(at)}</div><h2>卡牌堆疊</h2><p class="muted">置頂只調整展示順序。切換上下層請選單位後使用合法移動。</p><div class="stack-expanded">${units.map(u=>`<div class="stack-entry">${unitHTML(u,at,true)}<button data-stack-front="${u.uid}">置頂</button></div>`).join('')||'<p>這一層沒有單位。</p>'}</div><div class="stack-expanded-objects">${objectsHTML(at,layer)}</div>`,'realm-sheet');bindBattle();bindCards();document.querySelectorAll('#modal-body [data-unit]').forEach(b=>{const action=b.onclick;b.onclick=e=>{close();action(e);};});document.querySelectorAll('[data-stack-front]').forEach(b=>b.onclick=()=>{displayOrder.set(b.dataset.stackFront,Math.max(0,...displayOrder.values())+1);render();openStack(at,layer);});bindObjects();bindCardInfo();}
 function priorityLabel(){if(state.winner!==null)return '已結束';if(state.choice)return '等待選擇';if(state.pending)return '回應中';if(state.phase==='mulligan')return '重抽';return state.players[acting()].name+' 優先';}
 function passLabel(){const p=state.pending;if(!p)return '讓過';if(p.kind==='intercept')return p.defenders?.length?'攔截完成，開始結算':'不攔截，讓它進入';return p.defenders?.length?'防禦完成，開始結算':'不防禦，開始結算';}
 function strikeCaption(){const pending=state.pending;if(!pending)return '';const a=unit(state,pending.attacker),from=a?cardTitle(card(a.card)):'單位';if(pending.targets)return from+' 同時攻擊 '+pending.targets.map(uid=>unit(state,uid)).filter(Boolean).map(u=>face(u.card)).join('、');if(pending.kind==='intercept'){const defenders=(pending.defenders||[]).map(uid=>unit(state,uid)).filter(Boolean).map(u=>face(u.card));return `${from} 正在進入${defenders.length?'；已加入攔截：'+defenders.join('、'):'，可以攔截'}`;}if(typeof pending.target==='string'&&pending.target.startsWith('site:')){const site=state.board[Number(pending.target.slice(5))];return `${from} 正在攻擊 ${site?cardTitle(card(site.card)):'地點'}`;}const t=pending.target&&unit(state,pending.target);return t?`${from} 正在攻擊 ${cardTitle(card(t.card))}`:`${from} 正在攻擊`;}
@@ -536,7 +537,7 @@ function renderBattle(){
   noteBattle(phase);layoutBoard();const newFan=document.querySelector('.fan');if(newFan)newFan.scrollLeft=handScrollAfterRender(oldHandScroll,p,newFan.scrollWidth-newFan.clientWidth);watchRealmPiles();watchHand();playHandFlip();requestAnimationFrame(layoutBoard);
 }
 function select(kind,id){if(!human()){toast('等待對手完成操作。');return;}selected={kind,id};if(tutorial&&kind==='hand')recordTutorial({kind:'select',id},state,state);const a=selectedActions();if(!a.length){toast(reason(state,{player:acting(),[kind==='hand'?'hand':'unit']:id}));}render();}
-function chooseAt(at,target){
+function chooseAt(at,target){if(forestStack.routeTarget(at))return;
   const matches=matchingBoardActions(selectedActions(),at,target,boardEntities());
   if(!matches.length){toast('此處沒有合法動作。');return;}
   const unique=matches.filter((a,i,arr)=>arr.findIndex(b=>JSON.stringify({...b,path:null})===JSON.stringify({...a,path:null}))===i);
@@ -895,6 +896,47 @@ window.addEventListener('sorcery:languagechange',()=>{
  localizeInterface();
 });
 window.addEventListener('resize',()=>requestAnimationFrame(layoutBoard));
+// Included in the generated presentation module. Uses native UI actions only.
+const forestStack=createForestStack({
+ locale:getUILanguage,revision:()=>state,selection:()=>selected,hasChoice:()=>!!boardChoice(),
+ canBrowse:()=>view==='play'&&!panMode&&!tutorial&&!pointer?.moved,
+ suppressed:()=>suppressClick,
+ stale:()=>toast(tt('對局已更新，請重新選擇卡牌。','The match changed. Choose the card again.')),
+ belowName:at=>state.board[at]&&waterSite(state,at,card)?tt('水下','Underwater'):tt('地下','Underground'),
+ entries(at,layer){
+  const cell=app.querySelector(`.board [data-at="${at}"]`);if(!cell)return [];
+  const nodes=layer==='site'?[...cell.querySelectorAll(':scope > [data-site]')]:[...cell.querySelectorAll(`.realm-pile[data-layer="${layer}"] [data-unit],.realm-pile[data-layer="${layer}"] [data-object]`)];
+  const seen=new Set();return nodes.filter(n=>{const key=n.dataset.unit||n.dataset.object||'site:'+at;if(seen.has(key))return false;seen.add(key);return true;}).map(n=>{
+   const kind=n.dataset.unit?'unit':n.dataset.object?'object':'site',uid=n.dataset.unit||n.dataset.object||'site:'+at,u=kind==='unit'?unit(state,uid):null,c=card(n.dataset.card);
+   const status=u?`${tt('力量','Power')} ${power(u)} · ${tt('傷害','Damage')} ${u.damage||0} · ${u.tapped?tt('已橫置','Tapped'):ready(state,u)?tt('可行動','Ready'):tt('尚無法行動','Not ready')}${u.ward?' · Ward':''}`:kind==='site'?tt('地點 · 可查看資訊與可用能力','Site · View its details and available abilities'):tt('場上物件','Realm object');
+   return {key:kind+':'+uid,kind,uid,card:c.id,name:cardTitle(c),art:cardImageHTML(c,{eager:true}),status,layer};
+  });
+ },
+ targetPlan(at){
+  if(!human()||!selected&&!boardChoice())return null;
+  const entries=['surface','below','site'].flatMap(layer=>this.entries(at,layer)),picks=boardChoice();
+  if(picks){const keys=entries.filter(e=>e.kind!=='site'&&picks.some(p=>p?.kind==='unit'&&p.uid===e.uid)).map(e=>e.key);return {keys,positional:!keys.length&&picks.some(p=>['cell','direction'].includes(p?.kind)&&p.at===at)};}
+  const all=selectedActions(),exact=entries.filter(e=>e.kind!=='site'&&all.some(a=>actionTargetsUnit(a,e.uid))).map(e=>e.key);
+  return {keys:exact,positional:!exact.length&&matchingBoardActions(all,at,undefined,boardEntities()).length>0};
+ },
+ target(e,at){if(boardChoice())tryBoardChoice({at,uid:e.kind==='site'?undefined:e.uid});else chooseAt(at,e.kind==='site'?undefined:e.uid);},
+ position(at){if(boardChoice())tryBoardChoice({at});else chooseAt(at);},
+ node(e,at){const cell=app.querySelector(`.board [data-at="${at}"]`);return e.kind==='site'?cell?.querySelector('[data-site]'):cell?.querySelector(`[data-${e.kind==='unit'?'unit':'object'}="${CSS.escape(e.uid)}"]`);},
+ buttons(e,at){
+  if(!human())return [];
+  if(e.kind==='unit'){const u=unit(state,e.uid);if(!u||u.controller!==acting()||state.choice)return [];const all=actions().filter(a=>a.unit===e.uid);if(state.pending)return all.some(a=>a.type==='defend')?[{label:tt('防禦／攔截','Defend / intercept'),mode:'ability'}]:[];
+   const result=[];if(all.some(a=>['move','attack'].includes(a.type)))result.push({label:tt('移動／攻擊','Move / attack'),mode:'move'});
+   if(all.some(a=>!['move','attack','defend'].includes(a.type)))result.push({label:tt('使用能力','Use ability'),mode:'ability'});return result;
+  }
+  const yes=actions().some(a=>e.kind==='site'?['activateSite','cityDefend'].includes(a.type)&&a.at===at:a.type==='activateArtifact'&&a.object===e.uid);return yes?[{label:tt('使用能力','Use ability'),mode:'ability'}]:[];
+ },
+ inspect(e,at){this.node(e,at)?.click();},
+ invoke(e,at,mode){
+  const node=this.node(e,at);if(!node)return;node.click();const use=document.querySelector('#card-info-use');if(use&&!use.hidden&&!use.disabled)use.click();
+  if(mode==='move')document.querySelector('#unit-move,#move-avatar')?.click();
+ }
+});
+
 try{
   await loadCards();
   try{await loadCardImages();}catch(e){console.warn(e);}

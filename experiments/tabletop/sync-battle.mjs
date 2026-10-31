@@ -15,17 +15,21 @@ export function scopePresentation(source){
 export function battleHTML(source,{lobby=false}={}){
  let s=source.replaceAll('href="./index.html"','href="./battle.html"')
   .replace(/(href|src)="\.\/(styles|src|docs|tests)\//g,'$1="../../$2/')
-  .replace(/src="\.\.\/\.\.\/src\/app\.js[^\"]*"/g,'src="./battle-app.js?v=20261031-forest-rules"')
-  .replace(/src="\.\.\/\.\.\/src\/online-lobby\.js[^\"]*"/g,'src="./lobby-app.js?v=20261031-forest-rules"')
+  .replace(/src="\.\.\/\.\.\/src\/app\.js[^\"]*"/g,'src="./battle-app.js?v=20261031-mobile-stacks"')
+  .replace(/src="\.\.\/\.\.\/src\/online-lobby\.js[^\"]*"/g,'src="./lobby-app.js?v=20261031-mobile-stacks"')
   .replace('<body class="','<body class="forest-runtime ')
-  .replace('</head>','<link rel="stylesheet" href="./battle-skin.css?v=20261031-forest-rules"></head>')
-  .replace('</body>','<script type="module" src="./battle-adapter.js?v=20261031-forest-rules"></script></body>');
+  .replace('</head>','<link rel="stylesheet" href="./battle-skin.css?v=20261031-mobile-stacks"><link rel="stylesheet" href="./mobile-stack.css?v=20261031-mobile-stacks"></head>')
+  .replace('</body>','<script type="module" src="./battle-adapter.js?v=20261031-mobile-stacks"></script></body>');
  return s.replace(/<title>[^<]+<\/title>/,'<title data-i18n-preserve>Sorcery · 森境對戰'+(lobby?'大廳':'')+'</title>');
 }
 export async function syncBattle({check=false}={}){
  const sources={};for(const path of ['src/app.js','src/online-lobby.js','index.html','online-play.html','lobby.html'])sources[path]=await readFile(new URL(path,root),'utf8');
  let app=scopePresentation(sources['src/app.js']);
  const publicCounts='data-player="${p}"';if(app.split(publicCounts).length!==2)throw Error('Player HUD markup changed; review public pile counts.');
+ app=app.replace("import {arrangeRealmPiles} from '../../src/realm-layout.js';","import {arrangeMobileRealmPiles as arrangeRealmPiles} from './mobile-stack-layout.js';\nimport {createForestStack} from './mobile-stack.js';");
+ const hooks=[['function openStack(at,layer){','function openStack(at,layer){if(forestStack.enabled()&&forestStack.open(at,layer))return;'],['function chooseAt(at,target){','function chooseAt(at,target){if(forestStack.routeTarget(at))return;'],['function tryBoardChoice(hit){','function tryBoardChoice(hit){if(forestStack.routeChoice(hit))return true;']];
+ for(const [before,after]of hooks){if(!app.includes(before))throw Error('Native UI hook changed: '+before);app=app.replace(before,after);}
+ const start='try{\n  await loadCards();';if(!app.includes(start))throw Error('Bootstrap changed');app=app.replace(start,(await readFile(new URL('battle-stack-bridge.inc.js',here),'utf8'))+'\n'+start);
  app=app.replace(publicCounts,'data-player="${p}" data-atlas-count="${pl.atlas.length}" data-spell-count="${pl.spells.length}" data-grave-count="${pl.cemetery.length}"');
  const outputs={
   'battle-app.js':`// GENERATED from src/app.js; run node experiments/tabletop/sync-battle.mjs.\n// Shared engine and legal actions are unchanged. Local saves are scoped.\n${app}`,
