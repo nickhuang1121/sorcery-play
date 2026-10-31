@@ -5,8 +5,8 @@ import {TUTORIAL_KEY,tutorialChapters,tutorialText,cleanTutorialProgress,createT
 import {createTutorialGuide} from '../../src/tutorial-ui.js';
 import {createOnlineClient,savedOnlineRoom,bindOnlinePageLifecycle} from '../../src/net/online-client.js?v=20261031-mobile-natural';
 import {battleNoticeEvents,createBattleNoticeFeed} from '../../src/battle-notices.js';
-import {arrangeMobileRealmPiles as arrangeRealmPiles} from './mobile-stack-layout.js';
-import {createForestStack} from './mobile-stack.js';
+import {arrangeMobileRealmPiles as arrangeRealmPiles} from './mobile-stack-layout.js?v=20261031-glass-popups';
+import {createForestStack} from './mobile-stack.js?v=20261031-glass-popups';
 import {localizeChoice} from '../../src/ui-choice-copy.js';
 import {connectPopup} from '../../src/popup.js';
 import {createCardInfoPopup} from '../../src/card-info-popup.js';

@@ -1,5 +1,5 @@
 import {connectPopup} from '../../src/popup.js';
-import {stackViewEnabled,setStackFront,arrangeMobileRealmPiles} from './mobile-stack-layout.js';
+import {stackViewEnabled,setStackFront,getStackFront,arrangeMobileRealmPiles} from './mobile-stack-layout.js?v=20261031-glass-popups';
 export function targetDisposition(plan){if(!plan)return 'browse';if(plan.positional)return 'position';return plan.keys.length===1?'single':plan.keys.length>1?'multiple':'invalid';}
 export function createForestStack(bridge){
  const dialog=document.createElement('dialog');dialog.id='forest-stack';dialog.className='popup forest-stack-dialog';dialog.dataset.i18nPreserve='';dialog.innerHTML='<button type="button" class="close fs-close">×</button><header class="fs-head"><small></small><h2 id="forest-stack-title"></h2></header><nav class="fs-tabs"></nav><div class="fs-track" role="list"></div><div class="fs-navigation"><button class="fs-prev" type="button">‹</button><span class="fs-counter"></span><button class="fs-next" type="button">›</button></div><footer class="fs-footer"><p class="fs-status"></p><div class="fs-actions"></div></footer>';document.body.append(dialog);
@@ -31,7 +31,7 @@ export function createForestStack(bridge){
   if(!stackViewEnabled()||!bridge.canBrowse())return false;
   at=+where;const p=plan(),available=['surface','site','below'].filter(k=>bridge.entries(at,k).length);if(!available.length)return false;
   layer=available.includes(requested)?requested:available[0];if(p){const withTarget=available.find(k=>bridge.entries(at,k).some(e=>p.keys.includes(e.key)));if(withTarget)layer=withTarget;}
-  revision=bridge.revision();selection=bridge.selection();index=0;populate(p?bridge.entries(at,layer).find(e=>p.keys.includes(e.key))?.key:null);popup.open();requestAnimationFrame(()=>go(index,false));return true;
+  revision=bridge.revision();selection=bridge.selection();index=0;populate(bridge.entries(at,layer).find(e=>p?p.keys.includes(e.key):e.uid===getStackFront(at,layer))?.key);popup.open();requestAnimationFrame(()=>go(index,false));return true;
  }
  function routeTarget(where){if(nativeDepth||!stackViewEnabled()||!bridge.canBrowse())return false;at=+where;const p=plan(),mode=targetDisposition(p);if(mode==='multiple')return open(at);if(mode==='single'){const e=['surface','site','below'].flatMap(k=>bridge.entries(at,k)).find(e=>e.key===p.keys[0]);if(e){native(()=>bridge.target(e,at));return true;}}return false;}
  function click(e){if(nativeDepth||bridge.suppressed()||!stackViewEnabled()||!bridge.canBrowse()||e.target.closest('dialog'))return;const cell=e.target.closest('.board .cell');if(!cell)return;at=+cell.dataset.at;const p=plan(),mode=targetDisposition(p);
