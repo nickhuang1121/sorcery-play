@@ -14,7 +14,7 @@ function counter(){return {games:0,wins:0,losses:0,draws:0};}
 function count(c,result){c.games++;c[result==='win'?'wins':result==='loss'?'losses':'draws']++;}
 export function summarize(account,now){
  const out={displayName:account.profile.displayName,updatedAt:now,...counter(),avatars:{},decks:{},cards:{},publicGames:0};
- for(const entry of Object.values(account.decks||{}))if(entry.published){const key=deckKey(entry.deck);out.decks[key]??={key,deck:copy(entry.deck),...counter()};}
+ for(const entry of Object.values(account.decks||{}))if(entry.published===true){const key=deckKey(entry.deck);out.decks[key]??={key,deck:copy(entry.deck),...counter()};}
  for(const r of Object.values(account.records||{})){
   if(r.deleted)continue;count(out,r.result);const av=out.avatars[r.deck.avatar]??=counter();count(av,r.result);
   const d=out.decks[r.deckKey];if(!d)continue;count(d,r.result);out.publicGames++;
@@ -27,7 +27,7 @@ export function hydrateAccount(current){if(!current)return null;const a=copy(cur
 export function mutateAccount(current,op,now){
  const a=hydrateAccount(current)||{profile:{displayName:'Traveler'},decks:{},records:{}};
  if(op.type==='profile')a.profile={displayName:cleanName(op.displayName,24)};
- else if(op.type==='deck-save'){const id=safeKey(op.id);if(!a.decks[id]&&Object.keys(a.decks).length>=100)fail('Cloud deck limit: 100');a.decks[id]={deck:cleanDeck(op.deck),published:!!op.published,updatedAt:now};}
+ else if(op.type==='deck-save'){const id=safeKey(op.id);if(!a.decks[id]&&Object.keys(a.decks).length>=100)fail('Cloud deck limit: 100');a.decks[id]={deck:cleanDeck(op.deck),published:op.published===true,updatedAt:now};}
  else if(op.type==='deck-delete')delete a.decks[safeKey(op.id)];
  else if(op.type==='record-save'){
   const id=safeKey(op.id),old=a.records[id];if(op.automatic&&old)return a; // Tombstones prevent a deleted result returning on reconnect.
