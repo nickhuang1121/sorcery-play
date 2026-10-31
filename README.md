@@ -46,3 +46,9 @@ GitHub 上傳前請參閱 [上傳與排除規則](docs/GITHUB_UPLOAD.md)。
 原始官方快照保留在 `data/official-cards.json`；本輪不可變清單為 `data/final-101-baseline.json`。初始完整備份與SHA256見逐卡進度。沒有修改Firebase設定，也沒有推送或部署。
 
 本專案為非官方實作；Sorcery及相關名稱為Erik’s Curiosa Limited所有。卡牌採CSS與文字呈現。前一輪文件已保存在docs的 `*_PRE_FINAL_101.md`，僅供歷史參照。
+
+## 社群排行榜與雲端資料
+
+首頁的「社群排行榜」可查看玩家、牌組、卡牌與化身排行榜。Google 登入後可編輯顯示名稱、管理私人／公開牌組，以及新增、更正或刪除自己的戰績。線上結束的對局自動同步自己的結果；合法雲端牌組會載入線上大廳。
+
+目前是所有時間的休閒／自報統計，不提供競技防作弊或 Elo。沿用 Realtime Database，不需新增付費服務。私人牌表不納入公開卡牌統計；發布牌組後才參與牌組／卡牌榜。資料結構、規則與測試見 [社群說明](docs/COMMUNITY.md)。

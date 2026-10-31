@@ -77,6 +77,268 @@
           ".validate": false
         }
       }
+    },
+    "communityDirectoryV1": {
+      ".read": true,
+      "$uid": {
+        ".write": "auth != null && auth.token.firebase.sign_in_provider === 'google.com' && auth.uid === $uid",
+        ".validate": "newData.val() === true && root.child('communityAccountsV1').child($uid).child('public').exists()"
+      }
+    },
+    "communityAccountsV1": {
+      "$uid": {
+        ".read": "auth != null && auth.token.firebase.sign_in_provider === 'google.com' && auth.uid === $uid",
+        ".write": "auth != null && auth.token.firebase.sign_in_provider === 'google.com' && auth.uid === $uid",
+        ".validate": "newData.hasChildren(['profile','public']) && newData.child('public/displayName').val() === newData.child('profile/displayName').val()",
+        "profile": {
+          ".validate": "newData.hasChildren(['displayName'])",
+          "displayName": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 96"
+          },
+          "$other": {
+            ".validate": false
+          }
+        },
+        "decks": {
+          "$id": {
+            ".validate": "newData.hasChildren(['deck','published','updatedAt'])",
+            "deck": {
+              ".validate": "newData.hasChildren(['name','avatar'])",
+              "name": {
+                ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 160"
+              },
+              "avatar": {
+                ".validate": "newData.isString() && newData.val().length <= 100"
+              },
+              "atlas": {
+                "$card": {
+                  ".validate": "newData.isString() && newData.val().length <= 100 && $card.matches(/^([0-9]|[1-9][0-9]|1[0-9][0-9])$/)"
+                }
+              },
+              "spells": {
+                "$card": {
+                  ".validate": "newData.isString() && newData.val().length <= 100 && $card.matches(/^([0-9]|[1-9][0-9]|1[0-9][0-9])$/)"
+                }
+              },
+              "dragon": {
+                ".validate": "newData.isString() && newData.val().length <= 100"
+              },
+              "$other": {
+                ".validate": false
+              },
+              "format": {
+                ".validate": "newData.val() === 'beta-precon-2023'"
+              },
+              "officialId": {
+                ".validate": "newData.isString() && newData.val().length <= 100"
+              },
+              "collection": {
+                "$card": {
+                  ".validate": "newData.isString() && newData.val().length <= 100 && $card.matches(/^[0-9]$/)"
+                }
+              }
+            },
+            "published": {
+              ".validate": "newData.isBoolean()"
+            },
+            "updatedAt": {
+              ".validate": "newData.isNumber() && newData.val() <= now + 1000"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        },
+        "records": {
+          "$id": {
+            ".validate": "(newData.child('deleted').val() === true && newData.hasChildren(['updatedAt'])) || newData.hasChildren(['result','deck','deckKey','source','createdAt','updatedAt','deleted'])",
+            "result": {
+              ".validate": "newData.val() === 'win' || newData.val() === 'loss' || newData.val() === 'draw'"
+            },
+            "deck": {
+              ".validate": "newData.hasChildren(['name','avatar'])",
+              "name": {
+                ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 160"
+              },
+              "avatar": {
+                ".validate": "newData.isString() && newData.val().length <= 100"
+              },
+              "atlas": {
+                "$card": {
+                  ".validate": "newData.isString() && newData.val().length <= 100 && $card.matches(/^([0-9]|[1-9][0-9]|1[0-9][0-9])$/)"
+                }
+              },
+              "spells": {
+                "$card": {
+                  ".validate": "newData.isString() && newData.val().length <= 100 && $card.matches(/^([0-9]|[1-9][0-9]|1[0-9][0-9])$/)"
+                }
+              },
+              "dragon": {
+                ".validate": "newData.isString() && newData.val().length <= 100"
+              },
+              "$other": {
+                ".validate": false
+              },
+              "format": {
+                ".validate": "newData.val() === 'beta-precon-2023'"
+              },
+              "officialId": {
+                ".validate": "newData.isString() && newData.val().length <= 100"
+              },
+              "collection": {
+                "$card": {
+                  ".validate": "newData.isString() && newData.val().length <= 100 && $card.matches(/^[0-9]$/)"
+                }
+              }
+            },
+            "deckKey": {
+              ".validate": "newData.isString() && newData.val().length === 16"
+            },
+            "source": {
+              ".validate": "newData.val() === 'manual' || newData.val() === 'online'"
+            },
+            "createdAt": {
+              ".validate": "newData.isNumber() && newData.val() <= now + 1000"
+            },
+            "updatedAt": {
+              ".validate": "newData.isNumber() && newData.val() <= now + 1000"
+            },
+            "deleted": {
+              ".validate": "newData.isBoolean()"
+            },
+            "$other": {
+              ".validate": false
+            },
+            "corrected": {
+              ".validate": "newData.isBoolean()"
+            }
+          }
+        },
+        "public": {
+          ".read": true,
+          ".validate": "newData.hasChildren(['displayName','updatedAt','games','wins','losses','draws','publicGames'])",
+          "displayName": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 96"
+          },
+          "updatedAt": {
+            ".validate": "newData.isNumber() && newData.val() <= now + 1000"
+          },
+          "games": {
+            ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000000"
+          },
+          "wins": {
+            ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000000"
+          },
+          "losses": {
+            ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000000"
+          },
+          "draws": {
+            ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000000"
+          },
+          "publicGames": {
+            ".validate": "newData.isNumber() && newData.val() >= 0"
+          },
+          "avatars": {
+            "$id": {
+              "games": {
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000000"
+              },
+              "wins": {
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000000"
+              },
+              "losses": {
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000000"
+              },
+              "draws": {
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000000"
+              },
+              "$other": {
+                ".validate": false
+              }
+            }
+          },
+          "decks": {
+            "$id": {
+              "deck": {
+                ".validate": "newData.hasChildren(['name','avatar'])",
+                "name": {
+                  ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 160"
+                },
+                "avatar": {
+                  ".validate": "newData.isString() && newData.val().length <= 100"
+                },
+                "atlas": {
+                  "$card": {
+                    ".validate": "newData.isString() && newData.val().length <= 100 && $card.matches(/^([0-9]|[1-9][0-9]|1[0-9][0-9])$/)"
+                  }
+                },
+                "spells": {
+                  "$card": {
+                    ".validate": "newData.isString() && newData.val().length <= 100 && $card.matches(/^([0-9]|[1-9][0-9]|1[0-9][0-9])$/)"
+                  }
+                },
+                "dragon": {
+                  ".validate": "newData.isString() && newData.val().length <= 100"
+                },
+                "$other": {
+                  ".validate": false
+                },
+                "format": {
+                  ".validate": "newData.val() === 'beta-precon-2023'"
+                },
+                "officialId": {
+                  ".validate": "newData.isString() && newData.val().length <= 100"
+                },
+                "collection": {
+                  "$card": {
+                    ".validate": "newData.isString() && newData.val().length <= 100 && $card.matches(/^[0-9]$/)"
+                  }
+                }
+              },
+              "key": {
+                ".validate": "newData.isString() && newData.val().length === 16"
+              },
+              "games": {
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000000"
+              },
+              "wins": {
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000000"
+              },
+              "losses": {
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000000"
+              },
+              "draws": {
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000000"
+              },
+              "$other": {
+                ".validate": false
+              }
+            }
+          },
+          "cards": {
+            "$id": {
+              "games": {
+                ".validate": "newData.isNumber() && newData.val() >= 0"
+              },
+              "wins": {
+                ".validate": "newData.isNumber() && newData.val() >= 0"
+              },
+              "copies": {
+                ".validate": "newData.isNumber() && newData.val() >= 0"
+              },
+              "$other": {
+                ".validate": false
+              }
+            }
+          },
+          "$other": {
+            ".validate": false
+          }
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
     }
   }
 }

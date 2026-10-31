@@ -7,6 +7,8 @@ import {install,officialBetaDecks} from '../src/cards.js';
 import {createFirebaseOnline} from '../src/net/firebase-online.js';
 import {FIREBASE_ROOMS,FIREBASE_DIRECTORY,makeFirebaseRoom} from '../src/net/firebase-match-model.js';
 import {firebaseConfig} from '../src/net/firebase-config.js';
+import {createCommunityService} from '../src/community/service.js';
+import {ACCOUNT_ROOT,DIRECTORY} from '../src/community/model.js';
 import {ENGINE_BUILD} from '../src/net/protocol.js';
 if(!process.argv.includes('--live'))throw Error('Pass --live to audit isolated test rooms in the configured Firebase project.');
 install(JSON.parse(fs.readFileSync(new URL('../data/official-cards.json',import.meta.url))));
@@ -50,9 +52,12 @@ try{
  assert.equal((await http(FIREBASE_ROOMS+'/'+publicRoom.id+'/meta/presence/1',{method:'PUT',value:{online:true,beat:Date.now()},uid:winnerUid})).status,401);
  const meta=(await http(FIREBASE_ROOMS+'/'+publicRoom.id+'/meta',{uid:loser.uid})).value;assert.equal((await http(FIREBASE_ROOMS+'/'+publicRoom.id+'/meta',{method:'PUT',value:{...meta,status:'cancelled'},uid:loser.uid})).status,401);checks.push('concurrent quick join reserves one seat; guest leave permits replacement and revoked identities cannot heartbeat or cancel the host');
  await waitingHost.request('/rooms/'+publicRoom.id+'/leave',{method:'POST'});assert.equal((await http(FIREBASE_ROOMS+'/'+publicRoom.id)).value,null);await privateHost.request('/rooms/'+privateRoom.id+'/leave',{method:'POST'});checks.push('only the waiting host can cancel immediately, and cancellation removes room and directory');
+ const resultHost=createCommunityService({transport:transport(uid0),uid:uid0}),resultGuest=createCommunityService({transport:transport(uid1),uid:uid1});
+ await Promise.all([resultHost.syncRoom(id),resultGuest.syncRoom(id)]);await resultHost.syncRoom(id);assert.equal((await resultHost.read()).public.wins,1);assert.equal((await resultGuest.read()).public.losses,1);assert.equal((await resultHost.read()).public.games,1);checks.push('natural online result sync records inverse host/guest outcomes exactly once in community rankings');
  const summary={build:ENGINE_BUILD,checkedAt:new Date().toISOString(),project:firebaseConfig.projectId,tests:checks.length,checks,match:{commands:119,revision:120,turn:19,winner:0,life:[14,0]},authentication:'Firebase CLI credential constrained with Google/non-Google auth-variable overrides; OAuth UI is verified separately'};
  fs.mkdirSync(new URL('../output/firebase-online/',import.meta.url),{recursive:true});fs.writeFileSync(new URL('../output/firebase-online/live-validation.json',import.meta.url),JSON.stringify(summary,null,2)+'\n');console.log(JSON.stringify(summary));
 }finally{
+ for(const uid of [uid0,uid1]){await http(DIRECTORY+'/'+uid,{method:'DELETE',value:null});await http(ACCOUNT_ROOT+'/'+uid,{method:'DELETE',value:null});}
  for(const s of services)try{await s.close();}catch{}
  for(const id of owned){const room=(await http(FIREBASE_ROOMS+'/'+id)).value;if(room?.meta?.host?.startsWith(prefix)||!room){await http(FIREBASE_ROOMS+'/'+id,{method:'DELETE',value:null});await http(FIREBASE_DIRECTORY+'/'+id,{method:'DELETE',value:null});}}
 }
