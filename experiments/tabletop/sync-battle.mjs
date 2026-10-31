@@ -15,11 +15,11 @@ export function scopePresentation(source){
 export function battleHTML(source,{lobby=false}={}){
  let s=source.replaceAll('href="./index.html"','href="./battle.html"')
   .replace(/(href|src)="\.\/(styles|src|docs|tests)\//g,'$1="../../$2/')
-  .replace(/src="\.\.\/\.\.\/src\/app\.js[^\"]*"/g,'src="./battle-app.js?v=20261031-mobile-stacks"')
-  .replace(/src="\.\.\/\.\.\/src\/online-lobby\.js[^\"]*"/g,'src="./lobby-app.js?v=20261031-mobile-stacks"')
+  .replace(/src="\.\.\/\.\.\/src\/app\.js[^\"]*"/g,'src="./battle-app.js?v=20261031-battle-playtest"')
+  .replace(/src="\.\.\/\.\.\/src\/online-lobby\.js[^\"]*"/g,'src="./lobby-app.js?v=20261031-battle-playtest"')
   .replace('<body class="','<body class="forest-runtime ')
-  .replace('</head>','<link rel="stylesheet" href="./battle-skin.css?v=20261031-mobile-stacks"><link rel="stylesheet" href="./mobile-stack.css?v=20261031-mobile-stacks"></head>')
-  .replace('</body>','<script type="module" src="./battle-adapter.js?v=20261031-mobile-stacks"></script></body>');
+  .replace('</head>','<link rel="stylesheet" href="./battle-skin.css?v=20261031-battle-playtest"><link rel="stylesheet" href="./mobile-stack.css?v=20261031-battle-playtest"></head>')
+  .replace('</body>','<script type="module" src="./battle-adapter.js?v=20261031-battle-playtest"></script></body>');
  return s.replace(/<title>[^<]+<\/title>/,'<title data-i18n-preserve>Sorcery · 森境對戰'+(lobby?'大廳':'')+'</title>');
 }
 export async function syncBattle({check=false}={}){

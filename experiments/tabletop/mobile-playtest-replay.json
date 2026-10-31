@@ -1,0 +1,747 @@
+{
+  "description": "All 106 actions exported after playing a fresh official Beta Earth versus Fire AI game through the 390x670 mobile browser UI. No concession, authored position or state injection.",
+  "seed": 14630,
+  "decks": [
+    1,
+    2
+  ],
+  "mode": "ai",
+  "turn": 18,
+  "winner": 0,
+  "history": [
+    {
+      "type": "mulligan",
+      "player": 1,
+      "cards": [],
+      "actor": 1
+    },
+    {
+      "type": "mulligan",
+      "player": 0,
+      "cards": [],
+      "actor": 0
+    },
+    {
+      "type": "site",
+      "player": 1,
+      "hand": "h11",
+      "at": 2,
+      "actor": 1
+    },
+    {
+      "type": "choose",
+      "player": 1,
+      "option": 0,
+      "actor": 1
+    },
+    {
+      "type": "end",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "draw",
+      "player": 0,
+      "deck": "spells",
+      "actor": 0
+    },
+    {
+      "type": "site",
+      "player": 0,
+      "hand": "h2",
+      "at": 17,
+      "actor": 0
+    },
+    {
+      "type": "choose",
+      "player": 0,
+      "option": 0,
+      "choiceToken": "choice-v1:4dad79b7:578",
+      "actor": 0
+    },
+    {
+      "type": "choose",
+      "player": 0,
+      "option": 0,
+      "choiceToken": "choice-v1:cc11dbfe:2083",
+      "actor": 0
+    },
+    {
+      "type": "end",
+      "player": 0,
+      "actor": 0
+    },
+    {
+      "type": "draw",
+      "player": 1,
+      "deck": "spells",
+      "actor": 1
+    },
+    {
+      "type": "site",
+      "player": 1,
+      "hand": "h9",
+      "at": 7,
+      "actor": 1
+    },
+    {
+      "type": "choose",
+      "player": 1,
+      "option": 2,
+      "actor": 1
+    },
+    {
+      "type": "end",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "draw",
+      "player": 0,
+      "deck": "spells",
+      "actor": 0
+    },
+    {
+      "type": "site",
+      "player": 0,
+      "hand": "h6",
+      "at": 12,
+      "actor": 0
+    },
+    {
+      "type": "choose",
+      "player": 0,
+      "option": 0,
+      "choiceToken": "choice-v1:746050b6:2032",
+      "actor": 0
+    },
+    {
+      "type": "cast",
+      "player": 0,
+      "hand": "h7",
+      "caster": "u1",
+      "at": 12,
+      "actor": 0
+    },
+    {
+      "type": "move",
+      "player": 0,
+      "unit": "u18",
+      "at": 12,
+      "path": [
+        12
+      ],
+      "actor": 0
+    },
+    {
+      "type": "end",
+      "player": 0,
+      "actor": 0
+    },
+    {
+      "type": "draw",
+      "player": 1,
+      "deck": "atlas",
+      "actor": 1
+    },
+    {
+      "type": "site",
+      "player": 1,
+      "hand": "h13",
+      "at": 3,
+      "actor": 1
+    },
+    {
+      "type": "choose",
+      "player": 1,
+      "option": 2,
+      "actor": 1
+    },
+    {
+      "type": "end",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "draw",
+      "player": 0,
+      "deck": "spells",
+      "actor": 0
+    },
+    {
+      "type": "site",
+      "player": 0,
+      "hand": "h4",
+      "at": 16,
+      "actor": 0
+    },
+    {
+      "type": "choose",
+      "player": 0,
+      "option": 0,
+      "choiceToken": "choice-v1:6de86a0f:2063",
+      "actor": 0
+    },
+    {
+      "type": "cast",
+      "player": 0,
+      "hand": "h3",
+      "caster": "u1",
+      "at": 12,
+      "actor": 0
+    },
+    {
+      "type": "end",
+      "player": 0,
+      "actor": 0
+    },
+    {
+      "type": "draw",
+      "player": 1,
+      "deck": "atlas",
+      "actor": 1
+    },
+    {
+      "type": "site",
+      "player": 1,
+      "hand": "h27",
+      "at": 4,
+      "actor": 1
+    },
+    {
+      "type": "choose",
+      "player": 1,
+      "option": 0,
+      "actor": 1
+    },
+    {
+      "type": "cast",
+      "player": 1,
+      "hand": "h20",
+      "caster": "u8",
+      "at": 7,
+      "actor": 1
+    },
+    {
+      "type": "attack",
+      "player": 1,
+      "unit": "u35",
+      "at": 12,
+      "path": [
+        12
+      ],
+      "target": "site:12",
+      "actor": 1
+    },
+    {
+      "type": "defend",
+      "player": 0,
+      "unit": "u32",
+      "keep": false,
+      "actor": 0
+    },
+    {
+      "type": "defend",
+      "player": 0,
+      "unit": "u18",
+      "keep": false,
+      "actor": 0
+    },
+    {
+      "type": "pass",
+      "player": 0,
+      "actor": 0
+    },
+    {
+      "type": "choose",
+      "player": 1,
+      "option": 2,
+      "actor": 1
+    },
+    {
+      "type": "end",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "draw",
+      "player": 0,
+      "deck": "spells",
+      "actor": 0
+    },
+    {
+      "type": "site",
+      "player": 0,
+      "hand": "h26",
+      "at": 18,
+      "actor": 0
+    },
+    {
+      "type": "choose",
+      "player": 0,
+      "option": 0,
+      "choiceToken": "choice-v1:80005883:579",
+      "actor": 0
+    },
+    {
+      "type": "cast",
+      "player": 0,
+      "hand": "h29",
+      "caster": "u1",
+      "at": 12,
+      "actor": 0
+    },
+    {
+      "type": "move",
+      "player": 0,
+      "unit": "u25",
+      "at": 7,
+      "path": [
+        7
+      ],
+      "actor": 0
+    },
+    {
+      "type": "attack",
+      "player": 0,
+      "unit": "u32",
+      "at": 7,
+      "path": [
+        7
+      ],
+      "target": "site:7",
+      "actor": 0
+    },
+    {
+      "type": "end",
+      "player": 0,
+      "actor": 0
+    },
+    {
+      "type": "draw",
+      "player": 1,
+      "deck": "atlas",
+      "actor": 1
+    },
+    {
+      "type": "site",
+      "player": 1,
+      "hand": "h33",
+      "at": 1,
+      "actor": 1
+    },
+    {
+      "type": "choose",
+      "player": 1,
+      "option": 2,
+      "actor": 1
+    },
+    {
+      "type": "cast",
+      "player": 1,
+      "hand": "h14",
+      "caster": "u8",
+      "target": null,
+      "actor": 1
+    },
+    {
+      "type": "choose",
+      "player": 1,
+      "option": 2,
+      "actor": 1
+    },
+    {
+      "type": "end",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "draw",
+      "player": 0,
+      "deck": "atlas",
+      "actor": 0
+    },
+    {
+      "type": "site",
+      "player": 0,
+      "hand": "h42",
+      "at": 11,
+      "actor": 0
+    },
+    {
+      "type": "cast",
+      "player": 0,
+      "hand": "h5",
+      "caster": "u1",
+      "at": 12,
+      "actor": 0
+    },
+    {
+      "type": "ranged",
+      "player": 0,
+      "unit": "u39",
+      "direction": 0,
+      "actor": 0
+    },
+    {
+      "type": "move",
+      "player": 0,
+      "unit": "u38",
+      "at": 17,
+      "path": [
+        17
+      ],
+      "actor": 0
+    },
+    {
+      "type": "end",
+      "player": 0,
+      "actor": 0
+    },
+    {
+      "type": "draw",
+      "player": 1,
+      "deck": "atlas",
+      "actor": 1
+    },
+    {
+      "type": "site",
+      "player": 1,
+      "hand": "h40",
+      "at": 9,
+      "actor": 1
+    },
+    {
+      "type": "choose",
+      "player": 1,
+      "option": 0,
+      "actor": 1
+    },
+    {
+      "type": "cast",
+      "player": 1,
+      "hand": "h12",
+      "caster": "u8",
+      "at": 7,
+      "actor": 1
+    },
+    {
+      "type": "end",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "draw",
+      "player": 0,
+      "deck": "spells",
+      "actor": 0
+    },
+    {
+      "type": "cast",
+      "player": 0,
+      "hand": "h36",
+      "caster": "u1",
+      "at": 12,
+      "layer": "surface",
+      "bearer": "u44",
+      "actor": 0
+    },
+    {
+      "type": "pushBoulder",
+      "player": 0,
+      "unit": "u44",
+      "object": "o49",
+      "actor": 0
+    },
+    {
+      "type": "choose",
+      "player": 0,
+      "option": 0,
+      "choiceToken": "choice-v1:9392fa00:1939",
+      "actor": 0
+    },
+    {
+      "type": "ability",
+      "player": 0,
+      "unit": "u1",
+      "mode": "atlas",
+      "actor": 0
+    },
+    {
+      "type": "move",
+      "player": 0,
+      "unit": "u38",
+      "at": 12,
+      "path": [
+        12
+      ],
+      "actor": 0
+    },
+    {
+      "type": "end",
+      "player": 0,
+      "actor": 0
+    },
+    {
+      "type": "draw",
+      "player": 1,
+      "deck": "atlas",
+      "actor": 1
+    },
+    {
+      "type": "site",
+      "player": 1,
+      "hand": "h51",
+      "at": 0,
+      "actor": 1
+    },
+    {
+      "type": "choose",
+      "player": 1,
+      "option": 1,
+      "actor": 1
+    },
+    {
+      "type": "attack",
+      "player": 1,
+      "unit": "u47",
+      "at": 12,
+      "path": [
+        12
+      ],
+      "target": "site:12",
+      "actor": 1
+    },
+    {
+      "type": "pickup",
+      "player": 1,
+      "unit": "u8",
+      "actor": 1
+    },
+    {
+      "type": "cast",
+      "player": 1,
+      "hand": "h10",
+      "caster": "u8",
+      "target": null,
+      "actor": 1
+    },
+    {
+      "type": "choose",
+      "player": 1,
+      "option": 1,
+      "actor": 1
+    },
+    {
+      "type": "end",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "draw",
+      "player": 0,
+      "deck": "spells",
+      "actor": 0
+    },
+    {
+      "type": "site",
+      "player": 0,
+      "hand": "h50",
+      "at": 13,
+      "actor": 0
+    },
+    {
+      "type": "cast",
+      "player": 0,
+      "hand": "h16",
+      "caster": "u1",
+      "at": 12,
+      "actor": 0
+    },
+    {
+      "type": "cast",
+      "player": 0,
+      "hand": "h22",
+      "caster": "u1",
+      "at": 12,
+      "actor": 0
+    },
+    {
+      "type": "attack",
+      "player": 0,
+      "unit": "u38",
+      "at": 7,
+      "path": [
+        7
+      ],
+      "target": "site:7",
+      "actor": 0
+    },
+    {
+      "type": "attack",
+      "player": 0,
+      "unit": "u44",
+      "at": 7,
+      "path": [
+        7
+      ],
+      "target": "site:7",
+      "actor": 0
+    },
+    {
+      "type": "end",
+      "player": 0,
+      "actor": 0
+    },
+    {
+      "type": "draw",
+      "player": 1,
+      "deck": "atlas",
+      "actor": 1
+    },
+    {
+      "type": "site",
+      "player": 1,
+      "hand": "h57",
+      "at": 5,
+      "actor": 1
+    },
+    {
+      "type": "choose",
+      "player": 1,
+      "option": 2,
+      "actor": 1
+    },
+    {
+      "type": "move",
+      "player": 1,
+      "unit": "u47",
+      "at": 17,
+      "path": [
+        17
+      ],
+      "actor": 1
+    },
+    {
+      "type": "drop",
+      "player": 1,
+      "unit": "u8",
+      "actor": 1
+    },
+    {
+      "type": "end",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "draw",
+      "player": 0,
+      "deck": "spells",
+      "actor": 0
+    },
+    {
+      "type": "attack",
+      "player": 0,
+      "unit": "u44",
+      "at": 2,
+      "path": [
+        2
+      ],
+      "target": "u8",
+      "actor": 0
+    },
+    {
+      "type": "attack",
+      "player": 0,
+      "unit": "u38",
+      "at": 2,
+      "path": [
+        2
+      ],
+      "target": "u8",
+      "actor": 0
+    },
+    {
+      "type": "cast",
+      "player": 0,
+      "hand": "h53",
+      "caster": "u1",
+      "at": 17,
+      "actor": 0
+    },
+    {
+      "type": "end",
+      "player": 0,
+      "actor": 0
+    },
+    {
+      "type": "draw",
+      "player": 1,
+      "deck": "spells",
+      "actor": 1
+    },
+    {
+      "type": "cast",
+      "player": 1,
+      "hand": "h61",
+      "caster": "u8",
+      "at": 7,
+      "actor": 1
+    },
+    {
+      "type": "attack",
+      "player": 1,
+      "unit": "u47",
+      "at": 18,
+      "path": [
+        18
+      ],
+      "target": "site:18",
+      "actor": 1
+    },
+    {
+      "type": "defend",
+      "player": 0,
+      "unit": "u60",
+      "keep": false,
+      "actor": 0
+    },
+    {
+      "type": "pass",
+      "player": 0,
+      "actor": 0
+    },
+    {
+      "type": "ability",
+      "player": 1,
+      "unit": "u8",
+      "mode": "atlas",
+      "actor": 1
+    },
+    {
+      "type": "end",
+      "player": 1,
+      "actor": 1
+    },
+    {
+      "type": "draw",
+      "player": 0,
+      "deck": "spells",
+      "actor": 0
+    },
+    {
+      "type": "attack",
+      "player": 0,
+      "unit": "u44",
+      "at": 2,
+      "path": [],
+      "target": "u8",
+      "actor": 0
+    },
+    {
+      "type": "pass",
+      "player": 1,
+      "actor": 1
+    }
+  ]
+}
