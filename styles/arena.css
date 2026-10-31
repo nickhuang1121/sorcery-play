@@ -168,3 +168,21 @@ nav button.active,nav button[aria-current="page"]{border-color:#88b7d6;color:#d9
 .lobby-deck-advanced[open]{padding-bottom:6px}
 .lobby-page #build-badge{display:none}
 .catalogue .card{border:0;box-shadow:0 5px 16px #0007;background:#0a111c}
+
+/* Status updates must not resize the hand or its action row during AI turns. */
+@media(max-width:900px){
+ .table[data-hand-profile="portrait"] .hand-dock{grid-template-rows:30px minmax(0,1fr) 44px}
+ .table[data-hand-profile="portrait"] .hud-bottom{overflow:visible}
+ .table[data-hand-profile="portrait"] .action-dock{overflow:visible;min-height:44px;height:44px}
+ .table[data-hand-profile="portrait"] .dock-actions{height:44px;min-height:44px}
+ .table[data-hand-profile="portrait"] .context{position:absolute;bottom:calc(100% + 6px);left:8px;right:8px;max-height:48px;overflow:auto;padding:6px 10px;background:#121e2dee;border-radius:6px;z-index:5}
+ .table[data-hand-profile="portrait"] .context:empty{display:none}
+ .table[data-hand-profile="portrait"] .fan .card{transition:box-shadow .18s ease}
+}
+@media(max-width:900px){
+ .table[data-hand-profile="portrait"].hand-selected:not(.hand-open){grid-template-rows:58px minmax(0,1fr) 218px}
+}
+@media(max-height:580px) and (orientation:landscape){
+ .table[data-hand-profile="landscape"] .hand-dock{grid-template-columns:minmax(0,1fr) 120px}
+ .table[data-hand-profile="landscape"] .context{max-width:100%;overflow-wrap:anywhere}
+}
