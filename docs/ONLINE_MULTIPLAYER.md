@@ -8,8 +8,8 @@
 
 1. 開啟首頁，選擇「線上對戰」。
 2. 按「使用 Google 登入」，選擇自己的 Google 帳號。
-3. 建立房間或輸入朋友的房號。兩位玩家必須使用不同 Google 帳號；同一帳號在另一裝置開啟同一房號，會恢復原席位。
-4. 選擇牌組、上傳並準備，再由房主開始。
+3. 先選擇合法牌組，再建立公開／私人房間、點公開房間加入、使用快速加入，或輸入朋友的房號。牌組會自動上傳。
+4. 雙方準備後由房主開始；開局前可取消房間或離席。兩位玩家須使用不同 Google 帳號；同一帳號可恢復原席位，開局後斷線不會釋放席位。
 5. 對局使用原本完整的卡圖戰場、拖曳高亮、卡牌堆疊、統一彈窗、即時動態與特效。結束後可下載完整重播。
 
 登入狀態由 Firebase SDK 保存在使用者裝置，重新整理時先等待身分恢復，才讀取房間。登出時先結束自己的在線狀態，再登出 Firebase；不會登出瀏覽器本身的 Google 帳號，也不會刪除離線存檔或本機牌組。
@@ -76,3 +76,13 @@ Chrome 的 440×956 裝置模擬與 Safari 的 390×844 回應式介面，以兩
 去除 Google UID 的完整實戰資料在 `data/online-google-mobile-natural-match.json`；`tests/online-google-mobile-natural-match.test.js` 重播全部 70 個指令，核對離線時的歷史前綴、瀕死狀態、最後遠程攻擊及完整最終狀態。
 
 回到大廳後亦修正正式 Firebase SDK 的初始空快取問題：交易前保持臨時 `onValue` 訂閱，等待首次資料後才判定是否中止交易，交易完成或失敗均釋放訂閱。過期房間不會再因第一次回呼看到 `null` 而略過清理。`tests/firebase-transaction-cache.test.js` 涵蓋冷快取過期房間、活躍房間保留及權限讀取失敗。
+
+## Public waiting rooms (2026-10-31)
+
+Google sign-in remains required. Choose a valid deck before creating a public/unlisted room, joining by code, selecting a public room or using Quick join. The chosen deck uploads automatically. The public list refreshes every four seconds while visible and shows only matching-build public rooms with an online host, no guest and lobby status. It never returns nicknames, UIDs, email or deck contents. Legacy rooms without a visibility field are treated as unlisted. Private means unlisted from the public UI; this remains the existing trusted-client casual protocol, not a competitive anti-cheat service.
+
+Quick join retries other candidates if a claim loses a race, without automatically creating a room. Hosts receive join/departure notices. Before start, a guest can release its own seat and deck; both ready flags reset. A waiting host can mark its own room cancelled, then remove it. Neither operation can release seats once start wins the transaction race. Closing a browser marks the seat offline and preserves reconnect; only explicit pre-game Leave releases it. Existing fifteen-minute both-offline cleanup remains server-time guarded and runs at most once per minute during discovery, or when creating a room.
+
+Rules validate departures against the old guest identity for presence reset and updatedAt while validating the seat deletion atomically. Guests cannot cancel the host or write presence after replacement. A cancelled/missing room clears the local waiting UI; a missing game seat offers a return to the online lobby.
+
+Validation: 2845 Node tests passed; 23 targeted model/auth/transaction/lifecycle checks passed after the final changes. The isolated live rules audit passed 11 checks, including 119 real RTDB transaction commands to a natural result, public/private discovery, concurrent quick join, guest replacement, revoked presence denial and host cancellation. Its room directory is filtered to owned test IDs, so the audit never joins or cleans up real players' rooms. A real Google account in Chrome verified sign-in, private creation, automatic deck upload and cancellation. Browser viewport UI verification used explicit test identities with the deployed RTDB rules for public list, quick join, one-click join, notices, ready reset, private-code join, two-seat battlefield entry and reload/reconnect. These UI fixtures and credentials stay in ignored local output, never in Pages.

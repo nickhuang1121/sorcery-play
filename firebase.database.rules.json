@@ -18,7 +18,7 @@
     "onlineRoomsV3": {
       "$room": {
         ".read": "auth != null && auth.token.firebase.sign_in_provider === 'google.com' && (!data.exists() || (auth.uid === data.child('meta').child('host').val() || auth.uid === data.child('meta').child('guest').val()))",
-        ".write": "auth != null && auth.token.firebase.sign_in_provider === 'google.com' && ((!data.exists() && newData.exists() && newData.child('meta/host').val() === auth.uid && !newData.child('meta/guest').exists() && newData.child('meta/status').val() === 'lobby') || (data.exists() && newData.exists() && (auth.uid === data.child('meta').child('host').val() || auth.uid === data.child('meta').child('guest').val()) && data.child('meta').child('status').val() !== 'deleting') || (!newData.exists() && data.child('meta').child('status').val() === 'deleting' && (data.child('meta').child('createdAt').val() < now - 900000 && data.child('meta').child('updatedAt').val() < now - 900000 && data.child('meta').child('presence/0/beat').val() < now - 900000 && data.child('meta').child('presence/1/beat').val() < now - 900000)))",
+        ".write": "auth != null && auth.token.firebase.sign_in_provider === 'google.com' && ((!data.exists() && newData.exists() && newData.child('meta/host').val() === auth.uid && !newData.child('meta/guest').exists() && newData.child('meta/status').val() === 'lobby') || (data.exists() && newData.exists() && (auth.uid === data.child('meta').child('host').val() || auth.uid === data.child('meta').child('guest').val()) && data.child('meta').child('status').val() !== 'deleting') || (!newData.exists() && data.child('meta').child('status').val() === 'deleting' && (data.child('meta').child('createdAt').val() < now - 900000 && data.child('meta').child('updatedAt').val() < now - 900000 && data.child('meta').child('presence/0/beat').val() < now - 900000 && data.child('meta').child('presence/1/beat').val() < now - 900000)) || (!newData.exists() && data.child('meta/status').val() === 'cancelled' && auth.uid === data.child('meta/host').val()))",
         ".validate": "newData.hasChildren(['meta','payload'])",
         "payload": {
           ".validate": "newData.isString() && newData.val().length <= 4000000"
@@ -26,7 +26,7 @@
         "meta": {
           ".read": "auth != null && auth.token.firebase.sign_in_provider === 'google.com'",
           ".write": "auth != null && auth.token.firebase.sign_in_provider === 'google.com' && ((data.child('status').val() === 'lobby' && !data.child('guest').exists() && newData.child('guest').val() === auth.uid && data.child('host').val() !== auth.uid && newData.child('host').val() === data.child('host').val()) || (data.exists() && newData.child('status').val() === 'deleting' && (data.child('createdAt').val() < now - 900000 && data.child('updatedAt').val() < now - 900000 && data.child('presence/0/beat').val() < now - 900000 && data.child('presence/1/beat').val() < now - 900000)))",
-          ".validate": "newData.hasChildren(['schema','build','host','status','createdAt','updatedAt','engineRevision','presence']) && newData.child('presence').hasChildren(['0','1']) && (!data.child('guest').exists() || newData.child('guest').val() === data.child('guest').val())",
+          ".validate": "newData.hasChildren(['schema','build','host','status','createdAt','updatedAt','engineRevision','presence']) && newData.child('presence').hasChildren(['0','1']) && (!data.child('guest').exists() || newData.child('guest').val() === data.child('guest').val() || (data.child('status').val() === 'lobby' && newData.child('status').val() === 'lobby' && auth.uid === data.child('guest').val() && !newData.child('guest').exists()))",
           "schema": {
             ".validate": "newData.val() === 3"
           },
@@ -40,13 +40,13 @@
             ".validate": "newData.isString() && (newData.val() === data.val() || (!data.exists() && newData.val() === auth.uid && newData.val() !== newData.parent().child('host').val()))"
           },
           "status": {
-            ".validate": "newData.val() === data.val() || (!data.exists() && newData.val() === 'lobby') || (data.val() === 'lobby' && newData.val() === 'playing' && auth.uid === data.parent().child('host').val()) || (data.val() === 'playing' && newData.val() === 'ended' && (auth.uid === data.parent().child('host').val() || auth.uid === data.parent().child('guest').val())) || (newData.val() === 'deleting' && (data.parent().child('createdAt').val() < now - 900000 && data.parent().child('updatedAt').val() < now - 900000 && data.parent().child('presence/0/beat').val() < now - 900000 && data.parent().child('presence/1/beat').val() < now - 900000))"
+            ".validate": "newData.val() === data.val() || (!data.exists() && newData.val() === 'lobby') || (data.val() === 'lobby' && newData.val() === 'playing' && auth.uid === data.parent().child('host').val()) || (data.val() === 'playing' && newData.val() === 'ended' && (auth.uid === data.parent().child('host').val() || auth.uid === data.parent().child('guest').val())) || (newData.val() === 'deleting' && (data.parent().child('createdAt').val() < now - 900000 && data.parent().child('updatedAt').val() < now - 900000 && data.parent().child('presence/0/beat').val() < now - 900000 && data.parent().child('presence/1/beat').val() < now - 900000)) || (data.val() === 'lobby' && newData.val() === 'cancelled' && auth.uid === data.parent().child('host').val())"
           },
           "createdAt": {
             ".validate": "newData.isNumber() && (newData.val() === data.val() || (!data.exists() && newData.val() <= now && newData.val() >= now - 10000))"
           },
           "updatedAt": {
-            ".validate": "newData.isNumber() && newData.val() <= now + 1000 && ((auth.uid === newData.parent().child('host').val() || auth.uid === newData.parent().child('guest').val()) || newData.val() === data.val())"
+            ".validate": "newData.isNumber() && newData.val() <= now + 1000 && ((auth.uid === newData.parent().child('host').val() || (auth.uid === newData.parent().child('guest').val() || auth.uid === root.child('onlineRoomsV3').child($room).child('meta/guest').val())) || newData.val() === data.val())"
           },
           "engineRevision": {
             ".validate": "newData.isNumber() && newData.val() >= 0 && (!data.exists() || newData.val() >= data.val()) && ((auth.uid === newData.parent().child('host').val() || auth.uid === newData.parent().child('guest').val()) || newData.val() === data.val())"
@@ -56,10 +56,10 @@
               ".write": "auth != null && auth.token.firebase.sign_in_provider === 'google.com' && ($seat === '0' || $seat === '1') && root.child('onlineRoomsV3').child($room).child('meta/status').val() !== 'deleting' && (($seat === '0' && auth.uid === root.child('onlineRoomsV3').child($room).child('meta/host').val()) || ($seat === '1' && auth.uid === root.child('onlineRoomsV3').child($room).child('meta/guest').val()))",
               ".validate": "($seat === '0' || $seat === '1') && newData.hasChildren(['online','beat'])",
               "online": {
-                ".validate": "newData.isBoolean() && ((($seat === '0' && auth.uid === newData.parent().parent().parent().child('host').val()) || ($seat === '1' && auth.uid === newData.parent().parent().parent().child('guest').val())) || newData.val() === data.val() || (!data.exists() && newData.val() === false))"
+                ".validate": "newData.isBoolean() && ((($seat === '0' && auth.uid === newData.parent().parent().parent().child('host').val()) || ($seat === '1' && auth.uid === root.child('onlineRoomsV3').child($room).child('meta/guest').val())) || newData.val() === data.val() || (!data.exists() && newData.val() === false))"
               },
               "beat": {
-                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= now + 1000 && ((($seat === '0' && auth.uid === newData.parent().parent().parent().child('host').val()) || ($seat === '1' && auth.uid === newData.parent().parent().parent().child('guest').val())) || newData.val() === data.val() || (!data.exists() && newData.val() === 0))"
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= now + 1000 && ((($seat === '0' && auth.uid === newData.parent().parent().parent().child('host').val()) || ($seat === '1' && auth.uid === root.child('onlineRoomsV3').child($room).child('meta/guest').val())) || newData.val() === data.val() || (!data.exists() && newData.val() === 0))"
               },
               "$other": {
                 ".validate": false
@@ -68,6 +68,9 @@
           },
           "$other": {
             ".validate": false
+          },
+          "visibility": {
+            ".validate": "newData.isString() && (newData.val() === 'public' || newData.val() === 'private') && (newData.val() === data.val() || (!data.exists() && auth.uid === newData.parent().child('host').val()))"
           }
         },
         "$other": {

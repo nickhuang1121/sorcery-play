@@ -31,7 +31,7 @@
       .lobby select{max-width:100%}
     }
   </style>
-<link rel="stylesheet" href="./styles/arena.css?v=20261031-hand-stable"><link rel="stylesheet" href="./styles/battle-scene.css?v=20261031-live-tabletop"><link rel="stylesheet" href="./styles/realm-mobile.css?v=20261031-live-tabletop"><link rel="stylesheet" href="./styles/glass-popups.css?v=20261031-live-tabletop"></head>
+<link rel="stylesheet" href="./styles/arena.css?v=20261031-hand-stable"><link rel="stylesheet" href="./styles/battle-scene.css?v=20261031-live-tabletop"><link rel="stylesheet" href="./styles/realm-mobile.css?v=20261031-live-tabletop"><link rel="stylesheet" href="./styles/glass-popups.css?v=20261031-live-tabletop"><link rel="stylesheet" href="./styles/public-lobby.css?v=20261031-public-rooms"></head>
 <body class="glass-runtime lobby-page">
 <header class="masthead">
   <a class="brand" href="./index.html"><span class="brand-mark">S</span><span>SORCERY<small>CONTESTED REALM</small></span></a>
@@ -45,7 +45,7 @@
 <main class="lobby">
   <div class="eyebrow">ONLINE LOBBY</div>
   <h1>線上對戰</h1>
-  <p class="muted">建立房間，邀請另一位玩家。雙方準備後，進入正式戰場。雙方離線超過 15 分鐘的房間會自動清除。</p>
+  <p class="muted" data-lobby-copy="intro">公開房間等待對手，或用房號邀請朋友。雙方準備後進入正式戰場；雙方離線超過 15 分鐘的房間會自動清除。</p>
 
   <div class="panel" id="connect-panel">
     <h2>1. Google 登入</h2>
@@ -57,23 +57,8 @@
     <p class="muted">登入後即可建立或加入房間。同一個 Google 帳號可在其他裝置恢復原本席位。</p>
   </div>
 
-  <div class="panel" id="room-panel" hidden>
-    <h2>2. 房間</h2>
-    <div class="row" style="margin-bottom:10px">
-      <button type="button" id="btn-create">建立房間</button>
-      <input type="text" id="join-code" placeholder="輸入房號" maxlength="8" aria-label="房號">
-      <button type="button" id="btn-join">加入房間</button>
-      <button type="button" id="btn-reclaim">恢復我的席位</button>
-      <button type="button" id="btn-copy-room" disabled>複製房號</button>
-      <button type="button" id="btn-refresh-rooms">重新整理房間列表</button>
-    </div>
-    <p class="muted">房號：<span class="code" id="room-code">—</span> · 席位：<span id="seat-label">—</span> · 對手：<span id="peer-label">—</span></p>
-    <p class="muted" style="margin-top:10px">近期房間（點房號可填入）</p>
-    <div id="room-list" class="muted">連線後載入…</div>
-  </div>
-
   <div class="panel" id="deck-panel" hidden>
-    <h2>3. 牌組</h2>
+    <h2 data-lobby-copy="decks">2. 選擇牌組</h2>
     <p class="muted" id="decks-loading">正在載入官方／自創牌組…</p>
     <label class="muted">選擇牌組
       <select id="deck-pick" style="display:block;width:100%;margin-top:6px" disabled>
@@ -83,12 +68,37 @@
     <p class="muted" style="margin-top:8px">自創牌組可在「編輯牌組」儲存後，重新整理此頁。</p>
     <details class="lobby-deck-advanced"><summary>進階：匯入牌組</summary><p class="muted" style="margin-top:10px">官方牌組 JSON（含 decklist；選完會自動填入）</p>
     <textarea id="deck-json" spellcheck="false" placeholder='{"name":"我的牌組","format":"Constructed","decklist":[{"board":"Avatar","quantity":1,"card":{"slug":"sorcerer"}}]}'></textarea></details>
-    <div class="row" style="margin-top:10px">
+    <div class="row" id="deck-actions" hidden style="margin-top:10px">
       <button type="button" id="btn-publish">上傳牌組</button>
       <button type="button" id="btn-ready" class="primary" disabled>宣告 Ready</button>
       <button type="button" id="btn-unready" disabled>取消 Ready</button>
     </div>
     <p class="muted" id="deck-summary" style="margin-top:10px">尚未上傳</p>
+  </div>
+
+  <div class="panel" id="room-panel" hidden>
+    <h2 data-lobby-copy="rooms">3. 尋找對手</h2>
+    <div id="room-discovery">
+      <label class="muted"><span data-lobby-copy="visibility">房間類型</span>
+        <select id="room-visibility"><option value="public" data-lobby-copy="public">公開房間</option><option value="private" data-lobby-copy="private">私人房間（房號邀請）</option></select>
+      </label>
+      <div class="row room-search-actions">
+        <button type="button" id="btn-create" data-lobby-copy="create">建立房間</button>
+        <button type="button" id="btn-quick-join" class="primary" data-lobby-copy="quick">快速加入</button>
+        <button type="button" id="btn-reclaim" data-lobby-copy="resume">恢復我的席位</button>
+      </div>
+      <div class="row room-search-actions">
+        <input type="text" id="join-code" placeholder="輸入房號" maxlength="6" aria-label="房號" autocomplete="off" autocapitalize="characters">
+        <button type="button" id="btn-join" data-lobby-copy="joinCode">使用房號加入</button>
+      </div>
+      <div class="room-list-heading"><h3 data-lobby-copy="publicList">可加入的公開房間</h3><button type="button" id="btn-refresh-rooms" data-lobby-copy="refresh">重新整理</button></div>
+      <div id="room-list" aria-live="polite" data-i18n-preserve></div>
+    </div>
+    <div id="current-room" hidden data-i18n-preserve>
+      <h3 id="room-waiting-title"></h3><p class="muted" id="room-waiting-help"></p>
+      <p class="muted"> <span id="room-code" class="code">—</span> · <span id="seat-label">—</span> · <span id="peer-label">—</span></p>
+      <div class="row room-search-actions"><button type="button" id="btn-copy-room" disabled></button><button type="button" id="btn-leave-room" disabled></button></div>
+    </div>
   </div>
 
   <div class="panel" id="match-panel" hidden>
@@ -108,6 +118,6 @@
   <span><a href="./index.html">本機遊戲 ↗</a></span>
 </footer>
 
-<script type="module" src="./src/online-lobby.js?v=20261031-mobile-natural"></script>
+<script type="module" src="./src/online-lobby.js?v=20261031-public-rooms"></script>
 <script type="module" src="./src/ui-language-bootstrap.js"></script></body>
 </html>
