@@ -59,8 +59,9 @@ firebase deploy --only database --project sorcery-codex
 - `tests/firebase-google-auth.test.js`：Google 專屬身分、持續登入、彈窗、登出與錯誤訊息。
 - `tests/firebase-friends-model.test.js`：119 次動作的完整 Firebase 對局資料流程、席位、版本與清房時間。
 - `tools/test-firebase-online-live.mjs --live`：使用 Firebase CLI 管理員憑證限制為測試身分，驗證實際已部署規則與交易；只建立並清除自己的隔離測試房間。它不是 OAuth 登入畫面的替代測試。
-- 完整 Node 回歸：**2804/2804 通過**；Google 登入、Firebase 對局、同步與語言針對性測試另為 20/20。
+- 完整 Node 回歸：**2806/2806 通過**；Google 登入、Firebase 對局、同步與語言針對性測試另為 20/20。
 - 實際 Firebase 規則／交易：8 項檢查通過，兩個受規則限制的 Google token 測試身分執行 119 次操作，19 回合自然結束，生命 14／0。這不是兩個 Google 帳號的瀏覽器 OAuth 實戰。
-- Chrome 已實際完成 Google OAuth 登入、建房、上傳牌組、準備、重新整理後恢復席位與登出；測試時沒有 Node 對戰服務。
+- Chrome 與 Safari 已在正式網址以兩個不同 Google 帳號完成 OAuth 登入、建立／加入同一房間、選擇官方牌組、準備、進入戰場、抽牌、拖曳出牌、選目標、召喚與回合交接。測試時沒有 Node 對戰服務。
+- 修正 Safari 的 back/forward cache 返回舊戰場時同步停止：返回時重新載入同一登入席位，讀取最新對局。部署入口與更新的同步模組帶有版本參數，避免沿用更新前快取。
 - 390×844 手機頁面已檢查中英文、選單、關閉及登入前操作限制，並修正頁首擠壓與英文席位標籤。
 - 本機證據在忽略上傳的 `output/firebase-online/`。Firebase 設定與規則已套用；前端已由 GitHub `main` 分支部署至上述 GitHub Pages 正式網址。

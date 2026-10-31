@@ -20,7 +20,7 @@ GitHub 上傳前請參閱 [上傳與排除規則](docs/GITHUB_UPLOAD.md)。
 
 ## 驗證與操作
 
-- `npm test`：最新完整 Node 測試 **2804/2804 通過**，包含既有回歸、新卡效果與未開放 helper。測試數不是完成張數。
+- `npm test`：最新完整 Node 測試 **2806/2806 通過**，包含既有回歸、新卡效果與未開放 helper。測試數不是完成張數。
 - `npm run test:games`：16種官方 Beta 預組配對；會更新 [對局結果](data/smoke-game-results.json)。不保證每張新卡在預組中出現。
 - 本機 HTTP server 開啟 [瀏覽器整合測試](tests/index.html)：11通過、0失敗（2026-10-30T14:03:50Z）。
 - `npm run progress:update`：重新跑完整 Node 測試並同步逐卡進度與文件。失敗時保留測試輸出，不改寫完成統計。
