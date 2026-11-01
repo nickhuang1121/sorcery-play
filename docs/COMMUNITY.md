@@ -60,3 +60,7 @@ Portrait home keeps PLAY within the bottom safe area, places tutorial/resume abo
 The lobby uses the existing indexed official card image directly. The unused generated character and its prompt have been removed from the deployed project.
 
 The complete page map and navigation/state rules are documented in [PAGES.md](PAGES.md).
+
+### Player center
+
+`player.html` is the private hub, reached from the homepage portrait and shared/battle menus. It provides Overview / My decks / My results, direct nickname editing, owner-only cloud deck previews, device-local deck counts, active results, personal leaderboard positions and verified room resume. Existing profile/deck/history CRUD remains on its independent pages. No Firebase rules or schema change is required.

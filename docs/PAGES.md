@@ -4,7 +4,8 @@ Each feature has its own HTML document and bootstrap under `src/pages/`. The hom
 
 | Page | Feature |
 | --- | --- |
-| `index.html` | Home lobby, public ranking preview and account shortcut |
+| `index.html` | Home lobby, public ranking preview and player center shortcut |
+| `player.html` | Authenticated player overview, nickname editing, local/cloud deck distinction, own results/ranks and verified room resume; optional `?tab=decks` / `?tab=results` |
 | `play.html` | Select Online / Solo vs AI / Local two-player |
 | `match-setup.html?mode=ai` | Local deck and difficulty setup; also supports `mode=local` |
 | `battle.html` | Existing local/AI match and result dialog |
@@ -41,3 +42,13 @@ Page titles use explicit Chinese/English labels instead of partial automatic tra
 ## Verification
 
 `tests/page-routes.test.js` checks distinct real destinations, Github Pages base paths, encoded parameters, page/style boundaries, private scopes and legacy redirects. The browser workflow covers home → mode selection → setup → battle, opening hands, legal target highlighting, site play, reload with the same site and hand, deck draft/catalogue filter restoration, tutorial checkpoint restore without changing the normal match, all four ranking URLs, and profile/cloud/history CRUD with isolated test identities using the deployed Firebase rules.
+
+## Player center
+
+The homepage profile links to `player.html`; every shared settings menu and battlefield match menu also includes this link. `account.html`, `cloud-decks.html` and `history.html` remain independent management documents and link back to the center. Nickname changes reuse the existing owner-scoped profile mutation. No Google name/email is shown publicly.
+
+The center reads only the current authenticated UID's private account, clears private state on account changes/pagehide, and reloads on back/forward-cache restoration. Summary totals exclude deleted records; private decks appear only in the owner's deck list and never the deck-rank summary. Player/deck positions use the existing public leaderboard ordering; identical published decklists share aggregate rank. Rankings failing to load do not block private account access.
+
+A saved local match is labeled as belonging to this device. An online rejoin link is shown only after checking the saved UID and live room membership/status. Visiting the center does not create, join, clean, or mutate a room. The existing fifteen-minute offline cleanup remains unchanged.
+
+Browser checks use a generated isolated UID against deployed RTDB rules for nickname editing, private deck creation, manual result creation, summary/ranking display, locale changes, phone portrait/landscape and logout clearing. No test results are left in the public database.

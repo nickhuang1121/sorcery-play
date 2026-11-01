@@ -2,7 +2,7 @@ import {loadCards,card,officialBetaDecks} from './cards.js';
 import {loadCardImages,cardImage} from './card-images.js';
 import {loadCardTranslations,cardTitle,setLang} from './i18n.js';
 import {initializeUILanguage,getUILanguage} from './ui-language.js';
-import {homeLobbyHTML,modePickerHTML} from './community/home-lobby.js?v=20261101-updated-cutout';
+import {homeLobbyHTML,modePickerHTML} from './community/home-lobby.js?v=20261101-player-center';
 import {createHomeIdentity} from './community/home-identity.js';
 import {createHomeRankings} from './community/home-rankings.js?v=20261101-independent-pages';
 import {pageURL} from './page-routes.js';
