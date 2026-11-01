@@ -901,7 +901,7 @@ function showHomeModes(index=0){
 }
 function renderHome(){
  const av=card('sorcerer');
- app.innerHTML=homeLobbyHTML({text:tt,portrait:cardImage(av),character:'./assets/sorcerer-lobby-cutout-v1.png',avatarName:cardTitle(av),resume:hasSavedMatch,finished:state?.winner!==null,expanded:!homePortraitMedia.matches||homeRankExpanded});
+ app.innerHTML=homeLobbyHTML({text:tt,portrait:cardImage(av),featuredCard:cardImage(av),avatarName:cardTitle(av),resume:hasSavedMatch,finished:state?.winner!==null,expanded:!homePortraitMedia.matches||homeRankExpanded});
  homeRankings.mount($('#home-rankings'));homeIdentity.mount($('.lobby-profile'));
  const drawer=$('.lobby-rank-drawer');drawer.ontoggle=()=>{if(homePortraitMedia.matches)homeRankExpanded=drawer.open;};
  drawer.onkeydown=event=>{if(event.key==='Escape'&&homePortraitMedia.matches&&drawer.open){drawer.open=false;drawer.querySelector('summary').focus();}};
