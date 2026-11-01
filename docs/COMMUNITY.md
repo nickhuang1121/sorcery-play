@@ -1,6 +1,6 @@
 # Community CRUD and casual rankings
 
-Entry: `community.html`, linked from the home menu, deck editor and online lobby. This release deliberately uses the existing Realtime Database and Google Auth; no Firestore, Functions, Node hosting or billing upgrade is required.
+Entries: `rankings.html` and the three other ranking pages; private tools live at `account.html`, `cloud-decks.html` and `history.html`. `community.html` remains a compatibility redirect. This release deliberately uses the existing Realtime Database and Google Auth; no Firestore, Functions, Node hosting or billing upgrade is required.
 
 ## Behavior
 
@@ -53,8 +53,10 @@ While there are no recorded games, UI-only developer samples use the fixed names
 
 The cinematic home uses the battlefield forest with a central, complete Sorcerer card. The edge HUD contains the community nickname/account link, Lobby/Decks/Card library navigation, and settings. The profile never copies Google display names or email into the lobby; a signed-in user without a community profile is invited to set a nickname. Auth changes and late profile requests are guarded so an old account cannot replace the current name.
 
-The single PLAY action opens a black-glass mode dialog with Online, Solo vs AI, and Local two-player cards. Portrait mode uses native horizontal scrolling, scroll snap, arrow controls and a visible position counter. Desktop/landscape shows all three cards. Arrow/Home/End keyboard navigation moves focus with the selected card. Selecting Online opens the existing Firebase lobby; the other modes open their existing deck/difficulty settings. No matchmaking or gameplay rules are changed.
+The single PLAY action opens the independent black-glass `play.html` mode page with Online, Solo vs AI, and Local two-player cards. The mode page on portrait phones uses native horizontal scrolling, scroll snap, arrow controls and a visible position counter. Desktop/landscape shows all three cards. Local setup and all three battlefield types use their own HTML documents. Arrow/Home/End keyboard navigation moves focus with the selected card. Selecting Online opens the existing Firebase lobby; the other modes open their existing deck/difficulty settings. No matchmaking or gameplay rules are changed.
 
 Portrait home keeps PLAY within the bottom safe area, places tutorial/resume above it, and collapses rankings into a drawer. Landscape retains the side leaderboard. Profile/ranking state restores after returning through browser history; language changes preserve user-entered names. The featured card is decorative, preserves the original card face and frame, and respects reduced-motion preferences.
 
 The lobby uses the existing indexed official card image directly. The unused generated character and its prompt have been removed from the deployed project.
+
+The complete page map and navigation/state rules are documented in [PAGES.md](PAGES.md).

@@ -52,3 +52,7 @@ GitHub 上傳前請參閱 [上傳與排除規則](docs/GITHUB_UPLOAD.md)。
 首頁的「社群排行榜」可查看玩家、牌組、卡牌與化身排行榜。Google 登入後可編輯顯示名稱、管理私人／公開牌組，以及新增、更正或刪除自己的戰績。線上結束的對局自動同步自己的結果；合法雲端牌組會載入線上大廳。
 
 目前是所有時間的休閒／自報統計，不提供競技防作弊或 Elo。沿用 Realtime Database，不需新增付費服務。私人牌表不納入公開卡牌統計；發布牌組後才參與牌組／卡牌榜。資料結構、規則與測試見 [社群說明](docs/COMMUNITY.md)。
+
+## 獨立功能頁面
+
+首頁 `index.html`、模式選擇 `play.html`、對局設定 `match-setup.html`、單機戰場 `battle.html`、線上戰場 `online-play.html`、牌組 `decks.html`、圖鑑 `cards.html`、教學 `tutorial.html`／`tutorial-battle.html` 均為獨立 HTML。帳號、雲端牌組、戰績與四種排行榜也各有網址。完整對照與存檔說明見 [頁面結構](docs/PAGES.md)。

@@ -1,0 +1,6 @@
+// Public page destinations. Routes are fixed project-relative HTML files.
+export const PAGE_URLS={home:'index.html',modes:'play.html',setup:'match-setup.html',play:'battle.html',online:'online-play.html',decks:'decks.html',library:'cards.html',tutorial:'tutorial.html',tutorialBattle:'tutorial-battle.html',lobby:'lobby.html',account:'account.html',cloud:'cloud-decks.html',history:'history.html',players:'rankings.html',deckRanks:'deck-rankings.html',cardRanks:'card-rankings.html',avatarRanks:'avatar-rankings.html'};
+export const RANK_URLS={players:PAGE_URLS.players,decks:PAGE_URLS.deckRanks,cards:PAGE_URLS.cardRanks,avatars:PAGE_URLS.avatarRanks,account:PAGE_URLS.account};
+export function pageURL(page,params={}){const path=PAGE_URLS[page];if(!path)throw Error('Unknown page');const query=new URLSearchParams(Object.entries(params).filter(([,v])=>v!==undefined&&v!==null).map(([k,v])=>[k,String(v)]));return './'+path+(query.size?'?'+query:'');}
+export function pageFromPath(path){const name=path.split('/').pop()||'index.html';return Object.keys(PAGE_URLS).find(k=>PAGE_URLS[k]===name)||'home';}
+export function legacyCommunityURL(search){return './'+(RANK_URLS[new URLSearchParams(search).get('tab')]||RANK_URLS.players);}

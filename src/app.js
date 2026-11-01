@@ -1,6 +1,4 @@
-import {homeLobbyHTML,modePickerHTML} from './community/home-lobby.js?v=20261101-card-lobby-v2';
-import {createHomeIdentity} from './community/home-identity.js';
-import {createHomeRankings} from './community/home-rankings.js';
+import {pageURL,pageFromPath} from './page-routes.js';
 import {prepareDeckSave,mergeLocalDeck,publicationHTML} from './community/deck-publication.js';
 import {handMotion,handScrollAfterRender} from './hand-gestures.js?v=20261031-hand-swipe';
 import {TUTORIAL_KEY,tutorialChapters,tutorialText,cleanTutorialProgress,createTutorialScene,createTutorialSession,tutorialAllows,tutorialActions,tutorialScriptAction,advanceTutorial,restoreTutorialCheckpoint} from './tutorial.js';
@@ -9,7 +7,6 @@ import {createOnlineClient,savedOnlineRoom,bindOnlinePageLifecycle} from './net/
 import {battleNoticeEvents,createBattleNoticeFeed} from './battle-notices.js';
 import {arrangeMobileRealmPiles as arrangeRealmPiles} from './realm-mobile-layout.js?v=20261031-live-tabletop';
 import {createForestStack} from './realm-mobile-picker.js?v=20261031-live-tabletop';
-import './battle-scene.js?v=20261031-live-tabletop';
 import {localizeChoice} from './ui-choice-copy.js';
 import {connectPopup} from './popup.js';
 import {createCardInfoPopup} from './card-info-popup.js';
@@ -45,10 +42,14 @@ installCardImageFallback();
 const displayOrder=new Map();
 const $=s=>document.querySelector(s),app=$('#app'),modal=$('#modal');
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const onlineMode=location.pathname.endsWith('/online-play.html');
+const page=document.body.dataset.page||pageFromPath(location.pathname);
+const expectedView={setup:'setup',tutorial:'tutorial-menu',tutorialBattle:'play',play:'play',online:'play',decks:'decks',library:'library'}[page]||'library';
+const onlineMode=page==='online';
+if(page==='home'||page==='modes')location.replace(pageURL(page,{v:'20261101-independent-pages'}));
+let runtimeReady=false;
 let online=null,onlineSeat=0,onlineSnapshot=null;
 let hasSavedMatch=false,setupMode='ai';
-let state,view='home',selected=null,aiTimer,toastTimer,deck,filter={q:'',type:'',element:'',cost:'',supported:false,page:0},saved=[],deckPane='cards';
+let state,view=expectedView,selected=null,aiTimer,toastTimer,deck,filter={q:'',type:'',element:'',cost:'',supported:false,page:0},saved=[],deckPane='cards';
 let filtersOpen=false;
 let tutorial=null,tutorialBackup=null,tutorialInspected=null,tutorialCompletionShown=false;
 let tutorialProgress=cleanTutorialProgress(null);
@@ -58,6 +59,11 @@ let viewScroll={l:0,t:0,init:false},lastPtr={x:0,y:0},edgeTimer=0;
 let seenDamage=new Map(),seenUnits=new Set(),seenSites=new Map(),seenWinner=null,motionReady=false,seenStrike='',seenActive=null,handSealed=false,battleCue=null;
 let aiOmniscient=false;
 const store={get(k,f){try{return JSON.parse(localStorage.getItem(k))??f;}catch{return f;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch{toast('本機儲存失敗，請使用匯出備份。');}}};
+function saveDraft(value=deck){if(value)try{sessionStorage.setItem('sorcery.deckDraft',JSON.stringify(value));}catch{}}
+function navigateView(target,draft){if(page==='decks')saveDraft();if(draft)saveDraft(draft);location.href=pageURL(target);}
+window.addEventListener('pagehide',()=>{if(page==='decks')saveDraft();if(page==='decks'||page==='library')try{sessionStorage.setItem('sorcery.pageUI.'+page,JSON.stringify({filter,deckPane}));}catch{}});
+window.addEventListener('pageshow',event=>{if(event.persisted&&!onlineMode)location.reload();});
+
 const cardInfo=createCardInfoPopup({getRevision:()=>state,onStale:()=>toast('對局已更新，請重新選擇卡牌。')});
 const infoWrappers=new WeakMap();
 const battleNotices=createBattleNoticeFeed({isPaused:()=>!!document.querySelector('dialog[open]'),getTop:()=>Math.max(12,(document.querySelector('.stage-wrap')?.getBoundingClientRect().top||58)+8)});
@@ -65,6 +71,8 @@ const mainPopup=connectPopup(modal,{closeButton:$('#close-modal'),footerButton:$
 let resultSeen=null,mulliganDraft=null,drawSeen=null,mulliganSeen=null;
 function toast(text){clearTimeout(toastTimer);$('#toast').textContent=text;$('#toast').style.display='block';toastTimer=setTimeout(()=>$('#toast').style.display='none',4200);}
 function show(html,mode='info-popup'){
+ if((page==='setup'&&mode==='setup-sheet')||(page==='tutorial'&&mode==='tutorial-menu')){close();app.innerHTML=`<section class="feature-page ${mode}"><div class="feature-back"><a href="./index.html">← ${tt('返回首頁','Back to lobby')}</a><button type="button" data-ui-settings-open>${tt('設定','Settings')}</button></div>${html}</section>`;return;}
+
  $('#modal-body').innerHTML=html;
  modal.className='popup '+mode;modal.removeAttribute('aria-label');
  $('#popup-close').textContent=mode==='target-popup'?'在戰場選擇':state?.choice&&(mode==='effect-confirm'||mode==='effect-choice')?'暫時關閉':'關閉';
@@ -348,7 +356,7 @@ function playerInfoDialog(player){
 }
 function resultDialog(){
  renderBattle();const source=$('#match-result');if(!source)return;
- show('','result-popup');$('#modal-body').append(...source.childNodes);if(onlineMode){const link=document.createElement('a');link.href='./community.html?tab=account';link.textContent=tt('查看雲端戰績與排行榜','View cloud results and rankings');$('#modal-body').append(link);}mainPopup.open();
+ show('','result-popup');$('#modal-body').append(...source.childNodes);if(onlineMode){const link=document.createElement('a');link.href='./history.html';link.textContent=tt('查看雲端戰績與排行榜','View cloud results and rankings');$('#modal-body').append(link);}mainPopup.open();
  $('#modal-body').querySelectorAll('button').forEach(b=>b.addEventListener('click',close,{capture:true}));
 }
 function contextHTML(p){if(state.winner!==null)return `<strong>${esc(state.players[state.winner].name)} 獲勝</strong><button type="button" id="show-result">查看結果</button>`;if(!human()){if(state.pending)return `等待對手回應 · ${esc(strikeCaption())}`;const last=state.log?.at?.(-1)?.text;return last?`對手行動 · ${esc(last)}`:'對手思考中';}if(state.choice)return `${boardChoice()?'點選高亮處':'請完成效果選擇'} · ${esc(choiceTitle())} <button type="button" id="resume-choice">查看選項</button>`;if(!selected)return state.pending?strikeCaption():(state.ongoingEffects||[]).some(e=>e.op==='peaceTruce'&&e.player===p&&e.usedTurn===state.turn)?'休戰 · 本回合不能攻擊對方的單位或地點':'';const entry=selected.kind==='hand'?state.players[p].hand.find(h=>h.uid===selected.id):selected.kind==='grave'?{card:state.players[selected.graveOwner??p].cemetery[selected.id]}:selected.kind==='top'?{card:selected.id}:selected.kind==='bound'?(state.boundSpells||[]).find(h=>h.uid===selected.id):unit(state,selected.id);if(!entry)return '';return `<strong>${esc(face(entry.card))}</strong> ${selected.kind==='grave'?(selectedActions().some(a=>a.type==='resurrect')?'犧牲 Skeleton 復活 · ':'從墓地施放 · '):''}${selectedActions().length?'點高亮格子或目標':'目前無合法操作'} <button type="button" id="cancel">取消</button>`;}
@@ -681,7 +689,7 @@ function preconPreview(d){
   const rows=(ids)=>{const counts=new Map();for(const id of ids)counts.set(id,(counts.get(id)||0)+1);return [...counts].map(([id,n])=>`<div class="deck-row"><button type="button" class="card-detail-link" data-card-detail="${id}">${esc(face(id))}${card(id).playable?'':' · 尚未實作'}</button><b>${n}</b></div>`).join('');};
   const missing=[...new Set([d.avatar,...d.atlas,...d.spells])].filter(id=>!card(id).playable);
   show(`<h2>${esc(d.name)}</h2><p>官方原表：Avatar 1 · Spellbook 36 · Atlas 16</p><p>${missing.length?'尚缺 '+missing.length+' 種卡牌效果，補齊後開放對局。':'牌表內卡牌已可操作；完整規則驗證仍待完成。'}</p><p><a href="${esc(d.source)}" target="_blank" rel="noopener noreferrer">官方文章與原始牌表</a> · <a href="${esc(d.sourceImage)}" target="_blank" rel="noopener noreferrer">官方牌表圖片</a></p><h3>Avatar</h3>${rows([d.avatar])}<h3>Spellbook · 36</h3>${rows(d.spells)}<h3>Atlas · 16</h3>${rows(d.atlas)}<div class="modal-actions"><button id="precon-edit">載入牌組編輯器</button><button id="precon-back">返回新對局</button></div>`);
-  $('#precon-edit').onclick=()=>{deck=structuredClone(d);view='decks';close();render();};$('#precon-back').onclick=setup;
+  $('#precon-edit').onclick=()=>{close();navigateView('decks',d);};$('#precon-back').onclick=setup;
 }
 function officialPreconMenu(){const decks=officialBetaDecks();show(`<h2>BETA 官方四元素預組</h2><p>依官方 2023 年原表逐張保留；缺少效果的原表尚未開放對局。</p><div class="modal-actions">${decks.map((d,i)=>`<button data-precon-preview="${i}">${esc(d.name)}</button>`).join('')}</div>`);document.querySelectorAll('[data-precon-preview]').forEach(b=>b.onclick=()=>preconPreview(decks[+b.dataset.preconPreview]));}
 function presetSelectedValue(){
@@ -700,6 +708,8 @@ function presetButtons(){
 function importedDeck(d){const original=officialBetaDecks().find(p=>p.officialId===d.officialId);return {version:1,name:String(d.name||'匯入牌組'),avatar:d.avatar,atlas:[...d.atlas],spells:[...d.spells],...(d.collection?{collection:[...d.collection]}:{}),...(d.format==='beta-precon-2023'?{format:d.format,officialId:d.officialId,preset:d.preset||'official-beta',source:original?.source,sourceImage:original?.sourceImage}:{}),...(d.importSource?{importSource:d.importSource}:{})};}
 function profileControls(){return deck.format==='beta-precon-2023'?'<p>官方原表採 36／16 張數。變更卡牌後須轉為 60／30 自組牌，才能通過一般構築檢查。</p><button id="convert-precon">轉為自組牌</button>':'';}
 function setup(initialMode){
+ if(page!=='setup'){location.href=pageURL('setup',{mode:initialMode==='local'?'local':'ai'});return;}
+
   const choices=[...officialBetaDecks(),...saved];show(`<div class="eyebrow">A NEW CHAPTER</div><h2>選擇你的領域</h2><div id="setup-cover" class="setup-cover">${cardImageHTML(card(choices[0].avatar))}<span>${esc(choices[0].name)}</span></div><div class="setup-options"><label>你的牌組<select id="setup-deck">${choices.map((d,i)=>`<option value="${i}" ${!d.officialId?'data-i18n-preserve':''} ${validateDeck(d).length?'disabled':''}>${esc(d.name)} · ${d.spells.length} / ${d.atlas.length}${validateDeck(d).length?' · 尚未開放':''}</option>`).join('')}</select></label><label>對手牌組<select id="setup-opponent">${choices.map((d,i)=>`<option value="${i}" ${!d.officialId?'data-i18n-preserve':''} ${i===1?'selected':String()} ${validateDeck(d).length?'disabled':''}>${esc(d.name)}${validateDeck(d).length?' · 尚未開放':''}</option>`).join('')}</select></label><label>遊戲模式<select id="setup-mode"><option value="ai">單人 vs AI</option><option value="local">單機雙人</option></select></label><label id="setup-ai-wrap">AI 難度<select id="setup-ai"><option value="easy">易</option><option value="medium" selected>中</option><option value="strong">強</option></select></label></div><details class="setup-advanced"><summary>進階設定</summary><div class="setup-options"><label id="setup-omni-wrap" class="muted" style="font:12px/1.4 sans-serif"><input id="setup-omniscient" type="checkbox"> 全知搜尋（可偷看隱藏資訊；預設為公平）</label><label>隨機種子<input id="setup-seed" type="number" value="${Date.now()%1000000}" min="0" max="4294967295"></label></div></details><div class="modal-actions"><button id="setup-goto-decks">編輯我的牌組</button><button id="official-beta-lists">查看官方四副完整牌表</button><button id="start" class="primary">開始對戰 →</button></div>`,'setup-sheet');
   $('#setup-deck').onchange=()=>{const d=choices[+$('#setup-deck').value];$('#setup-cover').innerHTML=cardImageHTML(card(d.avatar))+'<span>'+esc(d.name)+'</span>';};
   $('#setup-goto-decks').onclick=()=>{close();menuOpen=false;toolsOpen=false;view='decks';selected=null;render();};
@@ -712,7 +722,7 @@ function setup(initialMode){
   if(aiSel&&AI_DIFFICULTIES.includes(savedDiff))aiSel.value=savedDiff;
   const omniBox=$('#setup-omniscient');
   if(omniBox)omniBox.checked=!!store.get('sorcery.aiOmniscient',false);
-  $('#start').onclick=()=>{try{const chosen=choices[+$('#setup-deck').value];const mode=$('#setup-mode').value;const difficulty=AI_DIFFICULTIES.includes($('#setup-ai')?.value)?$('#setup-ai').value:'medium';state=createPlayableMatch([chosen,choices[+$('#setup-opponent').value]],Number($('#setup-seed').value)>>>0,mode);if(mode==='ai'){state.aiDifficulty=difficulty;state.aiOmniscient=!!$('#setup-omniscient')?.checked;aiOmniscient=state.aiOmniscient;store.set('sorcery.aiDifficulty',difficulty);store.set('sorcery.aiOmniscient',state.aiOmniscient);}store.set('sorcery.match',state);hasSavedMatch=true;selected=null;view='play';menuOpen=false;toolsOpen=false;boardZoom=1;viewScroll={l:0,t:0,init:false};close();resetMotion();render();scheduleAI();}catch(e){toast(e.message);}};
+  $('#start').onclick=()=>{try{const chosen=choices[+$('#setup-deck').value];const mode=$('#setup-mode').value;const difficulty=AI_DIFFICULTIES.includes($('#setup-ai')?.value)?$('#setup-ai').value:'medium';state=createPlayableMatch([chosen,choices[+$('#setup-opponent').value]],Number($('#setup-seed').value)>>>0,mode);if(mode==='ai'){state.aiDifficulty=difficulty;state.aiOmniscient=!!$('#setup-omniscient')?.checked;aiOmniscient=state.aiOmniscient;store.set('sorcery.aiDifficulty',difficulty);store.set('sorcery.aiOmniscient',state.aiOmniscient);}store.set('sorcery.match',state);hasSavedMatch=true;location.href=pageURL('play');}catch(e){toast(e.message);}};
 }
 function filtered(){const q=(filter.q||'').toLowerCase();return cards.filter(c=>{const hay=(c.name+' '+c.rules+' '+cardTitle(c)+' '+cardRules(c)).toLowerCase();return(!q||hay.includes(q))&&(!filter.type||c.type===filter.type||filter.type==='Artifact'&&c.artifactUnit)&&(!filter.element||c.elements.includes(filter.element))&&(filter.cost===''||c.cost===Number(filter.cost))&&(!filter.supported||c.playable);});}
 function filtersHTML(){return `<div class="filters ${filtersOpen?'filters-open':''}"><button type="button" id="filter-toggle" aria-expanded="${filtersOpen}" aria-label="篩選卡牌">篩選${[filter.type,filter.element,filter.cost,filter.supported].filter(Boolean).length?' ●':''}</button><input id="search" type="search" aria-label="搜尋卡牌" placeholder="搜尋卡名或規則文字…" value="${esc(filter.q)}"><select id="type" aria-label="卡牌類型"><option value="">全部類型</option>${['Avatar','Minion','Site','Magic','Aura','Artifact'].map(t=>`<option ${filter.type===t?'selected':''}>${t}</option>`).join('')}</select><select id="element" aria-label="元素"><option value="">全部元素</option>${['Earth','Fire','Water','Air','None'].map(t=>`<option ${filter.element===t?'selected':''}>${t}</option>`).join('')}</select><select id="cost" aria-label="費用"><option value="">全部費用</option>${Array.from({length:11},(_,i)=>`<option ${filter.cost===String(i)?'selected':''}>${i}</option>`).join('')}</select><label style="align-self:center;font:12px sans-serif"><input id="supported" type="checkbox" ${filter.supported?'checked':''}> 僅可操作</label></div>`;}
@@ -771,7 +781,7 @@ function renderLibrary(edit=false){
   document.querySelectorAll('[data-library]').forEach(b=>b.onclick=()=>showCardInfo(b.dataset.library,null,edit?{action:()=>addCard(b.dataset.library),label:card(b.dataset.library).type==='Avatar'?'更換 Avatar':'加入牌組'}:undefined));bindCards();
   if(edit){bindDeck();bindDeckSwipe();document.querySelectorAll('[data-card-detail]').forEach(b=>b.onclick=()=>showCardInfo(b.dataset.cardDetail));}
 }
-function deckEditor(counts=deckCounts()){const sizes=deckSizes(deck),av=card(deck.avatar),errors=validateDeck(deck);return `<aside class="panel deck-editor deck-pane deck-pane-deck"><div class="panel-title">DECK WORKSHOP</div><input id="deck-name" aria-label="牌組名稱" value="${esc(deck.name)}"><div class="deck-avatar ${tone(av)}"><span class="deck-art" aria-hidden="true">${cardImageHTML(av)}</span><div><small>Avatar</small><strong title="${esc(av.name)}">${esc(cardTitle(av))}</strong><p>點選「所有牌」中的 Avatar 可更換</p></div></div><div class="deck-summary"><span>Atlas ${deck.atlas.length}/${sizes.atlas}</span><span>Spellbook ${deck.spells.length}/${sizes.spells}</span></div><div class="${errors.length?'errors':'success'}">${errors.length?errors.map(esc).join('<br>'):'✓ 通過目前牌組檢查（完整規則驗證待完成）'}</div>${av.slug==='dragonlord'?`<label>設定 Unique Dragon<select id="set-aside-dragon"><option value="">請選擇</option>${cards.filter(c=>c.type==='Minion'&&c.rarity==='Unique'&&c.subtypes.includes('Dragon')).map(c=>`<option value="${c.id}" ${deck.dragon===c.id?'selected':''}>${esc(c.name)}</option>`).join('')}</select></label>`:''}${collectionEditor()}${profileControls()}${deckSection('Atlas · 地點',deck.atlas,counts)}${deckSection('Spellbook · 法術',deck.spells,counts)}<div class="modal-actions"><button id="save-deck" class="primary">儲存</button><a href="./community.html?tab=account">${tt('雲端牌組','Cloud decks')}</a><button id="export-deck">匯出</button><button id="clear-deck">清空</button></div><p class="muted deck-saved-label">儲存的牌組</p><div class="saved-decks">${saved.map((d,i)=>`<button type="button" data-i18n-preserve data-load="${i}">${esc(d.name)}<small class="deck-visibility"> · ${d.publishToRankings===true?tt('公開','Public'):tt('私人','Private')}</small></button>`).join('')||'<span class="muted">尚無儲存</span>'}</div></aside>`;}
+function deckEditor(counts=deckCounts()){const sizes=deckSizes(deck),av=card(deck.avatar),errors=validateDeck(deck);return `<aside class="panel deck-editor deck-pane deck-pane-deck"><div class="panel-title">DECK WORKSHOP</div><input id="deck-name" aria-label="牌組名稱" value="${esc(deck.name)}"><div class="deck-avatar ${tone(av)}"><span class="deck-art" aria-hidden="true">${cardImageHTML(av)}</span><div><small>Avatar</small><strong title="${esc(av.name)}">${esc(cardTitle(av))}</strong><p>點選「所有牌」中的 Avatar 可更換</p></div></div><div class="deck-summary"><span>Atlas ${deck.atlas.length}/${sizes.atlas}</span><span>Spellbook ${deck.spells.length}/${sizes.spells}</span></div><div class="${errors.length?'errors':'success'}">${errors.length?errors.map(esc).join('<br>'):'✓ 通過目前牌組檢查（完整規則驗證待完成）'}</div>${av.slug==='dragonlord'?`<label>設定 Unique Dragon<select id="set-aside-dragon"><option value="">請選擇</option>${cards.filter(c=>c.type==='Minion'&&c.rarity==='Unique'&&c.subtypes.includes('Dragon')).map(c=>`<option value="${c.id}" ${deck.dragon===c.id?'selected':''}>${esc(c.name)}</option>`).join('')}</select></label>`:''}${collectionEditor()}${profileControls()}${deckSection('Atlas · 地點',deck.atlas,counts)}${deckSection('Spellbook · 法術',deck.spells,counts)}<div class="modal-actions"><button id="save-deck" class="primary">儲存</button><a href="./cloud-decks.html">${tt('雲端牌組','Cloud decks')}</a><button id="export-deck">匯出</button><button id="clear-deck">清空</button></div><p class="muted deck-saved-label">儲存的牌組</p><div class="saved-decks">${saved.map((d,i)=>`<button type="button" data-i18n-preserve data-load="${i}">${esc(d.name)}<small class="deck-visibility"> · ${d.publishToRankings===true?tt('公開','Public'):tt('私人','Private')}</small></button>`).join('')||'<span class="muted">尚無儲存</span>'}</div></aside>`;}
 function addCard(id){const c=card(id);if(deckAddZone==='collection'){if(c.category==='Token'||!c.playable){toast('Cannot add this card to the collection');return;}const list=deck.collection||(deck.collection=[]);if(list.length>=10||list.filter(x=>x===id).length>=(limits[c.slot]||0)){toast('Collection limit reached');return;}list.push(id);render();return;}if(c.type==='Avatar'){const prior=card(deck.avatar);if(c.slug==='magician'&&prior.slug!=='magician'){deck.spells.push(...deck.atlas);deck.atlas=[];}else if(prior.slug==='magician'&&c.slug!=='magician'){deck.atlas.push(...deck.spells.filter(id=>card(id).type==='Site'));deck.spells=deck.spells.filter(id=>card(id).type!=='Site');}deck.avatar=id;render();return;}if(c.category==='Token'){toast('衍生物不能加入牌組。');return;}const list=deck[finalAvatarDeckZone(card(deck.avatar),c)];if(c.slug!=='grey_wolves'&&list.filter(x=>x===id).length>=(limits[c.slot]||0)){toast('已達稀有度張數上限。');return;}list.push(id);render();}
 function bindDeck(){
   $('#convert-precon')?.addEventListener('click',()=>{delete deck.format;delete deck.officialId;deck.preset='custom';deck.name=deck.name.replace('官方預組','衍生自組');render();});
@@ -838,13 +848,19 @@ function recordTutorial(event,before,after){
  tutorial=advanceTutorial(tutorial,event,before,after);saveTutorial();tutorialGuide.refresh();
 }
 function tutorialMenu(){
+ if(page!=='tutorial'){location.href=pageURL('tutorial');return;}
+
  const progress=tutorialProgress;
  const available=progress.checkpoint||progress.completed.length;
  show(`<div data-i18n-preserve><div class="eyebrow">${tt('教學專用配置 · 不需完整對局','Teaching scenarios · No full match required')}</div><h2>${tt('新手教學','Learn to play')}</h2><p>${tt('約 5～8 分鐘。跟著聚光遮罩完成操作，每章都可以單獨重玩。','About 5–8 minutes. Follow the spotlight and complete each task. Replay any chapter.')}</p><div class="modal-actions"><button data-tutorial="continue" class="primary">${available?tt('繼續教學','Continue tutorial'):tt('開始教學','Start tutorial')}</button></div><div class="tutorial-chapters">${tutorialChapters.map((c,i)=>`<button data-tutorial="chapter" data-chapter="${i}"><span>${progress.completed.includes(i)?'✓':String(i+1).padStart(2,'0')}</span><strong>${esc(tutorialText(c.title,getUILanguage()))}</strong><small>${progress.completed.includes(i)?tt('已完成 · 重玩','Complete · Replay'):tt('開始','Start')}</small></button>`).join('')}</div></div>`,'tutorial-menu');
- $('#modal [data-tutorial="continue"]').onclick=()=>{const next=progress.checkpoint?.chapter??tutorialChapters.findIndex((_,i)=>!progress.completed.includes(i));startTutorial(next<0?0:next,true);};
- $('#modal').querySelectorAll('[data-chapter]').forEach(b=>b.onclick=()=>startTutorial(+b.dataset.chapter));
+ $('#app [data-tutorial="continue"]').onclick=()=>{const next=progress.checkpoint?.chapter??tutorialChapters.findIndex((_,i)=>!progress.completed.includes(i));startTutorial(next<0?0:next,true);};
+ app.querySelectorAll('[data-chapter]').forEach(b=>b.onclick=()=>startTutorial(+b.dataset.chapter));
 }
 function startTutorial(chapter,resume=false){
+ if(page!=='tutorialBattle'){location.href=pageURL('tutorialBattle',{chapter,resume:resume?1:0});return;}
+ chapter=Number.isInteger(chapter)&&chapter>=0&&chapter<tutorialChapters.length?chapter:0;
+ history.replaceState(null,'',pageURL('tutorialBattle',{chapter,resume:1}));
+
  clearTimeout(aiTimer);cardInfo.close();close();
  if(!tutorialBackup)tutorialBackup={state,hasSavedMatch};
  let restored;
@@ -867,7 +883,7 @@ function tutorialCompleteDialog(){
 function exitTutorial(){
  clearTimeout(aiTimer);tutorial=null;tutorialInspected=null;tutorialCompletionShown=false;document.querySelectorAll('dialog[open]').forEach(d=>d.close());cardInfo.close();
  if(tutorialBackup){state=tutorialBackup.state;hasSavedMatch=tutorialBackup.hasSavedMatch;tutorialBackup=null;}
- selected=null;view='home';menuOpen=false;toolsOpen=false;resetMotion();render();
+ selected=null;navigateView('home');
 }
 function cancelTutorialSelection(){
  if(!tutorial)return;cardInfo.close();close();selected=null;recordTutorial({kind:'cancel'},state,state);render();
@@ -876,51 +892,16 @@ const tutorialGuide=createTutorialGuide({getContext:()=>tutorial?{session:tutori
 $('#card-info').addEventListener('close',()=>{if(tutorialInspected&&!cardInfo.isOpen()){const id=tutorialInspected;tutorialInspected=null;recordTutorial({kind:'inspect-close',id},state,state);render();}});
 document.addEventListener('close',()=>{if(tutorial){tutorialGuide.refresh();scheduleAI();}},true);
 
-const homeRankings=createHomeRankings({onCard:id=>inspect(id)});
-const homeIdentity=createHomeIdentity({locale:getUILanguage});
-const homePortraitMedia=matchMedia('(max-width:640px)');
-let homeRankExpanded=false,homeModeIndex=0;
-homePortraitMedia.addEventListener('change',()=>{const drawer=$('.lobby-rank-drawer');if(drawer)drawer.open=!homePortraitMedia.matches;});
-window.addEventListener('pagehide',()=>{homeRankings.close();homeIdentity.close();});
-window.addEventListener('pageshow',event=>{if(event.persisted&&view==='home'){homeRankings.mount($('#home-rankings'));homeIdentity.mount($('.lobby-profile'));}});
-function showHomeModes(index=0){
- const presets=officialBetaDecks(),modes=[
-  {id:'online',title:tt('線上對戰','ONLINE PLAY'),description:tt('加入公開房間，或邀請朋友對戰。','Join a public room or invite a friend.'),image:cardImage(card(presets[0].avatar))},
-  {id:'ai',title:tt('單人 VS 電腦','SOLO VS AI'),description:tt('選擇牌組與難度，挑戰電腦。','Choose your deck and difficulty. Challenge the AI.'),image:cardImage(card(presets[1].avatar))},
-  {id:'local',title:tt('單機雙人','LOCAL TWO-PLAYER'),description:tt('與身旁的對手，輪流共用此裝置。','Share this device and take turns with a rival.'),image:cardImage(card(presets[2].avatar))},
- ];
- show(modePickerHTML({text:tt,modes}),'mode-picker-popup');
- const list=$('.home-mode-list'),position=$('[data-mode-position]');
- function selectPosition(){const rows=[...list.querySelectorAll('.home-mode-card')];const center=list.scrollLeft+list.clientWidth/2;homeModeIndex=rows.reduce((best,row,i)=>Math.abs(row.offsetLeft+row.offsetWidth/2-center)<Math.abs(rows[best].offsetLeft+rows[best].offsetWidth/2-center)?i:best,0);position.textContent=(homeModeIndex+1)+' / '+rows.length;}
- function scrollMode(i,smooth=true){const rows=[...list.querySelectorAll('.home-mode-card')];i=Math.max(0,Math.min(rows.length-1,i));list.scrollTo({left:Math.max(0,rows[i].offsetLeft-(list.clientWidth-rows[i].offsetWidth)/2),behavior:smooth&&!reduceMotion()?'smooth':'instant'});homeModeIndex=i;position.textContent=(i+1)+' / '+rows.length;}
- list.addEventListener('scroll',selectPosition,{passive:true});
- list.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const next=Math.max(0,Math.min(2,event.key==='Home'?0:event.key==='End'?2:homeModeIndex+(event.key==='ArrowRight'?1:-1)));scrollMode(next);list.querySelectorAll('.home-mode-card')[next].focus({preventScroll:true});});
- document.querySelectorAll('[data-mode-scroll]').forEach(b=>b.onclick=()=>scrollMode(homeModeIndex+Number(b.dataset.modeScroll)));
- document.querySelectorAll('[data-home-mode]').forEach(b=>b.onclick=()=>{close();if(b.dataset.homeMode==='online')location.href='./lobby.html';else setup(b.dataset.homeMode);});
- scrollMode(index,false);
-}
-function renderHome(){
- const av=card('sorcerer');
- app.innerHTML=homeLobbyHTML({text:tt,portrait:cardImage(av),featuredCard:cardImage(av),avatarName:cardTitle(av),resume:hasSavedMatch,finished:state?.winner!==null,expanded:!homePortraitMedia.matches||homeRankExpanded});
- homeRankings.mount($('#home-rankings'));homeIdentity.mount($('.lobby-profile'));
- const drawer=$('.lobby-rank-drawer');drawer.ontoggle=()=>{if(homePortraitMedia.matches)homeRankExpanded=drawer.open;};
- drawer.onkeydown=event=>{if(event.key==='Escape'&&homePortraitMedia.matches&&drawer.open){drawer.open=false;drawer.querySelector('summary').focus();}};
- $('#lobby-play').onclick=()=>showHomeModes();$('#lobby-tutorial').onclick=()=>tutorialMenu();
- document.querySelectorAll('[data-home-destination]').forEach(b=>b.onclick=()=>{view=b.dataset.homeDestination;render();});
- $('#lobby-resume')?.addEventListener('click',()=>{view='play';render();scheduleAI();});
-}
 function syncGameNav(){
  let nav=document.querySelector('#game-nav');if(!nav){nav=document.createElement('nav');nav.id='game-nav';nav.setAttribute('aria-label','遊戲導覽');document.body.append(nav);}
- nav.hidden=view==='play'||view==='home';nav.innerHTML=[['home','⌂','大廳'],['play','⚔','對戰'],['decks','▣','牌組'],['library','✧','圖鑑']].map(([v,icon,label])=>`<button type="button" data-game-view="${v}" ${view===v?'aria-current="page"':''}><span aria-hidden="true">${icon}</span>${label}</button>`).join('');
- nav.querySelectorAll('[data-game-view]').forEach(b=>b.onclick=()=>{view=b.dataset.gameView;selected=null;close();render();if(view==='play')scheduleAI();});
+ nav.hidden=view==='play';nav.innerHTML=[['home','⌂','大廳'],['modes','⚔','對戰'],['decks','▣','牌組'],['library','✧','圖鑑']].map(([v,icon,label])=>`<a href="${pageURL(v)}" ${view===v?'aria-current="page"':''}><span aria-hidden="true">${icon}</span>${label}</a>`).join('');
 }
-function render(){const enteringHome=view==='home'&&!document.body.classList.contains('in-home');if(view!=='home'){homeRankings.unmount();homeIdentity.unmount();}const popupOpen=!!document.querySelector('dialog[open]');protectUIStrings(saved.filter(d=>!d.officialId).map(d=>d.name));if(view!=='play'){mulliganSeen=null;clearTimeout(aiTimer);}document.body.classList.toggle('in-home',view==='home');battleNotices.setActive(view==='play');document.body.classList.toggle('in-battle',view==='play');document.body.classList.toggle('forest-runtime',view==='play');document.body.classList.toggle('in-archive',view!=='play');document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));if(view!=='play')clearBattleEffects();if(view==='home'){renderHome();if(enteringHome)window.scrollTo(0,0);}else if(view==='play')renderBattle();else renderLibrary(view==='decks');syncGameNav();if(view==='play'&&state.phase==='mulligan'&&human()&&!state.choice&&!popupOpen&&mulliganSeen!==state){mulliganSeen=state;mulliganDialog();}if(view==='play'&&state.choice&&human()&&!popupOpen)effectDialog();if(view==='play'&&state.phase==='draw'&&human()&&!state.choice&&!popupOpen&&drawSeen!==state){drawSeen=state;drawDialog();}if(view==='play'&&state.winner!==null&&resultSeen!==state){resultSeen=state;resultDialog();}tutorialGuide.refresh();if(tutorial?.done&&!tutorialCompletionShown){tutorialCompletionShown=true;tutorialCompleteDialog();}}
+function render(){if(view!==expectedView){navigateView(view);return;}if(view==='play'&&!state&&!onlineMode){document.body.classList.remove('in-battle','forest-runtime');app.innerHTML=`<section class="feature-page empty-battle"><h1>${tt('尚未開始對局','No match to resume')}</h1><p>${tt('請先選擇對戰模式與牌組。','Choose a game mode and decks first.')}</p><a href="./play.html">${tt('開始對戰','Play')}</a><a href="./index.html">${tt('返回首頁','Back to lobby')}</a></section>`;return;}const popupOpen=!!document.querySelector('dialog[open]');protectUIStrings(saved.filter(d=>!d.officialId).map(d=>d.name));if(view!=='play'){mulliganSeen=null;clearTimeout(aiTimer);}document.body.classList.toggle('in-home',view==='home');battleNotices.setActive(view==='play');document.body.classList.toggle('in-battle',view==='play');document.body.classList.toggle('forest-runtime',view==='play');document.body.classList.toggle('in-archive',view!=='play');document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));if(view!=='play')clearBattleEffects();if(view==='setup')setup(new URLSearchParams(location.search).get('mode'));else if(view==='tutorial-menu')tutorialMenu();else if(view==='play')renderBattle();else renderLibrary(view==='decks');syncGameNav();if(view==='play'&&state.phase==='mulligan'&&human()&&!state.choice&&!popupOpen&&mulliganSeen!==state){mulliganSeen=state;mulliganDialog();}if(view==='play'&&state.choice&&human()&&!popupOpen)effectDialog();if(view==='play'&&state.phase==='draw'&&human()&&!state.choice&&!popupOpen&&drawSeen!==state){drawSeen=state;drawDialog();}if(view==='play'&&state.winner!==null&&resultSeen!==state){resultSeen=state;resultDialog();}tutorialGuide.refresh();if(tutorial?.done&&!tutorialCompletionShown){tutorialCompletionShown=true;tutorialCompleteDialog();}}
 window.addEventListener('sorcery:languagechange',()=>{
  setLang(getUILanguage()==='en'?'en':'zh');
- if(!state)return;
+ if(!runtimeReady)return;
  const stage=document.querySelector('#stage'),scroll=stage?{l:stage.scrollLeft,t:stage.scrollTop}:null;
  render();
- if(modal.open&&modal.classList.contains('mode-picker-popup'))showHomeModes(homeModeIndex);
  if(scroll&&document.querySelector('#stage')){document.querySelector('#stage').scrollLeft=scroll.l;document.querySelector('#stage').scrollTop=scroll.t;}
  document.querySelectorAll('[data-inspect-card]').forEach(sheet=>{
   const c=card(sheet.dataset.inspectCard);sheet.querySelector('h2').textContent=cardTitle(c);sheet.querySelector('.effect-rules').textContent=cardRules(c)||'此牌沒有額外規則文字。';
@@ -975,13 +956,17 @@ const forestStack=createForestStack({
 try{
   await loadCards();
   try{await loadCardImages();}catch(e){console.warn(e);}
-  try{await loadBattleEffects();setEffectsEnabled(store.get('sorcery.effects',true));}catch(e){console.warn(e);}
+  if(expectedView==='play')await import('./battle-scene.js?v=20261031-live-tabletop');
+  if(expectedView==='play')try{await loadBattleEffects();setEffectsEnabled(store.get('sorcery.effects',true));}catch(e){console.warn(e);}
   try{await loadCardTranslations();}catch(e){console.warn(e);}
   initializeUILanguage();
   setLang(getUILanguage()==='en'?'en':'zh');
   aiOmniscient=!!store.get('sorcery.aiOmniscient',false);
   saved=store.get('sorcery.decks',[]).filter(d=>Array.isArray(d.spells)&&Array.isArray(d.atlas)&&byId.has(d.avatar)&&[...d.spells,...d.atlas].every(id=>byId.has(id)));
   deck=structuredClone(officialBetaDecks()[0]);
+  try{const draft=JSON.parse(sessionStorage.getItem('sorcery.deckDraft'));if(draft&&byId.has(draft.avatar)&&Array.isArray(draft.atlas)&&Array.isArray(draft.spells)&&[...draft.atlas,...draft.spells].every(id=>byId.has(id)))deck=draft;}catch{}
+  if(page==='decks'||page==='library')try{const ui=JSON.parse(sessionStorage.getItem('sorcery.pageUI.'+page));if(ui?.filter&&typeof ui.filter.q==='string')filter={...filter,...ui.filter};if(['cards','deck'].includes(ui?.deckPane))deckPane=ui.deckPane;}catch{}
+  runtimeReady=true;
   if(onlineMode){
    document.body.classList.add('in-online');
    const room=savedOnlineRoom(),requested=new URLSearchParams(location.search).get('room');
@@ -1008,11 +993,14 @@ try{
    online.start();
   }else{
   const old=store.get('sorcery.match',null);
-  state=restoreGame(old?.version===1&&old.players?.length===2?old:newGame(officialBetaDecks().slice(0,2)));
-  if(state.aiOmniscient==null)state.aiOmniscient=aiOmniscient;
   hasSavedMatch=!!(old?.version===1&&old.players?.length===2);
+  state=expectedView==='play'&&hasSavedMatch?restoreGame(old):null;
+  if(state&&state.aiOmniscient==null)state.aiOmniscient=aiOmniscient;
   tutorialProgress=cleanTutorialProgress(store.get(TUTORIAL_KEY,null));
-  view='home';render();
+  view=expectedView;
+  if(page==='tutorialBattle'){const q=new URLSearchParams(location.search);startTutorial(Number(q.get('chapter')||0),q.get('resume')==='1');}
+  else{render();if(view==='play'&&state)scheduleAI();}
+  const inspectCard=new URLSearchParams(location.search).get('card');if(page==='library'&&byId.has(inspectCard))showCardInfo(inspectCard);
   }
 }catch(e){app.innerHTML=onlineMode?`<div class="notice"><h2>${tt('無法進入線上對局','Could not enter the online match')}</h2><p>${esc(e.message)}</p><a class="action-button" href="./lobby.html">${tt('返回線上大廳','Return to online lobby')}</a></div>`:`<div class="notice"><h2>無法啟動遊戲</h2><p>${esc(e.message)}</p><p>請在 VS Code 對 index.html 使用 Open with Live Server。遊戲需要以 HTTP 載入本機 ES Modules 與 JSON。</p></div>`;console.error(e);}
 
