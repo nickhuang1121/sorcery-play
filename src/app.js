@@ -1,3 +1,5 @@
+import {homeLobbyHTML,modePickerHTML} from './community/home-lobby.js';
+import {createHomeIdentity} from './community/home-identity.js';
 import {createHomeRankings} from './community/home-rankings.js';
 import {prepareDeckSave,mergeLocalDeck,publicationHTML} from './community/deck-publication.js';
 import {handMotion,handScrollAfterRender} from './hand-gestures.js?v=20261031-hand-swipe';
@@ -874,37 +876,51 @@ const tutorialGuide=createTutorialGuide({getContext:()=>tutorial?{session:tutori
 $('#card-info').addEventListener('close',()=>{if(tutorialInspected&&!cardInfo.isOpen()){const id=tutorialInspected;tutorialInspected=null;recordTutorial({kind:'inspect-close',id},state,state);render();}});
 document.addEventListener('close',()=>{if(tutorial){tutorialGuide.refresh();scheduleAI();}},true);
 
-const homeIcon=kind=>`<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${{
- local:'<path d="m6 4 15 18m-9-1 4-4M4 6l4-2 2 4-4 2ZM26 4 11 22m9-1-4-4m12-11-4-2-2 4 4 2ZM7 25l-3 3m21-3 3 3"/>',
- ai:'<path d="m16 3 11 6v14l-11 6-11-6V9Z"/><path d="m16 9 6 7-6 7-6-7Z"/><path d="M16 3v6m11 0-5 7m5 7-5-7m-6 13v-6M5 23l5-7M5 9l5 7"/>',
- online:'<circle cx="16" cy="16" r="12"/><ellipse cx="16" cy="16" rx="5" ry="12"/><path d="M4 16h24M7 8c6 4 12 4 18 0M7 24c6-4 12-4 18 0"/>',
- decks:'<path d="m6 23-3-16 16-3 1 4M8 25V9h16v18H8Z"/><path d="m16 13 4 5-4 5-4-5Z"/>'
- }[kind]}</svg>`;
 const homeRankings=createHomeRankings({onCard:id=>inspect(id)});
-window.addEventListener('pagehide',()=>homeRankings.close());
-window.addEventListener('pageshow',event=>{if(event.persisted&&view==='home')homeRankings.mount($('#home-rankings'));});
+const homeIdentity=createHomeIdentity({locale:getUILanguage});
+const homePortraitMedia=matchMedia('(max-width:640px)');
+let homeRankExpanded=false,homeModeIndex=0;
+homePortraitMedia.addEventListener('change',()=>{const drawer=$('.lobby-rank-drawer');if(drawer)drawer.open=!homePortraitMedia.matches;});
+window.addEventListener('pagehide',()=>{homeRankings.close();homeIdentity.close();});
+window.addEventListener('pageshow',event=>{if(event.persisted&&view==='home'){homeRankings.mount($('#home-rankings'));homeIdentity.mount($('.lobby-profile'));}});
+function showHomeModes(index=0){
+ const presets=officialBetaDecks(),modes=[
+  {id:'online',title:tt('線上對戰','ONLINE PLAY'),description:tt('加入公開房間，或邀請朋友對戰。','Join a public room or invite a friend.'),image:cardImage(card(presets[0].avatar))},
+  {id:'ai',title:tt('單人 VS 電腦','SOLO VS AI'),description:tt('選擇牌組與難度，挑戰電腦。','Choose your deck and difficulty. Challenge the AI.'),image:cardImage(card(presets[1].avatar))},
+  {id:'local',title:tt('單機雙人','LOCAL TWO-PLAYER'),description:tt('與身旁的對手，輪流共用此裝置。','Share this device and take turns with a rival.'),image:cardImage(card(presets[2].avatar))},
+ ];
+ show(modePickerHTML({text:tt,modes}),'mode-picker-popup');
+ const list=$('.home-mode-list'),position=$('[data-mode-position]');
+ function selectPosition(){const rows=[...list.querySelectorAll('.home-mode-card')];const center=list.scrollLeft+list.clientWidth/2;homeModeIndex=rows.reduce((best,row,i)=>Math.abs(row.offsetLeft+row.offsetWidth/2-center)<Math.abs(rows[best].offsetLeft+rows[best].offsetWidth/2-center)?i:best,0);position.textContent=(homeModeIndex+1)+' / '+rows.length;}
+ function scrollMode(i,smooth=true){const rows=[...list.querySelectorAll('.home-mode-card')];i=Math.max(0,Math.min(rows.length-1,i));list.scrollTo({left:Math.max(0,rows[i].offsetLeft-(list.clientWidth-rows[i].offsetWidth)/2),behavior:smooth&&!reduceMotion()?'smooth':'instant'});homeModeIndex=i;position.textContent=(i+1)+' / '+rows.length;}
+ list.addEventListener('scroll',selectPosition,{passive:true});
+ list.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const next=Math.max(0,Math.min(2,event.key==='Home'?0:event.key==='End'?2:homeModeIndex+(event.key==='ArrowRight'?1:-1)));scrollMode(next);list.querySelectorAll('.home-mode-card')[next].focus({preventScroll:true});});
+ document.querySelectorAll('[data-mode-scroll]').forEach(b=>b.onclick=()=>scrollMode(homeModeIndex+Number(b.dataset.modeScroll)));
+ document.querySelectorAll('[data-home-mode]').forEach(b=>b.onclick=()=>{close();if(b.dataset.homeMode==='online')location.href='./lobby.html';else setup(b.dataset.homeMode);});
+ scrollMode(index,false);
+}
 function renderHome(){
- const resume=hasSavedMatch;const homeAvatars=officialBetaDecks().slice(0,3).map((d,i)=>`<span class="home-avatar-card" style="--avatar-index:${i}">${cardImageHTML(card(d.avatar))}</span>`).join('');
- const entry=(id,icon,title,description,badge='')=>`<button type="button" class="home-action" id="${id}"><span class="home-action-icon">${homeIcon(icon)}</span><span class="home-action-copy"><strong>${title}</strong><small>${description}</small></span>${badge?`<span class="home-action-badge">${badge}</span>`:'<span class="home-action-arrow" aria-hidden="true">↗</span>'}</button>`;
- app.innerHTML=`<section class="game-home" aria-labelledby="home-title"><div class="home-landscape" aria-hidden="true"><div class="home-mist"></div></div><div class="home-shell"><header class="home-topline"><span class="home-wordmark"><span aria-hidden="true">◇</span> CONTESTED REALM</span><div class="home-player-tools"><a class="home-account" href="./community.html?tab=account" data-i18n-preserve><span aria-hidden="true">◇</span> ${tt('我的帳號','My account')}</a><button class="home-menu" type="button" data-ui-settings-open aria-haspopup="dialog"><span aria-hidden="true">☰</span> 選單</button></div></header><div class="home-main"><div class="home-copy"><div class="home-kicker"><span></span>領域，靜候你的到來<span></span></div><h1 id="home-title" data-i18n-preserve>SORCERY</h1><p class="home-subtitle">在卡牌之間，開拓你的領域。</p><div class="home-avatar-fan" aria-hidden="true">${homeAvatars}<span class="home-realm-sigil">◇</span></div>${resume?'<button type="button" class="home-resume" id="lobby-resume"><span aria-hidden="true">↳</span> '+(state.winner!==null?tt('查看上次結果','View last result'):'繼續上次對局')+' <span aria-hidden="true">→</span></button>':''}<div class="home-actions">${entry('lobby-online','online','線上對戰',tt('建立房間或尋找公開對手。','Create a room or find an opponent.'),'測試版')}${entry('lobby-local','local','單機雙人','與身旁的對手，共用一片領域。')}${entry('lobby-tutorial','decks',tt('新手教學','Learn to play'),tt('跟著亮光，踏出領域的第一步。','Follow the light. Take your first steps in the realm.'))}${entry('lobby-ai','ai','單人 VS 電腦','獨自踏入領域，挑戰灰燼賢者。')}${entry('lobby-decks','decks','編輯牌組','編織法術，構築屬於你的力量。')}</div></div><aside id="home-rankings" class="home-rankings" data-i18n-preserve></aside></div><footer class="home-footer"><span data-i18n-preserve>SORCERY · CONTESTED REALM</span><button type="button" id="lobby-library">探索卡牌 <span aria-hidden="true">→</span></button></footer></div></section>`;
- homeRankings.mount($('#home-rankings'));
- $('#lobby-tutorial').onclick=()=>tutorialMenu();
- $('#lobby-local').onclick=()=>setup('local');$('#lobby-ai').onclick=()=>setup('ai');
- $('#lobby-online').onclick=()=>{location.href='./lobby.html';};
+ const av=card('sorcerer');
+ app.innerHTML=homeLobbyHTML({text:tt,portrait:cardImage(av),character:'./assets/sorcerer-lobby-cutout-v1.png',avatarName:cardTitle(av),resume:hasSavedMatch,finished:state?.winner!==null,expanded:!homePortraitMedia.matches||homeRankExpanded});
+ homeRankings.mount($('#home-rankings'));homeIdentity.mount($('.lobby-profile'));
+ const drawer=$('.lobby-rank-drawer');drawer.ontoggle=()=>{if(homePortraitMedia.matches)homeRankExpanded=drawer.open;};
+ drawer.onkeydown=event=>{if(event.key==='Escape'&&homePortraitMedia.matches&&drawer.open){drawer.open=false;drawer.querySelector('summary').focus();}};
+ $('#lobby-play').onclick=()=>showHomeModes();$('#lobby-tutorial').onclick=()=>tutorialMenu();
+ document.querySelectorAll('[data-home-destination]').forEach(b=>b.onclick=()=>{view=b.dataset.homeDestination;render();});
  $('#lobby-resume')?.addEventListener('click',()=>{view='play';render();scheduleAI();});
- $('#lobby-decks').onclick=()=>{view='decks';render();};$('#lobby-library').onclick=()=>{view='library';render();};
 }
 function syncGameNav(){
  let nav=document.querySelector('#game-nav');if(!nav){nav=document.createElement('nav');nav.id='game-nav';nav.setAttribute('aria-label','遊戲導覽');document.body.append(nav);}
  nav.hidden=view==='play'||view==='home';nav.innerHTML=[['home','⌂','大廳'],['play','⚔','對戰'],['decks','▣','牌組'],['library','✧','圖鑑']].map(([v,icon,label])=>`<button type="button" data-game-view="${v}" ${view===v?'aria-current="page"':''}><span aria-hidden="true">${icon}</span>${label}</button>`).join('');
  nav.querySelectorAll('[data-game-view]').forEach(b=>b.onclick=()=>{view=b.dataset.gameView;selected=null;close();render();if(view==='play')scheduleAI();});
 }
-function render(){const enteringHome=view==='home'&&!document.body.classList.contains('in-home');if(view!=='home')homeRankings.unmount();const popupOpen=!!document.querySelector('dialog[open]');protectUIStrings(saved.filter(d=>!d.officialId).map(d=>d.name));if(view!=='play'){mulliganSeen=null;clearTimeout(aiTimer);}document.body.classList.toggle('in-home',view==='home');battleNotices.setActive(view==='play');document.body.classList.toggle('in-battle',view==='play');document.body.classList.toggle('forest-runtime',view==='play');document.body.classList.toggle('in-archive',view!=='play');document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));if(view!=='play')clearBattleEffects();if(view==='home'){renderHome();if(enteringHome)window.scrollTo(0,0);}else if(view==='play')renderBattle();else renderLibrary(view==='decks');syncGameNav();if(view==='play'&&state.phase==='mulligan'&&human()&&!state.choice&&!popupOpen&&mulliganSeen!==state){mulliganSeen=state;mulliganDialog();}if(view==='play'&&state.choice&&human()&&!popupOpen)effectDialog();if(view==='play'&&state.phase==='draw'&&human()&&!state.choice&&!popupOpen&&drawSeen!==state){drawSeen=state;drawDialog();}if(view==='play'&&state.winner!==null&&resultSeen!==state){resultSeen=state;resultDialog();}tutorialGuide.refresh();if(tutorial?.done&&!tutorialCompletionShown){tutorialCompletionShown=true;tutorialCompleteDialog();}}
+function render(){const enteringHome=view==='home'&&!document.body.classList.contains('in-home');if(view!=='home'){homeRankings.unmount();homeIdentity.unmount();}const popupOpen=!!document.querySelector('dialog[open]');protectUIStrings(saved.filter(d=>!d.officialId).map(d=>d.name));if(view!=='play'){mulliganSeen=null;clearTimeout(aiTimer);}document.body.classList.toggle('in-home',view==='home');battleNotices.setActive(view==='play');document.body.classList.toggle('in-battle',view==='play');document.body.classList.toggle('forest-runtime',view==='play');document.body.classList.toggle('in-archive',view!=='play');document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));if(view!=='play')clearBattleEffects();if(view==='home'){renderHome();if(enteringHome)window.scrollTo(0,0);}else if(view==='play')renderBattle();else renderLibrary(view==='decks');syncGameNav();if(view==='play'&&state.phase==='mulligan'&&human()&&!state.choice&&!popupOpen&&mulliganSeen!==state){mulliganSeen=state;mulliganDialog();}if(view==='play'&&state.choice&&human()&&!popupOpen)effectDialog();if(view==='play'&&state.phase==='draw'&&human()&&!state.choice&&!popupOpen&&drawSeen!==state){drawSeen=state;drawDialog();}if(view==='play'&&state.winner!==null&&resultSeen!==state){resultSeen=state;resultDialog();}tutorialGuide.refresh();if(tutorial?.done&&!tutorialCompletionShown){tutorialCompletionShown=true;tutorialCompleteDialog();}}
 window.addEventListener('sorcery:languagechange',()=>{
  setLang(getUILanguage()==='en'?'en':'zh');
  if(!state)return;
  const stage=document.querySelector('#stage'),scroll=stage?{l:stage.scrollLeft,t:stage.scrollTop}:null;
  render();
+ if(modal.open&&modal.classList.contains('mode-picker-popup'))showHomeModes(homeModeIndex);
  if(scroll&&document.querySelector('#stage')){document.querySelector('#stage').scrollLeft=scroll.l;document.querySelector('#stage').scrollTop=scroll.t;}
  document.querySelectorAll('[data-inspect-card]').forEach(sheet=>{
   const c=card(sheet.dataset.inspectCard);sheet.querySelector('h2').textContent=cardTitle(c);sheet.querySelector('.effect-rules').textContent=cardRules(c)||'此牌沒有額外規則文字。';

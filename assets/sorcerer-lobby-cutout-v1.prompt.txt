@@ -1,0 +1,6 @@
+Tool: built-in image_gen (background-extraction edit), transparent_background=true.
+Input: card-images/999-sorcerer-k-s.webp. Original card image remains unchanged.
+Output: assets/sorcerer-lobby-cutout-v1.png, generated lobby character, not an official alternate card printing.
+
+Exact prompt:
+Use case: background-extraction. Asset type: transparent character cutout for the central hero in a Sorcery fantasy card-game lobby. Input image is the edit target, the official Sorcerer card. Extract ONLY the hooded sorcerer character and the electric blue orb, preserving the character's original face concealment, black hood and robes, brown belts, green waist pendant, outstretched arm, pose, proportions, and painterly illustrated style. Remove all card frame, title, numbers, rules text, signature, artist credit, birds and landscape. Reconstruct the lower robe naturally to below the knees so the figure stands alone; keep both arms and the glowing blue spell fully inside the image with comfortable transparent margins. High resolution painterly detail, subtle cool edge light, no redesign, no armor, no new weapon. Portrait composition, a single character, genuine transparent alpha background, no floor, no opaque backdrop, no lettering, no watermark. The output must be a cutout asset, not a UI mockup or a card.
