@@ -5,19 +5,22 @@ export const MUSIC_TRACKS = [
 ];
 export const MUSIC_ENABLED_KEY = 'sorcery.music.enabled';
 export const MUSIC_POSITION_KEY = 'sorcery.music.position';
+export const MUSIC_VOLUME_KEY = 'sorcery.music.volume';
 
 // One player per document; track position survives independent-page navigation.
 export function createMusicPlayer({audio, preferences, session, onChange=()=>{}}) {
   const read=(store,key)=>{try{return JSON.parse(store.getItem(key));}catch{return null;}};
   const write=(store,key,value)=>{try{store.setItem(key,JSON.stringify(value));}catch{}};
   const saved=read(session,MUSIC_POSITION_KEY);
-  let enabled=read(preferences,MUSIC_ENABLED_KEY)!==false;
+  let enabled=read(preferences,MUSIC_ENABLED_KEY)===true;
+  const storedVolume=read(preferences,MUSIC_VOLUME_KEY);
+  let volume=typeof storedVolume==='number'&&Number.isFinite(storedVolume)?Math.max(0,Math.min(1,storedVolume)):.2;
   let index=Number.isInteger(saved?.index)&&saved.index>=0&&saved.index<MUSIC_TRACKS.length?saved.index:0;
   let position=Number.isFinite(saved?.time)&&saved.time>=0?saved.time:0;
   let status=enabled?'waiting':'off', revision=0, lastSaved=-1, failures=0;
-  audio.volume=.35;
+  audio.volume=volume;
   audio.preload='none';
-  const snapshot=()=>({enabled,index,status,track:MUSIC_TRACKS[index]});
+  const snapshot=()=>({enabled,index,status,volume,track:MUSIC_TRACKS[index]});
   const notify=()=>onChange(snapshot());
   function save(){write(session,MUSIC_POSITION_KEY,{index,time:audio.src&&Number.isFinite(audio.currentTime)?audio.currentTime:position});}
   function load(){
@@ -40,10 +43,12 @@ export function createMusicPlayer({audio, preferences, session, onChange=()=>{}}
   }
   function pause(){revision++;audio.pause();save();status=enabled?'paused':'off';notify();}
   function setEnabled(value){enabled=!!value;write(preferences,MUSIC_ENABLED_KEY,enabled);if(enabled)void play();else pause();}
-  function next(){
-    revision++;audio.pause();index=(index+1)%MUSIC_TRACKS.length;position=0;lastSaved=-1;
+  function changeTrack(direction){
+    revision++;audio.pause();index=(index+direction+MUSIC_TRACKS.length)%MUSIC_TRACKS.length;position=0;lastSaved=-1;
     load();save();status=enabled?'waiting':'off';notify();if(enabled)void play();
   }
+  const next=()=>changeTrack(1),previous=()=>changeTrack(-1);
+  function setVolume(value){if(!Number.isFinite(value))return;volume=Math.max(0,Math.min(1,value));audio.volume=volume;write(preferences,MUSIC_VOLUME_KEY,volume);notify();}
   audio.addEventListener('loadedmetadata',()=>{
     if(position){try{audio.currentTime=Number.isFinite(audio.duration)?Math.min(position,Math.max(0,audio.duration-.1)):position;}catch{}}
     position=0;
@@ -55,5 +60,5 @@ export function createMusicPlayer({audio, preferences, session, onChange=()=>{}}
     if(failures<MUSIC_TRACKS.length)next();else{revision++;audio.pause();status='error';notify();}
   });
   audio.addEventListener('timeupdate',()=>{const tick=Math.floor(audio.currentTime/5);if(tick!==lastSaved){lastSaved=tick;save();}});
-  return {snapshot,play,pause,next,setEnabled,save};
+  return {snapshot,play,pause,next,previous,setEnabled,setVolume,save};
 }

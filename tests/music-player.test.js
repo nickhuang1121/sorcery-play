@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createMusicPlayer,MUSIC_TRACKS,MUSIC_ENABLED_KEY,MUSIC_POSITION_KEY} from '../src/music-player.js';
+import {createMusicPlayer,MUSIC_TRACKS,MUSIC_ENABLED_KEY,MUSIC_POSITION_KEY,MUSIC_VOLUME_KEY} from '../src/music-player.js';
 
 const storage=(initial={})=>{const map=new Map(Object.entries(initial));return {getItem:key=>map.get(key)??null,setItem:(key,value)=>map.set(key,value)};};
-function fixture({preferences=storage(),session=storage(),reject}={}){
+function fixture({preferences=storage({[MUSIC_ENABLED_KEY]:'true'}),session=storage(),reject}={}){
   const listeners=new Map();
   const audio={src:'',currentTime:0,duration:180,paused:true,plays:0,
     addEventListener:(name,fn)=>listeners.set(name,fn),
@@ -44,4 +44,17 @@ test('position survives document changes and invalid stored values are ignored',
 test('unavailable audio tries each track once rather than looping forever',()=>{
   const f=fixture();for(let i=0;i<MUSIC_TRACKS.length;i++)f.emit('error');
   assert.equal(f.player.snapshot().status,'error');assert.equal(f.audio.paused,true);
+});
+
+test('first visit is silent at twenty percent, while explicit preferences persist',()=>{
+  const f=fixture({preferences:storage()});assert.equal(f.player.snapshot().enabled,false);assert.equal(f.audio.volume,.2);
+  f.player.setVolume(.47);f.player.setEnabled(true);
+  const restored=fixture({preferences:f.preferences});assert.equal(restored.player.snapshot().enabled,true);assert.equal(restored.audio.volume,.47);
+  f.player.setVolume(3);assert.equal(f.audio.volume,1);f.player.setVolume(-1);assert.equal(f.audio.volume,0);
+  f.player.setVolume(NaN);assert.equal(f.audio.volume,0);
+});
+test('previous wraps backwards without enabling music and invalid volume falls back',()=>{
+  const f=fixture({preferences:storage({[MUSIC_VOLUME_KEY]:'"invalid"'})});
+  f.player.previous();assert.equal(f.player.snapshot().index,2);assert.equal(f.audio.plays,0);assert.equal(f.audio.volume,.2);
+  f.player.previous();assert.equal(f.player.snapshot().index,1);
 });
