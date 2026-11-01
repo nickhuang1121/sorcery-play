@@ -1,4 +1,4 @@
-import {homeLobbyHTML,modePickerHTML} from './community/home-lobby.js';
+import {homeLobbyHTML,modePickerHTML} from './community/home-lobby.js?v=20261101-card-lobby-v2';
 import {createHomeIdentity} from './community/home-identity.js';
 import {createHomeRankings} from './community/home-rankings.js';
 import {prepareDeckSave,mergeLocalDeck,publicationHTML} from './community/deck-publication.js';
