@@ -1,0 +1,8 @@
+.music-controls{margin:20px 0;padding-top:16px;border-top:1px solid #ffffff18;min-width:0}
+.music-controls h3{font:600 15px/1.5 system-ui;margin:0 0 8px;color:#e2ebe8}
+.music-controls [data-music-track]{font:13px/1.6 system-ui;color:#bccdca;overflow-wrap:anywhere;margin:0 0 6px}
+.music-controls [data-music-status]{font:12px/1.6 system-ui;color:#97aaa7;margin:0 0 12px}
+.music-controls .modal-actions{display:flex;flex-direction:row;flex-wrap:wrap;gap:10px}
+.music-controls button{min-height:44px;flex:1 1 auto;padding:10px 16px;border:1px solid #ffffff26;border-radius:6px;background:#0005;color:#e2ebe8;font:14px/1.5 system-ui}
+.music-controls button:hover{background:#ffffff10}
+.music-controls button:focus-visible{outline:2px solid #b9d7e4;outline-offset:3px}
