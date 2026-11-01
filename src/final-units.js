@@ -520,7 +520,7 @@ export function resolveFinalUnits(s,frame,A) {
   }
   if(step.op==='finalKairosArchive'){const id=source.originalCard||source.card,physical=A.card(id).finalPhysicalUid;if(!A.unit(s,source.uid)&&s.players.some(pl=>pl.banished.some(cardId=>physical?A.card(cardId).finalPhysicalUid===physical:cardId===id)))return true;createFinalKairosArchive(s,A);return true;}
   if(step.op==='finalKairosReturn'){
-    returnFinalKairosArchive(s,A,p);delete s.finalVindictiveObservation;
+    returnFinalKairosArchive(s,A,p);if(s.finalKairosReturnPublic)s.finalKairosReturnPublic.banishedKairosUid=source.uid;delete s.finalVindictiveObservation;
     const kairos=A.unit(s,source.uid);if(kairos){if(kairos.dying)A.leaveUnit(s,kairos,'banished');else A.kill(s,kairos,true);}
     else{
       const id=source.originalCard||source.card,physical=A.card(id).finalPhysicalUid;
@@ -779,6 +779,7 @@ export function restoreFinalArchiveCards(s,A){
   registerArchiveRuntimeCard(id,A);
  };
  const visit=value=>{if(typeof value==='string'){register(value);return;}if(!value||typeof value!=='object'||seen.has(value))return;seen.add(value);for(const child of Object.values(value))visit(child);};visit(s);
+ if(s.finalKairosArchive&&!s.finalKairosArchivePublic)s.finalKairosArchivePublic={id:1,turn:s.finalKairosArchive.turn,cards:s.finalKairosArchive.records.map(publicKairosRecord)};
 }
 function archiveUnderlyingPhysical(id,A){const seen=new Set();while(A.card(id).runtimeBase&&!seen.has(id)){seen.add(id);id=A.card(id).runtimeBase;}return id;}
 export function tagPhysicalCard(s,id,A){
@@ -787,6 +788,8 @@ export function tagPhysicalCard(s,id,A){
  return {card:tagged,physicalUid,printed};
 }
 function archivedPhysicalUid(object,A){return A.card(object?.originalCard||object?.baseCard||object?.card).finalPhysicalUid;}
+// Public archive data never includes hidden-zone contents or face-down fronts.
+function publicKairosRecord(r){return {uid:r.state.uid,card:r.zone==='inertCards'?null:r.state.card,zone:r.zone,at:r.at,layer:r.state.layer||'surface',tapped:!!r.state.tapped,damage:r.state.damage||0,controller:r.state.controller,count:r.physicalUids?.length||1};}
 export function createFinalKairosArchive(s,A){
  const records=[],seen=new Map();
  for(const [zone,objects] of [['board',s.board],['units',s.units],['artifacts',s.artifacts],['auras',s.auras],['inertCards',s.inertCards]])for(const [at,o] of (objects||[]).entries())if(o){
@@ -799,10 +802,13 @@ export function createFinalKairosArchive(s,A){
   o.finalArchivePhysicalUid=uid;const state=clone(o);delete state.finalKairosArchive;
   const record={physicalUid:uid,physicalUids:physicalParts?.map(part=>part.physicalUid)||[uid],physicalParts,printed,card:tagged,zone,zones:[zone],at:zone==='board'?at:o.at,state,token:A.card(printed).category==='Token'||!!o.tokenCopy};records.push(record);seen.set(o.uid,record);
  }
+ s.finalKairosArchivePublic={id:(s.finalKairosArchivePublic?.id||0)+1,turn:s.turn,cards:records.map(publicKairosRecord)};
  s.finalKairosArchive={turn:s.turn,records,applyingEffects:A.archiveApplyingEffects?.(s,s.units)||[],boundControls:clone((s.boundControls||[]).filter(e=>records.some(r=>r.state.uid===e.target)))};return s.finalKairosArchive;
 }
 export function returnFinalKairosArchive(s,A,actor=null){
  const archive=s.finalKairosArchive;if(!archive)return;
+ const displaced=[],returned=[],priorRealm=new Map();
+ for(const [zone,objects] of [['board',s.board],['units',s.units],['artifacts',s.artifacts],['auras',s.auras],['inertCards',s.inertCards]])for(const [at,o] of (objects||[]).entries())if(o&&!priorRealm.has(o.uid))priorRealm.set(o.uid,{...publicKairosRecord({state:o,zone,at:zone==='board'?at:o.at}),dying:!!o.dying});
  const uidOf=id=>{try{return A.card(id).finalPhysicalUid;}catch{return null;}};
  const banished=new Set(s.players.flatMap(pl=>pl.banished||[]).map(uidOf)),spent=new Set();
  for(const pl of s.players)for(const zone of ['hand','spells','atlas','cemetery','collection','banished'])for(const entry of pl[zone]||[]){const id=typeof entry==='string'?entry:entry.card;if(A.card(id).finalAltarSpent)spent.add(uidOf(id));}
@@ -830,14 +836,17 @@ export function returnFinalKairosArchive(s,A,actor=null){
  }
  for(const zone of ['units','artifacts','auras','inertCards'])s[zone]=(s[zone]||[]).filter(o=>!recoverIds.has(archivedPhysicalUid(o,A)));
  s.board=s.board.map(o=>o&&recoverIds.has(archivedPhysicalUid(o,A))?null:o);
- for(const r of recover){const restored=restoredState(r);if(!restored)continue;const board=r.zone==='board'||A.card(restored.card).type==='Site';
-  if(board){const collision=s.board[r.at];if(collision){const owner=collision.owner??collision.controller;if(collision.babelParts&&A.sendBuiltSite)A.sendBuiltSite(s,collision,'banished',A);else if(owner===0||owner===1)A.sendCard(s,owner,collision.originalCard||collision.card,'banished');}s.board[r.at]=restored;}
+ for(const r of recover){const restored=restoredState(r);if(!restored)continue;const prior=priorRealm.get(r.state.uid),record={...publicKairosRecord(r),card:r.zone==='inertCards'?null:restored.card,count:eligibleFor.get(r).length};record.before=prior||null;record.changed=!prior||['at','layer','tapped','damage','controller','card'].some(key=>prior[key]!==record[key])||prior.dying!==!!restored.dying;returned.push(record);const board=r.zone==='board'||A.card(restored.card).type==='Site';
+  if(board){const collision=s.board[r.at];if(collision){displaced.push({uid:collision.uid,card:collision.card,at:r.at,count:collision.babelParts?.length||1});const owner=collision.owner??collision.controller;if(collision.babelParts&&A.sendBuiltSite)A.sendBuiltSite(s,collision,'banished',A);else if(owner===0||owner===1)A.sendCard(s,owner,collision.originalCard||collision.card,'banished');}s.board[r.at]=restored;}
   else{restored.justEntered=false;restored.observedTapped=!!restored.tapped;restored.observedPosition={at:restored.at,layer:restored.layer||'surface',cells:A.occupied(restored)};for(const zone of r.zones||[r.zone])if(zone!=='board')s[zone].push(restored);}
  }
- s.boundControls=[...(s.boundControls||[]).filter(e=>!realmIds.has(e.target)),...clone(archive.boundControls||[])];
+ const returnedControls=clone(archive.boundControls||[]).filter(e=>realmIds.has(e.target));
+ for(const effect of returnedControls)if(typeof effect.end==='number'&&effect.end>=archive.turn)effect.end=s.turn+(effect.end-archive.turn);
+ s.boundControls=[...(s.boundControls||[]).filter(e=>!realmIds.has(e.target)),...returnedControls];
  const effectOps=new Set(['fiftyOnslaught','shieldWall','nightAttack','terrainEffect']);
  s.ongoingEffects=(s.ongoingEffects||[]).map(effect=>effectOps.has(effect.op)?{...effect,excludedTargets:[...new Set([...(effect.excludedTargets||[]),...realmIds])]}:effect);
  for(const record of archive.applyingEffects||[]){const targets=record.targets.filter(uid=>realmIds.has(uid));if(targets.length){const effect=clone(record.effect);effect.archivedTargets=targets;delete effect.excludedTargets;if(typeof effect.end==='number'&&effect.end>=archive.turn)effect.end=s.turn+(effect.end-archive.turn);s.ongoingEffects.push(effect);}}
+ s.finalKairosReturnPublic={id:(s.finalKairosReturnPublic?.id||0)+1,turn:s.turn,archiveId:s.finalKairosArchivePublic?.id||0,archiveTurn:archive.turn,restored:returned,blocked:archive.records.flatMap(r=>(r.physicalParts||[{physicalUid:r.physicalUid,card:r.card}]).filter(part=>!eligibleFor.get(r).includes(part.physicalUid)).map(part=>({...publicKairosRecord(r),card:r.zone==='inertCards'?null:part.card,count:1,reason:banished.has(part.physicalUid)?'banished':'restricted'}))),displaced};
  return {restored:recover.map(r=>r.physicalUid),blocked:archive.records.filter(r=>!recoverIds.has(r.physicalUid)).map(r=>r.physicalUid)};
 }
 

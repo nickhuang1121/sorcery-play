@@ -2,6 +2,7 @@ import test from 'node:test';import assert from 'node:assert/strict';import fs f
 import {battleEffects} from '../src/battle-fx.js';
 import {install,card,starter} from '../src/cards.js';
 import {newGame,restoreGame,dispatch,legalActions} from '../src/engine.js';
+import {playerView} from '../src/net/online-view.js';
 install(JSON.parse(fs.readFileSync(new URL('../data/official-cards.json',import.meta.url))));
 function state(){let s=newGame([starter(),starter()],42,'local');s.phase='main';s.turn=4;s.active=0;s.choice=null;s.pending=null;s.storyline=[];s.auras=[];s.artifacts=[];s.board=Array.from({length:20},(_,i)=>({uid:'s'+i,card:card('valley').id,owner:i<10?1:0,controller:i<10?1:0}));for(const u of s.units){u.at=u.controller?2:17;u.born=0;u.justEntered=false;u.mods=[];}for(const p of s.players){p.hand=[];p.spent=0;p.bonusMana=30;p.bonusAffinity={air:10,earth:10,fire:10,water:10};}return restoreGame(s);}
 function bear(s){const u={uid:'bear',card:card('brown_bears').id,owner:0,controller:0,at:12,layer:'surface',born:0,mods:[],tapped:false,damage:0,ward:false};s.units.push(u);return u;}
@@ -13,3 +14,17 @@ test('Actual Ward grant and consumption generate shield cues; prevented damage h
 test('Real Lifewish healing reports both healed Avatars',()=>{let s=state();s.players[0].life=3;s.players[1].life=4;s.players[0].hand.push({uid:'lifehand',card:card('lifewish').id});s=restoreGame(s);const a=legalActions(s,0).find(a=>a.type==='cast'&&a.hand==='lifehand');assert.ok(a);const after=dispatch(s,a),events=battleEffects(s,after,a,card);assert.equal(events.filter(e=>e.kind==='heal').length,2);});
 test('Selecting, restoring, and moving alone do not invent combat effects',()=>{const s=state(),after=structuredClone(s);after.units[0].at=16;assert.deepEqual(battleEffects(s,s,{type:'choose',player:0},card),[]);assert.deepEqual(battleEffects(s,after,{type:'move',player:0},card),[]);});
 test('Real Zap object target resolves elemental effect at the victim location',()=>{let s=state();const u=bear(s);u.owner=1;u.controller=1;s.players[0].hand.push({uid:'zap-hand',card:card('zap').id});s=restoreGame(s);const a=legalActions(s,0).find(a=>a.type==='cast'&&a.hand==='zap-hand'&&(a.target?.unit==='bear'||a.target==='bear'));assert.ok(a);const after=dispatch(s,a),events=battleEffects(s,after,a,card);assert.ok(events.some(e=>e.kind==='lightning'&&e.at===12),JSON.stringify({a,events,c:card('zap').slug,hand:s.players[0].hand.map(h=>[h.uid,card(h.card).slug])}));assert.ok(events.some(e=>e.kind==='hit'&&e.uid==='bear'));});
+test('Chaos Twister marks the committed random square and lethal cues follow the actual landing, for both online seats too',()=>{
+ let s=state();for(let at=0;at<20;at++)s.units.push({uid:'soldier-'+at,card:card('foot_soldier').id,owner:at<10?1:0,controller:at<10?1:0,at,layer:'surface',born:0,mods:[],tapped:false,damage:0});
+ s.players[0].hand.push({uid:'twister-hand',card:card('chaos_twister').id});s=restoreGame(s);
+ const cast=legalActions(s).find(a=>a.type==='cast'&&a.hand==='twister-hand');assert.ok(cast);s=dispatch(s,cast);assert.equal(s.finalTwisterDigitalResults,undefined);
+ const option=s.choice.options.findIndex(o=>o.value?.uid==='soldier-12');assert.ok(option>=0);const a={type:'choose',player:0,option},before=structuredClone(s),after=dispatch(s,a),copy=structuredClone(after),events=battleEffects(before,after,a,card),landing=after.finalTwisterDigitalResults[0].landing;
+ assert.deepEqual(events.filter(e=>e.kind==='twister'),[{kind:'twister',at:landing}]);
+ for(const d of after.deathHistory){assert.equal(d.at,landing);for(const kind of ['hit','depart'])assert.ok(events.some(e=>e.kind===kind&&e.uid===d.uid&&e.at===landing));}
+ assert.ok(events.some(e=>e.kind==='depart'&&e.uid==='soldier-12'&&e.at===landing));assert.deepEqual(battleEffects(after,after,a,card),[]);assert.deepEqual(after,copy);assert.deepEqual(s,before);
+ for(const seat of [0,1]){const v0=playerView(before,seat).state,v1=playerView(after,seat).state;assert.equal(v1.rng,null);assert.equal(v1.finalTwisterDigitalResults[0].landing,landing);assert.deepEqual(battleEffects(v0,v1,a,card).filter(e=>e.kind==='twister'),[{kind:'twister',at:landing}]);}
+});
+test('Twister cancellation invents neither a random landing nor an impact effect',()=>{
+ let s=state();bear(s);s.players[0].hand.push({uid:'twister-hand',card:card('chaos_twister').id});s=restoreGame(s);s=dispatch(s,legalActions(s).find(a=>a.type==='cast'&&a.hand==='twister-hand'));
+ const option=s.choice.options.findIndex(o=>o.value===null);assert.ok(option>=0);const a={type:'choose',player:0,option},after=dispatch(s,a);assert.equal(after.finalTwisterDigitalResults,undefined);assert.equal(battleEffects(s,after,a,card).some(e=>e.kind==='twister'),false);
+});

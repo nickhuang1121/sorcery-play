@@ -669,7 +669,18 @@ function strikeMany(s,source,allocations,ranged=false,preserveStealth=false,prep
 }
 function strike(s,source,target,amount=power(source),ranged=false,preserveStealth=false){if(target)strikeMany(s,source,[{uid:target.uid,amount:strikeTotal(s,source,amount)}],ranged,preserveStealth);}
 function strikesFirst(s,u,fight){return !u.silenced&&(u.copyDuels||[u.copyDuel].filter(Boolean)).some(id=>fight.attacker===u.uid?fight.defenders.includes(id):fight.attacker===id)||(s.artifacts||[]).some(o=>o.bearer===u.uid&&!o.silenced&&passives[card(o.card).slug]?.fiftyFirst)||carriedLances(s,u).length>0||combatHas(s,u,'firstWhileAttacking',ruleAPI(s))&&fight.kind==='attack'&&fight.attacker===u.uid||(s.ongoingEffects||[]).some(e=>finalArchiveEffectApplies(e,u)&&e.op==='nightAttack'&&e.controller===u.controller);}
+// A returned archived card is still the source of its queued ability. Keep
+// the committed ability and controller, but resolve location-relative parts
+// from the card's current placement (Kairos FAQ 18).
+function archivedEffectLocation(s,frame){
+ const source=frame.source,live=source?.finalArchivePhysicalUid&&[...s.units,...s.artifacts||[],...s.auras||[]].find(o=>o.uid===source.uid&&o.finalArchivePhysicalUid===source.finalArchivePhysicalUid);
+ if(!live)return frame;
+ const current={...source};
+ for(const key of ['at','layer','size','geometryLocations','geometryFixedCells','geometryGrowing','geometryWrap']){if(live[key]!==undefined)current[key]=clone(live[key]);else delete current[key];}
+ return {...frame,source:current};
+}
 function selectEffects(s,frame,filter) {
+  frame=archivedEffectLocation(s,frame);
   if(selectorMetadata(frame,filter,ruleAPI(s))?.role==='choose'&&!filter.untargeted)filter={...filter,untargeted:true};
   if(filter.kind==='finalConstrictPlan')return finalConstrictPlans(s,frame,ruleAPI(s));
   const vivienSelection=selectVivien(s,frame,filter,ruleAPI(s));if(vivienSelection!==null)return vivienSelection;
@@ -764,6 +775,7 @@ function selectEffects(s,frame,filter) {
   return result;
 }
 function resolveStep(s,frame) {
+  frame=archivedEffectLocation(s,frame);
   if(frame.step.abilityOrigin)frame={...frame,effectCard:frame.step.abilityOrigin};
   const {step,source,controller:p,selected}=frame;
   if(step.op==='finishSacrificeCost'){finishSacrificeCost(s,step.id,sendCard);return;}
@@ -1851,7 +1863,8 @@ function unrestrictedSiteTargets(s,p,c=null) {
   if(c&&passives[c.slug]?.fiftyHeirloom)return [...new Set([...siteTargets(s,p),...s.board.flatMap((site,at)=>site&&['Elite','Unique'].includes(card(site.card).rarity)?[at]:[])])];
   const own=s.board.map((v,i)=>v?.controller===p?i:-1).filter(i=>i>=0);
   const empty=s.board.map((v,i)=>(!v||card(v.card).slug==='rubble')&&!(s.auras||[]).some(a=>!a.silenced&&!a.disabled&&areaAuras[card(a.card).slug]?.forbidSitePlay&&inside(a,i))?i:-1).filter(i=>i>=0);
-  if(own.length)return empty.filter(n=>own.some(i=>distance(s,n,i)===1)||c&&passives[c.slug]?.cornerSite&&[0,4,15,19].includes(n));
+  const underVoidAvatar=new Set(geometryLocationRecords(avatar(s,p)).filter(loc=>!s.board[loc.at]).map(loc=>loc.at));
+  if(own.length)return empty.filter(n=>underVoidAvatar.has(n)||own.some(i=>distance(s,n,i)===1)||c&&passives[c.slug]?.cornerSite&&[0,4,15,19].includes(n));
   const at=avatar(s,p).at,min=Math.min(...empty.map(n=>distance(s,n,at)));return empty.filter(n=>distance(s,n,at)===min||c&&passives[c.slug]?.cornerSite&&[0,4,15,19].includes(n));
 }
 function warrensProtected(s,u,p){return u&&u.controller!==p&&unitTypes(u,s).includes('Beast')&&occupied(u).some(at=>{const site=s.board[at];return site&&!site.silenced&&!site.disabled&&sitePassives[card(site.card).slug]?.protectBeasts;});}

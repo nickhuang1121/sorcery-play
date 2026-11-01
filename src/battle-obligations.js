@@ -7,6 +7,12 @@ export function mandatoryBattleActions(s,actions,A){
  const masked=u=>masks.some(o=>A.regionsOverlap(s,o,u)&&A.occupied(u).some(at=>A.nearby(o.at,at)));
  const greens=s.units.filter(u=>live(u)&&combatHas(s,u,'mandatoryAttackMe',A));
  const required=new Set(),forcedUnits=new Set(),lockedUnits=new Set();
+ // Site placement uses the Avatar's normal ability and costs. Only an
+ // actually available action creates an obligation (tapped/no Site: none).
+ for(const action of actions)if(action.type==='site'){
+  const av=A.avatar(s,action.player);
+  if(av&&A.occupied(av).includes(action.at)&&!s.board[action.at])required.add(action);
+ }
  for(const a of actions)if(a.type==='attack'){
   const u=A.unit(s,a.unit),target=A.unit(s,a.target);if(A.card(u.card).type!=='Minion')continue;
   const locked=live(u)&&combatHas(s,u,'mandatoryUnitAttack',A)&&target||greens.some(g=>g.controller!==u.controller&&g.uid===a.target);

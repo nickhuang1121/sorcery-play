@@ -1,0 +1,100 @@
+/* A fixed player identity, distinct from the player who owns the visible hand. */
+[data-seat="0"]{--control-seat-color:#a3dcff}
+[data-seat="1"]{--control-seat-color:#e4b8ff}
+.forest-runtime .table.has-control-guide{--control-guide-top:max(10px,env(safe-area-inset-top));--control-guide-height:130px}
+.forest-runtime.in-online .table.has-control-guide{--control-guide-top:max(34px,env(safe-area-inset-top))}
+.control-guide{position:absolute;top:var(--control-guide-top);left:50%;transform:translateX(-50%);width:min(620px,56%);padding:12px 16px;z-index:9;color:#f1f5f8;background:#000b;border-radius:10px;box-shadow:0 6px 24px #0005;-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);font:13px/1.45 system-ui}
+.control-guide-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:9px}
+.control-guide-heading>span{font-size:10px;letter-spacing:.08em;color:#bfccd6}
+.control-guide-heading>strong{font-size:12px;text-align:right;overflow-wrap:anywhere}
+.control-route{display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr);align-items:center;gap:8px}
+.control-person{display:flex;align-items:center;gap:10px;min-width:0}
+.control-avatar{flex:none;display:grid;place-items:center;width:36px;height:46px;border-radius:5px;overflow:hidden;box-shadow:0 0 0 1px var(--control-seat-color);background:#fff1}
+.control-avatar .card-image{width:100%;height:100%}
+.control-avatar img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;transform:scale(1.6);transform-origin:50% 22%}
+.control-person-copy{min-width:0;flex:1}
+.control-person-copy>small{display:block;font-size:11px;color:#c7d2db;margin-bottom:3px}
+.control-person-copy>strong{display:flex;align-items:center;gap:6px;min-width:0;font-size:18px;line-height:1.25;color:var(--control-seat-color)}
+.control-person-copy>strong>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.control-seat{display:inline-grid;place-items:center;flex:none;width:19px;height:21px;border-radius:4px;color:var(--control-seat-color);background:#ffffff12;box-shadow:inset 0 0 0 1px #ffffff24;font:700 12px/1 system-ui;vertical-align:middle}
+.control-arrow{display:flex;flex-direction:column;align-items:center;color:#eaf4ff;font:25px/1 system-ui}
+.control-arrow small{font:11px/1.5 system-ui;color:#c7d2db;margin-top:2px}
+.control-instruction{margin:9px 0 0;font-size:12px;color:#e1e8ee;overflow-wrap:anywhere}
+.control-guide-tail{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:7px}
+.control-guide-tail>small{font:11px/1.5 system-ui;color:#bccbd5}
+.forest-runtime .table .control-guide #controlled-cards{flex:none;min-height:36px;padding:5px 10px;border:1px solid #ffffff30;border-radius:6px;background:#ffffff09;color:#eff6fa;font:12px/1.3 system-ui;white-space:nowrap}
+.control-upcoming{display:flex;align-items:center;gap:8px;margin:3px 0;font-size:16px;font-weight:650;overflow-wrap:anywhere}
+.forest-runtime .table .control-guide .context{position:static;inset:auto;transform:none;max-height:none;max-width:none;width:auto;padding:8px 0 0;margin-top:8px;border-top:1px solid #ffffff20;background:none;border-radius:0;text-align:left;font:12px/1.5 system-ui;overflow:visible}
+.forest-runtime .table .control-guide .context:empty{display:none}
+.control-guide-active:has(.context) .control-guide-tail{display:none}
+.forest-runtime .table.has-control-guide .stage-wrap{top:max(17%,calc(var(--control-guide-top) + var(--control-guide-height) + 10px))}
+.forest-runtime .table.has-control-guide .phase-chip{visibility:hidden}
+.forest-runtime .player-bar .player-meta .control-role-badge{display:block;width:max-content;max-width:100%;margin-top:2px;padding:1px 5px;border-radius:3px;color:var(--control-seat-color);background:#000b;font:600 10px/1.5 system-ui}
+.forest-runtime .player-bar[data-control-role="operator"] .portrait,.forest-runtime .player-bar[data-control-role="owner"] .portrait{background:var(--control-seat-color)}
+.forest-runtime .table[data-control-stage="active"] #toggle-hand{display:flex;align-items:center;gap:8px;max-width:100%;min-height:28px;color:#f0f4f9;background:#000b;border-radius:5px;font:11px/1.4 system-ui}
+.forest-runtime .table[data-control-stage="active"] #toggle-hand b{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:35vw}
+.forest-runtime .table[data-control-stage="active"] #toggle-hand small{font:10px/1.4 system-ui;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:27vw;color:#c8d4dc}
+.controlled-cards-popup .controlled-zone{margin:20px 0}
+.controlled-cards-popup .library-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:12px}
+.controlled-cards-popup .library-grid .image-card{width:100%;max-width:165px;margin:0;transform:none;position:relative;inset:auto}
+.controlled-cards-popup h3{font:600 15px/1.5 system-ui}
+.forest-runtime .opponent-hand #revealed-hand{pointer-events:auto;touch-action:manipulation;cursor:pointer}
+.forest-runtime .table .fan.sealed .hand-group{visibility:hidden;pointer-events:none}
+.forest-runtime .table .fan.sealed .card{visibility:hidden;pointer-events:none;filter:none}
+.forest-runtime .table .fan .hand-seal{position:absolute;inset:8px;z-index:200;display:flex;align-items:center;justify-content:center;min-height:44px;max-width:100%;padding:18px;pointer-events:auto;touch-action:manipulation;filter:none;transform:none;opacity:1;white-space:normal;text-align:center;background:#000e;border:1px solid #cae6dd40;border-radius:8px;color:#e7f4ed;font:600 15px/1.7 system-ui;box-shadow:0 6px 24px #0008}
+.forest-runtime .table .fan .hand-seal:focus-visible{outline:2px solid #b7dfcc;outline-offset:-5px}
+@media(orientation:portrait){
+ .control-guide{left:12px;right:62px;transform:none;width:auto;padding:10px 12px}
+ .control-guide-heading{gap:7px;margin-bottom:8px;align-items:start}
+ .control-guide-heading>span{font-size:9px}
+ .control-guide-heading>strong{font-size:11px;max-width:64%}
+ .control-route{grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr);gap:5px}
+ .control-person{gap:6px}
+ .control-avatar{width:29px;height:39px}
+ .control-person-copy>small{font-size:10px}
+ .control-person-copy>strong{font-size:16px;gap:4px}
+ .control-seat{width:16px;height:19px;font-size:11px}
+ .control-instruction{font-size:11px;line-height:1.5}
+ .control-guide-tail{gap:6px}
+ .control-guide-tail>small{font-size:10px}
+ .forest-runtime .table .control-guide #controlled-cards{min-height:40px;padding:5px 7px;font-size:10px}
+ .forest-runtime .table.has-control-guide .hud-top{top:calc(var(--control-guide-top) + var(--control-guide-height) + 12px)}
+ .forest-runtime .table.has-control-guide .tools-fab{position:fixed;top:max(15px,env(safe-area-inset-top));right:13px}
+ .forest-runtime .table.has-control-guide .stage-wrap{top:calc(var(--control-guide-top) + var(--control-guide-height) + 88px)}
+ .forest-runtime .table.has-control-guide .forest-pile-enemy{top:calc(var(--control-guide-top) + var(--control-guide-height) + 53px)}
+ .forest-runtime .table.has-control-guide .forest-pile-grave{top:calc(var(--control-guide-top) + var(--control-guide-height) + 60px)}
+ .forest-runtime .table[data-control-stage="active"] .hand-label{height:28px}
+ .forest-runtime .player-bar .player-meta .control-role-badge{font-size:9px}
+ .forest-runtime.in-battle:has(.control-guide) #battle-notices{top:calc(var(--control-guide-height,160px) + 100px)!important}
+}
+@media(orientation:landscape) and (max-height:580px){
+ .forest-runtime .table .you-row{translate:none}
+ .forest-runtime .table[data-control-stage="active"] .opponent-hand{top:56px;left:0;right:auto;transform:none;height:auto}
+ .control-guide{width:52%;padding:7px 12px}
+ .control-guide-active .control-guide-status{display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:5px 12px}
+ .control-guide-active .control-guide-heading{grid-column:1/-1}
+ .control-guide-active .control-route{align-self:center}
+ .control-guide-active .control-instruction{display:none}
+ .control-guide-active .control-guide-tail{display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:3px;margin:0}
+ .control-guide-active:has(.context) .control-guide-status{grid-template-columns:minmax(0,1fr)}
+ .control-guide-active:has(.context) .control-guide-tail{display:none}
+ .control-guide-heading{margin-bottom:5px}
+ .control-guide-heading>span{font-size:8px}
+ .control-guide-heading>strong{font-size:10px}
+ .control-route{grid-template-columns:minmax(0,1fr) 45px minmax(0,1fr)}
+ .control-avatar{width:25px;height:33px}
+ .control-person-copy>small{font-size:9px;margin-bottom:2px}
+ .control-person-copy>strong{font-size:15px}
+ .control-instruction{font-size:10px;margin-top:5px}
+ .control-guide-tail{margin-top:4px}
+ .control-guide-tail>small{font-size:9px}
+ .forest-runtime .table .control-guide #controlled-cards{min-height:30px;font-size:10px;padding:4px 7px}
+ .forest-runtime .table .control-guide .context{font-size:10px;margin-top:5px;padding-top:4px}
+ .forest-runtime .table[data-control-stage="active"] .hand-label{display:flex;height:25px;bottom:100px}
+ .forest-runtime .table.has-control-guide .stage-wrap{bottom:calc(30% + 15px)}
+ .forest-runtime .table.has-control-guide .you-row{width:130px;max-width:130px}
+ .forest-runtime .table[data-control-stage="active"].hand-open .hand-label{bottom:128px}
+ .forest-runtime .table[data-control-stage="active"] #toggle-hand{min-height:25px;font-size:10px}
+ .forest-runtime .player-bar .player-meta .control-role-badge{font-size:8px}
+}
+@media(max-width:640px){.controlled-cards-popup .library-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

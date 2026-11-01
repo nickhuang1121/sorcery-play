@@ -1,8 +1,20 @@
 // Exported from a new 390×844 official Earth vs Fire game played through the UI.
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
-import {install,officialBetaDecks,card} from '../src/cards.js';import {dispatch} from '../src/engine.js';import {createPlayableMatch} from '../src/match-setup.js';
+import {install,officialBetaDecks,card} from '../src/cards.js';import {dispatch,legalActions} from '../src/engine.js';import {createPlayableMatch} from '../src/match-setup.js';
 install(JSON.parse(fs.readFileSync(new URL('../data/official-cards.json',import.meta.url))));
 const replay=JSON.parse(fs.readFileSync(new URL('../data/mobile-popup-played-match.json',import.meta.url)));
 function opening(){const d=officialBetaDecks(),s=createPlayableMatch([d[1],d[2]],replay.seed,'ai');s.aiDifficulty=replay.state.aiDifficulty;s.aiOmniscient=replay.state.aiOmniscient;return s;}
-test('All 77 new mobile popup match actions replay from official Beta decks to the identical victory',()=>{let s=opening();assert.equal(s.phase,'mulligan');assert.deepEqual(s.players.map(p=>p.life),[20,20]);assert.equal(s.winner,null);assert.equal(replay.history.length,77);for(const [i,a] of replay.history.entries()){try{s=dispatch(s,a);}catch(e){assert.fail(`UI action ${i}: ${e.message}`);}}assert.equal(s.turn,13);assert.equal(s.winner,0);assert.deepEqual(s.players.map(p=>p.life),[20,0]);assert.equal(s.players[1].doorTurn,12);assert.deepEqual(JSON.parse(JSON.stringify(s)),replay.state);});
-test('The real match includes targeting, ranged/combat/allocation and exact intended B2 drag destination without concession',()=>{const kinds=new Set(replay.history.map(a=>a.type));for(const type of ['mulligan','site','choose','draw','cast','move','ranged','attack','defend','pass','activateSite'])assert.ok(kinds.has(type),type);assert.equal(kinds.has('concede'),false);let s=opening(),village;for(const a of replay.history){const h=a.type==='site'?s.players[a.player].hand.find(h=>h.uid===a.hand):null;if(h&&card(h.card).slug==='humble_village'&&a.player===0)village=a.at;s=dispatch(s,a);}assert.equal(village,11);assert.equal(replay.history.at(-1).type,'attack');});
+// Preserve the original recording as evidence. Action 7 used a secondary
+// Avatar ability while a playable Site was in hand and the Avatar was in void.
+// The Mandatory Actions Codex now correctly rejects that historical action.
+function beforeInvalidOpening(){let s=opening();for(const a of replay.history.slice(0,7))s=dispatch(s,a);return s;}
+test('Historical mobile popup recording rejects its formerly permitted illegal void-Avatar opening',()=>{
+ const s=beforeInvalidOpening(),before=JSON.stringify(s);assert.equal(replay.history.length,77);
+ assert.equal(replay.history[7].type,'activate');assert.throws(()=>dispatch(s,replay.history[7]));assert.equal(JSON.stringify(s),before);
+ assert.ok(legalActions(s,1).some(a=>a.type==='site'&&a.at===2));assert.ok(legalActions(s,1).every(a=>a.type==='site'&&a.at===2||a.type==='concede'));
+});
+test('Correcting that opening places a Site beneath the Avatar and then resumes ordinary turn actions',()=>{
+ let s=beforeInvalidOpening();const placement=legalActions(s,1).find(a=>a.type==='site'&&a.at===2);assert.ok(placement);s=dispatch(s,placement);
+ while(s.choice)s=dispatch(s,{type:'choose',player:s.choice.player,option:0});
+ assert.equal(s.board[2].controller,1);assert.ok(legalActions(s,1).some(a=>a.type==='end'));
+});

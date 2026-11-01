@@ -6,7 +6,7 @@ export class RoomError extends Error{constructor(message,status=400){super(messa
 export const requireThat=(condition,message,status=400)=>{if(!condition)throw new RoomError(message,status);};
 // No engine continuations, RNG state, action history, or deferred snapshots are
 // sent to a player. Only these public render fields cross the trust boundary.
-const PUBLIC_STATE=['version','projectRuleProfile','turn','active','phase','mulligan','winner','firstPlayer','next','board','units','artifacts','auras','inertCards','ongoingEffects','boundSpells','finalPlayerControls','deathHistory','summonHistory','avatarSetupComplete','collectionPermissions','boundControls'];
+const PUBLIC_STATE=['version','projectRuleProfile','turn','active','phase','mulligan','winner','firstPlayer','next','board','units','artifacts','auras','inertCards','ongoingEffects','boundSpells','finalPlayerControls','finalKairosArchivePublic','finalKairosReturnPublic','finalTwisterDigitalResults','deathHistory','summonHistory','avatarSetupComplete','collectionPermissions','boundControls'];
 const PUBLIC_PLAYER=['name','life','maxLife','doorTurn','turnsTaken','cemetery','banished','spent','bonusMana','bonusAffinity','collectionMode','finalNoAtlas','setAsideDragon','bloodManaTurn'];
 export function playerView(state,seat){
  const observed=observation(state,seat),v={mode:'online',seed:null,rng:null,history:[],storyline:[],log:clone(state.log)};

@@ -1,7 +1,9 @@
+import {newKairosReturn,kairosCardCount} from './kairos-presentation.js';
 const coordinate=at=>Number.isInteger(at)?`${String.fromCharCode(65+at%5)}${4-Math.floor(at/5)}`:'';
 // Compare only committed public results. Never reveal drawn cards or infer a death
 // from a return to hand, banishment, transformation, or an ordinary departure.
 export function battleNoticeEvents(before,after,action,lookup){
+ const restoration=newKairosReturn(before,after),restored=new Set(restoration?.restored.map(r=>r.uid)||[]);
  const events=[],turn=after.turn,actor=before.players[action.player]?.name||'',old=new Map(before.units.map(u=>[u.uid,u]));
  const name=id=>{try{return lookup(id).name;}catch{return '卡牌';}},unitName=uid=>{const u=old.get(uid)||after.units.find(u=>u.uid===uid);return u?name(u.card):'單位';};
  const add=(text,kind='action')=>events.push({turn,text,kind});
@@ -22,13 +24,15 @@ export function battleNoticeEvents(before,after,action,lookup){
   const id=action.unit?old.get(action.unit)?.card:action.type==='activateSite'?before.board[action.at]?.card:before.artifacts?.find(o=>o.uid===action.object)?.card;
   add(`${actor}：${name(id)} 啟動能力。`);
  }
- for(const u of after.units)if(!old.has(u.uid)&&lookup(u.card).type!=='Avatar'){
+ for(const u of after.units)if(!old.has(u.uid)&&!restored.has(u.uid)&&lookup(u.card).type!=='Avatar'){
   const text=`${name(u.card)}（${coordinate(u.at)}${u.layer==='below'?' · 下層':''}）召喚進場。`,logged=events.find(e=>e.kind==='action'&&e.text===`召喚 ${name(u.card)}。`);
   if(logged){logged.text=text;logged.kind='summon';}else add(text,'summon');
  }
- for(const u of after.units){const previous=old.get(u.uid);if(previous&&u.damage>previous.damage)add(`${name(u.card)}（${coordinate(u.at)}）受到 ${u.damage-previous.damage} 點傷害。`,'hit');}
+ for(const u of after.units){const previous=old.get(u.uid);if(previous&&!restored.has(u.uid)&&u.damage>previous.damage)add(`${name(u.card)}（${coordinate(u.at)}）受到 ${u.damage-previous.damage} 點傷害。`,'hit');}
  for(const d of deaths){const sources=[...new Set((d.killers||[]).map(k=>name(k.card)))];add(`${name(d.card)}（${coordinate(d.at)}）死亡${sources.length?' · 來源：'+sources.join('、'):''}。`,'death');}
  for(let p=0;p<after.players.length;p++){const prior=before.players[p],now=after.players[p],delta=now.life-prior.life;if(delta)add(`${now.name} 生命 ${delta>0?'+':''}${delta}（${prior.life} → ${now.life}）。`,delta<0?'hit':'heal');}
+ if(after.finalKairosArchivePublic&&after.finalKairosArchivePublic.id!==before.finalKairosArchivePublic?.id)add(`Kairos：已封存第 ${after.finalKairosArchivePublic.turn} 回合，共 ${kairosCardCount(after.finalKairosArchivePublic.cards)} 張場上卡牌。`,'archive');
+ if(restoration)add(`Kairos：恢復 ${kairosCardCount(restoration.restored)} 張封存卡牌；${kairosCardCount(restoration.blocked)} 張無法恢復；${kairosCardCount(restoration.displaced)} 張擋路地點被放逐。`,'restore');
  const source=before.choice?.frame?.effectCard;
  if(action.type==='choose'&&source&&events.some(e=>['death','hit','summon'].includes(e.kind))&&!events.some(e=>e.kind==='action'))events.unshift({turn,kind:'action',text:`${name(source)} 效果結算。`});
  const context=source?name(source):before.pending?.attacker?unitName(before.pending.attacker):'';
