@@ -18,7 +18,7 @@ function render(){
   const hosts=[document.querySelector('#settings-menu .popup-body'),document.querySelector('#modal-body:has(.popup-menu)')].filter(Boolean);
   for(const host of hosts)if(!host.querySelector('.music-controls'))host.insertBefore(controls(),host.querySelector('.popup-menu'));
   const state=player.snapshot();
-  const messages={off:text('音樂已關閉','Music is off'),waiting:text('點一下畫面即可播放音樂。','Tap the screen to start music.'),playing:text('播放中','Playing'),paused:text('暫停中，回到畫面後繼續。','Paused. Playback resumes when you return.'),error:text('暫時無法播放，請按下一首重試。','Playback unavailable. Try the next track.')};
+  const messages={off:text('音樂已關閉','Music is off'),loading:text('正在載入音樂…','Loading music…'),waiting:text('點一下畫面即可播放音樂。','Tap the screen to start music.'),playing:text('播放中','Playing'),paused:text('暫停中，回到畫面後繼續。','Paused. Playback resumes when you return.'),error:text('暫時無法播放，請按下一首重試。','Playback unavailable. Try the next track.')};
   for(const section of document.querySelectorAll('.music-controls')){
     const set=(selector,value)=>{const node=section.querySelector(selector);if(node.textContent!==value)node.textContent=value;};
     set('[data-music-heading]',text('背景音樂','Background music'));

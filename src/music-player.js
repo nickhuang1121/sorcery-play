@@ -28,6 +28,7 @@ export function createMusicPlayer({audio, preferences, session, onChange=()=>{}}
     if(!enabled)return;
     if(!audio.src)load();
     const attempt=++revision;
+    status='loading';notify();
     try{
       await audio.play();
       if(attempt!==revision)return;
