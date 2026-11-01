@@ -2,7 +2,7 @@ import {loadCards,card,officialBetaDecks} from './cards.js';
 import {loadCardImages,cardImage} from './card-images.js';
 import {loadCardTranslations,cardTitle,setLang} from './i18n.js';
 import {initializeUILanguage,getUILanguage} from './ui-language.js';
-import {homeLobbyHTML,modePickerHTML} from './community/home-lobby.js?v=20261101-independent-pages';
+import {homeLobbyHTML,modePickerHTML} from './community/home-lobby.js?v=20261101-updated-cutout';
 import {createHomeIdentity} from './community/home-identity.js';
 import {createHomeRankings} from './community/home-rankings.js?v=20261101-independent-pages';
 import {pageURL} from './page-routes.js';
@@ -18,7 +18,7 @@ function bindModes(){const list=root.querySelector('.home-mode-list'),position=r
 }
 function render(){if(!loaded)return;setLang(getUILanguage()==='en'?'en':'zh');
  if(isModes){const d=officialBetaDecks();root.innerHTML=`<div class="mode-page"><header class="page-top"><a href="./index.html">← ${T('返回大廳','Back to lobby')}</a><button type="button" data-ui-settings-open>${T('設定','Settings')}</button></header>${modePickerHTML({text:T,modes:[{id:'online',title:T('線上對戰','ONLINE PLAY'),description:T('公開房間或邀請朋友。','Public rooms or invite a friend.'),image:cardImage(card(d[0].avatar))},{id:'ai',title:T('單人 VS 電腦','SOLO VS AI'),description:T('選擇牌組與難度，挑戰電腦。','Choose your deck and difficulty.'),image:cardImage(card(d[1].avatar))},{id:'local',title:T('單機雙人','LOCAL TWO-PLAYER'),description:T('在同一台裝置輪流操作。','Take turns on the same device.'),image:cardImage(card(d[2].avatar))}]})}</div>`;bindModes();return;}
- const av=card('sorcerer'),match=storedMatch();root.innerHTML=homeLobbyHTML({text:T,portrait:cardImage(av),featuredCard:cardImage(av),avatarName:cardTitle(av),resume:!!match,finished:match?.winner!==null,expanded:!media.matches||expanded});ranks.mount(root.querySelector('#home-rankings'));identity.mount(root.querySelector('.lobby-profile'));
+ const av=card('sorcerer'),match=storedMatch();root.innerHTML=homeLobbyHTML({text:T,portrait:cardImage(av),featuredCard:'./assets/sorcerer-lobby-cutout-v2.png',avatarName:cardTitle(av),resume:!!match,finished:match?.winner!==null,expanded:!media.matches||expanded});ranks.mount(root.querySelector('#home-rankings'));identity.mount(root.querySelector('.lobby-profile'));
  root.querySelector('#lobby-play').onclick=()=>location.href=pageURL('modes');root.querySelector('#lobby-tutorial').onclick=()=>location.href=pageURL('tutorial');root.querySelector('#lobby-resume')?.addEventListener('click',()=>location.href=pageURL('play'));
  root.querySelectorAll('[data-home-destination]').forEach(b=>b.onclick=()=>location.href=pageURL(b.dataset.homeDestination));const drawer=root.querySelector('.lobby-rank-drawer');drawer.ontoggle=()=>{if(media.matches)expanded=drawer.open;};drawer.onkeydown=e=>{if(e.key==='Escape'&&media.matches&&drawer.open){drawer.open=false;drawer.querySelector('summary').focus();}};
 }

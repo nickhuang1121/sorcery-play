@@ -1,2 +1,2 @@
 import '../page-title.js';
-import '../home.js?v=20261101-independent-pages';
+import '../home.js?v=20261101-updated-cutout';
