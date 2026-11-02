@@ -203,7 +203,7 @@ export function resolveFinalArtifacts(s,frame,A){
     bearer.tapped=true;crew.tapped=true;
     for(const u of [bearer,crew]){u.notRest=true;u.stealth=false;u.interactedTurn=s.turn;}
     A.takeGrave(s,g.player,g.index,g.card,g.uid);s.players[g.player].banished.push(g.card);
-    const amount=Math.max(0,A.card(g.card).attack||0);
+    const corpse=A.card(g.card),amount=Math.max(0,Math.floor(((corpse.attack||0)+(corpse.defense??corpse.attack??0))/2));
     for(const u of s.units)if(!u.dying&&A.occupied(u).includes(spot.at)&&layer(u)===(spot.layer||layer(bearer)))A.hurt(s,u,amount,false,'ability',bearer);
     return true;
   }

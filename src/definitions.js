@@ -87,7 +87,7 @@ export const definitions={
   lesser_blood_demon:{genesis:[{op:'lifeLoss',amount:2}]},
   static_servant:{genesis:[{op:'damage',amount:1,all:sel({here:true,other:true})}]},
   flayer:{genesis:[{op:'damage',amount:1,all:sel({nearby:true,other:true})}]},
-  death_dealer:{genesis:[{op:'destroy',all:sel({minion:true,other:true})}]},
+  death_dealer:{genesis:[{op:'destroy',all:sel({minion:true,other:true,anyRegion:true})}]},
   angry_mob:{genesis:[choose('destroy',sel({minion:true,adjacent:true,rarities:['Elite','Unique']}))]},
   bane_widow:{genesis:[choose('destroy',sel({minion:true,here:true}),{optional:true})]},
   demon_hunter:{genesis:[choose('destroy',sel({minion:true,adjacent:true,types:['Demon']}))]},

@@ -29,9 +29,17 @@ export function casterPermissionViews(s,u,A){
  return result;
 }
 export function casterPermissionAllows(s,u,c,A,{independent=false}={}){
- if(!u||u.dying||A.disabled(u))return false;if(independent)return true;
+ if(!u||u.dying||A.disabled(u))return false;
+ const views=casterPermissionViews(s,u,A);
+ const matches=p=>!c||p.kind==='any'||p.kind==='magic'&&c.type==='Magic'||p.kind==='nonOrdinary'&&c.rarity!=='Ordinary'||p.kind==='elements'&&p.elements.some(e=>element(c,e))||p.kind==='excludeElements'&&!p.elements.some(e=>element(c,e));
+ if(independent){
+  // A spell bound to an element Spellcaster still has to match that element.
+  // An unrestricted permission does not add this limit.
+  if(c&&views.some(p=>p.kind==='elements'||p.kind==='excludeElements')&&!views.some(p=>p.kind==='any'))return views.some(matches);
+  return true;
+ }
  const d=A.definitions[c?.slug]||{};if(d.casters==='any'||d.casterTypes?.some(t=>A.unitTypes(u).includes(t)))return true;
- return casterPermissionViews(s,u,A).some(p=>!c||p.kind==='any'||p.kind==='magic'&&c.type==='Magic'||p.kind==='nonOrdinary'&&c.rarity!=='Ordinary'||p.kind==='elements'&&p.elements.some(e=>element(c,e))||p.kind==='excludeElements'&&!p.elements.some(e=>element(c,e)));
+ return views.some(matches);
 }
 export function casterPlacementAllowed(s,u,c,at,A){return c.type!=='Minion'||!unitPassiveLayerViews(s,u,A,'onlySummonHere').some(l=>l.value)||A.occupied(A.unit(s,u.uid)||u).includes(at);}
 export function entryHasIndependentCasterPermission(s,h){

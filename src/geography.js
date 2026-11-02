@@ -77,8 +77,9 @@ export function locations(s,u,lookup,abilities,stepOnly=false,queries=null){
   for(const e of s.ongoingEffects||[])if(e.op==='pairedSites'&&e.end===s.turn){const pair=e.siteUids.map(uid=>s.board.findIndex(site=>site?.uid===uid));if(pair.every(at=>at>=0))links.push(new Set(pair));}
   for(const [at,site] of s.board.entries())if(site&&!site.silenced&&siteEffectAllowed(s,u,'move',{card:lookup},site.card)){const d=batchSitePassives[lookup(site.card).slug];if(d?.burrowedSiteLinks&&u.layer==='below'&&keys.includes('Burrowing')&&site.controller===u.controller)for(const [other,target] of s.board.entries())if(target?.controller===u.controller)links.push(new Set([at,other]));if(d?.voidSiteLinks&&u.layer!=='below')for(let other=0;other<20;other++)if(!s.board[other])links.push(new Set([at,other]));}
   const survives=(at,layer,node=start)=>{
-    if(u.size===2||u.geometryFixedCells){if(u.size===2&&!u.geometryWrap&&(at%5>3||Math.floor(at/5)>2))return false;return geometryLocationRecords({...u,at,layer}).every(loc=>loc.at>=0&&loc.at<20&&(s.board[loc.at]?(loc.layer==='surface'||keys.includes(waterSite(s,loc.at,lookup)?'Submerge':'Burrowing')):loc.layer==='surface'&&(keys.includes('Voidwalk')||node.gateVoidwalk||gate(node.at))));}
-    if(!s.board[at])return layer==='surface'&&(keys.includes('Voidwalk')||node.gateVoidwalk||gate(node.at));
+    const linkedVoid=(from,to)=>links.some(set=>set.has(from)&&set.has(to));
+    if(u.size===2||u.geometryFixedCells){if(u.size===2&&!u.geometryWrap&&(at%5>3||Math.floor(at/5)>2))return false;return geometryLocationRecords({...u,at,layer}).every(loc=>loc.at>=0&&loc.at<20&&(s.board[loc.at]?(loc.layer==='surface'||keys.includes(waterSite(s,loc.at,lookup)?'Submerge':'Burrowing')):loc.layer==='surface'&&(keys.includes('Voidwalk')||node.gateVoidwalk||gate(node.at)||linkedVoid(node.at,loc.at))));}
+    if(!s.board[at])return layer==='surface'&&(keys.includes('Voidwalk')||node.gateVoidwalk||gate(node.at)||linkedVoid(node.at,at));
     if(layer==='below')return keys.includes(waterSite(s,at,lookup)?'Submerge':'Burrowing');
     return true;
   };

@@ -197,12 +197,20 @@ export function geometrySummonAllowed(s,p,c,at,lookup,occupied=u=>geometryOccupi
   const avatar=s.units.find(u=>u.controller===p&&!u.dying&&lookup(u.card).type==='Avatar');
   return !!avatar&&occupied(avatar).includes(at)&&(avatar.layer||'surface')===layer;
 }
+// Cerberus teleports only when its avatar enters a location. A later refresh
+// does not pull it back if some other effect moved Cerberus and the avatar stayed.
 export function followGeometryAvatars(s,A) {
   const {card,disabled=()=>false}=A;
   let changed=false;
+  const entered=new Set();
+  for(const avatar of s.units)if(!avatar.dying&&card(avatar.card).type==='Avatar'){
+    const signature=avatar.at+':'+(avatar.layer||'surface');
+    if(avatar.followSignature!==signature){avatar.followSignature=signature;entered.add(avatar.uid);}
+  }
   for(const u of s.units)if(geometryActive(u,disabled)&&rule(u,card).geometryFollowAvatar){
     const avatar=s.units.find(v=>v.controller===u.controller&&!v.dying&&card(v.card).type==='Avatar');
-    if(avatar&&(u.at!==avatar.at||(u.layer||'surface')!==(avatar.layer||'surface'))){
+    if(!avatar||!entered.has(avatar.uid))continue;
+    if(u.at!==avatar.at||(u.layer||'surface')!==(avatar.layer||'surface')){
       u.at=avatar.at;u.layer=avatar.layer||'surface';u.notRest=true;
       changed=true;
     }
@@ -212,7 +220,9 @@ export function followGeometryAvatars(s,A) {
 export function geometryOwnMoveAllowed(s,u,at,layer,lookup) {
   if(!geometryActive(u)||!rule(u,lookup).geometryFollowAvatar)return true;
   const avatar=s.units.find(v=>v.controller===u.controller&&!v.dying&&lookup(v.card).type==='Avatar');
-  return !!avatar&&avatar.at===at&&(avatar.layer||'surface')===(layer||'surface');
+  if(!avatar||(avatar.layer||'surface')!==(layer||'surface')||(u.layer||'surface')!==(layer||'surface'))return false;
+  const airborne=!u.silenced&&[...(lookup(u.card).keywords||[]),...(u.grantedKeywords||[]),...(u.mods||[]).flatMap(m=>m.keyword?[m.keyword]:[])].includes('Airborne');
+  return geometryDistance(s,at,avatar.at,lookup,airborne)<=geometryDistance(s,u.at,avatar.at,lookup,airborne);
 }
 export function geometryLeap(s,u,from,to,lookup) {
   if(!geometryActive(u)||!rule(u,lookup).geometryLeap||(from.layer||'surface')!==(to.layer||'surface'))return false;
