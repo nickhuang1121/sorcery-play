@@ -20,3 +20,21 @@
 .glass-runtime dialog.popup button.close{min-width:44px;min-height:44px;font-size:25px;background:#1c3039;border:1px solid #b0c7cf;color:#fff}
 .glass-runtime:not(.in-battle) :is(.feature-page,.feature-back,.page-top,.filters,.deck-editor,.tools-panel) button:not(.card):not([data-card]){min-height:44px;border:1px solid #869da6;background:#29414a;color:#f5fbff;font-size:14px;font-weight:650}
 .glass-runtime:not(.in-battle) :is(.feature-page,.deck-editor) button.primary{background:#edc777;border:2px solid #ffe2a0;color:#231b0d;font-weight:750}
+
+/* One mobile control scale for battle, card details, settings and nested dialogs.
+   Card faces are content, so they never inherit action-button padding/sizing. */
+@media(max-width:700px) and (orientation:portrait),(max-width:980px) and (max-height:580px){
+ .glass-runtime dialog.popup{--mobile-control-font:18px;--mobile-control-padding:5.5px 7px}
+ .glass-runtime dialog.popup.battle-panel{--mobile-control-font:14.4px;--mobile-control-padding:4px}
+ .glass-runtime dialog.popup button:not([data-card]):not(.card):not(.unit):not(.kairos-card):not(.close){font-size:var(--mobile-control-font);padding:var(--mobile-control-padding);min-height:34px;line-height:1.4;white-space:normal;overflow-wrap:anywhere;flex-shrink:0}
+ .glass-runtime dialog.popup button.close{font-size:30px;padding:0;min-width:44px;min-height:44px;line-height:1}
+ .glass-runtime dialog.popup .popup-menu{--mobile-control-font:15.6px;--mobile-control-padding:4.5px 6px}
+ .glass-runtime dialog.popup #tutorial-dialog-tools button{font-size:14.4px;padding:3px 4.5px;min-height:34px}
+ .glass-runtime dialog.popup .popup-body{flex:0 1 auto;min-height:0;overflow:auto;scroll-padding-block:12px}
+ .glass-runtime dialog.popup .popup-footer{flex:none}
+ .glass-runtime dialog.popup :is(.inspect-sheet>.card,.library-grid>.card,.kairos-art){flex-shrink:0;aspect-ratio:744/1039;height:auto;min-height:0}
+ .glass-runtime dialog.popup :is(.inspect-sheet>.card,.library-grid>.card)>.card-image{aspect-ratio:744/1039;height:auto}
+ .glass-runtime dialog.popup .library-grid{align-items:start}
+ .glass-runtime dialog.popup .kairos-card{padding:0 0 5px;font-size:14.4px;flex-shrink:0}
+ .glass-runtime dialog.popup .kairos-card>small{font-size:13.2px}
+}
