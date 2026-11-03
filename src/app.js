@@ -5,6 +5,7 @@ import {turnControlGuideHTML} from './turn-control-ui.js?v=20261101-control-iden
 import {pageURL,pageFromPath} from './page-routes.js';
 import {prepareDeckSave,mergeLocalDeck,publicationHTML} from './community/deck-publication.js';
 import {handMotion,handScrollAfterRender} from './hand-gestures.js?v=20261031-hand-swipe';
+import {installHandTouchScroll} from './hand-touch-scroll.js?v=20261104-direct-touch';
 import {TUTORIAL_KEY,tutorialChapters,tutorialText,cleanTutorialProgress,createTutorialScene,createTutorialSession,tutorialAllows,tutorialActions,tutorialScriptAction,advanceTutorial,restoreTutorialCheckpoint} from './tutorial.js';
 import {createTutorialGuide} from './tutorial-ui.js';
 import {createOnlineClient,savedOnlineRoom,bindOnlinePageLifecycle} from './net/online-client.js?v=20261101-community';
@@ -682,6 +683,10 @@ function startCardPointer(e){
 }
 app.addEventListener('pointerdown',startCardPointer);
 modal.addEventListener('pointerdown',startCardPointer);
+installHandTouchScroll(document,{onScrollStart(){
+ clearTimeout(longTimer);
+ if(pointer&&!pointer.moved){pointer.scrolling=true;}
+}});
 // Card art must use our pointer drag, never the browser's native image drag.
 document.addEventListener('dragstart',e=>{if(e.target.closest?.('[data-hand],[data-unit]'))e.preventDefault();});
 document.addEventListener('pointermove',e=>{

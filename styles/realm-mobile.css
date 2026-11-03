@@ -163,6 +163,12 @@
 /* Card gaps must hit the scrolling hand too. The raised transparent padding
    stays click-through so it cannot cover the bottom row of the realm. */
 .forest-runtime .table .fan :is(.hand-group,.hand-cards){pointer-events:auto;touch-action:pan-x}
+/* Enabled only once the direct touch controller is installed. Prevent the
+   browser from cancelling pointer events before horizontal/upward intent wins. */
+.hand-touch-scroll .forest-runtime .fan[data-layout="strip"],
+.hand-touch-scroll .forest-runtime .fan[data-layout="strip"] :is(.hand-group,.hand-cards,.card),
+.hand-touch-scroll .forest-runtime .opening-hand .mulligan-cards,
+.hand-touch-scroll .forest-runtime .opening-hand .mulligan-cards .card{touch-action:none}
 .forest-runtime .table .fan.sealed .card{pointer-events:none}
 .forest-runtime .table[data-hand-profile="portrait"] .fan{height:188px;padding-top:63px}
 .forest-runtime .table[data-hand-profile="landscape"] .fan{height:151px;padding-top:56px}
