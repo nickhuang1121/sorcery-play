@@ -329,9 +329,6 @@ Google 玩家	Google player
 正在進入	is entering
 可以攔截	can be intercepted
 已加入攔截：	Interceptors: 
-一起防禦	Defend together with
-代替防禦	Defend instead of
-加入防禦（保留原目標）	Join defense (keep original target)
 加入防禦	Join defense
 防禦	Defense
 攔截	Interception
