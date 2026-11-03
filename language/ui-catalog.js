@@ -320,9 +320,9 @@ Google 玩家	Google player
 防禦方式	Defense options
 一位防禦者只能保護同時被攻擊的其中一位單位。	A defender can protect only one of the units being attacked simultaneously.
 選擇要保護的單位	Choose a unit to protect
-可以加入防禦，或代替原本的防禦目標。	can join the defense or replace the original defender.
-加入防禦，保留原目標	Join the defense; keep original target
-代替原目標防禦	Replace the original defender
+可以選擇「一起防禦」，和被攻擊的單位一起擋；或選擇「代替防禦」，由自己接手，讓被攻擊的單位退出這次防禦。	can choose “Defend together” to defend alongside the attacked unit, or “Defend instead” to take over while the attacked unit leaves this defense.
+一起防禦	Defend together
+代替防禦	Defend instead
 這個單位目前無法防禦。	This unit cannot defend now.
 同時攻擊	Simultaneously attacking
 正在攻擊	is attacking
