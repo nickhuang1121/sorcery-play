@@ -1950,7 +1950,6 @@ function canSummonAt(s,p,c,at,permission=false,explicitSitePermission=false){c=c
   if(d.cornerOnly&&![0,4,15,19].includes(at))return false;
   if(d.needEnemySite&&(site.controller!==p||!enemies))return false;
   if(explicitSitePermission)return true;
-  if(d.castEliteSite)return ['Elite','Unique'].includes(card(site.card).slot);
   if(spatialMinionCastingHere(s,p,c,at,ruleAPI(s)))return true;
   const betray=sitePassives[card(site.card).slug]?.enemyStealthCastThreshold;if(site.controller===1-p&&betray&&resources(s,site.controller)[betray]>=1)return true;
   return site.controller===p||!site.silenced&&!site.disabled&&sitePassives[card(site.card).slug]?.openMinionCasting||sitePassives[card(site.card).slug]?.openMinionTypes?.some(t=>[...c.subtypes,...cardForPlayer(s,c,c.finalTypePlayer??s.active).umbrellas].includes(t))||d.castAnySite||d.castEliteSite&&['Elite','Unique'].includes(card(site.card).slot)||d.castClearSite&&!enemies||(s.auras||[]).some(a=>{const aura=areaAuras[card(a.card).slug];return catalogAuraActive(a,disabled)&&a.controller===p&&aura?.summon&&inside(a,at)&&matches(c,aura,cardForPlayer(s,c,c.finalTypePlayer??s.active).umbrellas);});

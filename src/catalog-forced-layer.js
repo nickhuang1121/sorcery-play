@@ -27,14 +27,16 @@ export function resolveCatalogForcedLayer(s,frame,A){
   if(selected.uid!==u.uid||!moves.some(o=>same(o.value,selected.move)))throw Error('Forced layer pseudopod choice is no longer legal');
   A.queueEffects(s,[{...step,select:undefined,forceUids:uids,forcePlanned:{...planned,[u.uid]:selected.move}}],source,p,frame.effectCard);return true;
  }
+ // Forced movement grants no survival ability. Only explicit “burrowed safely”
+ // effects may set that flag (which also grants Burrowing and Immobile).
  const moved=new Set();
- for(const [uid,move]of Object.entries(planned)){const u=find(uid);if(!options(u).some(o=>same(o.value,move)))throw Error('Forced layer pseudopod choice is no longer legal');applyGeometryForcedDive(u,move);u.notRest=true;u.burrowedSafely=true;moved.add(uid);}
+ for(const [uid,move]of Object.entries(planned)){const u=find(uid);if(!options(u).some(o=>same(o.value,move)))throw Error('Forced layer pseudopod choice is no longer legal');applyGeometryForcedDive(u,move);u.notRest=true;u.burrowedSafely=false;moved.add(uid);}
  for(const uid of uids){
   const o=find(uid);if(!o||o.dying||growing(o)||moved.has(uid))continue;
   if(!isUnit(o)&&o.bearer&&moved.has(o.bearer))continue;
   const allowed=step.forceAction==='burrow'?mayBurrow(s,o,p,A,isUnit(o)):canSubmerge(s,o,p,A,isUnit(o));
   if(!allowed)continue;
-  o.layer='below';o.notRest=true;o.burrowedSafely=true;moved.add(uid);
+  o.layer='below';o.notRest=true;o.burrowedSafely=false;moved.add(uid);
   if(!isUnit(o)&&o.bearer&&!geometryLocationRecords(A.unit(s,o.bearer)).some(loc=>loc.at===o.at&&loc.layer==='below'))o.bearer=null;
  }
  return true;

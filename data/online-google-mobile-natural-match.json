@@ -586,7 +586,7 @@
       "player": 0,
       "option": 0,
       "actor": 0,
-      "choiceToken": "choice-v1:816d2fe0:2067"
+      "choiceToken": "choice-v1:ef06e61c:2098"
     },
     {
       "type": "end",
@@ -651,7 +651,7 @@
       "player": 0,
       "option": 0,
       "actor": 0,
-      "choiceToken": "choice-v1:4e573335:2046"
+      "choiceToken": "choice-v1:9054ac09:2077"
     },
     {
       "type": "cast",
@@ -729,7 +729,7 @@
       "player": 0,
       "option": 0,
       "actor": 0,
-      "choiceToken": "choice-v1:d4821e73:2062"
+      "choiceToken": "choice-v1:726ea01d:2093"
     },
     {
       "type": "cast",
@@ -1223,6 +1223,7 @@
         "finalCorruptor": false,
         "rowFree": false,
         "freeRows": [],
+        "followSignature": "17:surface",
         "gateVoidwalk": false,
         "lethal": false,
         "notRest": false,
@@ -1318,6 +1319,7 @@
         "finalCorruptor": false,
         "rowFree": false,
         "freeRows": [],
+        "followSignature": "2:surface",
         "lethal": false,
         "gateVoidwalk": false,
         "elementGifts": [],
@@ -1887,7 +1889,7 @@
         "player": 0,
         "option": 0,
         "actor": 0,
-        "choiceToken": "choice-v1:816d2fe0:2067"
+        "choiceToken": "choice-v1:ef06e61c:2098"
       },
       {
         "type": "end",
@@ -1952,7 +1954,7 @@
         "player": 0,
         "option": 0,
         "actor": 0,
-        "choiceToken": "choice-v1:4e573335:2046"
+        "choiceToken": "choice-v1:9054ac09:2077"
       },
       {
         "type": "cast",
@@ -2030,7 +2032,7 @@
         "player": 0,
         "option": 0,
         "actor": 0,
-        "choiceToken": "choice-v1:d4821e73:2062"
+        "choiceToken": "choice-v1:726ea01d:2093"
       },
       {
         "type": "cast",
@@ -2815,6 +2817,7 @@
           "finalCorruptor": false,
           "rowFree": false,
           "freeRows": [],
+          "followSignature": "2:surface",
           "lethal": false,
           "gateVoidwalk": false,
           "elementGifts": [],

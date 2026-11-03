@@ -63,7 +63,7 @@
       "type": "choose",
       "player": 0,
       "option": 0,
-      "choiceToken": "choice-v1:cc11dbfe:2083",
+      "choiceToken": "choice-v1:93727dc2:2114",
       "actor": 0
     },
     {
@@ -112,7 +112,7 @@
       "type": "choose",
       "player": 0,
       "option": 0,
-      "choiceToken": "choice-v1:746050b6:2032",
+      "choiceToken": "choice-v1:5fde3600:2063",
       "actor": 0
     },
     {
@@ -179,7 +179,7 @@
       "type": "choose",
       "player": 0,
       "option": 0,
-      "choiceToken": "choice-v1:6de86a0f:2063",
+      "choiceToken": "choice-v1:4b167ad3:2094",
       "actor": 0
     },
     {

@@ -203,7 +203,8 @@
           "earth"
         ],
         "castCount": 1,
-        "interactedTurn": 7
+        "interactedTurn": 7,
+        "followSignature": "17:surface"
       },
       {
         "uid": "u8",
@@ -301,7 +302,8 @@
         ],
         "castCount": 2,
         "damageTakenTurn": 7,
-        "finalNextMagicGifts": []
+        "finalNextMagicGifts": [],
+        "followSignature": "2:surface"
       },
       {
         "uid": "u31",
@@ -1987,7 +1989,8 @@
           "earth"
         ],
         "castCount": 1,
-        "interactedTurn": 7
+        "interactedTurn": 7,
+        "followSignature": "17:surface"
       },
       {
         "uid": "u8",
@@ -2085,7 +2088,8 @@
         ],
         "castCount": 2,
         "damageTakenTurn": 7,
-        "finalNextMagicGifts": []
+        "finalNextMagicGifts": [],
+        "followSignature": "2:surface"
       },
       {
         "uid": "u31",

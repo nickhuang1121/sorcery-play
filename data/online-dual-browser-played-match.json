@@ -429,7 +429,7 @@
       "type": "choose",
       "player": 0,
       "option": 0,
-      "choiceToken": "choice-v1:64ac71bc:2068",
+      "choiceToken": "choice-v1:a60a3bc0:2099",
       "actor": 0
     },
     {
@@ -479,7 +479,7 @@
       "type": "choose",
       "player": 0,
       "option": 0,
-      "choiceToken": "choice-v1:7a2ebf44:2031",
+      "choiceToken": "choice-v1:8c051cf2:2062",
       "actor": 0
     },
     {
@@ -555,7 +555,7 @@
       "type": "choose",
       "player": 0,
       "option": 0,
-      "choiceToken": "choice-v1:c5e8806d:2063",
+      "choiceToken": "choice-v1:60eeaf1b:2094",
       "actor": 0
     },
     {
@@ -841,7 +841,7 @@
       "type": "choose",
       "player": 0,
       "option": 1,
-      "choiceToken": "choice-v1:7b8d37a7:2207",
+      "choiceToken": "choice-v1:cd99a509:2238",
       "actor": 0
     },
     {
@@ -985,7 +985,7 @@
       "type": "choose",
       "player": 0,
       "option": 1,
-      "choiceToken": "choice-v1:3f7928ad:2145",
+      "choiceToken": "choice-v1:5293fc67:2176",
       "actor": 0
     },
     {
@@ -1052,14 +1052,14 @@
       "type": "choose",
       "player": 1,
       "option": 0,
-      "choiceToken": "choice-v1:800c3bc4:2221",
+      "choiceToken": "choice-v1:2d9d1137:2251",
       "actor": 1
     },
     {
       "type": "choose",
       "player": 1,
       "option": 1,
-      "choiceToken": "choice-v1:8b18b923:2328",
+      "choiceToken": "choice-v1:781363a8:2358",
       "actor": 1
     },
     {
@@ -1141,14 +1141,14 @@
       "type": "choose",
       "player": 1,
       "option": 2,
-      "choiceToken": "choice-v1:ea8a844d:2261",
+      "choiceToken": "choice-v1:c4005170:2291",
       "actor": 1
     },
     {
       "type": "choose",
       "player": 1,
       "option": 0,
-      "choiceToken": "choice-v1:5b5e359d:2424",
+      "choiceToken": "choice-v1:2b293b5c:2454",
       "actor": 1
     },
     {
@@ -1206,7 +1206,7 @@
       "type": "choose",
       "player": 1,
       "option": 2,
-      "choiceToken": "choice-v1:d15c8f6c:2431",
+      "choiceToken": "choice-v1:95889c73:2461",
       "actor": 1
     },
     {
@@ -1477,6 +1477,7 @@
         "finalCorruptor": false,
         "rowFree": false,
         "freeRows": [],
+        "followSignature": "17:surface",
         "gateVoidwalk": false,
         "lethal": false,
         "elementGifts": [],
@@ -1574,6 +1575,7 @@
         "finalCorruptor": false,
         "rowFree": false,
         "freeRows": [],
+        "followSignature": "3:surface",
         "lethal": false,
         "gateVoidwalk": false,
         "notRest": false,
@@ -2250,7 +2252,7 @@
         "type": "choose",
         "player": 0,
         "option": 0,
-        "choiceToken": "choice-v1:64ac71bc:2068",
+        "choiceToken": "choice-v1:a60a3bc0:2099",
         "actor": 0
       },
       {
@@ -2300,7 +2302,7 @@
         "type": "choose",
         "player": 0,
         "option": 0,
-        "choiceToken": "choice-v1:7a2ebf44:2031",
+        "choiceToken": "choice-v1:8c051cf2:2062",
         "actor": 0
       },
       {
@@ -2376,7 +2378,7 @@
         "type": "choose",
         "player": 0,
         "option": 0,
-        "choiceToken": "choice-v1:c5e8806d:2063",
+        "choiceToken": "choice-v1:60eeaf1b:2094",
         "actor": 0
       },
       {
@@ -2662,7 +2664,7 @@
         "type": "choose",
         "player": 0,
         "option": 1,
-        "choiceToken": "choice-v1:7b8d37a7:2207",
+        "choiceToken": "choice-v1:cd99a509:2238",
         "actor": 0
       },
       {
@@ -2806,7 +2808,7 @@
         "type": "choose",
         "player": 0,
         "option": 1,
-        "choiceToken": "choice-v1:3f7928ad:2145",
+        "choiceToken": "choice-v1:5293fc67:2176",
         "actor": 0
       },
       {
@@ -2873,14 +2875,14 @@
         "type": "choose",
         "player": 1,
         "option": 0,
-        "choiceToken": "choice-v1:800c3bc4:2221",
+        "choiceToken": "choice-v1:2d9d1137:2251",
         "actor": 1
       },
       {
         "type": "choose",
         "player": 1,
         "option": 1,
-        "choiceToken": "choice-v1:8b18b923:2328",
+        "choiceToken": "choice-v1:781363a8:2358",
         "actor": 1
       },
       {
@@ -2962,14 +2964,14 @@
         "type": "choose",
         "player": 1,
         "option": 2,
-        "choiceToken": "choice-v1:ea8a844d:2261",
+        "choiceToken": "choice-v1:c4005170:2291",
         "actor": 1
       },
       {
         "type": "choose",
         "player": 1,
         "option": 0,
-        "choiceToken": "choice-v1:5b5e359d:2424",
+        "choiceToken": "choice-v1:2b293b5c:2454",
         "actor": 1
       },
       {
@@ -3027,7 +3029,7 @@
         "type": "choose",
         "player": 1,
         "option": 2,
-        "choiceToken": "choice-v1:d15c8f6c:2431",
+        "choiceToken": "choice-v1:95889c73:2461",
         "actor": 1
       },
       {
@@ -3998,6 +4000,7 @@
           "finalCorruptor": false,
           "rowFree": false,
           "freeRows": [],
+          "followSignature": "17:surface",
           "gateVoidwalk": false,
           "lethal": false,
           "elementGifts": [],
@@ -4113,6 +4116,7 @@
           "finalCorruptor": false,
           "rowFree": false,
           "freeRows": [],
+          "followSignature": "17:surface",
           "gateVoidwalk": false,
           "lethal": false,
           "elementGifts": [],
@@ -4222,6 +4226,7 @@
           "finalCorruptor": false,
           "rowFree": false,
           "freeRows": [],
+          "followSignature": "3:surface",
           "lethal": false,
           "gateVoidwalk": false,
           "notRest": false,
@@ -4344,6 +4349,7 @@
           "finalCorruptor": false,
           "rowFree": false,
           "freeRows": [],
+          "followSignature": "3:surface",
           "lethal": false,
           "gateVoidwalk": false,
           "notRest": false,

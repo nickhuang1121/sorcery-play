@@ -17,7 +17,8 @@ export function zoneAccessPreviewCost(s,p,A,scope=s.zoneAccessScope){
  return zoneAccessCost(s,A);
 }
 export function zoneAccessAllowed(s,p,A,scope=s.zoneAccessScope){return zoneAccessPreviewCost(s,p,A,scope)===0;}
-export function canPayZoneAccess(s,p,A,otherCost=0,scope=s.zoneAccessScope){const due=otherCost+zoneAccessPreviewCost(s,p,A,scope);if(!Number.isFinite(due))return false;const pool=A.resources(s,p);return pool.mana-(s.players[p].spent||0)>=due;}
+// Use spendable mana: source totals remain nonzero on the opponent's turn.
+export function canPayZoneAccess(s,p,A,otherCost=0,scope=s.zoneAccessScope){const due=otherCost+zoneAccessPreviewCost(s,p,A,scope);if(!Number.isFinite(due))return false;const pool=A.resources(s,p);return pool.available>=due;}
 /** One permission per player for an entire effect. The authoritative map is
  * saved under s.zoneAccessScopes[id], so already-queued continuations observe
  * later decisions even after a JSON round trip. Boneyard can involve both
@@ -26,7 +27,7 @@ export function commitZoneAccess(s,p,A,{pay=true,scope=s.zoneAccessScope}={}){
  const prior=scopeRecord(s,scope),entry=permission(s,scope,p);
  if(entry&&['paid','free','declined'].includes(entry.decision))return prior;
  const amount=zoneAccessCost(s,A);
- const spendable=A.resources(s,p).mana-(s.players[p].spent||0);
+ const spendable=A.resources(s,p).available;
  if(amount&&pay&&spendable<amount)throw Error('Bureau of Occult Control：無法支付獨立區域存取費用');
  const id=prior?.id||'access'+(s.nextZoneAccess=(s.nextZoneAccess||0)+1),record={id,permissions:{...(prior?.permissions||{})}};
  record.permissions[p]={decision:!amount?'free':pay?'paid':'declined',paid:amount&&pay?amount:0};
