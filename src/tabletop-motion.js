@@ -1,5 +1,59 @@
 // Presentation only: actions still resolve entirely in the engine.
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+export function drawnHandCards(before,after,player,lookup){
+ if(!before||!after||before.phase==='mulligan'||after.phase==='mulligan')return [];
+ const old=before.players?.[player],next=after.players?.[player];if(!old||!next)return [];
+ const known=new Set(old.hand.map(h=>h.uid)),remaining={atlas:Math.max(0,old.atlas.length-next.atlas.length),spells:Math.max(0,old.spells.length-next.spells.length)};
+ return next.hand.flatMap(h=>{const deck=lookup(h.card).type==='Site'?'atlas':'spells';if(known.has(h.uid)||!remaining[deck])return [];remaining[deck]--;return [{uid:h.uid,deck}];});
+}
+
+// Capture library positions before render replaces the board; play only after
+// the successful state update has placed physical new cards in the visible hand.
+export function prepareDrawMotion(before,after,player,lookup){
+ if(document.hidden||reduced())return null;
+ try{if(localStorage.getItem('sorcery.effects')==='false')return null;}catch{}
+ const fan=document.querySelector('.fan');
+ if(!fan||Number(fan.dataset.handPlayer)!==player)return null;
+ const draws=drawnHandCards(before,after,player,lookup).flatMap(draw=>{
+  const nodes=[...document.querySelectorAll(`[data-forest-pile="${draw.deck}"],[data-library-draw="${draw.deck}"]`)];
+  const source=nodes.find(n=>{const r=n.getBoundingClientRect();return r.width>0&&r.height>0;});
+  return source?[{...draw,from:source.getBoundingClientRect()}]:[];
+ });
+ if(!draws.length)return null;
+ return ()=>requestAnimationFrame(()=>{
+  const hand=document.querySelector('.fan');if(!hand||hand.classList.contains('sealed')||Number(hand.dataset.handPlayer)!==player)return;
+  draws.forEach(({uid,from},index)=>setTimeout(()=>{
+   const card=hand.querySelector(`[data-hand="${CSS.escape(uid)}"]`);if(!card||!hand.isConnected||hand.classList.contains('sealed'))return;
+   const ghost=card.cloneNode(true);ghost.className='card image-card draw-card-flight';ghost.removeAttribute('style');
+   for(const node of [ghost,...ghost.querySelectorAll('*')])for(const name of node.getAttributeNames())if(name==='id'||name.startsWith('data-'))node.removeAttribute(name);
+   ghost.setAttribute('aria-hidden','true');ghost.inert=true;
+   const ready=[...ghost.querySelectorAll('img')].map(img=>{img.loading='eager';return img.decode?.().catch(()=>{});});
+   Promise.race([Promise.allSettled(ready),new Promise(resolve=>setTimeout(resolve,150))]).then(()=>{
+    if(!card.isConnected||hand.classList.contains('sealed'))return;
+    const bounds=hand.getBoundingClientRect(),initial=card.getBoundingClientRect();
+    hand.scrollLeft+=initial.left-bounds.left-(hand.clientWidth-initial.width)/2;
+    const end=card.getBoundingClientRect();if(!end.width||!end.height)return;
+    const width=Math.min(220,innerWidth*.44,innerHeight*.38*744/1039),height=width*1039/744;
+    const at=(x,y,scale,rotate=0)=>`translate3d(${x-width/2}px,${y-height/2}px,0) scale(${scale}) rotate(${rotate}deg)`;
+    const start=at(from.left+from.width/2,from.top+from.height/2,from.width/width,draws[index].deck==='atlas'?-8:8);
+    const middle=at(innerWidth/2,Math.max(height/2+16,Math.min(innerHeight*.46,bounds.top-height*.1)),1);
+    const finish=at(end.left+end.width/2,end.top+end.height/2,end.width/width);
+    Object.assign(ghost.style,{left:'0',top:'0',width:width+'px',height:height+'px',transform:start});
+    const visibility=card.style.visibility;document.body.append(ghost);card.style.visibility='hidden';
+    let observer;const cleanup=()=>{observer?.disconnect();ghost.remove();card.style.visibility=visibility;};
+    try{
+     const animation=ghost.animate([{transform:start,opacity:.45,easing:'cubic-bezier(.16,.8,.25,1)'},{transform:middle,opacity:1,offset:.4},{transform:middle,opacity:1,offset:.62,easing:'cubic-bezier(.4,0,.2,1)'},{transform:finish,opacity:1}],{duration:900,easing:'linear',fill:'forwards'});
+     // A seat change or a new render must not leave the previous private card
+     // hovering over the next player's screen.
+     observer=new MutationObserver(()=>{if(!hand.isConnected)animation.cancel();});
+     observer.observe(document.querySelector('#app')||document.body,{childList:true,subtree:true});
+     animation.finished.catch(()=>{}).finally(cleanup);
+    }catch{cleanup();}
+   });
+  },index*160));
+ });
+}
 export function bindOpeningHand(dialog){
  const track=dialog.querySelector('.mulligan-cards'),cards=[...track.children];let frame=0;
  // Read untransformed layout positions: scaling and entrance motion must never
