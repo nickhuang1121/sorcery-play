@@ -189,3 +189,26 @@ body.forest-runtime:has(dialog.battle-panel[open]) .table .context:has(#resume-c
 .forest-runtime dialog.popup[data-draggable] .eyebrow::after{content:' · 拖曳移動';font-size:10px;letter-spacing:0;color:#c2d4db}
 .forest-runtime dialog.popup[data-draggable] h2[data-popup-drag-handle]:focus-visible{outline:2px solid #b5eaff;outline-offset:3px;border-radius:3px}
 .forest-runtime dialog.popup[data-draggable][open]{animation:none;scale:1}
+
+/* Compact mobile controls leave a full, uncompressed card in the stack picker. */
+@media(max-width:700px) and (orientation:portrait),(max-width:980px) and (max-height:580px){
+ .forest-runtime dialog.popup button:not([data-card]):not(.card):not(.unit){font-size:18px;padding:5.5px 7px}
+ .forest-runtime dialog.popup.battle-panel .modal-actions button{font-size:14.4px;padding:4px}
+ .forest-runtime dialog.popup.battle-panel .card-detail-link{font-size:14.4px;padding:3.5px 5px}
+ .forest-runtime dialog.popup button.close{font-size:30px;padding:0}
+ .forest-runtime #forest-stack[open]{height:auto;max-height:calc(100dvh - 20px);overflow-x:hidden;overflow-y:auto}
+ .forest-runtime #forest-stack .fs-head{min-height:48px;padding:6px 54px 2px 14px;flex:none}
+ .forest-runtime #forest-stack .fs-tabs{gap:16px;padding-bottom:2px;flex:none}
+ .forest-runtime #forest-stack .fs-tabs button{flex:0 1 auto;min-height:32px;padding:3.5px;font-size:14.4px;line-height:1.4;border:0;border-radius:0;background:transparent;box-shadow:none;color:#b8c6c9;font-weight:650;text-shadow:none}
+ .forest-runtime #forest-stack .fs-tabs button[aria-pressed="true"]{background:transparent;border:0;box-shadow:none;color:#f5d38b}
+ .forest-runtime #forest-stack .fs-tabs button:hover:not(:disabled){background:transparent;border:0;color:#fff0c8;box-shadow:none}
+ .forest-runtime #forest-stack .fs-track{flex:none;min-height:0;padding:8px calc((100% - 144px)/2);align-items:center}
+ .forest-runtime #forest-stack .fs-slide{flex:0 0 144px;width:144px}
+ .forest-runtime #forest-stack .fs-card-art{height:clamp(112px,20dvh,160px);flex:none;aspect-ratio:744/1039}
+ .forest-runtime #forest-stack .fs-navigation{height:34px;flex:none;gap:12px}
+ .forest-runtime #forest-stack .fs-navigation button{width:44px;min-width:44px;height:34px;min-height:34px;font-size:32.4px;line-height:1;padding:0}
+ .forest-runtime #forest-stack .fs-footer{flex:none;padding:0 12px max(8px,env(safe-area-inset-bottom))}
+ .forest-runtime #forest-stack .fs-status{margin:3px 0 5px}
+ .forest-runtime #forest-stack .fs-actions button{min-height:34px;padding:4.5px;font-size:14.4px;line-height:1.3}
+ .forest-runtime #forest-stack .fs-close{font-size:30px;padding:0}
+}
