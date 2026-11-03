@@ -1,6 +1,6 @@
 // Historical Firebase lockstep prototype, retained for regression fixtures only.
 // Production online-play.html runs app.js + net/online-client.js and /api authority.
-import {showNotice} from './popup.js';
+import {showNotice} from './popup.js?v=20261103-draggable';
 import {finalDecisionController,dispatchFinalControlledEntry,finalControlledPlayer} from './final-control.js';
 import {choiceAction,choiceToken} from './choice-context.js';
 import { loadCards, card } from './cards.js';

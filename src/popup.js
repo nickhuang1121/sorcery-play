@@ -1,6 +1,7 @@
+import {connectPopupPosition} from './popup-position.js';
 // Shared presentation and dismissal. Closing a popup never submits a game action.
 export function connectPopup(dialog,{onDismiss=()=>{},closeButton,footerButton}={}){
- let opener=null;
+ let opener=null;const position=connectPopupPosition(dialog);
  function close({restoreFocus=true}={}){if(dialog.open)dialog.close();if(restoreFocus&&opener?.isConnected)opener.focus({preventScroll:true});}
  function dismiss(){close();onDismiss();}
  closeButton?.addEventListener('click',dismiss);
@@ -17,8 +18,10 @@ export function connectPopup(dialog,{onDismiss=()=>{},closeButton,footerButton}=
   if(title){title.classList.add('popup-title');title.id||=`${dialog.id}-title`;dialog.setAttribute('aria-labelledby',title.id);dialog.removeAttribute('aria-label');}
   else {dialog.removeAttribute('aria-labelledby');dialog.setAttribute('aria-label','資訊');}
   dialog.scrollTop=0;
-  if(dialog.open&&!dialog.matches(':modal'))dialog.close();
-  if(!dialog.open)dialog.showModal();
+  const floating=dialog.matches('.battle-panel,.forest-stack-dialog');
+  if(dialog.open&&dialog.matches(':modal')===floating)dialog.close();
+  if(!dialog.open){if(floating)dialog.show();else dialog.showModal();}
+  position.refresh();
  }};
 }
 

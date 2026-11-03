@@ -41,3 +41,151 @@
 .forest-runtime .forest-stack-dialog::backdrop{background:rgba(0,0,0,.24);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
 .forest-runtime .forest-stack-dialog .fs-close{background:#ffffff08;border:1px solid #ffffff24;color:#fff}
 @media(hover:hover){.forest-runtime .forest-stack-dialog button:hover{background:#ffffff24}}
+
+/* Tabletop choices leave the realm visible and directly interactive. */
+.forest-runtime dialog.popup.battle-panel,.forest-runtime .forest-stack-dialog{
+ inset:auto 10px max(8px,env(safe-area-inset-bottom)) auto;margin:0;width:min(420px,calc(100vw - 20px));max-width:calc(100vw - 20px);height:auto;max-height:43dvh;border-radius:16px;box-shadow:0 8px 30px #0007;background:#10221ef0;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:60;
+}
+.forest-runtime .battle-panel .popup-body{padding:14px 16px;overflow:auto}
+.forest-runtime .battle-panel h2{font-size:18px;margin-bottom:8px}
+.forest-runtime .battle-panel p{font-size:12px;line-height:1.5;margin:6px 0}
+.forest-runtime .battle-panel .popup-hint{display:none}
+.forest-runtime .battle-panel .modal-actions{gap:6px;margin-top:8px}
+.forest-runtime .battle-panel .modal-actions button{min-height:40px;font-size:13px;padding:8px}
+.forest-runtime .battle-panel .popup-footer{display:none}
+.forest-runtime .forest-stack-dialog[open]{display:flex;flex-wrap:nowrap;padding:0;height:32dvh;max-height:32dvh}
+.forest-runtime .forest-stack-dialog .fs-head{padding:10px 54px 4px 14px;width:auto}
+.forest-runtime .forest-stack-dialog .fs-head small{display:none}
+.forest-runtime .forest-stack-dialog .fs-head h2{font-size:16px}
+.forest-runtime .forest-stack-dialog .fs-tabs{padding:0 12px 4px;width:auto}
+.forest-runtime .forest-stack-dialog .fs-tabs button{min-height:28px;padding:3px}
+.forest-runtime .forest-stack-dialog .fs-track{position:relative;inset:auto;width:auto;min-height:0;padding:4px calc((100% - 105px)/2);gap:24px;flex:1}
+.forest-runtime .forest-stack-dialog .fs-slide{flex-basis:105px;width:105px}
+.forest-runtime .forest-stack-dialog .fs-card-art{height:min(105px,11dvh)}
+.forest-runtime .forest-stack-dialog .fs-slide h3{font-size:10px;margin:3px 0}
+.forest-runtime .forest-stack-dialog .fs-navigation{position:static;width:auto;height:25px;padding:0}
+.forest-runtime .forest-stack-dialog .fs-footer{position:static;padding:0 12px 8px;display:block}
+.forest-runtime .forest-stack-dialog .fs-status{font-size:10px;min-height:0;margin:2px 0}
+.forest-runtime .forest-stack-dialog .fs-actions{flex-direction:row}
+.forest-runtime .forest-stack-dialog .fs-actions button{min-height:32px;padding:5px;flex:1;font-size:11px}
+/* Opening hand is a floating card carousel, without a dark surface or veil. */
+.forest-runtime dialog.popup.opening-hand{width:min(900px,100vw);max-width:100vw;background:transparent;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;max-height:94dvh;overflow:visible}
+.forest-runtime dialog.opening-hand::backdrop{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+.forest-runtime .opening-hand .popup-body{padding:18px 0;overflow:auto;background:transparent;text-shadow:0 2px 5px #000,0 0 12px #000}
+.opening-hand :is(h2,p,.eyebrow,.modal-actions){margin-left:22px!important;margin-right:22px!important}
+.opening-hand .popup-body>p{font-size:12px;line-height:1.5}
+.opening-hand .popup-body>.muted{font-size:11px}
+.forest-runtime .opening-hand .mulligan-cards{display:flex;gap:20px;align-items:center;overflow-x:auto;scroll-snap-type:x mandatory;touch-action:pan-x;padding:30px max(24px,calc((100% - min(210px,48vw))/2));scrollbar-width:none}
+.forest-runtime .opening-hand .mulligan-cards .card{flex:0 0 min(210px,48vw);width:min(210px,48vw);min-height:0;aspect-ratio:744/1039;scroll-snap-align:center;transform:scale(.84);opacity:.75;transition:transform .25s,opacity .25s;animation:openingDeal .7s cubic-bezier(.15,.7,.2,1) both;animation-delay:calc(var(--deal-index)*100ms);touch-action:pan-x}
+.forest-runtime .opening-hand .mulligan-cards .card.opening-focus{transform:scale(1.08);opacity:1;z-index:2}
+.forest-runtime .opening-hand .card.selected{outline:3px solid #75c9ff;box-shadow:0 0 25px #59baff}
+@keyframes openingDeal{from{translate:100vw 0;rotate:12deg;opacity:0}to{translate:0 0;rotate:0deg}}
+.forest-runtime .forest-pile.draw-ready{outline:2px solid #9ee9ff;animation:libraryGlow 1.25s ease-in-out infinite;cursor:pointer}
+@keyframes libraryGlow{50%{filter:brightness(1.6);box-shadow:0 0 14px #67ceff,0 0 30px #67ceff99;translate:0 -4px}}
+.forest-runtime #toast{background:transparent;border:0;box-shadow:none;color:#d7f5ff;text-shadow:0 0 8px #64caff,0 2px 6px #000;pointer-events:none;animation:tableText 4.2s ease both}
+.forest-runtime .battle-notice{background:transparent;border:0;box-shadow:none;text-shadow:0 0 8px #83d9ff,0 2px 5px #000}
+.forest-runtime .battle-notice small{display:none}
+@keyframes tableText{0%,100%{opacity:0}15%,80%{opacity:1}}
+/* Ownership colors apply to selection, legal targets and the stack carousel. */
+.forest-runtime .board .unit:is(.selected,.choice-pick,.strike-to,.preview-target){outline:2px solid #62c5ff!important;box-shadow:0 0 12px #42b5ff,0 0 22px #42b5ff99!important}
+.forest-runtime .board .unit.enemy:is(.selected,.choice-pick,.strike-to,.preview-target){outline-color:#ff6c70!important;box-shadow:0 0 12px #ff444b,0 0 22px #ff444b99!important}
+.forest-runtime .fs-slide.fs-current[data-side="own"] .fs-card-art{outline:2px solid #62c5ff;box-shadow:0 0 18px #42b5ff}
+.forest-runtime .fs-slide.fs-current[data-side="enemy"] .fs-card-art{outline:2px solid #ff6c70;box-shadow:0 0 18px #ff444b}
+.combat-flyer{position:fixed;z-index:120;pointer-events:none;border:0;border-radius:6px;padding:0;overflow:hidden;background:#12261f;box-shadow:0 12px 35px #000a,0 0 22px #ffde98;transform-origin:center}
+.combat-flyer>.card-image{width:100%;height:100%}.combat-flyer>:not(.card-image){display:none}
+.combat-impact{position:fixed;z-index:121;pointer-events:none;width:100px;height:100px;border:5px solid #ffe4a1;border-radius:50%;box-shadow:0 0 35px #ffb752,inset 0 0 25px #fff0b4;animation:combatRing .6s ease-out both}
+@keyframes combatRing{from{transform:translate(-50%,-50%) scale(.15);opacity:1}to{transform:translate(-50%,-50%) scale(2.4);opacity:0}}
+@media(prefers-reduced-motion:reduce){.forest-runtime .opening-hand .mulligan-cards .card,.forest-runtime .forest-pile.draw-ready,.forest-runtime #toast{animation:none;transition:none}}
+@media(max-height:500px){.forest-runtime dialog.popup.battle-panel,.forest-runtime .forest-stack-dialog[open]{width:40vw;max-height:85dvh;height:auto}.forest-runtime .forest-stack-dialog[open]{height:85dvh}.opening-hand .popup-body>.muted{display:none}}
+.forest-runtime .board .realm-object:is(.selected,.preview-target){outline:2px solid #62c5ff;box-shadow:0 0 18px #42b5ff}
+.forest-runtime .board .realm-object.enemy:is(.selected,.preview-target){outline-color:#ff6c70;box-shadow:0 0 18px #ff444b}
+.forest-runtime .board .cell.own-site.choice-pick{outline:2px solid #62c5ff;box-shadow:inset 0 0 15px #42b5ff99}
+.forest-runtime .board .cell.enemy-site.choice-pick{outline:2px solid #ff6c70;box-shadow:inset 0 0 15px #ff444b99}
+
+/* Stable carousel: entrance clones never participate in scrolling or snapping. */
+.forest-runtime dialog.popup.opening-hand[open]{animation:none;scale:1}
+.forest-runtime .opening-hand .mulligan-cards{position:relative;overscroll-behavior-x:contain}
+.forest-runtime .opening-hand .mulligan-cards .card{animation:none;transition:transform .2s ease,opacity .2s ease;will-change:transform}
+.forest-runtime .opening-hand .mulligan-cards .card.opening-dealing{visibility:hidden}
+.opening-deal-ghost{position:fixed!important;z-index:125;pointer-events:none;margin:0!important;min-width:0!important;max-width:none!important;min-height:0!important;padding:0!important;border:0!important;border-radius:8px;overflow:hidden;box-shadow:0 10px 25px #0009;will-change:transform,opacity}
+.opening-deal-ghost>.card-image{width:100%;height:100%;aspect-ratio:auto}
+.opening-deal-ghost .card-caption{position:absolute;bottom:0;left:0;right:0;padding:7px;background:#10221ee6;color:#fff;font:12px/1.3 system-ui}
+.forest-runtime .opening-hand .opening-actions{position:sticky;bottom:0;z-index:5;padding:12px 22px 16px;text-align:center}
+.forest-runtime .opening-hand .opening-actions #redraw-order{margin:0 0 10px!important;color:#fff;font:600 13px/1.5 system-ui;text-shadow:0 2px 4px #000,0 0 10px #000}
+.forest-runtime .opening-hand #finish-mulligan{display:block;width:100%;min-height:54px;padding:13px 20px;border:2px solid #ffe2a0;border-radius:10px;background:linear-gradient(#f7d98b,#dcb15b);color:#201a10;font:750 16px/1.4 system-ui;text-shadow:none;box-shadow:0 4px 16px #0009,0 0 14px #f2c66b55;cursor:pointer}
+.forest-runtime .opening-hand #finish-mulligan:hover{background:#ffe6a8;color:#201a10}
+.forest-runtime .opening-hand .card.selected::after{content:'✓ 重抽';position:absolute;top:7px;left:7px;z-index:5;border:1px solid #bce8ff;border-radius:5px;background:#145074;color:#fff;padding:5px 8px;font:700 12px/1 system-ui;box-shadow:0 2px 8px #0008}
+/* Secondary battle actions have the same readable hierarchy as dialog controls. */
+.forest-runtime :is(#mulligan,#bound-spells,#top-spell,#toggle-hand,.tools-panel button,.game-menu button,.context button){min-height:44px;border:1px solid #91aeb6;border-radius:8px;background:#203d46;color:#f5fbff;font:650 13px/1.35 system-ui;padding:9px 12px;text-shadow:none;box-shadow:0 2px 6px #0006}
+.forest-runtime #mulligan{border:2px solid #ffe2a0;background:#edc777;color:#231b0d}
+.forest-runtime :is(#end,#pass):not(:disabled){border:2px solid #ffe2a0;color:#fff9e9;font-weight:700;text-shadow:0 1px 3px #000}
+.forest-runtime :is(#end,#pass):disabled{opacity:1;color:#adbdc2;background:#25363c;border:1px dashed #84979f;box-shadow:0 2px 8px #0007;text-shadow:none;cursor:not-allowed}
+.forest-runtime #tools-toggle{width:44px;height:44px;min-width:44px;min-height:44px;background:#203d46;border:1px solid #acc4cd;color:#fff;font-size:20px}
+.forest-runtime .forest-stack-dialog[open]{height:min(370px,44dvh);max-height:44dvh}
+.forest-runtime .forest-stack-dialog .fs-navigation{height:44px;flex:none}
+.forest-runtime .forest-stack-dialog .fs-navigation button{min-width:44px;min-height:44px;font-size:27px}
+.forest-runtime .forest-stack-dialog .fs-tabs button{min-height:44px;font-size:12px;padding:7px}
+.forest-runtime .forest-stack-dialog .fs-actions button{min-height:44px;font-size:12px;padding:9px}
+.forest-runtime .forest-stack-dialog .fs-close{width:44px;height:44px}
+.forest-runtime .forest-stack-dialog .fs-status{font-size:12px;margin:5px 0 8px}
+.forest-runtime .table .context button{min-height:44px;font-size:13px;padding:8px 12px}
+.forest-runtime :is(#toggle-hand,.context button,.tools-panel button,.game-menu button):focus-visible{outline:3px solid #b5eaff;outline-offset:3px}
+@media(max-width:720px) and (orientation:portrait){
+ .forest-runtime :is(#bound-spells,#top-spell){min-height:44px;font-size:11px;padding:7px 9px;max-width:112px}
+ .forest-runtime .table .action-dock{width:108px}
+ .forest-runtime #toggle-hand{min-height:44px;font-size:12px;padding:8px 12px}
+ .forest-runtime .table .hand-label{height:auto}
+}
+@media(max-height:580px) and (orientation:landscape){
+ .forest-runtime .forest-stack-dialog[open]{height:calc(100dvh - 20px);max-height:calc(100dvh - 20px);width:min(430px,45vw)}
+ .forest-runtime .opening-hand .opening-actions{padding-top:5px;padding-bottom:5px}
+ .forest-runtime .opening-hand #finish-mulligan{min-height:48px}
+ .forest-runtime .opening-hand .popup-body>p{margin-block:4px;font-size:11px}
+ .forest-runtime .opening-hand .mulligan-cards{padding-block:16px}
+}
+.forest-runtime .table[data-hand-profile] #toggle-hand{min-height:44px;font-size:12px}
+.forest-runtime .forest-stack-dialog .fs-head{min-height:60px;box-sizing:border-box;display:flex;align-items:center}
+@media(max-width:720px) and (orientation:portrait){
+ .forest-runtime .table .action-dock{height:56px;min-height:56px}
+ .forest-runtime .table .dock-actions{width:100%;height:56px;min-height:56px;justify-content:flex-end;align-items:center}
+ .forest-runtime :is(#end,#pass){width:56px;height:56px;min-width:56px;min-height:56px;font-size:11px}
+ .forest-runtime .table .action-dock #bound-spells{right:64px;bottom:0;width:68px;min-height:44px;font-size:11px;padding:7px}
+ .forest-runtime .table .action-dock #top-spell{right:64px;bottom:50px;width:68px;min-height:44px;font-size:11px;padding:7px}
+}
+@media(max-width:720px) and (orientation:portrait){
+ .forest-runtime .table .dock-actions :is(#end,#pass){flex:0 0 56px;width:56px;max-width:56px}
+ .forest-runtime .table:not([data-control-stage="active"]) #toggle-hand{width:84px;padding:8px;font-size:11px;white-space:nowrap}
+}
+
+/* Reserve real room for lifted hand cards inside the horizontal scroll clip. */
+.forest-runtime .table[data-hand-profile] .fan{height:269px;max-height:none;padding-top:80px;pointer-events:none}
+.forest-runtime .table .fan .card,.forest-runtime .table .fan .hand-seal{pointer-events:auto}
+.forest-runtime .table .fan.sealed .card{pointer-events:none}
+.forest-runtime .table[data-hand-profile="portrait"] .fan{height:188px;padding-top:63px}
+.forest-runtime .table[data-hand-profile="landscape"] .fan{height:151px;padding-top:56px}
+/* Choices use the available width instead of one full row per target. */
+.forest-runtime dialog.popup.battle-panel .popup-body{padding:10px 12px}
+.forest-runtime dialog.popup.battle-panel .eyebrow{margin-bottom:4px;font-size:10px}
+.forest-runtime dialog.popup.battle-panel h2{font-size:17px;margin-bottom:4px}
+.forest-runtime dialog.popup.battle-panel p{margin:4px 0;font-size:12px;line-height:1.4}
+.forest-runtime dialog.popup.battle-panel .modal-actions{display:flex;flex-flow:row wrap;gap:6px;margin-top:6px}
+.forest-runtime dialog.popup.battle-panel .modal-actions button{flex:1 1 100px;width:auto;min-width:0;min-height:44px;padding:8px;font-size:12px;line-height:1.3}
+.forest-runtime dialog.popup.battle-panel .card-detail-link{margin:0 0 6px;padding:7px 10px;min-height:44px;font-size:12px}
+.forest-runtime dialog.popup.battle-panel .popup-hint{display:none}
+/* Libraries sit above the transparent footer that used to intercept desktop clicks. */
+.forest-runtime .table .forest-piles{z-index:10}
+.forest-runtime #draw-reminder{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:11;display:grid;justify-items:center;gap:7px;width:calc(100vw - 40px);max-width:520px;margin:0;padding:0;background:none;border:0;box-shadow:none;pointer-events:none;text-align:center;color:#fff3d5;text-shadow:0 2px 5px #06120e,0 0 12px #06120e,0 0 18px #d4dba466}
+.forest-runtime #draw-reminder strong{font:600 clamp(20px,2vw,28px)/1.4 Georgia,'Microsoft JhengHei',serif;letter-spacing:.08em;animation:drawReminderBreathe 2.8s ease-in-out infinite}
+.forest-runtime #draw-reminder span{font:13px/1.5 system-ui;color:#edf3e6;text-shadow:0 2px 4px #06120e,0 0 10px #06120e}
+@keyframes drawReminderBreathe{0%,100%{opacity:.85}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.forest-runtime #draw-reminder strong{animation:none}}
+/* Effect decisions stay above the realm, clear of the player's hand. */
+.forest-runtime dialog.popup.battle-panel{inset:max(20px,8dvh) 0 auto;margin:0 auto}
+/* A hidden choice can be resumed without repeating the open panel's instructions. */
+body.forest-runtime:has(dialog.battle-panel[open]) .table .context:has(#resume-choice){display:none}
+.forest-runtime .table .context:has(#resume-choice){background:none;padding:0;box-shadow:none}
+.forest-runtime dialog.popup[data-draggable] [data-popup-drag-handle]{cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+.forest-runtime dialog.popup.popup-dragging,.forest-runtime dialog.popup.popup-dragging [data-popup-drag-handle]{cursor:grabbing;user-select:none}
+.forest-runtime dialog.popup[data-draggable] .eyebrow::after{content:' · 拖曳移動';font-size:10px;letter-spacing:0;color:#c2d4db}
+.forest-runtime dialog.popup[data-draggable] h2[data-popup-drag-handle]:focus-visible{outline:2px solid #b5eaff;outline-offset:3px;border-radius:3px}
+.forest-runtime dialog.popup[data-draggable][open]{animation:none;scale:1}

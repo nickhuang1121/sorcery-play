@@ -3,7 +3,7 @@ import {officialBetaDecks,byId} from '../cards.js';
 import {cardTitle} from '../i18n.js';
 import {cardImage} from '../card-images.js';
 import {getUILanguage} from '../ui-language.js';
-import {connectPopup} from '../popup.js';
+import {connectPopup} from '../popup.js?v=20261103-draggable';
 import {rankCommunity} from './model.js';
 export const DEVELOPER_PLAYER='Developer Nick - Test',DEVELOPER_DECK='Developer Nick - Test Deck';
 export function homeRankRows(entries,kind){

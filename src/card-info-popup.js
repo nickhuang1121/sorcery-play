@@ -1,4 +1,4 @@
-import {connectPopup} from './popup.js';
+import {connectPopup} from './popup.js?v=20261103-draggable';
 // A separate top-layer dialog preserves any pending game-choice/stack dialog.
 export function createCardInfoPopup({getRevision,onStale}){
  const dialog=document.createElement('dialog');dialog.id='card-info';dialog.className='popup card-popup';dialog.setAttribute('aria-labelledby','card-info-title');

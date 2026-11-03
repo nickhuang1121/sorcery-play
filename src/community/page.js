@@ -6,7 +6,7 @@ import {loadCardImages,cardImage,installCardImageFallback} from '../card-images.
 import {loadCardTranslations,cardTitle,setLang} from '../i18n.js';
 import {getGoogleAuth,googleAuthMessage} from '../net/firebase-auth.js';
 import {initializeUILanguage,getUILanguage} from '../ui-language.js';
-import {connectPopup} from '../popup.js';
+import {connectPopup} from '../popup.js?v=20261103-draggable';
 import {importDeck} from '../deck-import.js';
 import {getCommunityService,readLeaderboard} from './service.js?v=20261101-player-center';
 import {rankCommunity,cleanDeck} from './model.js';

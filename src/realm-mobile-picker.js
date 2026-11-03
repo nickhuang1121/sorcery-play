@@ -1,4 +1,4 @@
-import {connectPopup} from './popup.js';
+import {connectPopup} from './popup.js?v=20261103-draggable';
 import {stackViewEnabled,setStackFront,getStackFront,arrangeMobileRealmPiles} from './realm-mobile-layout.js?v=20261031-live-tabletop';
 export function targetDisposition(plan){if(!plan)return 'browse';if(plan.positional)return 'position';return plan.keys.length===1?'single':plan.keys.length>1?'multiple':'invalid';}
 export function createForestStack(bridge){
@@ -22,7 +22,7 @@ export function createForestStack(bridge){
  function go(i,smooth=true){index=Math.max(0,Math.min(entries.length-1,i));const el=track.children[index];if(el)track.scrollTo({left:el.offsetLeft-(track.clientWidth-el.offsetWidth)/2,behavior:smooth&&!matchMedia('(prefers-reduced-motion:reduce)').matches?'smooth':'auto'});footer();}
  function populate(preferred){
   const old=current()?.key;entries=bridge.entries(at,layer);const p=plan();index=Math.max(0,entries.findIndex(e=>e.key===(preferred||old)));if(p&&!entries[index]?.key?.length)index=0;
-  track.replaceChildren();for(const e of entries){const slide=document.createElement('article');slide.className='fs-slide'+(p?(p.keys.includes(e.key)?' fs-eligible':' fs-ineligible'):'');slide.setAttribute('role','listitem');slide.dataset.key=e.key;const face=document.createElement('div');face.className='fs-card-art';face.innerHTML=e.art;const name=document.createElement('h3');name.textContent=e.name;slide.append(face,name);track.append(slide);}
+  track.replaceChildren();for(const e of entries){const slide=document.createElement('article');slide.className='fs-slide'+(p?(p.keys.includes(e.key)?' fs-eligible':' fs-ineligible'):'');slide.setAttribute('role','listitem');slide.dataset.key=e.key;slide.dataset.side=e.side;const face=document.createElement('div');face.className='fs-card-art';face.innerHTML=e.art;const name=document.createElement('h3');name.textContent=e.name;slide.append(face,name);track.append(slide);}
   q('.fs-head small').textContent=text('這個位置的卡牌 · 左右滑動選擇','Cards at this location · Swipe to browse');q('h2').textContent=String.fromCharCode(65+at%5)+(4-Math.floor(at/5))+' · '+(layer==='site'?text('地點','Site'):layer==='below'?bridge.belowName(at):text('地表','Surface'));
   const tabs=q('.fs-tabs');tabs.replaceChildren();for(const k of ['surface','site','below']){const list=bridge.entries(at,k);if(!list.length)continue;const b=document.createElement('button');b.type='button';b.textContent=(k==='surface'?text('地表','Surface'):k==='site'?text('地點','Site'):bridge.belowName(at))+' '+list.length;b.setAttribute('aria-pressed',String(k===layer));b.onclick=()=>{layer=k;index=0;setStackFront(at,layer);populate(list.find(e=>p?.keys.includes(e.key))?.key||list[0]?.key);};tabs.append(b);}
   cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>go(index,false));footer();

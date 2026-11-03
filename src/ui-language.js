@@ -1,5 +1,5 @@
 import {translateUI,registerUICardTranslations} from './ui-copy.js';
-import {connectPopup} from './popup.js';
+import {connectPopup} from './popup.js?v=20261103-draggable';
 export const UI_LANGUAGE_KEY='sorcery.uiLanguage';
 export function normalizeLanguagePreference(value){return ['zh','zh-TW','zh-Hant'].includes(value)?'zh-Hant':value==='en'?'en':'auto';}
 export function resolveUILanguage(preference,languages=[]){

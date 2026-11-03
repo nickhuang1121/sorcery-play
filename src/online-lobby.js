@@ -5,7 +5,7 @@ import {onlineRoomKey,onlineRequest,savedOnlineRoom,saveOnlineRoom,bindOnlinePag
 import {loadCards,officialBetaDecks,validateDeck} from './cards.js';
 import {parseJsonDeck} from './deck-import.js';
 import {ENGINE_BUILD} from './net/protocol.js';
-import {showNotice} from './popup.js';
+import {showNotice} from './popup.js?v=20261103-draggable';
 import {getUILanguage} from './ui-language.js';
 const $=s=>document.querySelector(s),text=(zh,en)=>getUILanguage()==='en'?en:zh;
 let room=null,current=null,timer,listTimer,busy=false,listBusy=false,lobbyEpoch=0,auth=null,loggedInUid=null,publicRooms=[];

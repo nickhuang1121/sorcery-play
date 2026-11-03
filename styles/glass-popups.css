@@ -9,3 +9,14 @@
 .glass-runtime dialog.popup :is(.eyebrow,h3,.muted,.notice,.card-info-meta){color:#bfc3c7}
 .glass-runtime dialog.popup .tutorial-menu-items{background:rgba(0,0,0,.72);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
 @media(hover:hover){.glass-runtime dialog.popup button:not([data-card]):not(.card):not(.unit):hover{background:rgba(255,255,255,.18)}}
+
+/* Controls need a visible surface even when their surrounding sheet is clear. */
+.glass-runtime dialog.popup button:not([data-card]):not(.card):not(.unit){min-height:44px;border:1px solid #8fa9b4;background:#29414a;color:#f5fbff;font-weight:650;text-shadow:none;box-shadow:0 2px 5px #0005;cursor:pointer}
+.glass-runtime dialog.popup :is(button.primary,button.confirm-yes,button[aria-pressed="true"]):not([data-card]):not(.card):not(.unit){border:2px solid #ffe2a0;background:#edc777;color:#231b0d;font-weight:750;box-shadow:0 3px 10px #0005}
+.glass-runtime dialog.popup button:not([data-card]):not(.card):not(.unit):hover:not(:disabled){background:#3d5b67;color:#fff;border-color:#c9edff}
+.glass-runtime dialog.popup :is(button.primary,button.confirm-yes,button[aria-pressed="true"]):not([data-card]):not(.card):not(.unit):hover:not(:disabled){background:#ffe1a0;color:#231b0d;border-color:#fff0c8}
+.glass-runtime dialog.popup button:disabled:not([data-card]):not(.card):not(.unit){opacity:1;background:#263238;color:#aebcc2;border:1px dashed #73858c;box-shadow:none;cursor:not-allowed}
+.glass-runtime dialog.popup button:focus-visible{outline:3px solid #b5eaff;outline-offset:3px}
+.glass-runtime dialog.popup button.close{min-width:44px;min-height:44px;font-size:25px;background:#1c3039;border:1px solid #b0c7cf;color:#fff}
+.glass-runtime:not(.in-battle) :is(.feature-page,.feature-back,.page-top,.filters,.deck-editor,.tools-panel) button:not(.card):not([data-card]){min-height:44px;border:1px solid #869da6;background:#29414a;color:#f5fbff;font-size:14px;font-weight:650}
+.glass-runtime:not(.in-battle) :is(.feature-page,.deck-editor) button.primary{background:#edc777;border:2px solid #ffe2a0;color:#231b0d;font-weight:750}
