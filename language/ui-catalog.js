@@ -149,6 +149,11 @@ Google 玩家	Google player
 對局選單	Match menu
 新對局	New match
 紀錄	Log
+上一首	Previous
+下一首	Next
+播放	Play
+暫停	Pause
+音量	Volume
 對戰紀錄	Battle log
 玩家資訊	Player information
 雙方玩家	Both players

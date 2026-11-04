@@ -1,3 +1,20 @@
+.lobby-page{background:linear-gradient(90deg,#04110ee6 0%,#04110eb8 42%,#04110e55 68%,#04110e99 100%),url('../assets/forest-table.jpg') center/cover fixed;color:#dde9e4;min-height:100dvh}
+.lobby-page .lobby-art{position:fixed;z-index:0;right:0;bottom:0;width:min(46vw,560px);height:min(92vh,860px);pointer-events:none;background:url('../assets/sorcerer-lobby-cutout-v2.png') right bottom/contain no-repeat;mask-image:linear-gradient(#000 78%,transparent);-webkit-mask-image:linear-gradient(#000 78%,transparent);filter:drop-shadow(0 18px 24px #000a)}
+.lobby-page .masthead,.lobby-page .lobby,.lobby-page .site-footer{position:relative;z-index:1}
+.lobby-page .masthead{background:#04110e8c;border-bottom:1px solid #ffffff14;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.lobby-page .lobby{max-width:760px;margin:28px auto 28px max(16px,7vw)}
+.lobby-page .lobby h1{font:400 clamp(28px,4vw,40px)/1.25 Georgia,serif;color:#e7eee8}
+.lobby-page .eyebrow{color:#abc6ba}
+.lobby-page .lobby .panel{background:#071410c7;border:1px solid #ffffff18;box-shadow:none;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.lobby-page .lobby h2,.lobby-page .lobby h3{color:#e4f0ea}
+.lobby-page .lobby .muted,.lobby-page .site-footer{color:#9eb4ab}
+.lobby-page .lobby textarea,.lobby-page .lobby select,.lobby-page .lobby input[type=text]{background:#06110ee6;border:1px solid #ffffff24;color:#e7eee8}
+.lobby-page .lobby .code{color:#d5eee4}
+.lobby-page .primary{background:#315a4d;border-color:#97c9b366;color:#f3faf6}
+.lobby-page .primary:hover{background:#3d6b5c}
+.lobby-page .site-footer{border-top-color:#ffffff14;background:transparent}
+.lobby-page .notice{background:#0c1c1880;border-color:#ffffff22;color:#d5e6df}
+@media(max-width:900px){.lobby-page .lobby-art{width:min(70vw,420px);opacity:.35}.lobby-page .lobby{margin-left:auto;margin-right:auto}}
 .room-search-actions{margin-top:12px;gap:9px;flex-wrap:wrap}.room-search-actions button{min-height:44px}.room-list-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:22px 0 10px}.room-list-heading h3{margin:0}.room-list-heading button{min-height:44px}
 #room-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;min-height:48px}#room-list .room-tile{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:74px;text-align:left;padding:14px;background:#ffffff08;border:1px solid #ffffff1a;border-radius:10px;color:#eee}#room-list .room-tile small{display:block;color:#b5c0c9;margin-top:5px;font:12px system-ui}#room-list .room-tile b{font:16px system-ui;letter-spacing:.08em}.room-join-label{padding:8px 12px;background:#ffffff12;border-radius:6px;white-space:nowrap}#room-list .room-empty{grid-column:1/-1;padding:18px 0;color:#b7c1ca}#room-list button:disabled{opacity:.45}#room-visibility{display:block;max-width:100%;margin-top:7px;min-height:44px}#room-waiting-title{margin:0 0 10px}#current-room{padding:6px 0}#current-room .code{font-size:24px;letter-spacing:.12em}#room-panel [hidden],#deck-panel [hidden]{display:none!important}
 @media(max-width:600px){.room-search-actions>*{flex:1 1 130px}#join-code{width:100%;min-width:0}.room-list-heading{align-items:flex-start}#room-list{grid-template-columns:1fr}}
