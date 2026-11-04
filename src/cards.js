@@ -9,6 +9,7 @@ import { definitions, passives } from './definitions.js';
 import { equipment, areaAuras } from './objects.js';
 import { operations } from './storyline.js';
 import { officialBetaLists,betaPreconSource } from './beta-precons.js';
+import { officialGothicLists,gothicPreconSource } from './gothic-precons.js';
 export const elements = ['air', 'earth', 'fire', 'water'];
 export const hasElement=(c,e)=>c[e]>0||c.elements?.includes(e[0].toUpperCase()+e.slice(1));
 export const limits = { Ordinary: 4, Exceptional: 3, Elite: 2, Unique: 1 };
@@ -91,10 +92,11 @@ export function validateDeck(d, requirePlayable = true) {
   for(const id of collection){const c=byId.get(id);if(!c||c.category==='Token'||c.runtimeMask){errors.push('收藏區包含無效卡牌');continue;}if(!c.released)errors.push(c.name+' 尚未發行');if(requirePlayable&&!c.playable)errors.push(c.name+' 尚未實作');collectionCounts.set(id,(collectionCounts.get(id)||0)+1);}
   for(const [id,n] of collectionCounts)if(n>(limits[card(id).slot]||0))errors.push(card(id).name+' 超出收藏區稀有度張數上限');
   if (!d || !Array.isArray(d.atlas) || !Array.isArray(d.spells)) return ['牌組格式錯誤'];
-  const precon=d.format==='beta-precon-2023',sizes=deckSizes(d),avatarProfile=finalAvatarDeckProfile(byId.get(d.avatar));
+  const preconBeta=d.format==='beta-precon-2023',preconGothic=d.format==='gothic-precon',sizes=deckSizes(d),avatarProfile=finalAvatarDeckProfile(byId.get(d.avatar));
   if(avatarProfile.noAtlas&&d.atlas.length)errors.push('Magician 沒有 Atlas，地點須放進 Spellbook');
   if(avatarProfile.uniqueAtlas&&new Set(d.atlas).size!==d.atlas.length)errors.push('Pathfinder 的 Atlas 不能含重複地點');
-  if(precon&&!matchesOfficialBeta(d))errors.push('官方 BETA 預組必須與原表完全一致；修改後請轉為自組牌');
+  if(preconBeta&&!matchesOfficialBeta(d))errors.push('官方 BETA 預組必須與原表完全一致；修改後請轉為自組牌');
+  if(preconGothic&&!matchesOfficialGothic(d))errors.push('官方 GOTHIC 預組必須與原表完全一致；修改後請轉為自組牌');
   if (d.atlas.length < sizes.atlas) errors.push('Atlas 至少需要 '+sizes.atlas+' 張地點');
   if (d.spells.length < sizes.spells) errors.push('Spellbook 至少需要 '+sizes.spells+' 張法術');
   const a = byId.get(d.avatar); if (!a || a.type !== 'Avatar') errors.push('必須選擇一位 Avatar');
@@ -114,17 +116,30 @@ export function validateDeck(d, requirePlayable = true) {
   if(a&&a.type==='Avatar')errors.push(...sourceDeckErrors(d,{card}));
   return [...new Set(errors)];
 }
-export function deckSizes(d){if(finalAvatarDeckProfile(byId.get(d?.avatar)).noAtlas)return {atlas:0,spells:60};return d?.format==='beta-precon-2023'?{atlas:16,spells:36}:{atlas:30,spells:60};}
-export function officialBetaDecks(){
-  return officialBetaLists.map(d=>({version:1,name:d.name,preset:'official-beta',format:'beta-precon-2023',officialId:d.id,source:betaPreconSource,sourceImage:'https://cdn.sanity.io/images/vg9ve3gy/production/'+d.image,
-    description:'官方 2023 BETA 預組原表：36 張 Spellbook、16 張 Atlas、1 位 Avatar。',
-    avatar:card(d.avatar).id,spells:Object.entries(d.spells).flatMap(([slug,n])=>Array(n).fill(card(slug).id)),atlas:Object.entries(d.atlas).flatMap(([slug,n])=>Array(n).fill(card(slug).id)),
-  }));
+export function deckSizes(d){if(finalAvatarDeckProfile(byId.get(d?.avatar)).noAtlas)return {atlas:0,spells:60};return d?.format==='beta-precon-2023'||d?.format==='gothic-precon'?{atlas:16,spells:36}:{atlas:30,spells:60};}
+function officialListDeck(d,{preset,format,source,description}){
+  const copies=obj=>Object.entries(obj).flatMap(([slug,n])=>Array(n).fill(card(slug).id));
+  return {version:1,name:d.name,preset,format,officialId:d.id,source:d.source||source,...(d.image?{sourceImage:'https://cdn.sanity.io/images/vg9ve3gy/production/'+d.image}:{}),
+    description,avatar:card(d.avatar).id,spells:copies(d.spells),atlas:copies(d.atlas),...(d.collection?{collection:copies(d.collection)}:{}),
+  };
 }
+export function officialBetaDecks(){
+  return officialBetaLists.map(d=>officialListDeck(d,{preset:'official-beta',format:'beta-precon-2023',source:betaPreconSource,description:'官方 2023 BETA 預組原表：36 張 Spellbook、16 張 Atlas、1 位 Avatar。'}));
+}
+export function officialGothicDecks(){
+  return officialGothicLists.map(d=>officialListDeck(d,{preset:'official-gothic',format:'gothic-precon',source:gothicPreconSource,description:'官方 Gothic Prophets of Doom 預組原表：36 張 Spellbook、16 張 Atlas、1 位 Avatar。'}));
+}
+export function officialPreconDecks(){return [...officialBetaDecks(),...officialGothicDecks()];}
+function sameIds(a,b){return Array.isArray(a)&&Array.isArray(b)&&a.length===b.length&&[...a].sort().every((id,i)=>id===[...b].sort()[i]);}
 export function matchesOfficialBeta(d){
   if(d?.format!=='beta-precon-2023')return false;
-  const original=officialBetaDecks().find(p=>p.officialId===d.officialId),same=(a,b)=>Array.isArray(a)&&a.length===b.length&&[...a].sort().every((id,i)=>id===[...b].sort()[i]);
-  return !!original&&d.avatar===original.avatar&&same(d.atlas,original.atlas)&&same(d.spells,original.spells);
+  const original=officialBetaDecks().find(p=>p.officialId===d.officialId);
+  return !!original&&d.avatar===original.avatar&&sameIds(d.atlas,original.atlas)&&sameIds(d.spells,original.spells);
+}
+export function matchesOfficialGothic(d){
+  if(d?.format!=='gothic-precon')return false;
+  const original=officialGothicDecks().find(p=>p.officialId===d.officialId);
+  return !!original&&d.avatar===original.avatar&&sameIds(d.atlas,original.atlas)&&sameIds(d.spells,original.spells)&&sameIds(d.collection||[],original.collection||[]);
 }
 export function starter(kind = 'earth') {
   const earth = ['wild_boars','eltham_townsfolk','bosk_troll','brown_bears','amazon_warriors','penitent_knight','autumn_unicorn','plumed_pegasus','wyvern','alvalinne_dryads','overpower','gift_of_the_wolf','gigantism','common_sense','divine_healing','holy_warrior','rescue'];

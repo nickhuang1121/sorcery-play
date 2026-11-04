@@ -1,5 +1,5 @@
 // Import decks from Curiosa / sorcerytcg.com text lists, deck URLs, or local JSON.
-import { cards, byId, bySlug, matchesOfficialBeta } from './cards.js';
+import { cards, byId, bySlug, officialBetaDecks, officialGothicDecks, matchesOfficialBeta, matchesOfficialGothic } from './cards.js';
 
 const SECTION = /^(avatar|minion|magic|aura|artifact|site|spellbook|atlas|sideboard|maybeboard|tokens?)\b/i;
 const QTY_NAME = /^\s*(\d+)\s*[x×]?\s+(.+?)\s*$/i;
@@ -140,15 +140,85 @@ export function parseOfficialDeckJson(d, opts = {}) {
   if (matchesOfficialBeta({ ...deck, format:'beta-precon-2023' })) {
     deck.format='beta-precon-2023';
     deck.preset='official-beta';
+  } else if (matchesOfficialGothic({ ...deck, format:'gothic-precon' })) {
+    deck.format='gothic-precon';
+    deck.preset='official-gothic';
   }
   return deck;
 }
 
-/** Official decklist JSON only（與 sorcerytcg.com／Curiosa 同形）。 */
+function sameIds(a, b) {
+  if (!Array.isArray(a) || !Array.isArray(b) || a.length !== b.length) return false;
+  const left = [...a].sort(), right = [...b].sort();
+  return left.every((id, i) => id === right[i]);
+}
+
+/** Recognize a product precon by its cards. The public deck id is not our local id. */
+function stampOfficial(deck) {
+  for (const original of officialBetaDecks()) {
+    if (deck.avatar === original.avatar && sameIds(deck.atlas, original.atlas) && sameIds(deck.spells, original.spells)) {
+      deck.format = 'beta-precon-2023';
+      deck.preset = 'official-beta';
+      deck.officialId = original.officialId;
+      return deck;
+    }
+  }
+  for (const original of officialGothicDecks()) {
+    const collection = deck.collection?.length ? deck.collection : (original.collection || []);
+    if (deck.avatar === original.avatar && sameIds(deck.atlas, original.atlas) && sameIds(deck.spells, original.spells) && sameIds(collection, original.collection || [])) {
+      deck.format = 'gothic-precon';
+      deck.preset = 'official-gothic';
+      deck.officialId = original.officialId;
+      if (!deck.collection?.length && original.collection?.length) deck.collection = [...original.collection];
+      return deck;
+    }
+  }
+  return deck;
+}
+
+/**
+ * Public deck API: GET https://api.sorcerytcg.com/api/decks/{id}
+ * { name, id, avatar:[{identifier,name,quantity}], spellbook:[...], atlas:[...], sideboard:[...] }
+ */
+export function parseOfficialApiDeck(d) {
+  if (!d || (!Array.isArray(d.avatar) && !Array.isArray(d.spellbook) && !Array.isArray(d.atlas))) throw Error('不是官方牌組資料');
+  const avatarRow = (d.avatar || [])[0];
+  const avatarCard = bySlug.get(avatarRow?.identifier) || findCardByName(avatarRow?.name);
+  const atlas = [], spells = [], warnings = [];
+  const place = row => {
+    const qty = Math.max(0, Number(row?.quantity) || 0);
+    const c = bySlug.get(row?.identifier) || findCardByName(row?.name);
+    if (!c || !qty) {
+      if (row?.name || row?.identifier) warnings.push(`未知：${row.name || row.identifier}`);
+      return;
+    }
+    if (c.type === 'Avatar') return;
+    if (c.type === 'Site' || c.category === 'Site') pushCopies(atlas, c.id, qty);
+    else pushCopies(spells, c.id, qty);
+  };
+  for (const row of d.spellbook || []) place(row);
+  for (const row of d.atlas || []) place(row);
+  if ((d.sideboard || []).some(row => Number(row?.quantity) > 0)) warnings.push('已略過側牌');
+  if (!avatarCard) throw Error(warnings.length ? '找不到 Avatar（另有未知卡名）' : '找不到 Avatar');
+  if (!atlas.length && !spells.length) throw Error(warnings[0] || '沒有解析到 Spellbook／Atlas 卡牌');
+  const id = d.id ? String(d.id) : '';
+  return stampOfficial(buildDeck({
+    name: String(d.name || '官方牌組'),
+    avatar: avatarCard.id,
+    atlas,
+    spells,
+    source: id ? `https://sorcerytcg.com/decks/${id}` : 'official-api',
+    warnings,
+    extras: id ? { id } : {},
+  }));
+}
+
+/** Official decklist JSON, or the public deck API JSON. */
 export function parseJsonDeck(text) {
   const d = typeof text === 'string' ? JSON.parse(text) : text;
   if (d && Array.isArray(d.decklist)) return parseOfficialDeckJson(d);
   if (Array.isArray(d) && d[0]?.board && d[0]?.card) return parseOfficialDeckJson({ name: '官方牌組', decklist: d });
+  if (d && (Array.isArray(d.spellbook) || Array.isArray(d.atlas) || Array.isArray(d.avatar))) return parseOfficialApiDeck(d);
   throw Error('JSON 需為官方 decklist 格式（含 decklist[]）');
 }
 
@@ -261,25 +331,16 @@ export function parseOfficialDeckHtml(html, opts = {}) {
 export async function fetchOfficialDeck(deckIdOrUrl) {
   const id = extractDeckId(deckIdOrUrl) || String(deckIdOrUrl || '').trim();
   if (!id) throw Error('無效的牌組連結');
-  const urls = [
-    `https://sorcerytcg.com/decks/${id}`,
-    `https://curiosa.io/decks/${id}`,
-  ];
-  let lastErr = null;
-  for (const url of urls) {
-    try {
-      const r = await fetch(url, { headers: { Accept: 'text/html' } });
-      if (!r.ok) { lastErr = Error(`HTTP ${r.status}`); continue; }
-      const html = await r.text();
-      return parseOfficialDeckHtml(html, { source: 'official-url', name: undefined });
-    } catch (e) {
-      lastErr = e;
-    }
+  let response;
+  try {
+    response = await fetch(`https://api.sorcerytcg.com/api/decks/${encodeURIComponent(id)}`, { headers: { Accept: 'application/json' } });
+  } catch {
+    throw Error('無法連到官方牌組，請檢查網路後再試。');
   }
-  const msg = lastErr?.message || String(lastErr);
-  if (/Failed to fetch|NetworkError|CORS|cross-origin/i.test(msg))
-    throw Error('瀏覽器無法直接讀取官方牌組頁（CORS）。請開啟該頁複製牌表文字貼上，或改貼本機 JSON。');
-  throw Error('無法下載牌組：' + msg);
+  if (response.status === 404) throw Error('找不到這副公開牌組。請確認連結，私人牌組無法匯入。');
+  if (response.status === 429) throw Error('官方牌組查詢太頻繁，請稍後再試。');
+  if (!response.ok) throw Error('無法下載牌組：HTTP ' + response.status);
+  return parseOfficialApiDeck(await response.json());
 }
 
 /** Auto-detect JSON, URL, or text decklist. */

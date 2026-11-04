@@ -1,2 +1,2 @@
 import '../page-title.js';
-import '../online-lobby.js?v=20261101-independent-pages';
+import '../online-lobby.js?v=20261104-gothic-precons';
