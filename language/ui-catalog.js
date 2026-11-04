@@ -440,6 +440,15 @@ Google 玩家	Google player
 儲存的牌組	Saved decks
 儲存	Save
 匯入牌組	Import deck
+匯入官方牌組	Import an official deck
+到 sorcerytcg.com 打開公開牌組，複製網址貼到這裡。存在這台裝置，不需要登入。	Open a public deck on sorcerytcg.com and paste its address here. It is stored on this device. No sign-in.
+官方牌組網址	Official deck address
+改貼文字牌表或 JSON	Paste a text list or JSON instead
+已略過側牌	Sideboard skipped
+找不到這副公開牌組。請確認連結，私人牌組無法匯入。	That public deck was not found. Check the link. Private decks cannot be imported.
+官方牌組查詢太頻繁，請稍後再試。	Too many official deck lookups. Try again shortly.
+無法連到官方牌組，請檢查網路後再試。	Could not reach the official deck service. Check your connection and try again.
+目前不能開局：	Cannot start a match yet: 
 匯出牌組	Export deck
 匯入中	Importing
 匯入	Import
@@ -514,8 +523,15 @@ Google 玩家	Google player
 易	Easy
 中	Medium
 強	Hard
+難	Hard
+透視	See through
 全知搜尋（可偷看隱藏資訊；預設為公平）	Omniscient search (can see hidden information; fair play is the default)
+練習模式	Practice mode
 進階設定	Advanced settings
+回手	Undo
+已回到上一步	Returned to the previous step
+沒有上一步	No earlier step
+這局沒有開啟練習模式	Practice mode is off for this match
 隨機種子	Random seed
 查看官方四副完整牌表	View all four official decklists
 返回新對局	Back to match setup
