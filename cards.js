@@ -67,13 +67,15 @@ export function install(raw) {
 }
 export function printedKeywords(c) {
   if(c.slug==='sewer_rats')return ['Burrowing','Submerge'];
+  if(c.slug==='spire_lich')return [];
+  if(c.slug==='the_wild_hunt')return ['Airborne'];
   if(c.slug==='drowned'||c.slug==='driftwood_marrows')return ['Submerge'];
   const header=c.rules.split(/\r?\n|\bGenesis\b|\bDeathrite\b/)[0].trim();
   // "Earth and Water Spellcaster" is the keyword, qualified by those elements.
   const known=['Airborne','Charge','Voidwalk','Burrowing','Submerge','Landbound','Waterbound','Ranged','Immobile','Lethal','Spellcaster','Stealth','Ward','Lance','Deathrite'];
   const lead=k=>k==='Spellcaster'?'(?:^|,\\s*)(?:(?:Air|Earth|Fire|Water)(?:\\s+and\\s+(?:Air|Earth|Fire|Water))*\\s+)*':'(?:^|,\\s*)';
   const parsed=known.filter(k=>!(c.slug==='zeppelin_of_zealots'&&k==='Airborne'||k==='Lethal'&&/(?:^|,\s*)Lethal\s+to\b/.test(header))&&new RegExp(lead(k)+k+'(?:$|[, .]| \\+| \\d)').test(header));
-  return [...parsed,...(c.keywords||[]).filter(k=>known.includes(k)&&!parsed.includes(k))];
+  return [...parsed,...(c.keywords||[]).filter(k=>known.includes(k)&&!parsed.includes(k)&&!(c.slug==='zeppelin_of_zealots'&&k==='Airborne'))];
 }
 export async function loadCards() {
   const r = await fetch(new URL('../data/official-cards.json', import.meta.url));

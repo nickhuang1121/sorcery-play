@@ -42,7 +42,7 @@ export const completionDefinitions={
  gilman_house:{activated:[{label:'將此處僕從變為收藏區 Horrible Hybrids',threshold:{water:4},steps:[{op:'collectionHybrid',select:{kind:'unit',minion:true,here:true}}]}]},
  horns_of_behemoth:{activated:[{label:'變為 Demon',threshold:{fire:6},steps:[{op:'completionHorns'}]}]},
  druid:{activated:[{label:'橫置：召喚 Bruin 並翻面',tap:true,onceEver:'druidFlipped',steps:[{op:'completionDruidFlip'}]}]},
- witch:{activated:[{label:'橫置：詛咒 Avatar',tap:true,steps:[{op:'completionCurse',select:{kind:'unit',avatar:true,anyRegion:true}}]}]},
+  witch:{activated:[{label:'橫置：詛咒 Avatar',tap:true,declare:true,steps:[{op:'completionCurse',select:{kind:'unit',avatar:true,anyRegion:true}}]}]},
  great_old_one:{genesis:[{op:'completionFloodRealm'}]},
  the_great_drowning_of_men:{start:[{op:'completionDrowning'}]},
  year_of_the_blaze:{start:[{op:'completionYearBlaze'}]},

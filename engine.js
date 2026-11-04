@@ -1386,7 +1386,7 @@ function resolveStep(s,frame) {
   if(step.op==='albatrossRevenge'){const killer=unit(s,step.killer.uid)||step.killer;for(const u of [...s.units])if(u.uid!==killer.uid&&u.controller===killer.controller&&card(u.card).type==='Minion'&&nearby(s,u.at,killer.at)&&regionsOverlap(s,u,killer))kill(s,u);}
   if(step.op==='balinStrike'){
     const target=unit(s,step.avatar);if(target){const at=target.at;destroySite(s,at);if(s.board[at]&&!waterSite(s,at,card)){
-      for(const u of s.units)if(u.uid!==source.uid&&u.at===at&&card(u.card).type==='Minion')u.layer='below';
+      for(const u of s.units)if(u.uid!==source.uid&&u.at===at&&card(u.card).type==='Minion'){u.layer='below';u.burrowedSafely=true;}
       for(const a of s.artifacts||[])if(a.at===at){const bearer=unit(s,a.bearer);if(bearer&&(bearer.layer||'surface')!=='below')a.bearer=null;a.layer='below';}
     }}
   }
@@ -1400,7 +1400,7 @@ function resolveStep(s,frame) {
   if(step.op==='wrathSea'){
     const body=bodyOfWater(s,selected.at,card),targets=s.board.flatMap((site,at)=>site&&[...body].some(i=>distance(s,i,at)===1)?[at]:[]);
     for(const at of targets){const site=s.board[at];if(!site.effects)site.effects=[];site.effects.push({flood:true,end:s.turn,stamp:s.next++});}
-    for(const u of s.units)if(card(u.card).type==='Minion'&&waterSite(s,u.at,card))u.layer='below';
+    for(const u of s.units)if(card(u.card).type==='Minion'&&waterSite(s,u.at,card)){u.layer='below';if(!keywords(u).includes('Submerge'))u.mods.push({keyword:'Submerge'});}
     for(const a of s.artifacts||[])if(waterSite(s,a.at,card)){const bearer=unit(s,a.bearer);if(bearer&&(bearer.layer||'surface')!=='below')a.bearer=null;a.layer='below';}
   }
   if(step.op==='untapSelf')untap(s,unit(s,step.uid||source.uid));
@@ -1458,7 +1458,7 @@ function resolveStep(s,frame) {
   if(step.op==='surfaceSite')for(const u of s.units)if(!u.dying&&card(u.card).type==='Minion'&&siteEffectAllowed(s,u,'move',{card},frame.abilityOrigin||source.abilityOrigin||source.card)&&fiftyForceAllowed(s,u,p,ruleAPI(s))){const move=geometryForcedSurfaceMove(s,u,selected.at,ruleAPI(s));if(move)applyGeometryForcedMove(u,move);}
   if(step.op==='thinIce'){
     const minions=s.units.filter(u=>u.at===source.at&&(u.layer||'surface')==='surface'&&card(u.card).type==='Minion'&&!u.dying);
-    if(minions.reduce((n,u)=>n+power(u),0)>=5)for(const u of minions)if(siteEffectAllowed(s,u,'move',{card}))u.layer='below';
+    if(minions.reduce((n,u)=>n+power(u),0)>=5)for(const u of minions)if(siteEffectAllowed(s,u,'move',{card})){u.layer='below';if(!keywords(u).includes('Submerge'))u.mods.push({keyword:'Submerge'});}
   }
   if(step.op==='peekSpell'){
     const deck=s.players[p][step.deck||'spells'];if(!deck.length)return;
@@ -1617,7 +1617,7 @@ function resolveStep(s,frame) {
   if(step.forceAction&&['shiftLayer','sinkSite'].includes(step.op)&&resolveCatalogForcedLayer(s,frame,ruleAPI(s)))return;
   if(step.op==='shiftLayer')for(const u of entities){u.layer=step.layer;u.burrowedSafely=false;}
   if(step.op==='sinkSite'){
-    for(const u of [...s.units,...s.artifacts||[]])if(u.at===selected.at&&card(u.card).type!=='Avatar'){u.layer='below';u.burrowedSafely=false;}
+    for(const u of [...s.units,...s.artifacts||[]])if(u.at===selected.at&&card(u.card).type!=='Avatar'){u.layer='below';u.burrowedSafely=false;if(card(u.card).type==='Minion')u.mods.push({keyword:'Submerge'});}
   }
   if(step.op==='destroySiteMinions')for(const u of s.units)if(occupied(u).includes(selected.at)&&card(u.card).type==='Minion')kill(s,u);
   if(step.op==='liftSite'&&resolveCatalogForcedSurface(s,frame,ruleAPI(s)))return;
@@ -1946,6 +1946,7 @@ function dragonGift(s,p,c,at,layer='surface'){return c.type==='Minion'&&c.subtyp
 function vermisCaster(s,u){return u&&['Minion','Avatar'].includes(card(u.card).type)&&(card(u.card).type==='Avatar'||keywords(u).includes('Spellcaster'))&&s.artifacts.some(a=>a.bearer===u.uid&&!a.silenced&&!a.disabled&&passives[card(a.card).slug]?.fixedMinionCost===5);}
 function exchangeSites(s,a,b){const site=s.board[a],target=s.board[b];if(!site||!target||passives[card(site.card).slug]?.immutableSite||site.completionProtected||target.completionProtected||passives[card(target.card).slug]?.immutableSite)return;if(!geometryMoveSiteAllowed(s,a,b,card))return;[s.board[a],s.board[b]]=[target,site];moveGeometrySiteParts(s,{[a]:b,[b]:a},Array.from({length:20},(_,at)=>at===a?site:at===b?target:null),u=>siteEffectAllowed(s,u,'move',{card}));for(const u of s.units)if(!u.geometryLocations&&u.size!==2&&!u.geometryFixedCells&&(u.at===a||u.at===b)&&siteEffectAllowed(s,u,'move',{card})){u.at=u.at===a?b:a;u.observedPosition={at:u.at,layer:u.layer||'surface',cells:occupied(u)};}for(const o of s.artifacts)if(o.at===a||o.at===b)o.at=o.at===a?b:a;for(const o of s.auras)if(o.singleSite&&(o.at===a||o.at===b))o.at=o.at===a?b:a;}
 function isKnightSpell(c){return [...c.subtypes,...c.umbrellas].some(t=>['Knight','Sir','Dame'].includes(t))||/^(Sir|Dame) /.test(c.name);}
+function siteNamesType(s,site,c,key){const listed=site&&sitePassives[card(site.card).slug]?.[key];if(!listed)return false;const names=[...c.subtypes,...cardForPlayer(s,c,c.finalTypePlayer??s.active).umbrellas];return listed.some(t=>names.includes(t))||listed.some(t=>['Knight','Sir','Dame'].includes(t))&&isKnightSpell(c);}
 function nextSiteCast(s,c,at){const site=s.board[at],rule=site&&!site.silenced?sitePassives[card(site.card).slug]:null;return site?.nextCastTurn===s.turn&&(rule?.nextCastType&&c.subtypes.includes(rule.nextCastType)||rule?.nextCastUmbrella&&cardForPlayer(s,c,c.finalTypePlayer??s.active).umbrellas.includes(rule.nextCastUmbrella));}
 function riverNetwork(s,root){const found=new Set([root]),queue=[root];for(let i=0;i<queue.length;i++)for(let at=0;at<20;at++)if(!found.has(at)&&distance(s,queue[i],at)===1&&s.board[at]&&/river/i.test(card(s.board[at].card).name)){found.add(at);queue.push(at);}return found;}
 function emptySite(s,at){return !!s.board[at]&&!(s.inertCards||[]).some(c=>c.at===at)&&!s.units.some(u=>occupied(u).includes(at))&&!(s.artifacts||[]).some(a=>a.at===at)&&!(s.auras||[]).some(a=>inside(a,at));}
@@ -1961,7 +1962,7 @@ function canSummonAt(s,p,c,at,permission=false,explicitSitePermission=false){c=c
   if(d.castEliteSite)return ['Elite','Unique'].includes(card(site.card).slot);
   if(spatialMinionCastingHere(s,p,c,at,ruleAPI(s)))return true;
   const betray=sitePassives[card(site.card).slug]?.enemyStealthCastThreshold;if(site.controller===1-p&&betray&&resources(s,site.controller)[betray]>=1)return true;
-  return site.controller===p||!site.silenced&&!site.disabled&&sitePassives[card(site.card).slug]?.openMinionCasting||sitePassives[card(site.card).slug]?.openMinionTypes?.some(t=>[...c.subtypes,...cardForPlayer(s,c,c.finalTypePlayer??s.active).umbrellas].includes(t))||d.castAnySite||d.castEliteSite&&['Elite','Unique'].includes(card(site.card).slot)||d.castClearSite&&!enemies||(s.auras||[]).some(a=>{const aura=areaAuras[card(a.card).slug];return catalogAuraActive(a,disabled)&&a.controller===p&&aura?.summon&&inside(a,at)&&matches(c,aura,cardForPlayer(s,c,c.finalTypePlayer??s.active).umbrellas);});
+  return site.controller===p||!site.silenced&&!site.disabled&&sitePassives[card(site.card).slug]?.openMinionCasting||siteNamesType(s,site,c,'openMinionTypes')||d.castAnySite||d.castEliteSite&&['Elite','Unique'].includes(card(site.card).slot)||d.castClearSite&&!enemies||(s.auras||[]).some(a=>{const aura=areaAuras[card(a.card).slug];return catalogAuraActive(a,disabled)&&a.controller===p&&aura?.summon&&inside(a,at)&&matches(c,aura,cardForPlayer(s,c,c.finalTypePlayer??s.active).umbrellas);});
 }
 function summonKeywords(s,c,at){return [...printedKeywords(c),...(s.board.some(site=>site&&!site.silenced&&!site.disabled&&sitePassives[card(site.card).slug]?.allBurrowingThreshold&&resources(s,site.controller).earth>=3)?['Burrowing']:[]),...(cardForPlayer(s,c,c.finalTypePlayer??s.active).umbrellas.includes('Evil')&&s.board.some((site,i)=>site&&sitePassives[card(site.card).slug]?.nearbyEvilBurrowing&&nearby(s,i,at))?['Burrowing']:[])];}
 function protectedAttackSite(s,at,layer='surface',attacker=null){return !!s.board[at]&&(protectedByHart(s,{at,layer})||!s.board[at].silenced&&!s.board[at].disabled&&sitePassives[card(s.board[at].card).slug]?.noAttackingHere&&siteEffectAllowed(s,attacker,'impedeAttack',{card},s.board[at].card)||(s.auras||[]).some(a=>catalogAuraActive(a,disabled)&&areaAuras[card(a.card).slug]?.noAttacks&&inside(a,at)));}
@@ -2027,7 +2028,7 @@ export function legalActions(s,p=s.active) {
       if(c.type!=='Minion'&&c.type!=='Artifact'&&!canPaySpell(s,p,c,undefined,caster,payment,0,'surface',h.from))continue;
       const from={...h.from,...(caster.geometryCasterLocation?{casterLocation:{...caster.geometryCasterLocation},casterLayer:caster.layer||'surface'}:{}),...(payment?{payment}:{}),...(card(caster.card).type==='Site'&&caster.layer==='below'?{casterLayer:'below'}:{})};
       if(!casterPermissionAllows(s,caster,c,ruleAPI(s),{independent:entryHasIndependentCasterPermission(s,h)}))continue;
-      if(c.type==='Minion')for(let at=0;at<20;at++)if(finalAvatarMinionCastAllowed(s,p,c,at,'surface',ruleAPI(s))&&(h.forceAt===undefined||h.forceAt===at)&&(payment!=='harbinger'||avatar(s,p).harbingerSquares.includes(at))&&casterPlacementAllowed(s,caster,c,at,ruleAPI(s))&&(c.slug==='mountain_giant'?(isGlobeActive(s,card)||at%5<4&&at<15)&&occupied({at,size:2,geometryWrap:isGlobeActive(s,card)}).every(i=>!!s.board[i])&&occupied({at,size:2,geometryWrap:isGlobeActive(s,card)}).some(i=>canSummonAt(s,p,c,i,payment==='harbinger',h.from?.top?.kind==='cult')):canSummonAt(s,p,c,at,!!h.from.rasputin||payment==='harbinger',h.from?.top?.kind==='cult'))&&(s.board[at]&&!s.board[at].silenced&&!s.board[at].disabled&&(c.subtypes.includes(sitePassives[card(s.board[at].card).slug]?.ignoreThresholdType)||sitePassives[card(s.board[at].card).slug]?.ignoreThresholdTypes?.some(t=>[...c.subtypes,...cardForPlayer(s,c,c.finalTypePlayer??s.active).umbrellas].includes(t)))||nextSiteCast(s,c,at)||payment==='vermis'||h.ignoreThreshold||ignoresThreshold(s,caster,c)||elements.every(e=>(c[e]||0)<=r[e]))){
+      if(c.type==='Minion')for(let at=0;at<20;at++)if(finalAvatarMinionCastAllowed(s,p,c,at,'surface',ruleAPI(s))&&(h.forceAt===undefined||h.forceAt===at)&&(payment!=='harbinger'||avatar(s,p).harbingerSquares.includes(at))&&casterPlacementAllowed(s,caster,c,at,ruleAPI(s))&&(c.slug==='mountain_giant'?(isGlobeActive(s,card)||at%5<4&&at<15)&&occupied({at,size:2,geometryWrap:isGlobeActive(s,card)}).every(i=>!!s.board[i])&&occupied({at,size:2,geometryWrap:isGlobeActive(s,card)}).some(i=>canSummonAt(s,p,c,i,payment==='harbinger',h.from?.top?.kind==='cult')):canSummonAt(s,p,c,at,!!h.from.rasputin||payment==='harbinger',h.from?.top?.kind==='cult'))&&(s.board[at]&&!s.board[at].silenced&&!s.board[at].disabled&&(c.subtypes.includes(sitePassives[card(s.board[at].card).slug]?.ignoreThresholdType)||siteNamesType(s,s.board[at],c,'ignoreThresholdTypes'))||nextSiteCast(s,c,at)||payment==='vermis'||h.ignoreThreshold||ignoresThreshold(s,caster,c)||elements.every(e=>(c[e]||0)<=r[e]))){
         if((!h.forceLayer||h.forceLayer==='surface')&&!offRealmPassiveEntries(c,'mustBelow',ruleAPI(s)).some(v=>v.value)&&canPaySpell(s,p,c,at,caster,payment,0,'surface',h.from)&&canSummonEntry(s,p,c,at,'surface'))result.push({type:'cast',player:p,...from,caster:caster.uid,at});
         if(finalAvatarMinionCastAllowed(s,p,c,at,'below',ruleAPI(s))&&(!h.forceLayer||h.forceLayer==='below')&&(summonKeywords(s,c,at).includes(waterSite(s,at,card)?'Submerge':'Burrowing')||offRealmPassiveEntries(c,'ambushAbove',ruleAPI(s)).some(v=>v.value)&&!waterSite(s,at,card))&&canPaySpell(s,p,c,at,caster,payment,0,'below',h.from)&&canSummonEntry(s,p,c,at,'below'))result.push({type:'cast',player:p,...from,caster:caster.uid,at,layer:'below'});
       }
