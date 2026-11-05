@@ -128,7 +128,7 @@ h2{font-weight:normal;font-size:22px}
   radial-gradient(ellipse at 50% 45%,#2a3832,#101612 72%);
   border:1px solid #8d774c;box-shadow:0 24px 60px #000c,inset 0 0 80px #000a,inset 0 1px #ffffff14}
 .board-frame::before{content:"";position:absolute;inset:6px;border-radius:12px;pointer-events:none;border:1px solid #e4c27a22;box-shadow:inset 0 0 40px #0006}
-.board{position:relative;height:100%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr));gap:clamp(3px,.5vmin,7px)}
+.board{position:relative;height:100%;overflow:visible;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr));gap:clamp(3px,.5vmin,7px)}
 .cell{position:relative;min-width:0;min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:2px;padding:5px;border-radius:8px;border:1px dashed #46564e;background:
   linear-gradient(#ffffff08,transparent 28%),
   repeating-linear-gradient(45deg,#1b252522 0 1px,transparent 1px 8px),
@@ -830,3 +830,23 @@ body.in-home #app{max-width:none;margin:0;padding:0}
 #online-status{position:fixed;left:50%;top:4px;transform:translateX(-50%);z-index:12;max-width:75vw;padding:4px 12px;border:1px solid #7f744a;border-radius:14px;background:#101c17ed;color:#e7d59f;font:11px/1.5 sans-serif;text-align:center;pointer-events:none}#online-status[data-connected="false"]{color:#ffcf9c;border-color:#bb733a}
 
 body.in-online .table .hud-top{padding-top:24px}body.online-locked .modal-actions button,body.online-locked #card-info-use,body.online-locked .dock-actions .primary{pointer-events:none;opacity:.5}
+
+/* 2×2 cards sit on the shared corner. The wash never receives clicks. */
+.cell.multi-aura > .multi-cell-mark,.cell.multi-unit > .multi-cell-mark{position:absolute;inset:0;z-index:1;border-radius:inherit;pointer-events:none}
+.cell.multi-aura > .coordinate,.cell.multi-unit > .coordinate,.cell.multi-aura > .site-divider,.cell.multi-unit > .site-divider,.cell.multi-aura > .void-divider,.cell.multi-unit > .void-divider{z-index:3}
+.cell.legal::after{z-index:4}
+.cell.multi-aura > .multi-cell-mark{background:rgba(126,196,255,.18);box-shadow:inset 0 0 0 2px rgba(150,210,255,.75)}
+.cell.multi-unit > .multi-cell-mark{background:rgba(232,214,160,.14);box-shadow:inset 0 0 0 2px rgba(214,196,140,.78)}
+.cell.multi-aura.multi-unit > .multi-cell-mark{background:rgba(168,210,220,.16);box-shadow:inset 0 0 0 2px rgba(160,210,230,.82)}
+.cell.body-unit > .body-mark{position:absolute;z-index:1;border-radius:inherit;pointer-events:none;inset:0;background:rgba(232,214,160,.12);box-shadow:inset 0 0 0 2px rgba(214,196,140,.62)}
+.cell.body-everywhere > .body-mark{background:rgba(196,170,230,.07);box-shadow:inset 0 0 0 1px rgba(196,176,220,.55)}
+.cell.body-below:not(.body-surface) > .body-mark{top:54%;background:rgba(120,170,190,.16);box-shadow:inset 0 0 0 2px rgba(140,190,200,.7)}
+.cell.body-unit > .coordinate,.cell.body-unit > .site-divider,.cell.body-unit > .void-divider,.cell.wall-span > .coordinate,.cell.wall-span > .site-divider,.cell.wall-span > .void-divider{z-index:3}
+.cell.wall-span .wall-edge{z-index:4}
+.board > .multi-span-slot{position:absolute;z-index:5;margin:0;transform:translate(-50%,-50%);pointer-events:none;overflow:visible}
+.board > .multi-span-slot:has(.selected),.board > .multi-span-slot:has(.choice-pick),.board > .multi-span-slot:has(.preview-target){z-index:6}
+.board > .multi-span-slot > .unit,.board > .multi-span-slot > .realm-object{position:relative;left:auto;top:auto;width:100%;height:100%;margin:0;pointer-events:auto;box-sizing:border-box}
+.board > .multi-span-slot > .realm-object{display:block;padding:0;border-radius:4px;overflow:hidden;background:#000;box-shadow:0 6px 16px #000a,0 0 0 1px #9ec8e888}
+.board > .multi-span-slot > .unit{box-shadow:0 6px 16px #000a,0 0 0 1px #e4c27a88}
+.board > .multi-span-slot > .realm-object > .card-image{display:block;width:100%;height:100%;border-radius:0;aspect-ratio:auto}
+.board > .multi-span-slot > .realm-object > span:last-child{position:absolute;inset:auto 0 0;padding:2px;background:#06100ce8;color:#fff;font:8px/1.2 system-ui;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
