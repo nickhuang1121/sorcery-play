@@ -1,4 +1,5 @@
 import {arrangeRealmPiles} from './realm-layout.js';
+import {placeMultiCellCards} from './multi-cell-layout.js';
 export const STACK_QUERY='(max-width:700px) and (orientation:portrait), (max-width:980px) and (max-height:580px)';
 export const stackViewEnabled=()=>typeof matchMedia!=='undefined'&&matchMedia(STACK_QUERY).matches;
 const fronts=new Map(),layers=new Map();
@@ -15,7 +16,7 @@ export function arrangeMobileRealmPiles(root){
  if(!root)return;
  if(!stackViewEnabled()){
   root.querySelectorAll('[data-fs-mobile]').forEach(c=>{delete c.dataset.fsMobile;delete c.dataset.fsLayer;});root.querySelectorAll('[data-fs-front]').forEach(p=>delete p.dataset.fsFront);root.querySelectorAll('.fs-cell-summary').forEach(n=>n.remove());
-  arrangeRealmPiles(root);return;
+  arrangeRealmPiles(root);placeMultiCellCards(root);return;
  }
  for(const cell of root.querySelectorAll('.cell')){
   const at=+cell.dataset.at,piles=[...cell.querySelectorAll(':scope > .realm-pile')],nonempty=piles.filter(p=>p.querySelector('.pile-slot,.realm-object'));
@@ -37,4 +38,5 @@ export function arrangeMobileRealmPiles(root){
    pile.dataset.layout=items.length>1?'mobile-stack':'mobile-card';
   }
  }
+ placeMultiCellCards(root);
 }
